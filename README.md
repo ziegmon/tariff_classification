@@ -1,19 +1,19 @@
 ## Tariff Classification
 
+### Clone repository
+```
+git clone https://github.com/ziegmon/streamlit_app.git
+```
+
 ### Install dependencies
 ```
 pip install -r requirements.txt
 ```
 
-### Clone repository
-```
-git clone https://github.com/ziegmon/streamlit_app---Kopie.git
-```
-
 ### Download essential files
 1. Go to the company's Google Drive and download:
   - the images folder
-  - the sepcific csv CSV and place it in this project folder
+  - the "PLM_D365_merged_datasets_no_questionary.csv" CSV and place it in this project folder
 
 ### Setup secrets.toml file
 1. Create a secrets.toml file inside the .streamlit folder
