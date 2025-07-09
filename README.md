@@ -4,6 +4,11 @@
 ```
 git clone https://github.com/ziegmon/streamlit_app.git
 ```
+### Set up virtual environment and activate it
+```
+python -m venv venv
+.\venv\Scripts\activate
+```
 
 ### Install dependencies
 ```
