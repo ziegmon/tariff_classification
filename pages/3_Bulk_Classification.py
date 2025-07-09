@@ -117,7 +117,7 @@ with col3:
 
 
 #___Documentation Path___#
-PDF_DIRECTORY = "./streamlit_app/chapter_data"
+PDF_DIRECTORY = "./chapter_data"
 
 #___Session State Initialization___#
 if "model" not in st.session_state:
