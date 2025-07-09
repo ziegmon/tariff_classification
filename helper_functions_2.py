@@ -237,7 +237,7 @@ def configure_genai(api_key):
     genai.configure(api_key="AIzaSyBKyaoB_8u_-Zw-F4x-P6fhlw5cAhwqnp0")
     # using gemini-1.5-flash seems to be enough, does not exceed quota and seems to performa better from 2.0
     # 1.5 can be fine tuned, 2.0 can't
-    model = genai.GenerativeModel(model_name='models/gemini-1.5-flash')
+    model = genai.GenerativeModel(model_name='models/gemini-2.0-flash')
     return model
 
 
@@ -958,7 +958,7 @@ def process_bulk_data(
         gri = processed_pdfs_for_current_country.get("gri", "")
 
         # Load country-specific text files (e.g., guidelines)
-        country_texts = load_text_files_for_country("/Users/joana.duarte/Desktop/bydo/streamlit_app/chapter_data", country) # Assuming this is the correct path for text files
+        country_texts = load_text_files_for_country("./chapter_data", country) # Assuming this is the correct path for text files
         guidelines = country_texts.get(f"{country}_guidelines", "")
         if not guidelines:
             st.warning(f"No specific guidelines found for {country.upper()}. Continuing without country-specific guidelines.")
