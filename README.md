@@ -29,8 +29,6 @@ API_KEY = ""
 logo = 
 box = 
 
-CSV_PATH =
-
 [AUTH]
 USERNAME = ""
 PASSWORD = ""
