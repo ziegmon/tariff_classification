@@ -7,3 +7,5 @@ secret.toml
 /images/
 
 *.csv
+
+/venv
