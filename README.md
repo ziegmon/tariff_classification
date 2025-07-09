@@ -21,14 +21,15 @@ pip install -r requirements.txt
 ```
 API_KEY = ""
 
+logo = 
+box = 
+
+CSV_PATH =
+
 [AUTH]
 USERNAME = ""
 PASSWORD = ""
 
-logo = 
-box = 
-
-CSV_PATH = 
 ```
 
 2. Get a Gemini API Key if you don't have one already and copy it in the secrets.toml file
