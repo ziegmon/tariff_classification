@@ -5,6 +5,11 @@
 pip install -r requirements.txt
 ```
 
+### Clone repository
+```
+git clone https://github.com/ziegmon/streamlit_app---Kopie.git
+```
+
 ### Download essential files
 1. Go to the company's Google Drive and download:
   - the images folder
