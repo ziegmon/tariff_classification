@@ -1,0 +1,10 @@
+[theme]
+primaryColor = "#6b656d"
+
+font = "sans-serif"
+
+[ui]
+hideTopBar = true
+
+[client]
+showSidebarNavigation = false

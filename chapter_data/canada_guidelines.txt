@@ -1,0 +1,117 @@
+- LENGTH OF HS CODE:
+-- !ALWAYS! 10 digits long (not counting "." separating the levels of the HS Code). NO EXCEPTIONS!
+
+
+
+- EXAMPLE CLASSIFICATIONS: 
+
+-- 1: EXAMPLE CLASSIFICATION FOR CANADA:
+
+        Product: Women's jacket, woven, made of 100% Polyamide 6 (Mechanical Recycled - rPA6). Country: Canada
+
+        ### OPTION 1: *6202.40.00.10* - 85% certainty
+
+        PRODUCT DESCRIPTION:
+        A women's jacket, constructed from 100% recycled Polyamide 6 woven fabric. It is designed to cover the upper body and is not knitted or crocheted.
+
+        REASONING:
+        This garment is classified under Chapter 62, which applies to *made up articles of any textile fabric other than wadding, excluding knitted or crocheted articles* (Legal Note 1, Chapter 62). The product is explicitly described as woven, thereby excluding Chapter 61 (knitted/crocheted articles).
+
+        Heading 62.02 is designated for “Women's or girls' overcoats, car-coats, capes, cloaks, anoraks (including ski-jackets), wind-cheaters, wind-jackets and similar articles, other than those of heading 62.04.”. While heading 62.04 includes \"jackets\", this type of jacket (woven, polyamide, not part of a suit) fits the description of \"similar articles\" under 62.02, especially considering the specific material breakdown available at the 10-digit level within this heading.
+
+        The subheading 6202.40 refers to articles “Of man-made fibres”. Polyamide 6 is a synthetic, man-made fibre, making this subheading appropriate according to GRI 1 and GRI 6.
+
+        The tariff item 6202.40.00 is the 8-digit Canadian code under this subheading.
+
+        The full code 6202.40.00.10 includes a statistical suffix of ‘10’, which according to the Canadian Customs Tariff corresponds to articles “Of nylon or other polyamides” within this tariff item. This directly reflects the jacket's material (Polyamide 6).
+
+        The classification is further validated by the Canadian Classification Guide, which confirms the structure of the 10-digit code:
+
+        6202 → Heading (Women's overcoats, anoraks, wind-jackets, similar articles)
+        .40 → Subheading (Of man-made fibres)
+        .00 → Tariff item
+        .10 → Statistical suffix (Of nylon or other polyamides)
+        This classification matches the product's construction (woven), material (100% Polyamide 6), form (jacket/similar article), and intended use (women's upper-body garment).
+
+        LEGAL BASIS:
+        Chapter 62, Note 1: Confirms the scope of the chapter includes woven garments.
+        Heading 62.02: Applies to the garment type — Women's overcoats, anoraks, wind-jackets and similar articles.
+        Section XI, Note 12: Defines \"polyamides\".
+        GRI Rule 1: Classification must be based on terms of the headings and section/chapter notes.
+        GRI Rule 6: Requires repeated application of Rule 1 at the subheading level and subsequent levels (including tariff item and statistical suffix).
+        Canadian Classification Guide: Validates structure and use of 10-digit statistical suffix.
+        6202.40.00.10: This exact code appears in the official Chapter 62 file for Canada, under the correct heading, subheading, tariff item, and specifies \"Of nylon or other polyamides\".
+
+
+-- 2: EXAMPLE CLASSIFICATION FOR CANADA:
+
+        Product: Men's T-shirt, knitted, made of 100% polyester. Country: Canada
+
+        ### OPTION 1: *6109.90.00.10* – 90% certainty
+
+        #### PRODUCT DESCRIPTION:
+        A men's T-shirt, knitted from 100% polyester, designed to cover the upper torso. The garment is lightweight, short-sleeved, and made entirely from man-made fibres using knitted construction techniques.
+
+        #### REASONING:
+        This garment is classified under Chapter 61, which applies exclusively to \"*made-up knitted or crocheted articles*\" (Legal Note 1, Chapter 61). The product is explicitly described as *knitted*, thereby excluding Chapter 62 (which covers woven articles).
+
+        Heading *6109* is designated for *“T-shirts, singlets, and other vests, knitted or crocheted.”* This matches the form and construction of the product.
+
+        The subheading *6109.90* refers to *“Of other textile materials”, which includes all materials **other than cotton. Since **polyester* is a *synthetic, man-made fibre*, it does not fall under 6109.10 (cotton) or 6109.20 (man-made filaments like nylon), but instead under 6109.90, as supported by the material definitions in Section XI and GRI 2(b).
+
+        The full code *6109.90.00.10* includes a *statistical suffix of ‘10’, which according to the Canadian Customs Tariff corresponds to **polyester t-shirts* in this subheading.
+
+        The classification is further validated by the Canadian Classification Guide, which confirms the *structure of the 10-digit code*:
+        -   6109 → Heading (T-shirts, etc.)
+        -   .90 → Subheading (Other textile materials)
+        -   .00 → Tariff item
+        -   .10 → Statistical suffix (Men’s T-shirts of polyester)
+
+        This classification matches the product's construction (knitted), material (100% polyester), form (T-shirt), and intended use (male upper-body garment).
+
+        #### LEGAL BASIS:
+        -   *Chapter 61, Note 1*: Confirms the scope of the chapter is knitted/crocheted garments only.
+        -   *Heading 6109*: Clearly applies to the garment type — “T-shirts, singlets, and other vests”.
+        -   *Section XI, Legal Note 2*: Polyester is categorized as a man-made fibre.
+        -   *Section XI, Legal Note 3*: Covers definitions for textile fibre classification.
+        -   *GRI Rule 1*: Classification must be based on terms of the headings and section/chapter notes.
+        -   *GRI Rule 6*: Requires repeated application of Rule 1 at the subheading level.
+        -   *Canadian Classification Guide*: Validates structure and use of 10-digit statistical suffix.
+        -   *6109.90.00.10*: This exact code appears in the official Chapter 61 file for Canada, under the correct heading and subheading.
+
+-- 3: EXAMPLE CLASSIFICATION FOR CANADA:
+
+        Product: Men's Tank (tanks), knitted, made of 100% polyester. Country: Canada
+
+        ### OPTION 1: *6109.90.00.10* – 90% certainty
+
+        #### PRODUCT DESCRIPTION:
+        A men's Tank Top, knitted from 100% polyester, designed to cover the upper torso. The garment is lightweight, without sleeves, and made entirely from man-made fibres using knitted construction techniques.
+
+        #### REASONING:
+        This garment is classified under Chapter 61, which applies exclusively to \"*made-up knitted or crocheted articles*\" (Legal Note 1, Chapter 61). The product is explicitly described as *knitted*, thereby excluding Chapter 62 (which covers woven articles).
+
+        Heading *6109* is designated for *“T-shirts, singlets, and other vests, knitted or crocheted.”* This matches the form and construction of the product.
+
+        The subheading *6109.90* refers to *“Of other textile materials”, which includes all materials **other than cotton. Since **polyester* is a *synthetic, man-made fibre*, it does not fall under 6109.10 (cotton) or 6109.20 (man-made filaments like nylon), but instead under 6109.90, as supported by the material definitions in Section XI and GRI 2(b).
+
+        The full code *6109.90.00.10* includes a *statistical suffix of ‘10’, which according to the Canadian Customs Tariff corresponds to **polyester t-shirts* in this subheading.
+
+        The classification is further validated by the Canadian Classification Guide, which confirms the *structure of the 10-digit code*:
+        -   6109 → Heading (T-shirts, etc.)
+        -   .90 → Subheading (Other textile materials)
+        -   .00 → Tariff item
+        -   .10 → Statistical suffix (Men’s T-shirts of polyester)
+
+        This classification matches the product's construction (knitted), material (100% polyester), form (T-shirt), and intended use (male upper-body garment).
+
+        #### LEGAL BASIS:
+        -   *Chapter 61, Note 1*: Confirms the scope of the chapter is knitted/crocheted garments only.
+        -   *Heading 6109*: Clearly applies to the garment type — “T-shirts, singlets, and other vests”.
+        -   *Section XI, Legal Note 2*: Polyester is categorized as a man-made fibre.
+        -   *Section XI, Legal Note 3*: Covers definitions for textile fibre classification.
+        -   *GRI Rule 1*: Classification must be based on terms of the headings and section/chapter notes.
+        -   *GRI Rule 6*: Requires repeated application of Rule 1 at the subheading level.
+        -   *Canadian Classification Guide*: Validates structure and use of 10-digit statistical suffix.
+        -   *6109.90.00.10*: This exact code appears in the official Chapter 61 file for Canada, under the correct heading and subheading.
+
