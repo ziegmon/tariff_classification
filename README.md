@@ -7,7 +7,7 @@ pip install -r requirements.txt
 
 ### Clone repository
 ```
-git clone https://github.com/ziegmon/streamlit_app---Kopie.git
+git clone https://github.com/ziegmon/streamlit_app.git
 ```
 
 ### Download essential files
