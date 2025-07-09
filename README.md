@@ -1,13 +1,13 @@
 ## Tariff Classification
 
-### Install dependencies
-```
-pip install -r requirements.txt
-```
-
 ### Clone repository
 ```
 git clone https://github.com/ziegmon/streamlit_app.git
+```
+
+### Install dependencies
+```
+pip install -r requirements.txt
 ```
 
 ### Download essential files
