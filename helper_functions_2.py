@@ -14,7 +14,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 #___Documentation Path___#
 PDF_DIRECTORY = "chapter_data"
-CSV_PATH = st.secrets["CSV_PATH"]
+CSV_PATH = "./PLM_D365_merged_datasets_no_questionary.csv"
 
 
 # rejected codes
