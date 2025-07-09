@@ -76,7 +76,7 @@ else:
 if st.session_state["authenticated"]:
     if selected_page == "Single Product Classification":
         print(selected_page)
-        switch_page("single product classification")
+        switch_page("Single Product Classification")
     elif selected_page == "Bulk Classification":
         print(selected_page)
-        switch_page("bulk classification")
+        switch_page("Bulk Classification")
