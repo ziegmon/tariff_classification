@@ -4,6 +4,11 @@
 ```
 git clone https://github.com/ziegmon/streamlit_app.git
 ```
+### Set up virtual environment and activate it
+```
+python -m venv venv
+.\venv\Scripts\activate
+```
 
 ### Install dependencies
 ```
@@ -20,12 +25,13 @@ pip install -r requirements.txt
 ```
 API_KEY = ""
 
+logo = 
+box = 
+
 [AUTH]
 USERNAME = ""
 PASSWORD = ""
 
-logo = 
-box = 
 ```
 
 2. Get a Gemini API Key if you don't have one already and copy it in the secrets.toml file
