@@ -14,11 +14,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 #___Documentation Path___#
 PDF_DIRECTORY = "chapter_data"
-CSV_PATH = st.secrets["CSV_PATH"]
-
-
-# rejected codes
-REJECTED_CODES_FILE = "rejected_classifications.json"
 
 
 #___Variables___#
@@ -97,7 +92,7 @@ def load_pdfs_for_country(pdf_directory, country):
         st.error(f"Directory {pdf_directory} does not exist!")
         return {}
 
-    country_set = set(["canada", "usa", "norway", "switzerland"]) # More countries to be added or set to be replaced
+    country_set = set(["canada"]) # More countries to be added or set to be replaced
 
     for file in os.listdir(pdf_directory):
         if not file.lower().startswith(country.lower()):
@@ -202,39 +197,9 @@ def load_all_pdf_data(pdf_directory):
     return pdf_cache
 
 
-
-
-
-#___Load .txt Files___#
-# files with classification examples and other country specific guidelines
-def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
-    processed_texts = {}
-
-    if not os.path.exists(text_directory):
-        st.error(f"Directory {text_directory} does not exist!")
-        return {}
-
-    for file in os.listdir(text_directory):
-        # checking if the file starts with the country name (case-insensitive) and has the correct suffix
-        if not file.lower().startswith(country.lower()) or not file.lower().endswith(file_suffix):
-            continue
-
-        file_path = os.path.join(text_directory, file)
-        filename = Path(file).stem 
-
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                text = f.read()
-            processed_texts[filename] = text
-        except Exception as e:
-            st.error(f"Error reading file {file_path}: {str(e)}")
-
-    return processed_texts
-
-
 #___Gemini API Config___#
 def configure_genai(api_key):
-    genai.configure(api_key="AIzaSyBKyaoB_8u_-Zw-F4x-P6fhlw5cAhwqnp0")
+    genai.configure(api_key=st.secrets["API_KEY"])
     # using gemini-1.5-flash seems to be enough, does not exceed quota and seems to performa better from 2.0
     # 1.5 can be fine tuned, 2.0 can't
     model = genai.GenerativeModel(model_name='models/gemini-2.0-flash')
@@ -247,76 +212,21 @@ def generate_hs_codes(
     country,
     relevant_chapters,  # Changed from chapter_content
     legal_notes,
-    classification_guide,
     gri="",
-    rejected_codes_snapshot=None,
-    historical_data=None,
     guidelines=None,
 ):
-    #____Debug Statements___#
-    print(f"[DEBUG] Product Description: {product_description}")
-
-
-    # print("\n[DEBUG] Chapters provided to Model:")
-    # if relevant_chapters:
-    #     for chapter_num, chapter_text in relevant_chapters:
-    #         print(f"  - Chapter {chapter_num}: {len(chapter_text)} characters ({chapter_text[:20000].replace('', ' ').replace('\n', ' ')}...)")
-    # else:
-    #     print("  - No specific chapters identified by keyword search.")
-
-    if rejected_codes_snapshot is None:
-        rejected_entries = load_rejected_codes(product_description, country)
-    else:
-        rejected_entries = rejected_codes_snapshot
-    
-    print(rejected_codes_snapshot)
-
-    temp_rejected_hs_codes = []
-    for entry in rejected_entries:
-        code = entry.get("rejected_code")
-        if code and isinstance(code, str):
-            temp_rejected_hs_codes.append(code.strip())
-        elif code:
-            print(f"DEBUG: Found non-string rejected_hs_code in entry: {entry}")
-
-    rejected_hs_codes_for_prompt = list(set(filter(None, temp_rejected_hs_codes)))
-    print(f"[DEBUG] Product Description: {rejected_hs_codes_for_prompt}")
-
-    rejected_section_for_prompt = ""
-    if rejected_hs_codes_for_prompt:
-        rejected_section_for_prompt += "\n\nIMPORTANT: DO NOT SUGGEST ANY OF THE FOLLOWING HS CODES (these were previously rejected for this item by a specialist):\n"
-        rejected_section_for_prompt += "\n".join(f"- {code_str}" for code_str in rejected_hs_codes_for_prompt)
-        rejected_section_for_prompt += "\n\nEnsure that none of your three new suggested codes match any of the HS codes listed directly above."
-        #print("Debug", rejected_section_for_prompt)
-    else:
-        print("DEBUG: Condition 'if rejected_hs_codes_for_prompt:' is FALSE. No rejected codes section to add to prompt.")
-
-    historical_data_string = format_historical_data_from_csv(target_country=country, target_full_product_description=product_description, csv_file_path=CSV_PATH)
     print("_______---_______")
-    print(historical_data)
-
-    historical_data_string = format_historical_data_from_csv(
-        csv_file_path=CSV_PATH,
-        target_country=country, 
-        target_full_product_description=product_description, 
-    )
-
-    print("_-____---___-", historical_data_string)
 
     prompt = f"""
     **CONTEXT & RESOURCES:**
     - **Product Description:** {product_description}
     - **Target Country:** {country.upper()}
-    - **Legal Notes:** {legal_notes}
-    - **Country Guidelines:** {guidelines}
-    - **Classification Guide:** {classification_guide}
     - **General Rules of Interpretation (GRI):** {gri}
-    - **OFFICIAL CHAPTER CONTENT:** (Provided below)
-    - **Previously Rejected HS Codes (DO NOT USE):** {", ".join(rejected_hs_codes_for_prompt)}
-    - **Previously Excluded Chapters/Sections (DO NOT USE CODES FROM HERE):** {rejected_section_for_prompt}
-
-    **HISTORICAL DATA (SIMILAR PRODUCTS & CLASSIFICATIONS):**
-    {historical_data_string}
+    - **Official Chapter Content Table:**  
+        • **Tariff Item (6‑digit):** top‑level headings  
+        • **Tariff Item (8‑digit):** more specific sub‑headings under each 6‑digit  
+        • **SS (10‑digit):** statistical suffixes extending the 8‑digit item  
+        • **Description of Goods:** use to choose the correct heading, sub‑heading AND gender
 
     ---
 
@@ -325,44 +235,30 @@ def generate_hs_codes(
     **ULTRA-CRITICAL CLASSIFICATION RULES (STRICT COMPLIANCE REQUIRED):**
 
     1. **ABSOLUTE CODE VALIDITY:** ONLY propose HS codes (including all digits and statistical suffixes) that appear *VERBATIM* in the `OFFICIAL CHAPTER CONTENT`. Do not invent, assume, or truncate. If a code/suffix is not explicitly listed for a relevant heading/subheading, it does not exist.
-    2. **REJECTED CODES ARE FORBIDDEN:** Absolutely DO NOT suggest any code from `Previously Rejected HS Codes`. Verify all options against this list.
-    3. **EXCLUDED CHAPTERS ARE FORBIDDEN:** DO NOT propose codes from chapters/sections listed in `Previously Excluded Chapters/Sections`. Verify the chapter of any potential code against this list. **Note:** For footwear products, Chapter 64 is the only relevant chapter and must not be excluded.
-    4. **STATISTICAL SUFFIX PRIORITY:** Use the most specific, applicable statistical suffixes (e.g., '.10', '.25', '.99') provided in `OFFICIAL CHAPTER CONTENT`. Only use '.00' if no other specific suffix is listed or appropriate.
-    5. **KNIT/WOVEN INTEGRITY:**
-    - **Knitted/Crocheted:** EXCLUSIVELY consider Chapter 61. NEVER suggest codes from Chapter 62 or other non-knitted chapters.
-    - **Woven (Not Knitted/Crocheted):** EXCLUSIVELY consider Chapter 62. NEVER suggest codes from Chapter 61 or other knitted chapters.
-    - **Note:** These rules apply specifically to apparel products classified under Chapters 61 and 62.
-    6. **SINGLE CORRECT CODE PRINCIPLE:** Every product has one single, most correct HS code. OPTION 1 MUST be your highest confidence classification. Options 2 and 3 are for genuine ambiguity after rigorous application of all rules and data.
-    7. **FOOTWEAR CLASSIFICATION:**
+    2. **STATISTICAL SUFFIX PRIORITY:** Use the most specific, applicable statistical suffixes (e.g., '.10', '.25', '.99') provided in `OFFICIAL CHAPTER CONTENT`. Only use '.00' if no other specific suffix is listed or appropriate.
+    3. **SINGLE CORRECT CODE PRINCIPLE:** Every product has one single, most correct HS code. OPTION 1 MUST be your highest confidence classification. Options 2 and 3 are for genuine ambiguity after rigorous application of all rules and data.
+    4. **FOOTWEAR CLASSIFICATION:**
     - For products identified as footwear (e.g., 'shoe', 'boot', 'sandal'), exclusively consider Chapter 64.
     - Classification must be based on both the material of the upper and the material of the outer sole, as specified in the heading descriptions of Chapter 64.
     - Additionally, consider the type of footwear (e.g., sports, casual, protective) and any special features (e.g., waterproof, orthopedic) as specified in the subheadings of Chapter 64.
     - Example: A shoe with a rubber sole and textile upper should be classified under heading 6404 (uppers of textile materials), not 6403 (uppers of leather).
 
-    **HISTORICAL DATA USAGE PROTOCOL:**
-    - **For Same Country & Product:** Treat the *full* historical code (from `HISTORICAL DATA`) as a strong candidate, but not the ground truth, giving special weight to the Gender of the product. Verify its exact existence and applicability in `OFFICIAL CHAPTER CONTENT`, `LEGAL NOTES`, and other documents. If valid, this significantly increases confidence for OPTION 1.
-    - **For Different Country:** Focus ONLY on the first six digits (international portion) of the historical code as a guide for Chapter/Heading/Subheading. Then, determine national digits/suffixes *solely* from `OFFICIAL CHAPTER CONTENT` for the target country.
-    - **Invalid Historical Data:** If historical data points to a code in `Previously Rejected HS Codes` or an `Excluded Chapter`, it is INVALID, regardless of past use.
-    - **For Footwear:** When using historical data, prioritize matches where both the upper and sole materials, as well as the type of footwear, are similar to the current product.
-
     **TASK:**
     Based *exclusively and meticulously* on the provided content and adhering to ALL critical rules, determine the *THREE most likely HS codes + statistical suffixes* for the product.
 
-    1. **Prioritize Historical Data:**
-    - If a highly similar and valid historical code exists (as per `HISTORICAL DATA USAGE PROTOCOL`), propose it as **OPTION 1** with high certainty. Explain its origin and validation.
-    - If historical data is partially relevant (e.g., different country) or invalid, explain why, then classify based solely on current documents, using historical data only as a guide where appropriate.
-    2. **Determine Classification Segments:**
-    - **Chapter (2 digits):** Choose the most appropriate chapter.
-    - **Heading (next 2 digits):** Justify based on text and legal notes. For footwear, ensure the heading matches both the upper and sole materials.
-    - **Subheading (next 2 digits):** Justify based on text and legal notes (forms 6-digit international code). For footwear, consider the type and features.
-    - **National Tariff Line/Statistical Suffixes:** Determine final applicable digits *VERBATIM* from `OFFICIAL CHAPTER CONTENT` based on material, product type, etc.
-    3. **MANDATORY FINAL VERIFICATION:** Before outputting, re-confirm that:
-    - No proposed code is in `Previously Rejected HS Codes`.
-    - No proposed code belongs to an `Excluded Chapter`.
-    - All proposed codes (including suffixes) exist *VERBATIM* in `OFFICIAL CHAPTER CONTENT`.
-    - Specific statistical suffixes were prioritized over '.00' where applicable.
-    - Knit/woven rules were strictly followed (for apparel).
-    - The sum of likelihood for the 3 proposed codes should be 100%.
+    Parse the table in exactly three steps:
+
+    1. **Drill down to the 8‑digit sub‑heading.**  
+    - Under the Tariff Item column, find the 8‑digit Tariff Item row that refines by construction or material.
+    - Quote the row’s DESCRIPTION to show your match.
+    - **Do not** look at or list any SS codes in this step—stop at 8 digits.
+    - Only after identifying a 8-digit code move to the column on the right for each 8 digit code you identified. There are almost always multiple options.
+
+    2. **Select the 10‑digit SS suffix.**  
+    - a. **List all numeric SS codes** that appear *verbatim* under your selected 8‑digit (e.g. 00, 10, 91, 92, 93). At this step you have 8 digits already and the SS are the ninth and tenth digit.  
+    - b. **Reject any SS** not in that list—if it’s not in your table, it doesn’t exist.  
+    - c. **Ignore “nan”** rows, they’re just the parent heading.  
+    - d. Choose the SS whose DESCRIPTION explicitly states the correct gender/age (“Men’s or boys’” → 91, “Women’s or girls’” → 92, “Children’s” → 93).
 
     **FORMAT (Strictly Adhere):**
 
@@ -375,11 +271,14 @@ def generate_hs_codes(
     Use this detailed structure for justification:
 
     1. *GRI Application*: Identify and apply ALL relevant General Rules of Interpretation (GRI 1-6, in order). Explain how each applied GRI leads to the decision.
-    2. *Historical Data Consideration*: Explicitly state how historical data influenced (or didn't influence) this option. If used, explain relevance and verification. If not used, explain why.
-    3. *Chapter & Section Fit*: State chosen Chapter/Section (e.g., Chapter 64: Footwear). Confirm inclusion based on material, construction, use, and notes. Confirm chapter is NOT excluded.
-    4. *Heading & Subheading Determination*: Justify the 4-digit heading and 6-digit subheading using the texts and legal notes. For footwear, specify how the materials of the upper and outer sole, as well as the type of footwear, align with the heading and subheading descriptions.
-    5. *National Tariff Line Determination*: Explain how specific suffixes/national digits were determined *VERBATIM* from `OFFICIAL CHAPTER CONTENT`.
-    6. *Exclusions & Verifications*: Explicitly rule out other plausible but incorrect classifications (e.g., Chapter 62 for footwear). Confirm code is NOT rejected and adheres to all critical rules.
+    2. *Chapter & Section Fit*: State chosen Chapter/Section (e.g., Chapter 64: Footwear). Confirm inclusion based on material, construction, use, and notes. Confirm chapter is NOT excluded.
+    3. *Heading & Subheading Determination*: Justify the 4-digit heading and 6-digit subheading using the texts and legal notes. For footwear, specify how the materials of the upper and outer sole, as well as the type of footwear, align with the heading and subheading descriptions.
+    4. *National Tariff Line / Statistical-Suffix Determination*  
+        a. Examine the **SS (Statistical Suffix) column** that appears directly after the 8-digit sub-heading in the `OFFICIAL CHAPTER CONTENT`, you can only look at the SS when you have identified a 8-digit code.   
+        b. **Output the full code including the verbatim suffix**, e.g. 6403.99.11, 6203.42.12, etc. Never truncate or invent digits.
+        c. **Cross-check the Description of goods column** that appears **beside each SS suffix**.  
+            The correct suffix is the one whose description contains the gender/age term that matches the product (e.g., “Men’s footwear”, “Women’s footwear”, “Infants’ footwear”).  
+    5. *Exclusions & Verifications*: Explicitly rule out other plausible but incorrect classifications (e.g., Chapter 62 for footwear). Confirm code is NOT rejected and adheres to all critical rules.
 
     #### LEGAL BASIS:
     Cite specific GRI rules, Section/Chapter notes, and heading/subheading texts from provided documents. Quote directly or paraphrase precisely. Include `Classification Guide` cross-references if applicable.
@@ -388,6 +287,8 @@ def generate_hs_codes(
 
     **HARDCODED CLASSIFICATION RULES (Apply Rigorously - These override general interpretations if applicable):**
 
+    - **Mandatory gender check:** always read the “Description of goods” column that accompanies each SS suffix and pick the suffix whose description explicitly states the correct gender/age group.
+    - **Gender/Age Suffix Rule:** Always check the SS column for an explicit “men / women / boys / girls / infants” suffix before accepting .00 or .90.
     - **No "Same as OPTION X":** Each option requires full, independent reasoning.
     - **Knitted vs. Woven Exclusions:** If knitted/crocheted, ALWAYS exclude non-knitted headings (e.g., Chapter 62). If woven, ALWAYS exclude knitted headings (e.g., Chapter 61). **Note:** These rules apply only to apparel products classified under Chapters 61 and 62.
     - **Material:** *Polyester* is a *man-made fiber*.
@@ -408,7 +309,6 @@ def generate_hs_codes(
     - **Switzerland Specific:** For Switzerland, provide an 8-digit HS Code. Add `*-000*` as the statistical suffix ONLY IF the 8-digit code exists in `OFFICIAL CHAPTER CONTENT` and no more specific 11-digit Swiss suffix is listed/applicable.
     - **Product-Specific Overrides:**
     - `6204.43.00.90` does NOT exist on Canada's Tariff Schedule. DO NOT use for Canada.
-    - *UNISEX* products should be classified as *WOMEN*.
     - Knitted *Tank Top* = T-shirt.
     - Unpadded *VEST* = `62.11.33`.
     - *Crop Top* is NEVER a t-shirt (except China).
@@ -522,52 +422,7 @@ def save_rejected_code(product, country, code): # Accepts 3 arguments
         "country": country,
         "rejected_code": code 
     }
-    try:
-        if not os.path.exists(REJECTED_CODES_FILE):
-            with open(REJECTED_CODES_FILE, "w") as f:
-                json.dump([entry], f, indent=2)
-        else:
-            with open(REJECTED_CODES_FILE, "r+") as f:
-                try:
-                    data = json.load(f)
-                except json.JSONDecodeError:
-                    print(
-                        f"Warning: Could not decode JSON from {REJECTED_CODES_FILE}."
-                        " Starting with an empty list."
-                    )
-                    data = []
-                except Exception as e:
-                    print(
-                        f"An unexpected error occurred while reading"
-                        f" {REJECTED_CODES_FILE}: {e}"
-                    )
-                    raise
-                else:
-                    data.append(entry)
-                    f.seek(0)
-                    json.dump(data, f, indent=2)
-                    f.truncate()
-        #print("Code saved successfully.")
-    except Exception as e:
-        print(f"Error saving code: {e}")
 
-
-def load_rejected_codes(product_description, country):
-    # print(f"Loading REJECTED_CODES_FILE: {REJECTED_CODES_FILE}") 
-    if not os.path.exists(REJECTED_CODES_FILE):
-        return []
-
-    try:
-        with open(REJECTED_CODES_FILE, "r") as f:
-            all_rejections = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return []
-
-    product_specific_rejections = [
-        entry for entry in all_rejections
-        if entry.get("product_description") == product_description and entry.get("country") == country
-    ]
-    return product_specific_rejections
 
 
 def extract_hs_codes(text):
@@ -727,9 +582,7 @@ def regenerate_products():
         
         country = product_info['country']
         product_description = product_info['product_description']
-        
-        rejected_codes_snapshot = load_rejected_codes(product_description, country)
-        st.write(f"Avoiding these rejected codes: {', '.join(rejected_codes_snapshot)}")
+    
         
         chapter_content = st.session_state.chapter_content
         legal_notes = st.session_state.legal_notes
@@ -742,8 +595,7 @@ def regenerate_products():
                 country,
                 chapter_content,
                 legal_notes,
-                classification_guide,
-                rejected_codes_snapshot=rejected_codes_snapshot
+                classification_guide
             )
             
             product_df = extract_hs_codes(generated_response)
@@ -797,10 +649,9 @@ def regenerate_single_product(original_index):
         legal_notes = processed_pdfs.get(f"{country}_legal_notes", "")
         guide = processed_pdfs.get(f"{country}_classification_guide", "")
         gri = processed_pdfs.get(f"{country}_gri", "")
-        rejected_codes_snapshot = load_rejected_codes(product_description, country)
 
         with st.spinner(f"Regenerating Index: {original_index}..."):
-            new_response = generate_hs_codes(model, product_description, country, relevant_chapters, legal_notes, guide, gri=gri, rejected_codes_snapshot=rejected_codes_snapshot)
+            new_response = generate_hs_codes(model, product_description, country, relevant_chapters, legal_notes, guide, gri=gri)
             new_product_df_row = extract_hs_codes(new_response)
             if not new_product_df_row.empty:
                 df = st.session_state.bulk_results_df
@@ -958,19 +809,15 @@ def process_bulk_data(
         gri = processed_pdfs_for_current_country.get("gri", "")
 
         # Load country-specific text files (e.g., guidelines)
-        country_texts = load_text_files_for_country("./chapter_data", country) # Assuming this is the correct path for text files
-        guidelines = country_texts.get(f"{country}_guidelines", "")
-        if not guidelines:
-            st.warning(f"No specific guidelines found for {country.upper()}. Continuing without country-specific guidelines.")
+    
 
 
-        if not relevant_chapters and not legal_notes and not classification_guide and not gri and not guidelines:
+
+        if not relevant_chapters and not legal_notes and not classification_guide and not gri:
             st.warning(f"Row {df_idx + 1} (Original Index: {original_index}): No tariff context (Chapters, Notes, Guide, GRI, Guidelines) found for {country}. Results might be inaccurate.")
 
 
         try:
-            rejected_codes_snapshot = load_rejected_codes(product_description, country)
-
             generated_response = generate_hs_codes(
                 model,
                 product_description,
@@ -978,9 +825,7 @@ def process_bulk_data(
                 relevant_chapters, # Pass the list of (chapter_num, chapter_text) tuples
                 legal_notes,
                 classification_guide,
-                gri=gri,
-                guidelines=guidelines,
-                rejected_codes_snapshot = rejected_codes_snapshot
+                gri=gri
             )
 
             product_df_row = extract_hs_codes(generated_response)
@@ -1015,130 +860,6 @@ def process_bulk_data(
     return pd.DataFrame(all_results_list)
 
 
-
-
-def format_historical_data_from_csv(
-    csv_file_path,
-    target_country,
-    target_full_product_description,
-    target_gender=None, # NEW PARAMETER
-    country_col_hist="tariff_country_description",
-    name_col_hist="customs_description",
-    name_col2_hist="Product Type",
-    material_col_hist="Composition",
-    construction_col_hist="material_type",
-    gender_col_hist="Division",
-    hs_code_col_hist="tariff_code",
-    similarity_threshold=0.85,
-    top_n=5,
-    return_df=False
-):
-
-    try:
-        historical_df = pd.read_csv(csv_file_path)
-    except FileNotFoundError:
-        return f"Error: CSV file not found at {csv_file_path}"
-    except pd.errors.EmptyDataError:
-        return f"Error: CSV file at {csv_file_path} is empty"
-    except Exception as e:
-        return f"Error reading CSV file: {e}"
-
-    if not target_country or not target_full_product_description:
-        return "Error: Target country and target full product description must be specified."
-
-    # Ensure country column is string and filter
-    historical_df[country_col_hist] = historical_df[country_col_hist].astype(str) # Corrected typo: country_col instead of country_col_hist
-    historical_df = historical_df[historical_df[country_col_hist].str.lower() == target_country.lower()]
-
-    if historical_df.empty:
-        return (
-            f"No historical data found for {target_country.upper()}."
-        )
-
-    # --- NEW: Filter by target_gender if provided ---
-    if target_gender:
-        # Convert historical gender column to string and lowercase for robust comparison
-        historical_df[gender_col_hist] = historical_df[gender_col_hist].astype(str).str.lower()
-        target_gender_lower = str(target_gender).lower()
-
-        # Filter: match exactly, or consider "unisex" if target is men/women and vice versa (adjust logic as needed)
-        historical_df = historical_df[
-            (historical_df[gender_col_hist] == target_gender_lower) |
-            (historical_df[gender_col_hist] == 'unisex') | # Example: unisex can match any gender
-            (target_gender_lower == 'unisex')             # Example: if target is unisex, match any historical gender
-        ]
-        if historical_df.empty:
-            return (
-                f"No historical data found for {target_country.upper()} with gender '{target_gender}'."
-            )
-
-    def build_description(row):
-        parts = []
-
-        if gender_col_hist in row and pd.notna(row[gender_col_hist]):
-            parts.append(str(row[gender_col_hist]))
-        if name_col_hist in row and pd.notna(row[name_col_hist]):
-            parts.append(str(row[name_col_hist]))
-        if name_col2_hist in row and pd.notna(row[name_col2_hist]):
-            parts.append(str(row[name_col2_hist]))
-        if material_col_hist in row and pd.notna(row[material_col_hist]):
-            parts.append(str(row[material_col_hist]))
-        if construction_col_hist in row and pd.notna(row[construction_col_hist]):
-            parts.append(str(row[construction_col_hist]))
-
-        full_desc = " ".join(parts).strip()
-        return full_desc
-
-    historical_df['full_description'] = historical_df.apply(build_description, axis=1)
-
-    if return_df:
-        return historical_df
-
-    vectorizer = TfidfVectorizer()
-    tfidf_matrix = vectorizer.fit_transform(historical_df['full_description'])
-    target_vector = vectorizer.transform([target_full_product_description])
-
-    cosine_similarities = cosine_similarity(target_vector, tfidf_matrix).flatten()
-    historical_df['similarity'] = cosine_similarities
-
-    relevant_data = historical_df[historical_df['similarity'] >= similarity_threshold]
-    top_matches = relevant_data.nlargest(top_n, 'similarity')
-
-    output_header = (
-        f"PREVIOUS CLASSIFICATIONS (SIMILAR PRODUCTS) IN {target_country.upper()}:\n"
-        f"(Target Product: '{target_full_product_description}')\n"
-    )
-    formatted_data = output_header
-    if top_matches.empty:
-        return (
-            f"No similar historical data found for '{target_full_product_description}' "
-            f"in {target_country.upper()} (Similarity Threshold: {similarity_threshold}).\n"
-        )
-
-    for index, row in top_matches.iterrows():
-        display_parts = []
-        if pd.notna(row.get(gender_col_hist)):
-            display_parts.append(f"Gender: {row[gender_col_hist]}")
-        if pd.notna(row.get(name_col_hist)):
-            display_parts.append(f"Desc1: {row[name_col_hist]}")
-        if pd.notna(row.get(name_col2_hist)):
-            display_parts.append(f"Desc2: {row[name_col2_hist]}")
-        if pd.notna(row.get(material_col_hist)):
-            display_parts.append(f"Material: {row[material_col_hist]}")
-        if pd.notna(row.get(construction_col_hist)):
-            display_parts.append(f"Construction: {row[construction_col_hist]}")
-
-        full_product_details_output = ", ".join(display_parts)
-        hs_code = str(row[hs_code_col_hist]) if hs_code_col_hist in row and pd.notna(row[hs_code_col_hist]) else "N/A" # Corrected typo: hs_code_col instead of hs_code_col_hist
-        similarity = row['similarity']
-        formatted_data += (
-            f"- Similar Product (Similarity: {similarity:.2f}): "
-            f"{full_product_details_output}, HS Code: {hs_code}\n"
-        )
-
-    return formatted_data
-
-
 def extract_simplified_hs_codes(text):
     options_data = []
     # pattern to capture HS code and certainty from "### OPTION X: [HS code] - YY% certainty"
@@ -1150,5 +871,3 @@ def extract_simplified_hs_codes(text):
             f'Option {i+1} Certainty': int(certainty)
         })
     return pd.DataFrame(options_data)
-
-
