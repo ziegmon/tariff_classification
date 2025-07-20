@@ -1,8 +1,8 @@
-pandas==2.3.1
-protobuf==4.25.3
-PyPDF2==3.0.1
-scikit_learn==1.7.0
-streamlit==1.45.0
-streamlit==1.37.1
-streamlit_extras==0.7.5
-streamlit_option_menu==0.4.0
+streamlit==1.29.0
+streamlit-extras==0.3.2
+streamlit-option-menu==0.3.6
+protobuf==4.25.8
+pandas>=1.5.0
+PyPDF2>=3.0.1
+scikit-learn>=1.4.0
+google-generativeai>=0.3.2
