@@ -38,7 +38,7 @@ PASSWORD = ""
 2. Get a Gemini API Key if you don't have one already and copy it in the secrets.toml file
 3. Username and Password can be found in the Google Drive's secrets.toml file
 4. For logo and box, copy the respective paths to the files in the secrets.toml file
-   Note: When pasting paths into secrets.toml, replace backslashes (\) with forward slashes (/).
+   Note: When pasting paths into secrets.toml, replace backslashes (\\) with forward slashes (/).
 
 ### Run Streamlit App
 ```
