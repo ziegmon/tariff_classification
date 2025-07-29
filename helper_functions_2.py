@@ -224,39 +224,40 @@ def generate_hs_codes(
     print("_______---_______")
 
     prompt = f"""
-        You are an expert in customs tariff classification with access to two PDFs: the General Rules of Interpretation (GRI) and the Harmonized Tariff Schedule (HTS) chapter pages for footwear (e.g., Chapter 64). Given user inputs via a Streamlit app—**country**, **product description** (including material, construction, gender, and use, with a focus on sports footwear like tennis shoes, basketball shoes, gym shoes, training shoes, or hiking footwear)—output three possible HTS codes with their descriptions, ensuring accurate handling of hierarchical codes (e.g., 6404.11 to 6404.11.99) and gender specificity. Follow these steps:
+        You are an expert in customs tariff classification with access to two PDFs: the General Rules of Interpretation (GRI) and the Harmonized Tariff Schedule (HTS) chapter pages for footwear (e.g., Chapter 64). Given user inputs via a Streamlit app—**country** (used for context only, not hardcoded logic), **product description** (including material, construction, gender, and use, with a focus on sports footwear like tennis shoes, basketball shoes, gym shoes, training shoes, or hiking footwear), and the provided PDFs—output three distinct, maximally granular HTS codes (e.g., 8-digit or 10-digit like 6404.11.99.21 or 6404.11.90) with their descriptions, ensuring accurate handling of hierarchical codes and gender specificity. Follow these steps:
 
         1. Parse the product description to extract key details (e.g., outer sole material, upper material, construction, protective features, gender, and use). Prioritize sports footwear characteristics (e.g., tennis, basketball, gym, training, or hiking).
-        2. Apply the GRI sequentially to navigate the hierarchical HTS codes in the chapter pages, starting with sports footwear subheadings (e.g., 6404.11 for textile uppers with rubber/plastic soles) when the description suggests sports use.
-        3. Identify the three most relevant HTS codes, prioritizing gender-specific subheadings (e.g., 6404.11.99.21 for men's/boys', 6404.11.99.22 for women's/girls') when applicable.
-        4. For each HTS code, provide a brief explanation as bullet points, detailing why each hierarchical level (e.g., heading, subheading, sub-subheading) was chosen, referencing the GRI and tariff item description.
-        5. Account for country-specific tariff rules, if relevant.
-        6. Format the output with the HTS code in bold and larger font, followed by bullet points for the hierarchical explanations, addressing sports use and gender if specified.
+        2. Analyze the HTS PDF to determine its hierarchical structure (e.g., detailed subheadings with multiple levels or row-based indentation) and whether it includes gender-specific subheadings.
+        3. Apply the GRI sequentially to navigate the HTS codes in the PDF, starting with sports footwear subheadings (e.g., 6404.11 or 6402.12 for textile uppers with rubber/plastic soles) when the description suggests sports use.
+        4. Identify three distinct HTS codes at the deepest subheading level available in the PDF (e.g., 6404.11.99.21 or 6404.11.90, not 6-digit like 6404.11 unless no deeper codes exist), prioritizing gender-specific subheadings when available (e.g., 6404.11.99.21 for men's/boys') and ensuring codes exist in the PDF to avoid inventing codes. Each code must be unique and not a parent of another.
+        5. For each HTS code, provide a brief explanation as bullet points, detailing why each hierarchical level (e.g., heading, subheading) was chosen, referencing the GRI and tariff item description, and noting if gender is not distinguished in the PDF.
+        6. Account for country-specific tariff rules from the PDF, if present, using the country input for context.
+        7. Format the output with the HTS code in bold and larger font, followed by bullet points for the hierarchical explanations, addressing sports use and gender if specified.
 
         **Input:**
         - Country: {country}
         - Product Description: {product_description}
         - Chapter Data: {relevant_chapters}
-        - GRI: {gri} 
+        - GRI: {gri}
 
         **Output Format:**
-        - **HTS Code: [Code, e.g., 6404.11.99.21]** (bold, larger font)
+        - **HTS Code: [Code, e.g., 6404.11.99.21 or 6404.11.90]** (bold, larger font)
         - 64.04: [Explanation, e.g., "Footwear with rubber soles and textile uppers per GRI 1."]
         - 6404.11: [Explanation, e.g., "Sports footwear (training shoes) identified in description."]
         - 6404.11.99: [Explanation, e.g., "Other sports footwear, not specific to canvas or hiking."]
-        - 6404.11.99.21: [Explanation, e.g., "Men's/boys' matches gender in description."]
-        - **HTS Code: [Code, e.g., 6404.11.99.90]** (bold, larger font)
+        - 6404.11.99.21: [Explanation, e.g., "Men's/boys' matches gender, if in PDF; otherwise, no gender-specific subheading."]
+        - **HTS Code: [Code, e.g., 6404.11.99.90 or 6402.19.90]** (bold, larger font)
         - 64.04: [Explanation, e.g., "Footwear with rubber soles and textile uppers per GRI 1."]
         - 6404.11: [Explanation, e.g., "Sports footwear (training shoes) identified."]
         - 6404.11.99: [Explanation, e.g., "Other sports footwear, not specific to canvas or hiking."]
-        - 6404.11.99.90: [Explanation, e.g., "General 'other' category, less specific as gender not addressed."]
-        - **HTS Code: [Code, e.g., 6404.19.90.91]** (bold, larger font)
+        - 6404.11.99.90: [Explanation, e.g., "Other, no gender-specific codes in PDF."]
+        - **HTS Code: [Code, e.g., 6404.19.90.91 or 6404.19.90]** (bold, larger font)
         - 64.04: [Explanation, e.g., "Footwear with rubber soles and textile uppers per GRI 1."]
         - 6404.19: [Explanation, e.g., "Other non-sports footwear, less likely given training use."]
         - 6404.19.90: [Explanation, e.g., "Other, not specific to canvas."]
-        - 6404.19.90.91: [Explanation, e.g., "Men's/boys' matches gender but not sports context."]
+        - 6404.19.90.91: [Explanation, e.g., "Men's/boys' matches gender, if in PDF; otherwise, no gender-specific subheading."]
 
-        Ensure the response is concise, avoids code output, prioritizes sports footwear subheadings (e.g., 6404.11), formats HTS codes in bold and larger font with bullet-point explanations for each hierarchical level, and uses the PDFs as the primary reference for accurate HTS code selection, correctly handling hierarchical codes and gender distinctions.
+        Ensure the response is concise, avoids code output, prioritizes sports footwear subheadings (e.g., 6404.11 or 6402.12), selects three distinct HTS codes at the deepest granularity available in the PDF (e.g., 8-digit or 10-digit, not 6-digit unless no deeper codes exist), formats HTS codes in bold and larger font with bullet-point explanations for each hierarchical level, uses the provided PDFs as the primary reference to select only valid HTS codes, dynamically adapts to the PDF’s hierarchical structure (detailed subheadings or row-based), and notes when gender distinctions are absent in the PDF.
     """
 
     # for chapter_num, chapter_text in relevant_chapters:
