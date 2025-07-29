@@ -205,7 +205,13 @@ def configure_genai(api_key):
     model = genai.GenerativeModel(model_name='models/gemini-2.0-flash')
     return model
 
+"""     **Input:**
+        - Country: {country}
+        - Product Description: {product_description}
+        - Chapter Data: {relevant_chapters}
+        - GRI: {gri} 
 
+        """
 def generate_hs_codes(
     model,
     product_description,
@@ -214,96 +220,43 @@ def generate_hs_codes(
     legal_notes,
     gri="",
     guidelines=None,
-    allowed_hs_codes=["6404119922", "6404119921", "6402999091", "6402999092", "6404119100", "6404119990", "6402919030", "6402919020", "6402999093"]
 ):
     print("_______---_______")
 
     prompt = f"""
-    **CONTEXT & RESOURCES:**
-    - **Product Description:** {product_description}
-    - **Target Country:** {country.upper()}
-    - **General Rules of Interpretation (GRI):** {gri}
-    - **Official Chapter Content Table:**  
-        • **Tariff Item (6‑digit):** top‑level headings  
-        • **Tariff Item (8‑digit):** more specific sub‑headings under each 6‑digit  
-        • **SS (10‑digit):** statistical suffixes extending the 8‑digit item  
-        • **Description of Goods:** use to choose the correct heading, sub‑heading AND gender
-    - **Allowed HS Codes:** {allowed_hs_codes}
+        You are an expert in customs tariff classification with access to two PDFs: the General Rules of Interpretation (GRI) and the Harmonized Tariff Schedule (HTS) chapter pages for footwear (e.g., Chapter 64). Given user inputs via a Streamlit app—**country**, **product description** (including material, construction, gender, and use, with a focus on sports footwear like tennis shoes, basketball shoes, gym shoes, training shoes, or hiking footwear)—output three possible HTS codes with their descriptions, ensuring accurate handling of hierarchical codes (e.g., 6404.11 to 6404.11.99) and gender specificity. Follow these steps:
 
-    ---
+        1. Parse the product description to extract key details (e.g., outer sole material, upper material, construction, protective features, gender, and use). Prioritize sports footwear characteristics (e.g., tennis, basketball, gym, training, or hiking).
+        2. Apply the GRI sequentially to navigate the hierarchical HTS codes in the chapter pages, starting with sports footwear subheadings (e.g., 6404.11 for textile uppers with rubber/plastic soles) when the description suggests sports use.
+        3. Identify the three most relevant HTS codes, prioritizing gender-specific subheadings (e.g., 6404.11.99.21 for men's/boys', 6404.11.99.22 for women's/girls') when applicable.
+        4. For each HTS code, provide a brief explanation as bullet points, detailing why each hierarchical level (e.g., heading, subheading, sub-subheading) was chosen, referencing the GRI and tariff item description.
+        5. Account for country-specific tariff rules, if relevant.
+        6. Format the output with the HTS code in bold and larger font, followed by bullet points for the hierarchical explanations, addressing sports use and gender if specified.
 
-    **ROLE:** You are an expert customs classifier, with expertise in a wide number of countries, tasked with accurately classifying products using only the provided official Harmonized System (HS) documents. Precision is paramount.
+        **Input:**
+        - Country: {country}
+        - Product Description: {product_description}
+        - Chapter Data: {relevant_chapters}
+        - GRI: {gri} 
 
-    **ULTRA-CRITICAL CLASSIFICATION RULES (STRICT COMPLIANCE REQUIRED):**
+        **Output Format:**
+        - **HTS Code: [Code, e.g., 6404.11.99.21]** (bold, larger font)
+        - 64.04: [Explanation, e.g., "Footwear with rubber soles and textile uppers per GRI 1."]
+        - 6404.11: [Explanation, e.g., "Sports footwear (training shoes) identified in description."]
+        - 6404.11.99: [Explanation, e.g., "Other sports footwear, not specific to canvas or hiking."]
+        - 6404.11.99.21: [Explanation, e.g., "Men's/boys' matches gender in description."]
+        - **HTS Code: [Code, e.g., 6404.11.99.90]** (bold, larger font)
+        - 64.04: [Explanation, e.g., "Footwear with rubber soles and textile uppers per GRI 1."]
+        - 6404.11: [Explanation, e.g., "Sports footwear (training shoes) identified."]
+        - 6404.11.99: [Explanation, e.g., "Other sports footwear, not specific to canvas or hiking."]
+        - 6404.11.99.90: [Explanation, e.g., "General 'other' category, less specific as gender not addressed."]
+        - **HTS Code: [Code, e.g., 6404.19.90.91]** (bold, larger font)
+        - 64.04: [Explanation, e.g., "Footwear with rubber soles and textile uppers per GRI 1."]
+        - 6404.19: [Explanation, e.g., "Other non-sports footwear, less likely given training use."]
+        - 6404.19.90: [Explanation, e.g., "Other, not specific to canvas."]
+        - 6404.19.90.91: [Explanation, e.g., "Men's/boys' matches gender but not sports context."]
 
-    1. **ABSOLUTE CODE VALIDITY:** ONLY propose HS codes (including all digits and statistical suffixes) that appear *VERBATIM* in the `OFFICIAL CHAPTER CONTENT`. Do not invent, assume, or truncate. If a code/suffix is not explicitly listed for a relevant heading/subheading, it does not exist.
-    2. **SINGLE CORRECT CODE PRINCIPLE:** Every product has one single, most correct HS code. OPTION 1 MUST be your highest confidence classification. Options 2 and 3 are for genuine ambiguity after rigorous application of all rules and data.
-    3. **FOOTWEAR CLASSIFICATION:**
-    - For products identified as footwear (e.g., 'shoe', 'boot', 'sandal'), exclusively consider Chapter 64.
-    - Classification must be based on both the material of the upper and the material of the outer sole, as specified in the heading descriptions of Chapter 64.
-    - Additionally, consider the type of footwear (e.g., sports, casual, protective) and any special features (e.g., waterproof, orthopedic) as specified in the subheadings of Chapter 64.
-    - Example: A shoe with a rubber sole and textile upper should be classified under heading 6404 (uppers of textile materials), not 6403 (uppers of leather).
-    - It is almost always sports footwear.
-
-    **TASK:**
-    Based *exclusively and meticulously* on the provided content and adhering to ALL critical rules, determine the *THREE most likely HS codes + statistical suffixes* for the product.
-
-    Parse the table in exactly three steps:
-
-    1. **Drill down to the 8‑digit sub‑heading.**  
-    - Under the Tariff Item column, find the 8‑digit Tariff Item row that refines by construction or material.
-    - Quote the row’s DESCRIPTION to show your match.
-
-    2. **Select the 10‑digit SS suffix.**  
-    - a. **List all numeric SS codes** that appear *verbatim* under your selected 8‑digit (e.g. 00, 10, 91, 92, 93). At this step you have 8 digits already and the SS are the ninth and tenth digit.  
-    - b. **Reject any SS** not in that list—if it’s not in your table, it doesn’t exist.  
-    - c. **Ignore “nan”** rows, they’re just the parent heading.  
-    - d. Choose the SS whose DESCRIPTION explicitly states the correct gender
-
-    **FORMAT (Strictly Adhere):**
-
-    ### OPTION 1: [HS code + suffix] - XX% certainty
-
-    #### PRODUCT DESCRIPTION:
-    [Re-state the product description based *solely* on the information received, focusing on classification-relevant details such as materials (e.g., upper and sole for footwear), construction methods, and intended use.]
-
-    #### REASONING STRUCTURE:
-    Use this detailed structure for justification:
-    - Only use HS codes from: {allowed_hs_codes}. After your response reevaluate according to this list of allowed codes.
-
-    1. *GRI Application*: Identify and apply ALL relevant General Rules of Interpretation (GRI 1-6, in order). Explain how each applied GRI leads to the decision.
-    2. *Chapter & Section Fit*: State chosen Chapter/Section (e.g., Chapter 64: Footwear). Confirm inclusion based on material, construction, use, and notes. Confirm chapter is NOT excluded.
-    3. *Heading & Subheading Determination*: Justify the 4-digit heading and 6-digit subheading using the texts and legal notes. For footwear, specify how the materials of the upper and outer sole, as well as the type of footwear, align with the heading and subheading descriptions and also gender.
-    4. *National Tariff Line / Statistical-Suffix Determination*  
-        a. Examine the **SS (Statistical Suffix) column** that appears directly after the 8-digit sub-heading in the `OFFICIAL CHAPTER CONTENT`, you can only look at the SS when you have identified a 8-digit code.   
-        b. **Output the full code including the verbatim suffix**, e.g. 6403.99.11, 6203.42.12, etc. Never truncate or invent digits.
-        c. **Cross-check the Description of goods column** that appears **beside each SS suffix**.  
-            The correct suffix is the one whose description contains the gender/age term that matches the product (e.g., “Men’s footwear”, “Women’s footwear”, “Infants’ footwear”).  
-    5. *Exclusions & Verifications*: Explicitly rule out other plausible but incorrect classifications (e.g., Chapter 62 for footwear). Confirm code is NOT rejected and adheres to all critical rules.
-
-    #### LEGAL BASIS:
-    Cite specific GRI rules, Section/Chapter notes, and heading/subheading texts from provided documents. Quote directly or paraphrase precisely. Include `Classification Guide` cross-references if applicable.
-
-    ---
-
-    **HARDCODED CLASSIFICATION RULES (Apply Rigorously - These override general interpretations if applicable):**
-    - Only use HS codes from: {allowed_hs_codes}.
-    - The second most important thing is to consider gender.
-    - **Mandatory gender check:** always read the “Description of goods” column that accompanies each SS suffix and pick the suffix whose description explicitly states the correct gender/age group.
-    - **Gender/Age Suffix Rule:** Always check the SS column for an explicit “men / women / boys / girls / infants” suffix before accepting .00 or .90.
-    - **No "Same as OPTION X":** Each option requires full, independent reasoning.
-    - **Footwear Material Consideration:** Always consider both the upper and outer sole materials for footwear classification. Do not base the classification solely on one material.
-    - **Mixed Materials in Footwear:** If footwear has uppers or soles made of multiple materials, refer to the specific subheadings or notes in Chapter 64 that address such cases, such as subheadings for 'other' materials or specific combinations.
-    - **HS Code Structure:**
-    - Apply `GRI` from `{gri}`.
-    - Use chapter-specific `LEGAL NOTES` from `{legal_notes}`.
-    - DO NOT add suffixes/sub-codes unless *VERBATIM* present in `OFFICIAL CHAPTER CONTENT`.
-    - Use the *longest HS Code version explicitly shown* in `OFFICIAL CHAPTER CONTENT`.
-    - Full code for `{country.upper()}` must include *all visible digits* (e.g., 6103.43.00.15 includes .00; 6109.9000 includes 000). Do not skip intermediate levels.
-    - After 4 digits, every pair of digits is separated by `.` (e.g., 6109.10.20, NOT 61091020).
-    - NEVER use spaces within HS Code digits.
-    - Ignore *color* or *identifier terms* (SKU, style names) unless directly affecting material, primary use, or construction relevant to tariff distinctions.
-    - Pay VERY SPECIAL ATTENTION to product type (men/women/infant garment, garment type) to avoid suggesting completely incorrect codes (e.g., sock as trouser).
+        Ensure the response is concise, avoids code output, prioritizes sports footwear subheadings (e.g., 6404.11), formats HTS codes in bold and larger font with bullet-point explanations for each hierarchical level, and uses the PDFs as the primary reference for accurate HTS code selection, correctly handling hierarchical codes and gender distinctions.
     """
 
     # for chapter_num, chapter_text in relevant_chapters:
@@ -567,8 +520,7 @@ def regenerate_products():
                 country,
                 chapter_content,
                 legal_notes,
-                classification_guide,
-                allowed_hs_codes=["6404119922", "6404119921", "6402999091", "6402999092", "6404119100", "6404119990", "6402919030", "6402919020", "6402999093"]
+                classification_guide
             )
             
             product_df = extract_hs_codes(generated_response)
@@ -624,7 +576,7 @@ def regenerate_single_product(original_index):
         gri = processed_pdfs.get(f"{country}_gri", "")
 
         with st.spinner(f"Regenerating Index: {original_index}..."):
-            new_response = generate_hs_codes(model, product_description, country, relevant_chapters, legal_notes, guide, gri=gri, allowed_hs_codes=["6404119922", "6404119921", "6402999091", "6402999092", "6404119100", "6404119990", "6402919030", "6402919020", "6402999093"])
+            new_response = generate_hs_codes(model, product_description, country, relevant_chapters, legal_notes, guide, gri=gri)
             new_product_df_row = extract_hs_codes(new_response)
             if not new_product_df_row.empty:
                 df = st.session_state.bulk_results_df
@@ -798,8 +750,7 @@ def process_bulk_data(
                 relevant_chapters, # Pass the list of (chapter_num, chapter_text) tuples
                 legal_notes,
                 classification_guide,
-                gri=gri,
-                allowed_hs_codes=["6404119922", "6404119921", "6402999091", "6402999092", "6404119100", "6404119990", "6402919030", "6402919020", "6402999093"]
+                gri=gri
             )
 
             product_df_row = extract_hs_codes(generated_response)
