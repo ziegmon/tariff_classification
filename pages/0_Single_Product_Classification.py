@@ -18,7 +18,7 @@ add_bg_from_local(st.secrets["box"])
 st.title("HS Code Generator - FTW")
 
 # Basic Input Form
-col1, _, col2, _, col3 = st.columns([2, 0.5, 2, 0.5, 2])
+col1, _, col2, _, col3, _, col4 = st.columns([2, 0.5, 2, 0.5, 2, 0.5, 2])
 with col1:
     gender = st.selectbox("Gender", ["Men", "Women", "Kids", "Youth", "N/A"])
 
@@ -28,7 +28,10 @@ with col2:
 with col3:
     sole = st.selectbox("Outer Sole Composition", ["Rubber", "Leather", "Plastic", "Other"])
 
-product_description = f"Canadian Product: {gender}'s footwear. Upper made of {upper}, outer sole of {sole}."
+with col4:
+    country = st.selectbox("Destination Country", sorted(["Canada", "Switzerland", "Norway", "Australia", "USA", "Brazil", "EU", "Hong Kong", "Japan", "New Zealand", "South Korea", "UK"]))
+
+product_description = f"Product: {gender}'s footwear. Upper made of {upper}, outer sole of {sole}. Destination Country: {country}"
 highlight(product_description)
 
 # Submit
@@ -39,9 +42,10 @@ if submit:
     try:
         with st.spinner("Loading data..."):
             # Only load Chapter 64 and GRI PDFs
-            processed_pdfs = load_pdfs_for_country(PDF_DIRECTORY, "canada")
-            chapter_64 = processed_pdfs.get("canada_chapter_64", "")
-            gri = processed_pdfs.get("canada_gri", "")  # Assuming GRI is stored here
+            country_key = country.lower()
+            processed_pdfs = load_pdfs_for_country(PDF_DIRECTORY, country_key)
+            chapter_64 = processed_pdfs.get(f"{country_key}_chapter_64", "")
+            gri = processed_pdfs.get(f"{country_key}_gri", "")
 
         if not chapter_64 and not gri:
             st.error("Chapter 64 and GRI not found. Ensure correct PDFs are present.")
@@ -49,7 +53,7 @@ if submit:
             with st.spinner("Generating HS Code..."):
                 model = configure_genai(st.secrets["API_KEY"])
                 response = generate_hs_codes(
-                    model, product_description, "canada",
+                    model, product_description, country_key,
                     chapter_64, gri, ""
                 )
                 st.success("HS Code generated:")
