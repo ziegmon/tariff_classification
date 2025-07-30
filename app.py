@@ -1,20 +1,23 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_option_menu import option_menu
+from helper_functions import add_bg_from_local, check_password
 
 # PDF directory path
 PDF_DIRECTORY = "chapter_data"
-page_icon = st.secrets["logo"]
+page_icon = "👟"
 
 if "generated_response" not in st.session_state:
     st.session_state.generated_response = ""
 
 st.set_page_config(
-    page_title="HS Code Generator",
+    page_title="Footwear HS Code Generator",
     page_icon=page_icon,
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+add_bg_from_local("images/on_box.png")
 
 st.markdown("""
 <style>
@@ -27,6 +30,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Initialize session state
 if "menu_option" not in st.session_state:
     st.session_state["menu_option"] = 0
 
@@ -39,12 +43,20 @@ if "navigate" not in st.session_state:
 if "authenticated" not in st.session_state:
     st.session_state["authenticated"] = False
 
+# --- Authentication Check ---
+if not st.session_state["authenticated"]:
+    if not check_password():
+        st.stop()
+    else:
+        st.session_state['authenticated'] = True
+        st.success("🔐 Authentication successful!")
+        st.info("👟 Welcome to the Footwear HS Code Classification System!")
 
 # Navigation menu
 selected_page = option_menu(
     None,
     ["Home", "Single Product Classification", "Bulk Classification"],
-    icons=["house", "pen", "upload"],
+    icons=["house", "shoe", "upload"],
     orientation="horizontal",
     key="menu_4",
     default_index=["Home", "Single Product Classification", "Bulk Classification"].index(st.session_state["selected_page"])
@@ -75,8 +87,49 @@ else:
 # --- Page Navigation ---
 if st.session_state["authenticated"]:
     if selected_page == "Single Product Classification":
-        print(selected_page)
-        switch_page("Single Product Classification")
+        switch_page("single product classification")
     elif selected_page == "Bulk Classification":
-        print(selected_page)
-        switch_page("Bulk Classification")
+        switch_page("bulk classification")
+    else:
+        # Home page content
+        st.title("👟 Footwear HS Code Classification System")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            ### 🦶 Single Product Classification
+            Classify individual footwear products with detailed analysis:
+            - Interactive product input
+            - 3 classification options with reasoning
+            - Historical data matching
+            - Expert validation tools
+            """)
+            
+        with col2:
+            st.markdown("""
+            ### 📊 Bulk Classification  
+            Process multiple footwear products efficiently:
+            - CSV file upload
+            - Batch processing
+            - Export results
+            - Quality control tools
+            """)
+        
+        st.markdown("""
+        ---
+        ### 🎯 Features
+        - **AI-Powered Classification**: Advanced machine learning for accurate HS code determination
+        - **Multi-Country Support**: Handles different tariff schedules and regulations
+        - **Historical Data Integration**: Learns from previous classifications
+        - **Rejection Tracking**: Improves accuracy by avoiding previously rejected codes
+        - **Footwear Expertise**: Specialized in Chapter 64 classifications with material and construction logic
+        
+        ### 👟 Supported Footwear Types
+        - Athletic shoes (running, basketball, tennis, training)
+        - Dress shoes and formal footwear
+        - Boots (hiking, work, fashion)
+        - Sandals and casual footwear
+        - Safety and protective footwear
+        - Children's and specialty footwear
+        """)
