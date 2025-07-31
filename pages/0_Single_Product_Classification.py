@@ -29,7 +29,7 @@ with col3:
     sole = st.selectbox("Outer Sole Composition", ["Rubber", "Leather", "Plastic", "Other"])
 
 with col4:
-    country = st.selectbox("Destination Country", sorted(["Canada", "Switzerland", "Norway", "Australia", "USA", "Brazil", "EU", "Hong Kong", "Japan", "New Zealand", "South Korea", "UK"]))
+    country = st.selectbox("Destination Country", sorted(["Canada", "Switzerland", "Norway", "Australia", "USA", "Brazil", "Hong Kong", "Japan", "New Zealand", "South Korea", "UK"]))
 
 product_description = f"Product: {gender}'s footwear. Upper made of {upper}, outer sole of {sole}. Destination Country: {country}"
 highlight(product_description)
