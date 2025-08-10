@@ -11,6 +11,7 @@ python -m venv venv
 ```
 
 ### Install dependencies
+Note: If you are not using Conda and installing requirements with pip results in an error, you may need to install Microsoft C++ Build Tools (part of Visual Studio) to compile some packages from source.
 ```
 pip install -r requirements.txt
 ```
@@ -37,6 +38,8 @@ PASSWORD = ""
 2. Get a Gemini API Key if you don't have one already and copy it in the secrets.toml file
 3. Username and Password can be found in the Google Drive's secrets.toml file
 4. For logo and box, copy the respective paths to the files in the secrets.toml file
+
+   Note: When pasting paths into secrets.toml, replace backslashes (\\) with forward slashes (/).
 
 ### Run Streamlit App
 ```
