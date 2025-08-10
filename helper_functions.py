@@ -13,7 +13,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 #___Documentation Path___#
 PDF_DIRECTORY = "chapter_data"
-CSV_PATH = r"E:\Simon\Projekte\bydo\competition\train_df.csv"
+CSV_PATH = "train_ftw.csv"
 REJECTED_CODES_FILE = "rejected_classifications_footwear.json"
 
 #___Variables for your footwear data structure___#
