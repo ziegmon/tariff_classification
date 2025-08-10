@@ -1,0 +1,23 @@
+[
+    {
+        "timestamp": "2025-08-08 16:40:19",
+        "total_selected": 21,
+        "top1_accuracy": 9.523809523809524,
+        "top3_accuracy": 28.57142857142857,
+        "weighted_score": 9.380952380952381
+    },
+    {
+        "timestamp": "2025-08-10 17:14:55",
+        "total_selected": 21,
+        "top1_accuracy": 33.33333333333333,
+        "top3_accuracy": 47.61904761904761,
+        "weighted_score": 26.904761904761905
+    },
+    {
+        "timestamp": "2025-08-10 17:25:51",
+        "total_selected": 21,
+        "top1_accuracy": 14.285714285714285,
+        "top3_accuracy": 14.285714285714285,
+        "weighted_score": 11.904761904761905
+    }
+]
