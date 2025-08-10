@@ -13,7 +13,7 @@ st.set_page_config(
     layout="wide"
 )
 
-add_bg_from_local("images/on_box.png")
+add_bg_from_local(st.secrets["box"])
 
 # Authentication
 if not st.session_state.get("authenticated", False):
