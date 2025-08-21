@@ -1010,34 +1010,50 @@ def process_bulk_data(
 
     return pd.DataFrame(all_results_list)
 
-# Authentication (No changes needed here) #
 def check_password():
-    def password_entered():
+    # If "password_correct" is already True, user is authenticated for this run.
+    # This comes from a previous successful login within the current session's run.
+    if st.session_state.get("password_correct", False):
+        return True
+
+    # Use st.form to group inputs and the submit button
+    with st.form("login_form", clear_on_submit=False): # Set clear_on_submit=False to keep inputs filled
+        username = st.text_input(
+            "Username",
+            key="username_input", # Unique key for session state persistence
+            autocomplete="username", # Explicitly request browser autofill
+            placeholder="Enter your username"
+        )
+        password = st.text_input(
+            "Password",
+            type="password",
+            key="password_input", # Unique key for session state persistence
+            autocomplete="current-password", # Explicitly request browser autofill
+            placeholder="Enter your password"
+        )
+
+        # The form's submit button
+        submitted = st.form_submit_button("Login")
+
+    # Check credentials only AFTER the form has been submitted
+    if submitted:
+        # These 'username' and 'password' variables now hold the values that were
+        # present in the input fields *at the moment the form was submitted*.
+        # This should include autofilled values.
         if (
-            st.session_state["username"] == st.secrets["AUTH"]["USERNAME"]
-            and st.session_state["password"] == st.secrets["AUTH"]["PASSWORD"]
+            username == st.secrets["AUTH"]["USERNAME"]
+            and password == st.secrets["AUTH"]["PASSWORD"]
         ):
             st.session_state["password_correct"] = True
-            del st.session_state["password"]
-            del st.session_state["username"]
+            st.success("Login successful!")
+            return True
         else:
             st.session_state["password_correct"] = False
+            st.error("Incorrect username or password")
+            return False # Return False if credentials are incorrect
 
-    if "password_correct" not in st.session_state:
-        st.text_input("Username", key="username")
-        st.text_input(
-            "Password", type="password", key="password", on_change=password_entered
-        )
-        return False
-    elif not st.session_state["password_correct"]:
-        st.text_input("Username", key="username")
-        st.text_input(
-            "Password", type="password", key="password", on_change=password_entered
-        )
-        st.error("Incorrect combination")
-        return False
-    else:
-        return True
+    # If the form hasn't been submitted yet, or credentials were incorrect, keep showing the form.
+    return False
 
 # Regeneration Functions (MODIFIED: Calls new final certainty calculation and stores breakdown) #
 def regenerate_single_product(original_index):

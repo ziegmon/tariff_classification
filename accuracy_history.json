@@ -61,5 +61,75 @@
         "top1_accuracy": 100.0,
         "top3_accuracy": 100.0,
         "weighted_score": 83.33333333333333
+    },
+    {
+        "timestamp": "2025-08-21 12:56:26",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:31",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:31",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:38",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:39",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:40",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:40",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:40",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:50",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
+    },
+    {
+        "timestamp": "2025-08-21 12:56:52",
+        "total_selected": 2,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 90.5
     }
 ]
