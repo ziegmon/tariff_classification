@@ -13,7 +13,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 #___Documentation Path___#
 PDF_DIRECTORY = "chapter_data"
-CSV_PATH = r"C:\Users\maryo\Documents\GitHub\streamlit_app\all_ftw_plm_with_item_description_and_hscodes.csv"
+CSV_PATH = "train_ftw.csv"
 REJECTED_CODES_FILE = "rejected_classifications_footwear.json"
 
 #___Variables for your footwear data structure___#
@@ -150,7 +150,7 @@ def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
 #___Gemini API Config___#
 def configure_genai(api_key):
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(model_name='models/gemini-2.0-flash')
+    model = genai.GenerativeModel(model_name='models/gemini-2.5-flash')
     return model
 
 #___Rejection System___#
@@ -383,6 +383,15 @@ def generate_hs_codes(
         6. **SPORTS vs REGULAR FOOTWEAR:** Athletic/sports footwear has specific subheadings (e.g., 6404.11)
         7. **GENDER CLASSIFICATION:** Many tariff lines distinguish between men's/boys' and women's/girls' footwear
         8. **STATISTICAL SUFFIX PRIORITY:** Use the most specific, applicable statistical suffixes
+        9. **DIGIT-LENGTH ENFORCEMENT:** The proposed HS code **must** exactly match the digit length required for the target country. If it does not, **reject and do not propose**.
+
+        **COUNTRY-SPECIFIC CODE LENGTHS (STRICT):**
+        - **Switzerland:** EXACTLY 11 digits
+        - **New Zealand:** EXACTLY 10 digits followed by 1 letter suffix
+        - **Europe, Canada, Australia, United States:** EXACTLY 10 digits
+        - **Japan:** EXACTLY 9 digits
+        - **Brazil, Norway:** EXACTLY 8 digits
+        - **South Korea:** EXACTLY 10 digits
 
         **FOOTWEAR-SPECIFIC CLASSIFICATION LOGIC:**
         - **Athletic Shoes** (tennis, basketball, running, training, gym): Usually 6404.11 with textile uppers
@@ -423,10 +432,12 @@ def generate_hs_codes(
         **FINAL VERIFICATION:** Before outputting, confirm:
         - No proposed code is in Previously Rejected HS Codes
         - All codes exist verbatim in official documentation
+        - All codes exactly match the required digit length for {country.upper()}
         - Footwear-specific rules were applied correctly
         - Gender distinctions were considered
         - Sole and upper materials match classification logic
-        """
+    """
+
 
     # Add chapter content to prompt
     for chapter_num, chapter_text in relevant_chapters:
