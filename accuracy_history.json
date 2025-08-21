@@ -19,5 +19,47 @@
         "top1_accuracy": 14.285714285714285,
         "top3_accuracy": 14.285714285714285,
         "weighted_score": 11.904761904761905
+    },
+    {
+        "timestamp": "2025-08-14 09:09:18",
+        "total_selected": 6,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 83.33333333333333
+    },
+    {
+        "timestamp": "2025-08-14 09:09:20",
+        "total_selected": 6,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 83.33333333333333
+    },
+    {
+        "timestamp": "2025-08-14 09:09:21",
+        "total_selected": 6,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 83.33333333333333
+    },
+    {
+        "timestamp": "2025-08-14 09:09:30",
+        "total_selected": 6,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 83.33333333333333
+    },
+    {
+        "timestamp": "2025-08-14 09:09:31",
+        "total_selected": 6,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 83.33333333333333
+    },
+    {
+        "timestamp": "2025-08-14 09:09:32",
+        "total_selected": 6,
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "weighted_score": 83.33333333333333
     }
 ]
