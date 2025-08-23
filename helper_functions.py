@@ -8,12 +8,13 @@ from pathlib import Path
 import base64
 import re
 import time
+from google.api_core import exceptions
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 #___Documentation Path___#
 PDF_DIRECTORY = "chapter_data"
-CSV_PATH = "train_ftw.csv"
+CSV_PATH = "train_ftw_no_NZ.csv"
 REJECTED_CODES_FILE = "rejected_classifications_footwear.json"
 
 #___Variables for your footwear data structure___#
@@ -63,11 +64,11 @@ def st_info(url):
 def highlight(url):
     st.markdown(f'<p style="background-color:rgba(137, 142, 148, 0.5);color:#fefefe;font-size:24px;border-radius:30px;text-align:left;padding-left:20px;">{url}</p>', unsafe_allow_html=True)
 
-#___Read PDF___#
+#___Read PDF___#    
 def extract_text_from_pdf(pdf_path):
     try:
         with open(pdf_path, 'rb') as file:
-            pdf_reader = PyPDF2.PdfReader(file)
+            pdf_reader = PyPDF2.PdfReader(file, strict=False)
             text = ""
             for page_num in range(len(pdf_reader.pages)):
                 text += pdf_reader.pages[page_num].extract_text()
@@ -325,6 +326,8 @@ def generate_hs_codes(
     historical_data=None,
     guidelines=None,
 ):
+    max_retries = 3
+    retry_delay = 5  # seconds
     print(f"[DEBUG] Product Description: {product_description}")
 
     # Handle rejected codes
@@ -354,114 +357,116 @@ def generate_hs_codes(
         csv_file_path=CSV_PATH
     )
 
-    prompt = f"""
-        **CONTEXT & RESOURCES:**
-        - **Product Description:** {product_description}
-        - **Target Country:** {country.upper()}
-        - **Legal Notes:** {legal_notes}
-        - **Country Guidelines:** {guidelines}
-        - **Classification Guide:** {classification_guide}
-        - **General Rules of Interpretation (GRI):** {gri}
-        - **OFFICIAL CHAPTER CONTENT:** (Provided below)
-        - **Previously Rejected HS Codes (DO NOT USE):** {", ".join(rejected_hs_codes_for_prompt)}
-        - **Previously Excluded Chapters/Sections (DO NOT USE CODES FROM HERE):** {rejected_section_for_prompt}
+    for attempt in range(max_retries):
+        prompt = f"""
+            **CONTEXT & RESOURCES:**
+            - **Product Description:** {product_description}
+            - **Target Country:** {country.upper()}
+            - **Legal Notes:** {legal_notes}
+            - **Country Guidelines:** {guidelines}
+            - **Classification Guide:** {classification_guide}
+            - **General Rules of Interpretation (GRI):** {gri}
+            - **OFFICIAL CHAPTER CONTENT:** (Provided below)
+            - **Previously Rejected HS Codes (DO NOT USE):** {", ".join(rejected_hs_codes_for_prompt)}
+            - **Previously Excluded Chapters/Sections (DO NOT USE CODES FROM HERE):** {rejected_section_for_prompt}
 
-        **HISTORICAL DATA (SIMILAR FOOTWEAR PRODUCTS & CLASSIFICATIONS):**
-        {historical_data_string}
+            **HISTORICAL DATA (SIMILAR FOOTWEAR PRODUCTS & CLASSIFICATIONS):**
+            {historical_data_string}
 
-        ---
+            ---
 
-        **ROLE:** You are an expert customs classifier specializing in FOOTWEAR, with expertise in multiple countries, tasked with accurately classifying footwear products using only the provided official Harmonized System (HS) documents. Precision is paramount.
+            **ROLE:** You are an expert customs classifier specializing in FOOTWEAR, with expertise in multiple countries, tasked with accurately classifying footwear products using only the provided official Harmonized System (HS) documents. Precision is paramount.
 
-        **ULTRA-CRITICAL FOOTWEAR CLASSIFICATION RULES (STRICT COMPLIANCE REQUIRED):**
+            For the most part the PDF contains a table with two columns: 'Tariff Item' and 'Description of Goods'. The Tariff Item is a numerical code, and the Description of Goods is the corresponding product description.
+            
+            HS Codes are hierarchical and the provided PDF includes different hierarchical levels. Consider always the most granular/longest code of the hierarchy.
 
-        1. **ABSOLUTE CODE VALIDITY:** ONLY propose HS codes that appear *VERBATIM* in the official documentation.
-        2. **REJECTED CODES ARE FORBIDDEN:** Absolutely DO NOT suggest any code from `Previously Rejected HS Codes`.
-        3. **CHAPTER 64 FOCUS:** Footwear is primarily classified in Chapter 64.
-        4. **SOLE MATERIAL PRIORITY:** Classification depends heavily on outer sole material (rubber, leather, textile, etc.)
-        5. **UPPER MATERIAL CONSIDERATION:** Upper material affects subheading classification
-        6. **SPORTS vs REGULAR FOOTWEAR:** Athletic/sports footwear has specific subheadings (e.g., 6404.11)
-        7. **GENDER CLASSIFICATION:** Many tariff lines distinguish between men's/boys' and women's/girls' footwear
-        8. **STATISTICAL SUFFIX PRIORITY:** Use the most specific, applicable statistical suffixes
-        9. **DIGIT-LENGTH ENFORCEMENT:** The proposed HS code **must** exactly match the digit length required for the target country. If it does not, **reject and do not propose**.
+            **ULTRA-CRITICAL FOOTWEAR CLASSIFICATION RULES (STRICT COMPLIANCE REQUIRED):**
 
-        **COUNTRY-SPECIFIC CODE LENGTHS (STRICT):**
-        - **Switzerland:** EXACTLY 11 digits
-        - **New Zealand:** EXACTLY 10 digits followed by 1 letter suffix
-        - **Europe, Canada, Australia, United States:** EXACTLY 10 digits
-        - **Japan:** EXACTLY 9 digits
-        - **Brazil, Norway:** EXACTLY 8 digits
-        - **South Korea:** EXACTLY 10 digits
+            1. **ABSOLUTE CODE VALIDITY:** ONLY propose HS codes that appear *VERBATIM* in the official documentation.
+            2. **SOLE MATERIAL PRIORITY:** Classification depends heavily on outer sole material (rubber, leather, textile, etc.)
+            3. **UPPER MATERIAL CONSIDERATION:** Upper material affects subheading classification
+            4. **SPORTS vs REGULAR FOOTWEAR:** Athletic/sports footwear has specific subheadings (e.g., 6404.11)
+            5. **GENDER CLASSIFICATION:** Many tariff lines distinguish between men's/boys' and women's/girls' footwear
+            6. **STATISTICAL SUFFIX PRIORITY:** Use the most specific, applicable statistical suffixes
+            7. **DIGIT-LENGTH ENFORCEMENT:** The proposed HS code **must** exactly match the digit length required for the target country. If it does not, **reject and do not propose**.
 
-        **FOOTWEAR-SPECIFIC CLASSIFICATION LOGIC:**
-        - **Athletic Shoes** (tennis, basketball, running, training, gym): Usually 6404.11 with textile uppers
-        - **Dress Shoes:** Often 6403.x with leather uppers
-        - **Boots:** Consider height and use (fashion vs work vs hiking)
-        - **Sandals:** Open footwear, often 6404.x or 6402.x depending on sole
-        - **Casual Shoes:** Broad category, classify by construction and materials
-        - **Children's Footwear:** Often has separate subheadings
+            **COUNTRY-SPECIFIC CODE LENGTHS (STRICT):**
+            - **Switzerland:** EXACTLY 11 digits
+            - **New Zealand:** EXACTLY 10 digits followed by 1 letter suffix
+            - **Europe, Canada, Australia, United States:** EXACTLY 10 digits
+            - **Japan:** EXACTLY 9 digits
+            - **Brazil, Norway:** EXACTLY 8 digits
+            - **South Korea:** EXACTLY 10 digits
 
-        **TASK:**
-        Based *exclusively* on the provided content, determine the *THREE most likely HS codes* for the footwear product.
+            **TASK:**
+            Based *exclusively* on the provided content, determine the *THREE most likely HS codes* for the footwear product. Always propose exactly three distinct HS codes that best match, even if no perfect fit—assign low certainty if needed and explain limitations.
 
-        **FORMAT (Strictly Adhere):**
+            **FORMAT (Strictly Adhere):**
 
-        ### OPTION 1: [HS code] - XX% certainty
+            ### OPTION 1: [HS code] - XX% certainty
 
-        #### PRODUCT DESCRIPTION:
-        [Re-state the footwear product focusing on classification-relevant details: type of shoe, sole material, upper material, construction, intended use, gender]
+            #### PRODUCT DESCRIPTION:
+            [Re-state the footwear product focusing on classification-relevant details: type of shoe, sole material, upper material, construction, intended use, gender]
 
-        #### REASONING STRUCTURE:
-        1. *GRI Application*: Apply General Rules of Interpretation systematically
-        2. *Historical Data Consideration*: How historical footwear data influenced this option
-        3. *Chapter Determination*: Why Chapter 64 (or other) was chosen for this footwear
-        4. *Heading Selection*: Justify the 4-digit heading based on sole material and construction
-        5. *Subheading Determination*: Explain 6-digit subheading based on upper material and use
-        6. *National Tariff Line*: Final digits based on gender, specific shoe type, etc.
-        7. *Footwear-Specific Considerations*: Athletic vs dress, protective features, construction method
+            #### REASONING STRUCTURE:
+            1. *GRI Application*: Apply General Rules of Interpretation systematically
+            2. *Historical Data Consideration*: How historical footwear data influenced this option
+            3. *Chapter Determination*: Why Chapter 64 (or other) was chosen for this footwear
+            4. *Heading Selection*: Justify the 4-digit heading based on sole material and construction
+            5. *Subheading Determination*: Explain 6-digit subheading based on upper material and use
+            6. *National Tariff Line*: Final digits based on gender, specific shoe type, etc.
+            7. *Footwear-Specific Considerations*: Athletic vs dress, protective features, construction method
 
-        #### LEGAL BASIS:
-        Cite specific GRI rules, Chapter 64 notes, and heading/subheading texts from provided documents.
+            #### LEGAL BASIS:
+            Cite specific GRI rules, Chapter 64 notes, and heading/subheading texts from provided documents.
 
-        ### OPTION 2: [HS code] - XX% certainty
-        [Same structure as Option 1]
+            ### OPTION 2: [HS code] - XX% certainty
+            [Same structure as Option 1]
 
-        ### OPTION 3: [HS code] - XX% certainty
-        [Same structure as Option 1]
+            ### OPTION 3: [HS code] - XX% certainty
+            [Same structure as Option 1]
 
-        **FINAL VERIFICATION:** Before outputting, confirm:
-        - No proposed code is in Previously Rejected HS Codes
-        - All codes exist verbatim in official documentation
-        - All codes exactly match the required digit length for {country.upper()}
-        - Footwear-specific rules were applied correctly
-        - Gender distinctions were considered
-        - Sole and upper materials match classification logic
-    """
+            **FINAL VERIFICATION:** Before outputting, confirm:
+            - Ensure exactly three different codes are outputted, no exceptions.
+            - All codes exist verbatim in official documentation
+            - All codes exactly match the required digit length for {country.upper()}
+            - Footwear-specific rules were applied correctly
+            - Gender distinctions were considered
+            - Sole and upper materials match classification logic
+        """
 
 
-    # Add chapter content to prompt
-    for chapter_num, chapter_text in relevant_chapters:
-        prompt += f"\n--- CHAPTER {chapter_num} CONTENT ---\n{chapter_text}\n"
+        # Add chapter content to prompt
+        for chapter_num, chapter_text in relevant_chapters:
+            prompt += f"\n--- CHAPTER {chapter_num} CONTENT ---\n{chapter_text}\n"
 
-    try:
-        generation_config = {
-            "temperature": 0.0,
-            "top_p": 0.5,
-            "top_k": 15,
-            "max_output_tokens": 8192,
-        }
+        try:
+            generation_config = {
+                "temperature": 0.0,
+                "top_p": 0.5,
+                "top_k": 15,
+                "max_output_tokens": 20000,
+            }
 
-        response = model.generate_content(
-            prompt,
-            generation_config=generation_config
-        )
+            response = model.generate_content(
+                prompt,
+                generation_config=generation_config
+            )
 
-        token_count = model.count_tokens(prompt).total_tokens
-        print(f"The prompt contains {token_count} tokens.")
+            token_count = model.count_tokens(prompt).total_tokens
+            print(f"The prompt contains {token_count} tokens.")
 
-        return response.text
-    except Exception as e:
-        return f"Error generating HS codes: {str(e)}"
+            return response.text
+        except exceptions.ResourceExhausted as e:
+            if attempt < max_retries - 1:
+                print(f"Rate limit hit, retrying in {retry_delay} seconds... ({attempt + 1}/{max_retries})")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                return f"Error: API rate limit exceeded after {max_retries} retries: {str(e)}"
+        except Exception as e:
+            return f"Error generating HS codes: {str(e)}"
 
 #___Find Relevant Chapters for Footwear___#
 def find_relevant_chapters(product_description, country, country_specific_pdf_data):
@@ -508,8 +513,9 @@ def extract_hs_codes(text):
     product_description = product_desc_match.group(1).strip() if product_desc_match else "Not found"
     
     # Extract options
-    options = re.findall(r'### OPTION \d+: ([0-9]+(?:\.[0-9]+)*(?:\s+[0-9]+)?) - (\d+)% certainty\s+(.*?)(?=### OPTION \d+:|$)', 
-                         text, re.DOTALL)
+    options = re.findall(r'### OPTION \d+:\s*([\d][\d.\s-]{3,15})\s*[-–]\s*(\d+)% certainty\s*(.*?)(?=### OPTION \d+:|$)', 
+                     text, re.DOTALL)
+    print("DEBUG: Regex matches ->", options)
     
     row = {'product_description': product_description}
     
@@ -590,11 +596,15 @@ def process_bulk_data(
             all_results_list.append(base_result_row)
             continue
 
-        if country not in pdf_data_cache:
-            st.warning(f"No PDF data available for {country}.")
-            base_result_row["reasoning_1"] = f"Skipped: No PDF data for {country}"
-            all_results_list.append(base_result_row)
-            continue
+        # Reload PDF cache if missing or empty
+        if country not in pdf_data_cache or not pdf_data_cache[country]:
+            st.warning(f"Reloading PDF data for {country}...")
+            pdf_data_cache[country] = load_all_pdf_data()
+            if country not in pdf_data_cache or not pdf_data_cache[country]:
+                st.error(f"No PDF data available for {country}.")
+                base_result_row["reasoning_1"] = f"Skipped: No PDF data for {country}"
+                all_results_list.append(base_result_row)
+                continue
 
         processed_pdfs_for_current_country = pdf_data_cache[country]
         relevant_chapters = find_relevant_chapters(product_description, country, processed_pdfs_for_current_country)
@@ -622,6 +632,21 @@ def process_bulk_data(
             )
 
             product_df_row = extract_hs_codes(generated_response)
+            if not product_df_row.empty:
+                extracted_data = product_df_row.iloc[0].to_dict()
+            else:
+                extracted_data = {}
+
+            # Debug: Always print
+            print("==== RAW MODEL OUTPUT ====")
+            print(generated_response)
+            print("==== EXTRACTED DATA ====")
+            print(extracted_data)
+            print("==========================")
+
+            # Extra check: Are all HS codes blank or missing?
+            if all(not extracted_data.get(f"hs_code_{i}", "").strip() for i in range(1, 4)):
+                print(f"⚠️ All HS codes missing for row {df_idx + 1} (Original Index: {original_index})")
 
             if not product_df_row.empty:
                 extracted_data = product_df_row.iloc[0].to_dict()
