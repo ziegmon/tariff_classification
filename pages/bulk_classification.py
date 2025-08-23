@@ -275,15 +275,14 @@ if st.session_state.bulk_results_df is not None:
                         top1_correct += 1
                     if correct_hs_code in [product_row['hs_code_1'], product_row['hs_code_2'], product_row['hs_code_3']]:
                         top3_correct += 1
-                    weighted_sum += selection['certainty']  # Add the certainty of the selected option
-                else:  # 'none' status
-                    weighted_sum += 0  # No contribution to weighted score
+                    weighted_sum += selection['certainty']
+                else:
+                    weighted_sum += 0
             
             top1_accuracy = (top1_correct / total_selected) * 100 if total_selected > 0 else 0
             top3_accuracy = (top3_correct / total_selected) * 100 if total_selected > 0 else 0
             weighted_score = (weighted_sum / total_selected) if total_selected > 0 else 0
             
-            # Save to JSON
             new_entry = {
                 "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "total_selected": total_selected,
@@ -353,28 +352,33 @@ if st.session_state.bulk_results_df is not None:
             group_metrics = group_metrics.sort_values('num_products', ascending=False)
 
             # Plot
-            fig, ax = plt.subplots(figsize=(12, 6))
+            plt.style.use('seaborn-v0_8')
+            fig, ax = plt.subplots(figsize=(8, 5))
             bar_width = 0.25
             index = range(len(group_metrics))
 
-            bar1 = ax.bar(index, group_metrics['top1_accuracy'], bar_width, label='Top-1 Accuracy')
-            bar2 = ax.bar([i + bar_width for i in index], group_metrics['top3_accuracy'], bar_width, label='Top-3 Accuracy')
-            bar3 = ax.bar([i + 2 * bar_width for i in index], group_metrics['weighted_score'], bar_width, label='Weighted Score')
+            ax.bar(index, group_metrics['top1_accuracy'], bar_width, label='Top-1 Accuracy', color='#1f77b4')
+            ax.bar([i + bar_width for i in index], group_metrics['top3_accuracy'], bar_width, label='Top-3 Accuracy', color='#2ca02c')
+            ax.bar([i + 2 * bar_width for i in index], group_metrics['weighted_score'], bar_width, label='Weighted Score', color='#ff7f0e')
 
-            ax.set_xlabel(group_by_column)
-            ax.set_ylabel('Percentage (%)')
-            ax.set_title(f'Accuracy and Weighted Score by {group_by_column}')
+            ax.set_xlabel(group_by_column, fontsize=12)
+            ax.set_ylabel('Percentage (%)', fontsize=12)
+            ax.set_title(f'Accuracy and Weighted Score by {group_by_column}', fontsize=14, pad=10)
             ax.set_xticks([i + bar_width for i in index])
-            ax.set_xticklabels(group_metrics[group_by_column], rotation=45, ha='right')
+            ax.set_xticklabels(group_metrics[group_by_column], rotation=45, ha='right', fontsize=10)
             ax.set_ylim(0, 110)
-            ax.legend()
+            ax.legend(fontsize=10)
+            ax.grid(True, axis='y', linestyle='--', alpha=0.7)
+            ax.tick_params(axis='both', labelsize=10)
 
             # Add number of products as text
             for i, row in group_metrics.iterrows():
                 max_val = max(row['top1_accuracy'], row['top3_accuracy'], row['weighted_score'])
-                ax.text(i + bar_width, max_val + 2, f"n={row['num_products']}", ha='center')
+                ax.text(i + bar_width, max_val + 2, f'n={int(row["num_products"])}', ha='center', fontsize=9)
 
+            plt.tight_layout()
             st.pyplot(fig)
+            plt.close(fig)
 
     # Visualize accuracy history
     if st.session_state.accuracy_history:
@@ -383,40 +387,48 @@ if st.session_state.bulk_results_df is not None:
         
         # First plot: Top-1 and Top-3 Accuracy
         st.subheader("📉 Accuracy Trend Over Time")
-        fig, ax = plt.subplots(figsize=(3, 2))
-        ax.plot(history_df['calculation_number'], history_df['top1_accuracy'], label='Top-1 Accuracy', marker='o')
-        ax.plot(history_df['calculation_number'], history_df['top3_accuracy'], label='Top-3 Accuracy', marker='o')
-        ax.set_xlabel('', fontsize=8)
-        ax.set_ylabel('Accuracy (%)', fontsize=8)
+        plt.style.use('seaborn-v0_8')
+        fig, ax = plt.subplots(figsize=(8, 5))
+        ax.plot(history_df['calculation_number'], history_df['top1_accuracy'], label='Top-1 Accuracy', marker='o', color='#1f77b4')
+        ax.plot(history_df['calculation_number'], history_df['top3_accuracy'], label='Top-3 Accuracy', marker='o', color='#2ca02c')
+        ax.set_xlabel('Calculation Number', fontsize=12)
+        ax.set_ylabel('Accuracy (%)', fontsize=12)
+        ax.set_title('Accuracy Trend Over Time', fontsize=14, pad=10)
         ax.set_xticks(history_df['calculation_number'])
         ax.set_ylim(0, 110)
-        ax.legend(fontsize=6)
-        ax.grid(True)
-        ax.tick_params(axis='both', labelsize=6)
+        ax.legend(fontsize=10)
+        ax.grid(True, linestyle='--', alpha=0.7)
+        ax.tick_params(axis='both', labelsize=10)
+        plt.tight_layout()
         buf = io.BytesIO()
-        fig.savefig(buf, format='png', bbox_inches='tight')
+        fig.savefig(buf, format='png', dpi=150)
         buf.seek(0)
-        st.image(buf, width=500)
+        st.image(buf, width=600)
+        plt.close(fig)
         
-        # Second plot: Weighted Score (Certainty-based)
+        # Second plot: Weighted Score
         st.subheader("📊 Weighted Score Over Time")
         if 'weighted_score' in history_df.columns:
             history_df_weighted = history_df.dropna(subset=['weighted_score'])
             if not history_df_weighted.empty:
-                fig2, ax2 = plt.subplots(figsize=(3, 2))
-                ax2.plot(history_df_weighted['calculation_number'], history_df_weighted['weighted_score'], 
-                         label='Weighted Score', marker='o', color='green')
-                ax2.set_xlabel('', fontsize=8)
-                ax2.set_ylabel('Score (%)', fontsize=8)
-                ax2.set_xticks(history_df_weighted['calculation_number'])
-                ax2.set_ylim(0, 110)
-                ax2.legend(fontsize=6)
-                ax2.grid(True)
-                ax2.tick_params(axis='both', labelsize=6)
-                buf2 = io.BytesIO()
-                fig2.savefig(buf2, format='png', bbox_inches='tight')
-                buf2.seek(0)
-                st.image(buf2, width=500)
+                plt.style.use('seaborn-v0_8')
+                fig, ax = plt.subplots(figsize=(8, 5))
+                ax.plot(history_df_weighted['calculation_number'], history_df_weighted['weighted_score'], 
+                        label='Weighted Score', marker='o', color='#ff7f0e')
+                ax.set_xlabel('Calculation Number', fontsize=12)
+                ax.set_ylabel('Score (%)', fontsize=12)
+                ax.set_title('Weighted Score Over Time', fontsize=14, pad=10)
+                ax.set_xticks(history_df_weighted['calculation_number'])
+                ax.set_ylim(0, 110)
+                ax.legend(fontsize=10)
+                ax.grid(True, linestyle='--', alpha=0.7)
+                ax.tick_params(axis='both', labelsize=10)
+                plt.tight_layout()
+                buf = io.BytesIO()
+                fig.savefig(buf, format='png', dpi=150)
+                buf.seek(0)
+                st.image(buf, width=600)
+                plt.close(fig)
 
 # Instructions
 with st.expander("📖 How to Use Bulk Classification"):
