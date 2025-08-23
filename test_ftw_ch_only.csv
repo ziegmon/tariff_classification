@@ -1,0 +1,14 @@
+tariff_code,tariff_country_description,material_composition,gender_name,customs_description,outsole_material,product_type
+64029900-000,Switzerland,"Upper:Textile Polyester 33%, Synthetic thermoplastic polyurethane  67%. Sole: Rubber",Women,Shoes,Rubber,Low cut
+64041100-000,Switzerland,Upper: Textile / Sole: Rubber,Women,Shoes,TPU,Low cut
+64041100-000,Switzerland,Upper: Textile / Sole: Rubber,Kids,Shoes,Missiongrip Rubber,Mid Cut
+64029900-000,Switzerland,"Upper:Textile Polyester 33%, Synthetic thermoplastic polyurethane  67%. Sole: Rubber",Women,Low cut Shoes,Rubber,Low cut
+64041100-000,Switzerland,Upper: Textile / Sole: Rubber,Men,Shoes,Missiongrip Rubber,High Cut
+64041100-000,Switzerland,"Upper:Textile Polyester 60%, Synthetic thermoplastic polyurethane 40%. Sole: Rubber",Women,Low cut Shoes,Rubber,Low cut
+64029900-000,Switzerland,Upper: Plastic / Sole: Rubber,Women,Shoes,Missiongrip Rubber,Low cut
+64029900-000,Switzerland,Upper: Plastic / Sole: Rubber,Women,Shoes,Rubber,Low cut
+64041100-000,Switzerland,"Upper:Textile Polyester 85%, Synthetic thermoplastic polyurethane  15%. Sole: Rubber",Women,Low cut Shoes,PA11 8% GF,Low cut
+64029900-000,Switzerland,Upper: Plastic / Sole: Rubber,Kids,Shoes,Rubber,Low cut
+64041100-000,Switzerland,"Upper:Textile Polyester 89%, Synthetic thermoplastic polyurethane  11%. Sole: Rubber",Men,Low cut Shoes,Rubber,Low cut
+64041100-000,Switzerland,Upper: Textile / Sole: Rubber,Men,Shoes,Pebax,Low cut
+64029900-000,Switzerland,"Upper:Textile Polyester 33%, Synthetic thermoplastic polyurethane  67%. Sole: Rubber",Men,Shoes,Rubber,Low cut
