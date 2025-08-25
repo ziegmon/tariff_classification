@@ -11,12 +11,14 @@ import time
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Documentation Path#
+
+#___Documentation Path___#
 PDF_DIRECTORY = "chapter_data"
 CSV_PATH = "train_ftw.csv"
 REJECTED_CODES_FILE = "rejected_classifications_footwear.json"
 
-# Variables for your footwear data structure#
+# Variables for footwear data structure#
+
 country_col = "tariff_country_description"
 name_col = "customs_description"
 name_col2 = "product_type"
@@ -25,7 +27,7 @@ construction_col = "outsole_material"
 gender_col = "gender_name"
 hs_code_col = "tariff_code"
 
-# NEW: Define expected HS code lengths per country for format validation
+# Define expected HS code lengths per country for format validation
 HS_CODE_LENGTHS = {
     "switzerland": 11,
     "new zealand": 11, # 10 digits + 1 letter suffix (we'll treat as 11 for length check simplicity)
@@ -87,12 +89,12 @@ def extract_text_from_pdf(pdf_path):
             text = ""
             for page_num in range(len(pdf_reader.pages)):
                 text += pdf_reader.pages[page_num].extract_text()
-            return text
+        return text
     except Exception as e:
         st.error(f"Error reading PDF {pdf_path}: {str(e)}")
         return ""
 
-# Load All PDF Data (No changes needed here) #
+#___Load All PDF Data___#
 def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
     """Loads and caches all PDF data for all countries"""
     pdf_cache = {}
@@ -114,7 +116,7 @@ def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
 
                 if current_country not in pdf_cache:
                     pdf_cache[current_country] = {}
-
+                
                 if '_chapter_' in filename:
                     text = extract_text_from_pdf(file_path)
                     pdf_cache[current_country][doc_type_key] = text
@@ -136,10 +138,10 @@ def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
                     pdf_cache[current_country][doc_type_key] = text
                     country_set.add(current_country)
 
-    st.session_state.country_list = sorted(list(country_set))
+    st.session_state.country_list = sorted(list(country_set)) 
     return pdf_cache
 
-# Load Text Files (No changes needed here) #
+#___Load Text Files___#
 def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
     processed_texts = {}
 
@@ -152,7 +154,7 @@ def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
             continue
 
         file_path = os.path.join(text_directory, file)
-        filename = Path(file).stem
+        filename = Path(file).stem 
 
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -163,18 +165,18 @@ def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
 
     return processed_texts
 
-# Gemini API Config (No changes needed here) #
+#___Gemini API Config___#
 def configure_genai(api_key):
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(model_name='models/gemini-2.5-flash')
     return model
 
-# Rejection System (No changes needed here) #
+#___Rejection System___#
 def save_rejected_code(product, country, code):
     entry = {
         "product_description": product,
         "country": country,
-        "rejected_code": code
+        "rejected_code": code 
     }
     try:
         if not os.path.exists(REJECTED_CODES_FILE):
@@ -215,7 +217,7 @@ def load_rejected_codes(product_description, country):
     ]
     return product_specific_rejections
 
-# Historical Data Integration (Adjusted to allow returning DF for internal use) #
+#___Historical Data Integration___#
 def format_historical_data_from_csv(
     csv_file_path=CSV_PATH,
     target_country=None,
@@ -329,7 +331,7 @@ def format_historical_data_from_csv(
 
     return formatted_data
 
-# NEW: Internal helper for getting historical similarities as a DataFrame
+# Internal helper for getting historical similarities as a DataFrame
 def _get_historical_similarities_df(
     csv_file_path=CSV_PATH,
     target_country=None,
@@ -395,7 +397,7 @@ def _get_historical_similarities_df(
 
     return historical_df[[hs_code_col_hist, 'similarity']].rename(columns={hs_code_col_hist: 'hs_code'})
 
-# NEW: Component 1 - Historical Data Certainty
+#  Component 1 - Historical Data Certainty
 def _calculate_historical_certainty(product_description, country, proposed_hs_code, product_gender=None):
     """
     Calculates certainty (0-100%) for a proposed HS code based purely on historical data similarity.
@@ -430,7 +432,7 @@ def _calculate_historical_certainty(product_description, country, proposed_hs_co
 
     return int(max_similarity * 100) # Convert to 0-100 scale
 
-# NEW: Component 2 - Reasoning Length Score
+#  Component 2 - Reasoning Length Score
 def _calculate_reasoning_score(reasoning_text):
     """
     Scores reasoning quality based on its length. Max 20 points.
@@ -458,7 +460,7 @@ def _calculate_reasoning_score(reasoning_text):
 
     return int(min(20, max(0, score))) # Ensure score is between 0 and 20
 
-# NEW: Component 3 - HS Code Format Score
+#  Component 3 - HS Code Format Score
 def _calculate_format_score(proposed_hs_code, country):
     """
     Scores HS code format validity. Returns 10 points if perfect, 0 otherwise.
@@ -489,7 +491,7 @@ def _calculate_format_score(proposed_hs_code, country):
         else:
             return 0
 
-# NEW: Component 4 - Legal Basis Citation Quality
+# Component 4 - Legal Basis Citation Quality
 def _calculate_citation_quality(legal_basis_text):
     """
     Scores the quality of citations in the legal basis text. Max 10 points.
@@ -530,7 +532,7 @@ def _calculate_citation_quality(legal_basis_text):
 
     return score
 
-# NEW: Component 5 - Inter-Option Agreement
+#  Component 5 - Inter-Option Agreement
 def _calculate_inter_option_agreement(hs_codes_list):
     """
     Calculates certainty based on agreement among the three proposed HS codes. Max 10 points.
@@ -643,7 +645,6 @@ def generate_hs_codes(
         rejected_entries = load_rejected_codes(product_description, country)
     else:
         rejected_entries = rejected_codes_snapshot
-
     temp_rejected_hs_codes = []
     for entry in rejected_entries:
         code = entry.get("rejected_code")
@@ -651,7 +652,6 @@ def generate_hs_codes(
             temp_rejected_hs_codes.append(code.strip())
 
     rejected_hs_codes_for_prompt = list(set(filter(None, temp_rejected_hs_codes)))
-
     rejected_section_for_prompt = ""
     if rejected_hs_codes_for_prompt:
         rejected_section_for_prompt += "\n\nIMPORTANT: DO NOT SUGGEST ANY OF THE FOLLOWING HS CODES (these were previously rejected for this item by a specialist):\n"
@@ -1060,7 +1060,6 @@ def regenerate_single_product(original_index):
     if st.session_state.bulk_results_df is None:
         print("bulk_results_df is None. Returning.")
         return
-
     try:
         product_row_series = st.session_state.bulk_results_df[st.session_state.bulk_results_df['original_index'] == original_index]
         if product_row_series.empty:
@@ -1182,7 +1181,6 @@ def regenerate_single_product(original_index):
             else:
                 print("Error: Failed to extract codes from Gemini response.")
                 st.error(f"Regen Error Index {original_index}: Failed to extract codes.")
-
     except Exception as regen_e:
         print(f"Exception during regeneration: {regen_e}")
         st.error(f"Regen Error Index {original_index}: {regen_e}")
