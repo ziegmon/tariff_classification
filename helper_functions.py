@@ -99,13 +99,14 @@ def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
     """Loads and caches all PDF data for all countries"""
     pdf_cache = {}
     country_set = set()
+    os.makedirs(pdf_directory, exist_ok=True)
 
     if not os.path.exists(pdf_directory):
         st.error(f"Directory {pdf_directory} does not exist!")
         return {}
 
     for file in os.listdir(pdf_directory):
-        if file.lower().endswith(".pdf"):
+        if file.lower().endswith(".pdf") or file.lower().endswith(".txt"):
             file_path = os.path.join(pdf_directory, file)
             filename = Path(file).stem.lower()
 
@@ -117,28 +118,23 @@ def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
                 if current_country not in pdf_cache:
                     pdf_cache[current_country] = {}
                 
-                if '_chapter_' in filename:
+                if file.lower().endswith(".pdf"):
                     text = extract_text_from_pdf(file_path)
-                    pdf_cache[current_country][doc_type_key] = text
-                    country_set.add(current_country)
-                elif '_tariff_schedule' in filename:
-                    text = extract_text_from_pdf(file_path)
-                    pdf_cache[current_country][doc_type_key] = text
-                    country_set.add(current_country)
-                elif '_legal_notes' in filename:
-                    text = extract_text_from_pdf(file_path)
-                    pdf_cache[current_country][doc_type_key] = text
-                    country_set.add(current_country)
-                elif '_classification_guide' in filename:
-                    text = extract_text_from_pdf(file_path)
-                    pdf_cache[current_country][doc_type_key] = text
-                    country_set.add(current_country)
-                elif '_gri' in filename:
-                    text = extract_text_from_pdf(file_path)
+                elif file.lower().endswith(".txt"):
+                    try:
+                        with open(file_path, 'r', encoding='utf-8') as f:
+                            text = f.read()
+                    except Exception as e:
+                        st.error(f"Error reading text file {file_path}: {str(e)}")
+                        text = ""
+                else:
+                    text = "" # Should not happen with the suffix check
+
+                if text: # Only add if content was successfully extracted
                     pdf_cache[current_country][doc_type_key] = text
                     country_set.add(current_country)
 
-    st.session_state.country_list = sorted(list(country_set)) 
+    st.session_state.country_list = sorted(list(country_set))
     return pdf_cache
 
 #___Load Text Files___#
