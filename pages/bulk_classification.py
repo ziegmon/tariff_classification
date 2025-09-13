@@ -202,16 +202,25 @@ if st.session_state.bulk_results_df is not None:
             if row['hs_code_1'] not in ['N/A', 'ERROR']:
                 st.write("### Select the correct classification:")
                 
-                options = [
-                    f"Option 1: {row['hs_code_1']} ({row['certainty_1']}% certainty)",
-                    f"Option 2: {row['hs_code_2']} ({row['certainty_2']}% certainty)",
-                    f"Option 3: {row['hs_code_3']} ({row['certainty_3']}% certainty)",
-                    "None of these"
-                ]
+                # Create a list of options with their reasoning
+                classification_options = []
+                for i in range(1, 4):
+                    hs_code_key = f'hs_code_{i}'
+                    certainty_key = f'certainty_{i}'
+                    reasoning_key = f'reasoning_{i}'
+                    
+                    if pd.notna(row[hs_code_key]) and row[hs_code_key] not in ['N/A', 'ERROR']:
+                        option_text = f"Option {i}: {row[hs_code_key]} ({row[certainty_key]}% certainty)"
+                        reasoning_text = row[reasoning_key]
+                        st.markdown(f"**{option_text}**")
+                        st.markdown(f"**Reasoning:** {reasoning_text}")
+                        classification_options.append(option_text)
+                    
+                classification_options.append("None of these")
                 
                 selection = st.radio(
                     "Choose an option:",
-                    options,
+                    classification_options,
                     key=f"selection_{original_index}"
                 )
                 
