@@ -14,7 +14,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 #___Documentation Path___#
 PDF_DIRECTORY = "chapter_data"
-CSV_PATH = "train_ftw_no_NZ.csv"
+CSV_PATH = "train_fold_EU_0.csv"
 REJECTED_CODES_FILE = "rejected_classifications_footwear.json"
 
 #___Variables for your footwear data structure___#
@@ -212,6 +212,7 @@ def format_historical_data_from_csv(
     material_col_hist="material_composition",
     construction_col_hist="outsole_material",
     gender_col_hist="gender_name",
+    size_col_hist="size_code",
     hs_code_col_hist="tariff_code",
     similarity_threshold=0.85,
     top_n=5,
@@ -261,6 +262,8 @@ def format_historical_data_from_csv(
             parts.append(str(row[material_col_hist]))
         if construction_col_hist in row and pd.notna(row[construction_col_hist]):
             parts.append(str(row[construction_col_hist]))
+        if size_col_hist in row and pd.notna(row[size_col_hist]):
+            parts.append(str(row[size_col_hist]))
         return " ".join(parts).strip()
 
     historical_df['full_description'] = historical_df.apply(build_description, axis=1)
@@ -302,6 +305,8 @@ def format_historical_data_from_csv(
             display_parts.append(f"Material: {row[material_col_hist]}")
         if pd.notna(row.get(construction_col_hist)):
             display_parts.append(f"Construction: {row[construction_col_hist]}")
+        if pd.notna(row.get(size_col_hist)):
+            display_parts.append(f"Size: {row[size_col_hist]}")
 
         full_product_details_output = ", ".join(display_parts)
         hs_code = str(row[hs_code_col_hist]) if hs_code_col_hist in row and pd.notna(row[hs_code_col_hist]) else "N/A"
@@ -390,6 +395,7 @@ def generate_hs_codes(
             5. **GENDER CLASSIFICATION:** Many tariff lines distinguish between men's/boys' and women's/girls' footwear
             6. **STATISTICAL SUFFIX PRIORITY:** Use the most specific, applicable statistical suffixes
             7. **DIGIT-LENGTH ENFORCEMENT:** The proposed HS code **must** exactly match the digit length required for the target country. If it does not, **reject and do not propose**.
+            8. **SIZE CODE:** A size code of -1 means that size is not relevant for this country and thus can be excluded from reasoning.
 
             **COUNTRY-SPECIFIC CODE LENGTHS (STRICT):**
             - **Switzerland:** EXACTLY 11 digits
@@ -540,7 +546,8 @@ def process_bulk_data(
     name_col2,
     material_col,
     construction_col,
-    gender_col
+    gender_col,
+    size_col
 ):
     all_results_list = []
     total_rows = len(df_input)
@@ -565,6 +572,7 @@ def process_bulk_data(
         material = str(row[material_col]).strip() if pd.notna(row[material_col]) else ""
         construction = str(row[construction_col]).strip() if construction_col and construction_col in row and pd.notna(row[construction_col]) else ""
         gender = str(row[gender_col]).strip() if gender_col and gender_col in row and pd.notna(row[gender_col]) else ""
+        size = str(row[size_col]).strip() if size_col and size_col in row and pd.notna(row[size_col]) else ""
 
         desc_parts = [f"Product for {country.upper()}:"]
         if gender:
@@ -575,6 +583,8 @@ def process_bulk_data(
             desc_parts.append(f"Material: {material}.")
         if construction:
             desc_parts.append(f"Construction: {construction}.")
+        if size:
+            desc_parts.append(f"Size: {size}.")
         product_description = " ".join(desc_parts).strip()
 
         base_result_row = {

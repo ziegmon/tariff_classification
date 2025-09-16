@@ -72,7 +72,7 @@ if uploaded_file is not None:
         
         # Column mapping
         st.subheader("🔗 Column Mapping")
-        col1, col2, col3 = st.columns(3)
+        col1, col2, col3, col4 = st.columns(4)
         
         with col1:
             country_col = st.selectbox("Country Column", df_input.columns, 
@@ -97,6 +97,11 @@ if uploaded_file is not None:
             name_col2 = st.selectbox("Secondary Product Column", ["None"] + list(df_input.columns),
                                    index=list(["None"] + list(df_input.columns)).index("product_type") 
                                    if "product_type" in df_input.columns else 0)
+            
+        with col4:
+            size_col = st.selectbox("Size Column", df_input.columns,
+                                    index=list(df_input.columns).index("size_code") 
+                                    if "size_code" in df_input.columns else 0)
         
         name_col2 = None if name_col2 == "None" else name_col2
         
@@ -124,7 +129,8 @@ if uploaded_file is not None:
                     name_col2=name_col2,
                     material_col=material_col,
                     construction_col=construction_col,
-                    gender_col=gender_col
+                    gender_col=gender_col,
+                    size_col=size_col
                 )
             
             st.session_state.bulk_results_df = results_df
