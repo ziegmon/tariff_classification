@@ -11,11 +11,12 @@ import time
 from google.api_core import exceptions
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from concurrent.futures import ThreadPoolExecutor
+import threading
 
 #___Documentation Path___#
 PDF_DIRECTORY = "chapter_data"
-CSV_PATH = "train_fold_EU_0.csv"
-REJECTED_CODES_FILE = "rejected_classifications_footwear.json"
+CSV_PATH = "train_fold_0.csv"
 
 #___Variables for your footwear data structure___#
 country_col = "tariff_country_description"
@@ -104,18 +105,6 @@ def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
                     text = extract_text_from_pdf(file_path)
                     pdf_cache[current_country][doc_type_key] = text
                     country_set.add(current_country)
-                elif '_tariff_schedule' in filename:
-                    text = extract_text_from_pdf(file_path)
-                    pdf_cache[current_country][doc_type_key] = text
-                    country_set.add(current_country)
-                elif '_legal_notes' in filename:
-                    text = extract_text_from_pdf(file_path)
-                    pdf_cache[current_country][doc_type_key] = text
-                    country_set.add(current_country)
-                elif '_classification_guide' in filename:
-                    text = extract_text_from_pdf(file_path)
-                    pdf_cache[current_country][doc_type_key] = text
-                    country_set.add(current_country)
                 elif '_gri' in filename:
                     text = extract_text_from_pdf(file_path)
                     pdf_cache[current_country][doc_type_key] = text
@@ -153,52 +142,6 @@ def configure_genai(api_key):
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(model_name='models/gemini-2.5-flash')
     return model
-
-#___Rejection System___#
-def save_rejected_code(product, country, code):
-    entry = {
-        "product_description": product,
-        "country": country,
-        "rejected_code": code 
-    }
-    try:
-        if not os.path.exists(REJECTED_CODES_FILE):
-            with open(REJECTED_CODES_FILE, "w") as f:
-                json.dump([entry], f, indent=2)
-        else:
-            with open(REJECTED_CODES_FILE, "r+") as f:
-                try:
-                    data = json.load(f)
-                except json.JSONDecodeError:
-                    print(f"Warning: Could not decode JSON from {REJECTED_CODES_FILE}. Starting with an empty list.")
-                    data = []
-                except Exception as e:
-                    print(f"An unexpected error occurred while reading {REJECTED_CODES_FILE}: {e}")
-                    raise
-                else:
-                    data.append(entry)
-                    f.seek(0)
-                    json.dump(data, f, indent=2)
-                    f.truncate()
-        print("Code saved successfully.")
-    except Exception as e:
-        print(f"Error saving code: {e}")
-
-def load_rejected_codes(product_description, country):
-    if not os.path.exists(REJECTED_CODES_FILE):
-        return []
-
-    try:
-        with open(REJECTED_CODES_FILE, "r") as f:
-            all_rejections = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return []
-
-    product_specific_rejections = [
-        entry for entry in all_rejections
-        if entry.get("product_description") == product_description and entry.get("country") == country
-    ]
-    return product_specific_rejections
 
 #___Historical Data Integration___#
 def format_historical_data_from_csv(
@@ -324,36 +267,11 @@ def generate_hs_codes(
     product_description,
     country,
     relevant_chapters,
-    legal_notes,
-    classification_guide="",
-    gri="",
-    rejected_codes_snapshot=None,
-    historical_data=None,
-    guidelines=None,
+    gri=""
 ):
-    max_retries = 3
+    max_retries = 1
     retry_delay = 5  # seconds
     print(f"[DEBUG] Product Description: {product_description}")
-
-    # Handle rejected codes
-    if rejected_codes_snapshot is None:
-        rejected_entries = load_rejected_codes(product_description, country)
-    else:
-        rejected_entries = rejected_codes_snapshot
-    
-    temp_rejected_hs_codes = []
-    for entry in rejected_entries:
-        code = entry.get("rejected_code")
-        if code and isinstance(code, str):
-            temp_rejected_hs_codes.append(code.strip())
-
-    rejected_hs_codes_for_prompt = list(set(filter(None, temp_rejected_hs_codes)))
-    
-    rejected_section_for_prompt = ""
-    if rejected_hs_codes_for_prompt:
-        rejected_section_for_prompt += "\n\nIMPORTANT: DO NOT SUGGEST ANY OF THE FOLLOWING HS CODES (these were previously rejected for this item by a specialist):\n"
-        rejected_section_for_prompt += "\n".join(f"- {code_str}" for code_str in rejected_hs_codes_for_prompt)
-        rejected_section_for_prompt += "\n\nEnsure that none of your three new suggested codes match any of the HS codes listed directly above."
 
     # Get historical data
     historical_data_string = format_historical_data_from_csv(
@@ -367,13 +285,8 @@ def generate_hs_codes(
             **CONTEXT & RESOURCES:**
             - **Product Description:** {product_description}
             - **Target Country:** {country.upper()}
-            - **Legal Notes:** {legal_notes}
-            - **Country Guidelines:** {guidelines}
-            - **Classification Guide:** {classification_guide}
             - **General Rules of Interpretation (GRI):** {gri}
             - **OFFICIAL CHAPTER CONTENT:** (Provided below)
-            - **Previously Rejected HS Codes (DO NOT USE):** {", ".join(rejected_hs_codes_for_prompt)}
-            - **Previously Excluded Chapters/Sections (DO NOT USE CODES FROM HERE):** {rejected_section_for_prompt}
 
             **HISTORICAL DATA (SIMILAR FOOTWEAR PRODUCTS & CLASSIFICATIONS):**
             {historical_data_string}
@@ -398,8 +311,7 @@ def generate_hs_codes(
             8. **SIZE CODE:** A size code of -1 means that size is not relevant for this country and thus can be excluded from reasoning.
 
             **COUNTRY-SPECIFIC CODE LENGTHS (STRICT):**
-            - **Switzerland:** EXACTLY 11 digits
-            - **New Zealand:** EXACTLY 10 digits followed by 1 letter suffix
+            - **Switzerland:** all HS codes **must** be 11 digits and end with "-000" (e.g., 64041100-000) even if documentation is only 8 digits
             - **Europe, Canada, Australia, United States:** EXACTLY 10 digits
             - **Japan:** EXACTLY 9 digits
             - **Brazil, Norway:** EXACTLY 8 digits
@@ -450,9 +362,9 @@ def generate_hs_codes(
         try:
             generation_config = {
                 "temperature": 0.0,
-                "top_p": 0.5,
-                "top_k": 15,
-                "max_output_tokens": 20000,
+                "top_p": 0.3,
+                "top_k": 5,
+                "max_output_tokens": 10000,
             }
 
             response = model.generate_content(
@@ -535,7 +447,6 @@ def extract_hs_codes(text):
         row[f'reasoning_{option_num}'] = reasoning
     
     return pd.DataFrame([row])
-
 #___Bulk Processing Function___#
 def process_bulk_data(
     df_input,
@@ -554,17 +465,10 @@ def process_bulk_data(
     progress_bar = st.progress(0)
     progress_text = st.empty()
     start_time = time.time()
+    lock = threading.Lock()
 
-    for df_idx, row in df_input.iterrows():
+    def process_row(row):
         original_index = row["original_index"]
-
-        current_progress = (df_idx + 1) / total_rows
-        progress_bar.progress(current_progress)
-        elapsed_time = time.time() - start_time
-        est_remaining = (elapsed_time / (df_idx + 1)) * (total_rows - (df_idx + 1)) if df_idx > 0 else 0
-        progress_text.text(f"Processing row {df_idx + 1}/{total_rows}... Est. time remaining: {int(est_remaining)}s")
-
-        # Build Product Description
         country = str(row[country_col]).strip().lower() if pd.notna(row[country_col]) else "unknown"
         product_type = str(row[name_col]).strip() if pd.notna(row[name_col]) else ""
         if name_col2 and name_col2 in row and pd.notna(row[name_col2]):
@@ -583,7 +487,7 @@ def process_bulk_data(
             desc_parts.append(f"Material: {material}.")
         if construction:
             desc_parts.append(f"Construction: {construction}.")
-        if size:
+        if size and country.upper() in ["EUROPE", "UNITED KINGDOM"]:
             desc_parts.append(f"Size: {size}.")
         product_description = " ".join(desc_parts).strip()
 
@@ -601,44 +505,28 @@ def process_bulk_data(
         }
 
         if not product_type or not material or country == "unknown":
-            st.warning(f"Skipping row {df_idx + 1} (Original Index: {original_index}): Insufficient data")
             base_result_row["reasoning_1"] = "Skipped due to missing essential data"
-            all_results_list.append(base_result_row)
-            continue
+            return base_result_row
 
-        # Reload PDF cache if missing or empty
         if country not in pdf_data_cache or not pdf_data_cache[country]:
-            st.warning(f"Reloading PDF data for {country}...")
+            with lock:
+                st.warning(f"Reloading PDF data for {country}...")
             pdf_data_cache[country] = load_all_pdf_data()
             if country not in pdf_data_cache or not pdf_data_cache[country]:
-                st.error(f"No PDF data available for {country}.")
                 base_result_row["reasoning_1"] = f"Skipped: No PDF data for {country}"
-                all_results_list.append(base_result_row)
-                continue
+                return base_result_row
 
         processed_pdfs_for_current_country = pdf_data_cache[country]
         relevant_chapters = find_relevant_chapters(product_description, country, processed_pdfs_for_current_country)
-        legal_notes = processed_pdfs_for_current_country.get("legal_notes", "")
-        classification_guide = processed_pdfs_for_current_country.get("classification_guide", "")
         gri = processed_pdfs_for_current_country.get("gri", "")
 
-        # Load country-specific text files
-        country_texts = load_text_files_for_country(PDF_DIRECTORY, country)
-        guidelines = country_texts.get(f"{country}_guidelines", "")
-
         try:
-            rejected_codes_snapshot = load_rejected_codes(product_description, country)
-
             generated_response = generate_hs_codes(
                 model,
                 product_description,
                 country,
                 relevant_chapters,
-                legal_notes,
-                classification_guide,
-                gri=gri,
-                guidelines=guidelines,
-                rejected_codes_snapshot=rejected_codes_snapshot
+                gri=gri
             )
 
             product_df_row = extract_hs_codes(generated_response)
@@ -647,16 +535,14 @@ def process_bulk_data(
             else:
                 extracted_data = {}
 
-            # Debug: Always print
             print("==== RAW MODEL OUTPUT ====")
             print(generated_response)
             print("==== EXTRACTED DATA ====")
             print(extracted_data)
             print("==========================")
 
-            # Extra check: Are all HS codes blank or missing?
             if all(not extracted_data.get(f"hs_code_{i}", "").strip() for i in range(1, 4)):
-                print(f"⚠️ All HS codes missing for row {df_idx + 1} (Original Index: {original_index})")
+                print(f"⚠️ All HS codes missing for row (Original Index: {original_index})")
 
             if not product_df_row.empty:
                 extracted_data = product_df_row.iloc[0].to_dict()
@@ -673,117 +559,24 @@ def process_bulk_data(
                         base_result_row[cert_col] = 0
                         base_result_row[reas_col] = ""
             else:
-                st.error(f"Failed to extract codes for row {df_idx + 1} (Original Index: {original_index}). Response format might be unexpected.")
                 base_result_row["reasoning_1"] = "Error: Failed to parse response"
 
-            all_results_list.append(base_result_row)
+            return base_result_row
 
         except Exception as gen_e:
-            st.error(f"Error generating code for row {df_idx + 1} (Original Index: {original_index}): {gen_e}")
             base_result_row["hs_code_1"] = "ERROR"
             base_result_row["reasoning_1"] = str(gen_e)
-            all_results_list.append(base_result_row)
+            return base_result_row
+
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = [executor.submit(process_row, row) for _, row in df_input.iterrows()]
+        for df_idx, future in enumerate(futures):
+            with lock:
+                all_results_list.append(future.result())
+                current_progress = (df_idx + 1) / total_rows
+                progress_bar.progress(current_progress)
+                elapsed_time = time.time() - start_time
+                est_remaining = (elapsed_time / (df_idx + 1)) * (total_rows - (df_idx + 1)) if df_idx > 0 else 0
+                progress_text.text(f"Processing row {df_idx + 1}/{total_rows}... Est. time remaining: {int(est_remaining)}s")
 
     return pd.DataFrame(all_results_list)
-
-#___Authentication___#
-def check_password():
-    def password_entered():
-        if (
-            st.session_state["username"] == st.secrets["AUTH"]["USERNAME"]
-            and st.session_state["password"] == st.secrets["AUTH"]["PASSWORD"]
-        ):
-            st.session_state["password_correct"] = True
-            del st.session_state["password"]
-            del st.session_state["username"]
-        else:
-            st.session_state["password_correct"] = False
-
-    if "password_correct" not in st.session_state:
-        st.text_input("Username", key="username")
-        st.text_input(
-            "Password", type="password", key="password", on_change=password_entered
-        )
-        return False
-    elif not st.session_state["password_correct"]:
-        st.text_input("Username", key="username")
-        st.text_input(
-            "Password", type="password", key="password", on_change=password_entered
-        )
-        st.error("Incorrect combination")
-        return False
-    else:
-        return True
-
-#___Regeneration Functions___#
-def regenerate_single_product(original_index):
-    if st.session_state.bulk_results_df is None:
-        print("bulk_results_df is None. Returning.")
-        return
-    
-    try:
-        product_row_series = st.session_state.bulk_results_df[st.session_state.bulk_results_df['original_index'] == original_index]
-        if product_row_series.empty:
-            print("product_row_series is empty. Returning.")
-            return
-        
-        product_row = product_row_series.iloc[0]
-        print(f"product_row: \n{product_row}")
-        
-        if st.session_state.model is None:
-            print("Model is None. Returning.")
-            return
-        
-        model = st.session_state.model
-        product_description = product_row['product_description']
-        country = product_row['input_country'].strip().lower()
-
-        if country not in st.session_state.pdf_cache or not st.session_state.pdf_cache[country]:
-            print(f"PDF cache miss for {country}. Loading PDFs.")
-            st.session_state.pdf_cache[country] = load_all_pdf_data()
-            if not st.session_state.pdf_cache.get(country):
-                print(f"Could not load PDFs for {country}. Returning.")
-                return
-
-        processed_pdfs = st.session_state.pdf_cache[country]
-        relevant_chapters = find_relevant_chapters(product_description, country, processed_pdfs)
-        legal_notes = processed_pdfs.get("legal_notes", "")
-        guide = processed_pdfs.get("classification_guide", "")
-        gri = processed_pdfs.get("gri", "")
-        rejected_codes_snapshot = load_rejected_codes(product_description, country)
-
-        with st.spinner(f"Regenerating Index: {original_index}..."):
-            new_response = generate_hs_codes(model, product_description, country, relevant_chapters, legal_notes, guide, gri=gri, rejected_codes_snapshot=rejected_codes_snapshot)
-            new_product_df_row = extract_hs_codes(new_response)
-            
-            if not new_product_df_row.empty:
-                df = st.session_state.bulk_results_df
-                target_df_index = df[df['original_index'] == original_index].index
-                if not target_df_index.empty:
-                    idx_loc = target_df_index[0]
-                    new_data = new_product_df_row.iloc[0]
-                    for i in range(1, 4):
-                        hs, cert, reas = f'hs_code_{i}', f'certainty_{i}', f'reasoning_{i}'
-                        df.loc[idx_loc, hs] = new_data.get(hs, '')
-                        df.loc[idx_loc, cert] = new_data.get(cert, 0)
-                        df.loc[idx_loc, reas] = new_data.get(reas, '')
-                    
-                    if 'product_selections' not in st.session_state:
-                        st.session_state.product_selections = {}
-                    st.session_state.product_selections[original_index] = {'status': 'pending', 'data': {}}
-                    st.session_state.bulk_results_df = df
-                    print(f"DataFrame after update: \n{df.head()}")
-                    st.toast(f"Regenerated Index {original_index}. Review new options.")
-                else:
-                    st.error(f"Regen Update Error: Index {original_index} not found.")
-            else:
-                print("Error: Failed to extract codes from Gemini response.")
-                st.error(f"Regen Error Index {original_index}: Failed to extract codes.")
-    
-    except Exception as regen_e:
-        print(f"Exception during regeneration: {regen_e}")
-        st.error(f"Regen Error Index {original_index}: {regen_e}")
-    finally:
-        if 'regenerate_queue' not in st.session_state:
-            st.session_state.regenerate_queue = set()
-        st.session_state.regenerate_queue.discard(original_index)
