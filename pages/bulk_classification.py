@@ -7,8 +7,7 @@ from datetime import datetime
 import io
 from helper_functions import (
     configure_genai, process_bulk_data, add_bg_from_local, header,
-    load_all_pdf_data, regenerate_single_product, check_password,
-    save_rejected_code
+    load_all_pdf_data
 )
 
 # Page config
@@ -19,11 +18,6 @@ st.set_page_config(
 )
 
 add_bg_from_local(st.secrets["box"])
-
-# Authentication
-if not st.session_state.get("authenticated", False):
-    if not check_password():
-        st.stop()
 
 header("Footwear Bulk HS Code Classification")
 
@@ -36,8 +30,6 @@ if "model" not in st.session_state:
     st.session_state.model = None
 if "product_selections" not in st.session_state:
     st.session_state.product_selections = {}
-if "regenerate_queue" not in st.session_state:
-    st.session_state.regenerate_queue = set()
 if "show_reasoning" not in st.session_state:
     st.session_state.show_reasoning = {}
 if "accuracy_history" not in st.session_state:
@@ -198,11 +190,6 @@ if st.session_state.bulk_results_df is not None:
                 st.write(f"**Product Description:** {row['product_description']}")
                 st.write(f"**Material:** {row['input_material']}")
                 st.write(f"**Construction:** {row['input_construction']}")
-            
-            with col2:
-                if st.button(f"🔄 Regenerate", key=f"regen_{original_index}"):
-                    st.session_state.regenerate_queue.add(original_index)
-                    regenerate_single_product(original_index)
             
             # Classification options with radio buttons
             if row['hs_code_1'] not in ['N/A', 'ERROR']:
@@ -481,7 +468,6 @@ with st.expander("📖 How to Use Bulk Classification"):
     ### Tips:
     - The system uses AI to analyze footwear characteristics and tariff documents
     - Each product gets 3 classification options with confidence scores
-    - Use the regenerate button if classifications seem wrong
     - Selecting "None of these" without a manual code marks all options as incorrect
     - The JSON file (`accuracy_history.json`) is automatically saved and can be pushed to Git
     - Diagnostic plots help identify performance variations across different attributes
