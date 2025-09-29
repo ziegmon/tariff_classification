@@ -1,0 +1,10 @@
+{
+  "calculation_mode": "standard",
+  "custom_weights": {
+    "historical": 50,
+    "reasoning": 20,
+    "format": 10,
+    "citation": 10,
+    "agreement": 10
+  }
+}

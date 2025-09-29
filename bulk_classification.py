@@ -6,9 +6,10 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import io
 from helper_functions import (
-    configure_genai, process_bulk_data,  header,
+    configure_genai, process_bulk_data, header,
     load_all_pdf_data, regenerate_single_product,
-    save_rejected_code, find_relevant_chapters 
+    save_rejected_code, find_relevant_chapters,
+    load_certainty_config # Import load_certainty_config
 )
 def show_bulk_classification_page():
 
@@ -29,6 +30,10 @@ def show_bulk_classification_page():
         st.session_state.show_reasoning = {}
     if "accuracy_history" not in st.session_state:
         st.session_state.accuracy_history = []
+    # Initialize certainty_config in session state
+    if "certainty_config" not in st.session_state:
+        st.session_state.certainty_config = load_certainty_config()
+
 
     # Configure Gemini API
     try:
@@ -111,7 +116,8 @@ def show_bulk_classification_page():
                         name_col2=name_col2,
                         material_col=material_col,
                         construction_col=construction_col,
-                        gender_col=gender_col
+                        gender_col=gender_col,
+                        certainty_config=st.session_state.certainty_config # Pass certainty config
                     )
 
                 st.session_state.bulk_results_df = results_df
@@ -193,7 +199,10 @@ def show_bulk_classification_page():
                 if row['hs_code_1'] not in ['N/A', 'ERROR', '']: # Also check for empty string
                     st.write("### Select the correct classification:")
 
-                    # Create a list of options with their reasoning
+                    # Check if certainty calculation is enabled
+                    if st.session_state.certainty_config['calculation_mode'] == "none":
+                        st.info("Certainty calculation is currently disabled in the Admin Panel.")
+
                     classification_options = []
                     # Inter-option agreement is a shared score across all options for this product
                     inter_option_agreement_score = row.get('inter_option_agreement_score_1', 0) # Get from any of the options
@@ -209,16 +218,22 @@ def show_bulk_classification_page():
                         citation_score = row[f'citation_score_{i}']
 
                         if pd.notna(hs_code) and hs_code not in ['N/A', 'ERROR', '']:
-                            # Display overall certainty
-                            st.markdown(f"**Option {i}: {hs_code} ({certainty:.0f}% total certainty)**")
+                            # Display overall certainty or disabled message
+                            if st.session_state.certainty_config['calculation_mode'] != "none":
+                                st.markdown(f"**Option {i}: {hs_code} ({certainty:.0f}% total certainty)**")
+                            else:
+                                st.markdown(f"**Option {i}: {hs_code} (Certainty calculation disabled)**")
+
                             st.markdown(f"**Reasoning:** {reasoning}")
-                            # Display breakdown
-                            st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;*Breakdown of Certainty:*")
-                            st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- Historical Similarity: **{hist_certainty:.0f}%** (out of 100%)")
-                            st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- Reasoning Detail Score: **{reasoning_score:.0f}/20**")
-                            st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- HS Format Validity Score: **{format_score:.0f}/10**")
-                            st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- Legal Basis Citation Quality: **{citation_score:.0f}/10**")
-                            st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- Inter-Option Agreement: **{inter_option_agreement_score:.0f}/10**")
+
+                            # Display breakdown only if not disabled
+                            if st.session_state.certainty_config['calculation_mode'] != "none":
+                                st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;*Breakdown of Certainty:*")
+                                st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- Historical Similarity: **{hist_certainty:.0f}%** (out of 100%)")
+                                st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- Reasoning Detail Score: **{reasoning_score:.0f}/20**")
+                                st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- HS Format Validity Score: **{format_score:.0f}/10**")
+                                st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- Legal Basis Citation Quality: **{citation_score:.0f}/10**")
+                                st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;- Inter-Option Agreement: **{inter_option_agreement_score:.0f}/10**")
                             classification_options.append(f"Option {i}: {hs_code}") # Use a simpler text for the radio button
                         else:
                             # Add a placeholder option if an HS code is missing or invalid for an option slot
@@ -313,7 +328,11 @@ def show_bulk_classification_page():
 
             top1_accuracy = (top1_correct / total_selected) * 100 if total_selected > 0 else 0
             top3_accuracy = (top3_correct / total_selected) * 100 if total_selected > 0 else 0
-            weighted_score = (weighted_sum / total_selected) if total_selected > 0 else 0
+            # Only calculate weighted score if certainty calculation is enabled
+            if st.session_state.certainty_config['calculation_mode'] != "none":
+                weighted_score = (weighted_sum / total_selected) if total_selected > 0 else 0
+            else:
+                weighted_score = 0 # If certainty is disabled, weighted score is 0
 
             # Save to JSON
             new_entry = {
@@ -321,7 +340,7 @@ def show_bulk_classification_page():
                 "total_selected": total_selected,
                 "top1_accuracy": top1_accuracy,
                 "top3_accuracy": top3_accuracy,
-                "weighted_score": weighted_score
+                "weighted_score": weighted_score # This will be 0 if calculation is disabled
             }
             st.session_state.accuracy_history.append(new_entry)
 
@@ -331,7 +350,11 @@ def show_bulk_classification_page():
             st.write(f"**Number of products with selections:** {total_selected}")
             st.write(f"**Top-1 Accuracy:** {top1_accuracy:.2f}%")
             st.write(f"**Top-3 Accuracy:** {top3_accuracy:.2f}%")
-            st.write(f"**Weighted Score (Certainty-based):** {weighted_score:.2f}%")
+            # Display weighted score conditionally
+            if st.session_state.certainty_config['calculation_mode'] != "none":
+                st.write(f"**Weighted Score (Certainty-based):** {weighted_score:.2f}%")
+            else:
+                st.info("Weighted Score is not calculated as certainty calculation is disabled.")
             st.rerun() # Rerun to update plots
 
     # Diagnostic plots section
@@ -376,7 +399,7 @@ def show_bulk_classification_page():
                 num_products=('original_index', 'count'),
                 top1_accuracy=('is_correct_top1', 'mean'),
                 top3_accuracy=('is_correct_top3', 'mean'),
-                weighted_score=('selected_certainty', 'mean')
+                weighted_score=('selected_certainty', 'mean') # Will be 0 if certainty is disabled
             ).reset_index()
 
             # Convert accuracies to percentages
@@ -393,7 +416,9 @@ def show_bulk_classification_page():
 
             bar1 = ax.bar(index, group_metrics['top1_accuracy'], bar_width, label='Top-1 Accuracy')
             bar2 = ax.bar([i + bar_width for i in index], group_metrics['top3_accuracy'], bar_width, label='Top-3 Accuracy')
-            bar3 = ax.bar([i + 2 * bar_width for i in index], group_metrics['weighted_score'], bar_width, label='Weighted Score')
+            #  Only plot weighted score if certainty calculation is enabled
+            if st.session_state.certainty_config['calculation_mode'] != "none":
+                bar3 = ax.bar([i + 2 * bar_width for i in index], group_metrics['weighted_score'], bar_width, label='Weighted Score')
 
             ax.set_xlabel(group_by_column)
             ax.set_ylabel('Percentage (%)')
@@ -405,7 +430,7 @@ def show_bulk_classification_page():
 
             # Add number of products as text
             for i, row in group_metrics.iterrows():
-                max_val = max(row['top1_accuracy'], row['top3_accuracy'], row['weighted_score'])
+                max_val = max(row['top1_accuracy'], row['top3_accuracy'], row['weighted_score'] if st.session_state.certainty_config['calculation_mode'] != "none" else 0)
                 ax.text(i + bar_width, max_val + 2, f"n={row['num_products']}", ha='center')
 
             st.pyplot(fig)
@@ -434,7 +459,8 @@ def show_bulk_classification_page():
 
         # Second plot: Weighted Score (Certainty-based)
         st.subheader("📊 Weighted Score Over Time")
-        if 'weighted_score' in history_df.columns:
+        # Only show weighted score plot if certainty calculation is enabled
+        if st.session_state.certainty_config['calculation_mode'] != "none" and 'weighted_score' in history_df.columns:
             history_df_weighted = history_df.dropna(subset=['weighted_score'])
             if not history_df_weighted.empty:
                 fig2, ax2 = plt.subplots(figsize=(8, 4)) # Increased size
@@ -451,6 +477,9 @@ def show_bulk_classification_page():
                 fig2.savefig(buf2, format='png', bbox_inches='tight')
                 buf2.seek(0)
                 st.image(buf2.getvalue(), width=700) # Increased width in display
+        elif st.session_state.certainty_config['calculation_mode'] == "none":
+            st.info("Weighted Score trend is not shown as certainty calculation is disabled.")
+
 
     # Instructions
     with st.expander("📖 How to Use Bulk Classification"):
@@ -474,6 +503,8 @@ def show_bulk_classification_page():
             *   **HS Format Validity Score:** Indicates if the proposed HS code matches the expected length and format for the target country (0-10 points).
             *   **Legal Basis Citation Quality:** Measures how well the AI cited specific GRI rules, Chapter Notes, or HS texts in its "Legal Basis" (0-10 points).
             *   **Inter-Option Agreement:** Assesses the consistency among the three proposed HS codes (e.g., sharing common 4 or 6-digit prefixes). This score is the same for all three options for a given product (0-10 points).
+            
+            _Note: Certainty calculation details and weighted scores will only be displayed if enabled in the Admin Panel._
 
         5.  **✅ Select Correct Classifications** - For each product:
             -   Choose one of the three options if correct

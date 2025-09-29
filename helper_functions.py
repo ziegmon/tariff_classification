@@ -11,14 +11,13 @@ import time
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-
-#___Documentation Path___#
+# Documentation Path
 PDF_DIRECTORY = "chapter_data"
 CSV_PATH = "train_ftw.csv"
 REJECTED_CODES_FILE = "rejected_classifications_footwear.json"
+CERTAINTY_CONFIG_FILE = "certainty_config.json" # File for certainty calculation settings
 
-# Variables for footwear data structure#
-
+# Variables for footwear data structure
 country_col = "tariff_country_description"
 name_col = "customs_description"
 name_col2 = "product_type"
@@ -42,34 +41,63 @@ HS_CODE_LENGTHS = {
     # Add other countries if needed with their specific lengths
 }
 
+# Default weights for certainty calculation (sum to 100)
+DEFAULT_CERTAINTY_WEIGHTS = {
+    'historical': 50,
+    'reasoning': 20,
+    'format': 10,
+    'citation': 10,
+    'agreement': 10
+}
 
-# Aesthetics' Functions (No changes needed here) #
+# Function to load certainty configuration
+def load_certainty_config():
+    if not os.path.exists(CERTAINTY_CONFIG_FILE):
+        # Default config if file doesn't exist
+        return {
+            "calculation_mode": "standard",
+            "custom_weights": DEFAULT_CERTAINTY_WEIGHTS.copy()
+        }
+    try:
+        with open(CERTAINTY_CONFIG_FILE, "r") as f:
+            config = json.load(f)
+            # Ensure all necessary keys are present for robustness
+            if "calculation_mode" not in config:
+                config["calculation_mode"] = "standard"
+            if "custom_weights" not in config or not isinstance(config["custom_weights"], dict):
+                config["custom_weights"] = DEFAULT_CERTAINTY_WEIGHTS.copy()
+            # Ensure all default weight keys exist in custom_weights (add if missing)
+            for key, default_val in DEFAULT_CERTAINTY_WEIGHTS.items():
+                if key not in config["custom_weights"]:
+                    config["custom_weights"][key] = default_val
+            return config
+    except (json.JSONDecodeError, FileNotFoundError):
+        st.error(f"Error reading {CERTAINTY_CONFIG_FILE}. Reverting to default settings.")
+        return {
+            "calculation_mode": "standard",
+            "custom_weights": DEFAULT_CERTAINTY_WEIGHTS.copy()
+        }
+
+#  Function to save certainty configuration
+def save_certainty_config(config_data):
+    try:
+        with open(CERTAINTY_CONFIG_FILE, "w") as f:
+            json.dump(config_data, f, indent=2)
+        st.success("Certainty calculation settings saved successfully!")
+    except Exception as e:
+        st.error(f"Error saving certainty settings: {str(e)}")
+
+
+# Aesthetics' Functions (No changes needed here)
 def add_bg_from_local(image_file, opacity=0.3):
     with open(image_file, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read()).decode()
 
     st.markdown(
         f"""
-<style>
-.stApp {{
-    background-image: linear-gradient(
-        rgba(255, 255, 255, {1 - opacity}),
-        rgba(255, 255, 255, {1 - opacity})
-    ), url(data:image/{"png"};base64,{encoded_string});
-    background-size: cover;
-}}
-.stTextInput > div > div > input {{
-    background-color: #f0f0f0;
-}}
-.stSelectbox [data-baseweb="select"] {{
-    background-color: #f0f0f0;
-}}
-.stSelectbox [data-baseweb="select"] > div {{
-    color: black;
-}}
-</style>
-""",
-        unsafe_allow_html=True
+    <style> .stApp {{ background-image: linear-gradient( rgba(255, 255, 255, {1 - opacity}), rgba(255, 255, 255, {1 - opacity}) ), url(data:image/{"png"};base64,{encoded_string}); background-size: cover; }} .stTextInput > div > div > input {{ background-color: #f0f0f0; }} .stSelectbox [data-baseweb="select"] {{ background-color: #f0f0f0; }} .stSelectbox [data-baseweb="select"] > div {{ color: black; }} </style>
+    """,
+    unsafe_allow_html=True
     )
 
 def header(url):
@@ -81,7 +109,7 @@ def st_info(url):
 def highlight(url):
     st.markdown(f'<p style="background-color:rgba(137, 142, 148, 0.5);color:#fefefe;font-size:24px;border-radius:30px;text-align:left;padding-left:20px;">{url}</p>', unsafe_allow_html=True)
 
-# Read PDF (No changes needed here) #
+# Read PDF (No changes needed here)
 def extract_text_from_pdf(pdf_path):
     try:
         with open(pdf_path, 'rb') as file:
@@ -89,12 +117,12 @@ def extract_text_from_pdf(pdf_path):
             text = ""
             for page_num in range(len(pdf_reader.pages)):
                 text += pdf_reader.pages[page_num].extract_text()
-        return text
+            return text
     except Exception as e:
         st.error(f"Error reading PDF {pdf_path}: {str(e)}")
         return ""
 
-#___Load All PDF Data___#
+#Load All PDF Data#
 def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
     """Loads and caches all PDF data for all countries"""
     pdf_cache = {}
@@ -137,7 +165,7 @@ def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
     st.session_state.country_list = sorted(list(country_set))
     return pdf_cache
 
-#___Load Text Files___#
+#Load Text Files#
 def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
     processed_texts = {}
 
@@ -161,18 +189,18 @@ def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
 
     return processed_texts
 
-#___Gemini API Config___#
+#Gemini API Config#
 def configure_genai(api_key):
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(model_name='models/gemini-2.5-flash')
     return model
 
-#___Rejection System___#
+#Rejection System#
 def save_rejected_code(product, country, code):
     entry = {
         "product_description": product,
         "country": country,
-        "rejected_code": code 
+        "rejected_code": code
     }
     try:
         if not os.path.exists(REJECTED_CODES_FILE):
@@ -213,7 +241,7 @@ def load_rejected_codes(product_description, country):
     ]
     return product_specific_rejections
 
-#___Historical Data Integration___#
+#Historical Data Integration#
 def format_historical_data_from_csv(
     csv_file_path=CSV_PATH,
     target_country=None,
@@ -393,7 +421,7 @@ def _get_historical_similarities_df(
 
     return historical_df[[hs_code_col_hist, 'similarity']].rename(columns={hs_code_col_hist: 'hs_code'})
 
-#  Component 1 - Historical Data Certainty
+# Component 1 - Historical Data Certainty
 def _calculate_historical_certainty(product_description, country, proposed_hs_code, product_gender=None):
     """
     Calculates certainty (0-100%) for a proposed HS code based purely on historical data similarity.
@@ -428,7 +456,7 @@ def _calculate_historical_certainty(product_description, country, proposed_hs_co
 
     return int(max_similarity * 100) # Convert to 0-100 scale
 
-#  Component 2 - Reasoning Length Score
+# Component 2 - Reasoning Length Score
 def _calculate_reasoning_score(reasoning_text):
     """
     Scores reasoning quality based on its length. Max 20 points.
@@ -450,13 +478,13 @@ def _calculate_reasoning_score(reasoning_text):
         score = 10 * (text_length - MIN_REASONING_LENGTH) / (MID_REASONING_LENGTH - MIN_REASONING_LENGTH)
     elif text_length < GOOD_REASONING_LENGTH:
         # Scale linearly from 10 to 20 points for longer reasoning
-        score = 10 + 10 * (text_length - MID_REASONING_LENGTH) / (GOOD_REASONING_LENGTH - MID_REASONING_LENGTH)
+        score = 10 + 10 * (text_length - MID_REASONING_LENGTH) / (GOOD_REASONING_LENGTH - MIN_REASONING_LENGTH) # Corrected denominator for scaling
     else:
         score = 20 # Full points for very long reasoning
 
     return int(min(20, max(0, score))) # Ensure score is between 0 and 20
 
-#  Component 3 - HS Code Format Score
+# Component 3 - HS Code Format Score
 def _calculate_format_score(proposed_hs_code, country):
     """
     Scores HS code format validity. Returns 10 points if perfect, 0 otherwise.
@@ -500,9 +528,9 @@ def _calculate_citation_quality(legal_basis_text):
 
     # Regex patterns for different types of citations
     # GRI Rules: e.g., "GRI 1", "Rule 3(b)"
-    gri_pattern = re.compile(r'(GRI\s+\d(?:$\w$)?)|(Rule\s+\d(?:$[a-zA-Z]$)*)', re.IGNORECASE)
+    gri_pattern = re.compile(r'(GRI\s+\d(?:$[a-zA-Z0-9]+$)?)|(Rule\s+\d(?:$[a-zA-Z0-9]+$)*)', re.IGNORECASE)
     # Chapter 64 Notes: e.g., "Note 3 to Chapter 64", "Chapter 64, Note 2"
-    chapter_note_pattern = re.compile(r'(?:Chapter\s+64,\s*)?Note\s+\d(?:\s*$.*$)?\s+to\s+Chapter\s+64', re.IGNORECASE)
+    chapter_note_pattern = re.compile(r'(?:Chapter\s+64,\s*)?Note\s+\d(?:\s*$\w+$)?\s*(?:to\s+Chapter\s+64)?', re.IGNORECASE)
     # HS Headings/Subheadings: e.g., "6403", "6403.12", "Heading 6403", "Subheading 6404.11"
     hs_code_pattern = re.compile(r'(?:(?:Heading|Subheading)\s+)?(64\d{2}(?:\.\d{2})?(?:\.\d{2})?)')
 
@@ -528,7 +556,7 @@ def _calculate_citation_quality(legal_basis_text):
 
     return score
 
-#  Component 5 - Inter-Option Agreement
+# Component 5 - Inter-Option Agreement
 def _calculate_inter_option_agreement(hs_codes_list):
     """
     Calculates certainty based on agreement among the three proposed HS codes. Max 10 points.
@@ -550,34 +578,38 @@ def _calculate_inter_option_agreement(hs_codes_list):
             elif re.match(r'^[0-9.]+$', code): # Standard numeric HS code
                 cleaned_codes.append(re.sub(r'\.', '', code).strip())
             else:
-                return 0 # If any code is invalid/missing, agreement is 0
+                cleaned_codes.append("") # Mark as invalid for agreement calculation
         else:
-            return 0 # If any code is invalid/missing, agreement is 0
+            cleaned_codes.append("") # Mark as invalid for agreement calculation
 
-    if len(cleaned_codes) != 3: # Ensure exactly 3 valid codes were extractable
+    # Filter out empty codes for agreement check
+    valid_codes_for_agreement = [c for c in cleaned_codes if c]
+
+    if len(valid_codes_for_agreement) < 3: # Ensure exactly 3 valid codes for agreement
         return 0
 
     # Check 6-digit agreement
-    first_six_digits = [code[:6] for code in cleaned_codes if len(code) >= 6]
-    if len(set(first_six_digits)) == 1 and len(first_six_digits) == 3:
+    first_six_digits = [code[:6] for code in valid_codes_for_agreement if len(code) >= 6]
+    if len(first_six_digits) == 3 and len(set(first_six_digits)) == 1:
         return 10 # All three share the same first 6 digits
 
     # Check 4-digit agreement
-    first_four_digits = [code[:4] for code in cleaned_codes if len(code) >= 4]
-    if len(set(first_four_digits)) == 1 and len(first_four_digits) == 3:
+    first_four_digits = [code[:4] for code in valid_codes_for_agreement if len(code) >= 4]
+    if len(first_four_digits) == 3 and len(set(first_four_digits)) == 1:
         return 5 # All three share the same first 4 digits
 
     return 0 # No significant agreement
 
-# NEW: Main function to calculate combined certainty (MODIFIED RETURN & WEIGHTS)
+#  Main function to calculate combined certainty (MODIFIED RETURN & WEIGHTS)
 def calculate_final_certainty(
     product_description,
     country,
     proposed_hs_code,
     product_gender,
     reasoning_text,
-    legal_basis_text, # New input
-    all_proposed_hs_codes_for_product # New input: list of [hs1, hs2, hs3] for inter-option
+    legal_basis_text, 
+    all_proposed_hs_codes_for_product, # input: list of [hs1, hs2, hs3] for inter-option
+    certainty_config #  Pass certainty configuration
 ):
     """
     Calculates a combined certainty score (0-100%) for a proposed HS code
@@ -585,13 +617,38 @@ def calculate_final_certainty(
     legal basis citation quality, and inter-option agreement.
     Returns a dictionary with final certainty and breakdown.
     """
-    # Weights for each component (sum to 1.0)
-    # Target total max score of 100 points
-    WEIGHT_HISTORICAL = 0.50  # Max 50 points
-    WEIGHT_REASONING = 0.20   # Max 20 points (reasoning score is already 0-20)
-    WEIGHT_FORMAT = 0.10      # Max 10 points (format score is already 0-10)
-    WEIGHT_CITATION = 0.10    # Max 10 points (citation score will be 0-10)
-    WEIGHT_AGREEMENT = 0.10   # Max 10 points (agreement score will be 0-10)
+    #  Handle 'none' calculation mode
+    if certainty_config['calculation_mode'] == "none":
+        return {
+            'final_certainty': 0,
+            'historical_score': 0,
+            'reasoning_score': 0,
+            'format_score': 0,
+            'citation_score': 0,
+            'inter_option_agreement_score': 0
+        }
+
+    # Determine active weights based on configuration
+    if certainty_config['calculation_mode'] == "standard":
+        active_weights = DEFAULT_CERTAINTY_WEIGHTS
+    elif certainty_config['calculation_mode'] == "custom":
+        active_weights = certainty_config['custom_weights']
+        # Normalize custom weights if their sum is not 100 for consistency in scoring
+        # (Though admin panel will enforce 100 on save, this is a fallback)
+        current_total_weight = sum(active_weights.values())
+        if current_total_weight == 0: # Avoid division by zero
+            st.warning("All custom weights are 0, certainty will be 0.")
+            active_weights = {k: 0 for k in active_weights}
+        elif current_total_weight != 100:
+            scale_factor = 100 / current_total_weight
+            active_weights = {k: v * scale_factor for k, v in active_weights.items()}
+            # Re-convert to int after scaling if desired, or keep as float for precision
+            # For simplicity, we assume admin panel saves as ints summing to 100
+    else:
+        # Fallback to standard if an unexpected mode is passed
+        st.warning(f"Unknown certainty calculation mode '{certainty_config['calculation_mode']}'. Using standard weights.")
+        active_weights = DEFAULT_CERTAINTY_WEIGHTS
+
 
     # Calculate individual component scores (on their own scales)
     hist_score = _calculate_historical_certainty(product_description, country, proposed_hs_code, product_gender) # 0-100
@@ -600,12 +657,13 @@ def calculate_final_certainty(
     citation_score = _calculate_citation_quality(legal_basis_text) # 0-10
     inter_option_agreement_score = _calculate_inter_option_agreement(all_proposed_hs_codes_for_product) # 0-10
 
-    # Scale individual scores to their weighted contribution
-    weighted_hist = (hist_score / 100) * (WEIGHT_HISTORICAL * 100) # hist_score is 0-100
-    weighted_reasoning = (reasoning_score / 20) * (WEIGHT_REASONING * 100) # reasoning_score 0-20
-    weighted_format = (format_score / 10) * (WEIGHT_FORMAT * 100) # format_score 0-10
-    weighted_citation = (citation_score / 10) * (WEIGHT_CITATION * 100) # citation_score 0-10
-    weighted_agreement = (inter_option_agreement_score / 10) * (WEIGHT_AGREEMENT * 100) # agreement_score 0-10
+    # Scale individual scores to their weighted contribution (assuming active_weights sum to 100)
+    # Each component score is normalized to 0-1 then multiplied by its weight
+    weighted_hist = (hist_score / 100) * active_weights.get('historical', 0)
+    weighted_reasoning = (reasoning_score / 20) * active_weights.get('reasoning', 0)
+    weighted_format = (format_score / 10) * active_weights.get('format', 0)
+    weighted_citation = (citation_score / 10) * active_weights.get('citation', 0)
+    weighted_agreement = (inter_option_agreement_score / 10) * active_weights.get('agreement', 0)
 
     final_certainty = weighted_hist + weighted_reasoning + weighted_format + weighted_citation + weighted_agreement
 
@@ -621,8 +679,7 @@ def calculate_final_certainty(
         'inter_option_agreement_score': inter_option_agreement_score # 0-10
     }
 
-
-# Enhanced Generate HS Codes (PROMPT MODIFIED to ask for Legal Basis) #
+# Enhanced Generate HS Codes (PROMPT MODIFIED to ask for Legal Basis)
 def generate_hs_codes(
     model,
     product_description,
@@ -654,7 +711,8 @@ def generate_hs_codes(
         rejected_section_for_prompt += "\n".join(f"- {code_str}" for code_str in rejected_hs_codes_for_prompt)
         rejected_section_for_prompt += "\n\nEnsure that none of your three new suggested codes match any of the HS codes listed directly above."
 
-    # Get historical data string for prompt (no change needed here as it's just for context to AI)
+
+    # Get historical data string for prompt 
     historical_data_string = format_historical_data_from_csv(
         target_country=country,
         target_full_product_description=product_description,
@@ -770,7 +828,7 @@ def generate_hs_codes(
     except Exception as e:
         return f"Error generating HS codes: {str(e)}"
 
-# Extract HS Codes from Response (MODIFIED: Now extracts Legal Basis) #
+# Extract HS Codes from Response (MODIFIED: Now extracts Legal Basis)
 def extract_hs_codes(text):
     # Extract product description
     product_desc_match = re.search(r'#### PRODUCT DESCRIPTION:\s*(.*?)(?=####|$)', text, re.DOTALL)
@@ -813,12 +871,12 @@ def extract_hs_codes(text):
             row[f'hs_code_{option_num}'] = data['hs_code']
             row[f'reasoning_{option_num}'] = data['reasoning']
             row[f'legal_basis_{option_num}'] = data['legal_basis'] # Store legal basis
-            row[f'certainty_{option_num}'] = 0 # Will be calculated externally
-            row[f'hist_certainty_{option_num}'] = 0
-            row[f'reasoning_score_{option_num}'] = 0
-            row[f'format_score_{option_num}'] = 0
-            row[f'citation_score_{option_num}'] = 0 # New
-            row[f'inter_option_agreement_score_{option_num}'] = inter_option_agreement_score # New, shared score
+            row[f'certainty_{option_num}'] = 0 # Will be calculated externally, placeholder
+            row[f'hist_certainty_{option_num}'] = 0 # Placeholder
+            row[f'reasoning_score_{option_num}'] = 0 # Placeholder
+            row[f'format_score_{option_num}'] = 0 # Placeholder
+            row[f'citation_score_{option_num}'] = 0 # placeholder
+            row[f'inter_option_agreement_score_{option_num}'] = inter_option_agreement_score #  shared score for this product
         else:
             # Fill any missing options if AI didn't provide 3
             row[f'hs_code_{option_num}'] = ""
@@ -833,7 +891,7 @@ def extract_hs_codes(text):
 
     return pd.DataFrame([row])
 
-# Bulk Processing Function (MODIFIED: Calls new final certainty calculation and stores breakdown) #
+# Bulk Processing Function (MODIFIED: Calls new final certainty calculation and stores breakdown)
 def process_bulk_data(
     df_input,
     model,
@@ -843,7 +901,8 @@ def process_bulk_data(
     name_col2,
     material_col,
     construction_col,
-    gender_col
+    gender_col,
+    certainty_config # Pass certainty configuration here
 ):
     all_results_list = []
     total_rows = len(df_input)
@@ -890,7 +949,7 @@ def process_bulk_data(
             "product_description": full_product_description, # Use the combined description
             "hs_code_1": "N/A", "certainty_1": 0, "reasoning_1": "Skipped", "legal_basis_1": "", # Added legal_basis
             "hist_certainty_1": 0, "reasoning_score_1": 0, "format_score_1": 0,
-            "citation_score_1": 0, "inter_option_agreement_score_1": 0, # New scores
+            "citation_score_1": 0, "inter_option_agreement_score_1": 0, # scores
             "hs_code_2": "", "certainty_2": 0, "reasoning_2": "", "legal_basis_2": "",
             "hist_certainty_2": 0, "reasoning_score_2": 0, "format_score_2": 0,
             "citation_score_2": 0, "inter_option_agreement_score_2": 0,
@@ -948,18 +1007,22 @@ def process_bulk_data(
                     extracted_data.get('hs_code_3', '')
                 ]
                 # Calculate inter-option agreement once
-                inter_option_agreement_score = _calculate_inter_option_agreement(all_current_hs_codes)
+                # Note: inter_option_agreement_score is already part of extracted_data from extract_hs_codes
+                # We reuse that if available, otherwise recalculate as fallback.
+                inter_option_agreement_score = extracted_data.get('inter_option_agreement_score_1',
+                                                                    _calculate_inter_option_agreement(all_current_hs_codes))
+
 
                 for i in range(1, 4):
                     hs_col = f"hs_code_{i}"
                     cert_col = f"certainty_{i}"
                     reas_col = f"reasoning_{i}"
-                    legal_basis_col = f"legal_basis_{i}" # New
+                    legal_basis_col = f"legal_basis_{i}" 
                     hist_cert_col = f"hist_certainty_{i}"
                     reason_score_col = f"reasoning_score_{i}"
                     format_score_col = f"format_score_{i}"
-                    citation_score_col = f"citation_score_{i}" # New
-                    inter_option_agreement_score_col = f"inter_option_agreement_score_{i}" # New
+                    citation_score_col = f"citation_score_{i}" 
+                    inter_option_agreement_score_col = f"inter_option_agreement_score_{i}" 
 
                     if hs_col in extracted_data and extracted_data.get(hs_col) != "":
                         base_result_row[hs_col] = extracted_data.get(hs_col, "")
@@ -974,7 +1037,8 @@ def process_bulk_data(
                             product_gender=gender,
                             reasoning_text=base_result_row[reas_col],
                             legal_basis_text=base_result_row[legal_basis_col], # Pass legal basis
-                            all_proposed_hs_codes_for_product=all_current_hs_codes # Pass all codes for this product
+                            all_proposed_hs_codes_for_product=all_current_hs_codes, # Pass all codes for this product
+                            certainty_config=certainty_config #  Pass certainty config
                         )
                         base_result_row[cert_col] = certainty_breakdown['final_certainty']
                         base_result_row[hist_cert_col] = certainty_breakdown['historical_score']
@@ -1051,7 +1115,7 @@ def check_password():
     # If the form hasn't been submitted yet, or credentials were incorrect, keep showing the form.
     return False
 
-# Regeneration Functions (MODIFIED: Calls new final certainty calculation and stores breakdown) #
+# Regeneration Functions 
 def regenerate_single_product(original_index):
     if st.session_state.bulk_results_df is None:
         print("bulk_results_df is None. Returning.")
@@ -1093,6 +1157,9 @@ def regenerate_single_product(original_index):
         country_texts = load_text_files_for_country(PDF_DIRECTORY, country)
         guidelines = country_texts.get(f"{country}_guidelines", "")
 
+        # Load certainty config for this regeneration
+        certainty_config = load_certainty_config()
+
         with st.spinner(f"Regenerating Index: {original_index}..."):
             new_response = generate_hs_codes(
                 model,
@@ -1121,18 +1188,21 @@ def regenerate_single_product(original_index):
                         new_data.get('hs_code_3', '')
                     ]
                     # Calculate inter-option agreement once for all options of this product
-                    inter_option_agreement_score = _calculate_inter_option_agreement(all_current_hs_codes)
+                    # Note: inter_option_agreement_score is already part of new_data from extract_hs_codes
+                    inter_option_agreement_score = new_data.get('inter_option_agreement_score_1',
+                                                                  _calculate_inter_option_agreement(all_current_hs_codes))
+
 
                     for i in range(1, 4):
                         hs_col = f'hs_code_{i}'
                         cert_col = f'certainty_{i}'
                         reas_col = f'reasoning_{i}'
-                        legal_basis_col = f'legal_basis_{i}' # New
+                        legal_basis_col = f'legal_basis_{i}' 
                         hist_cert_col = f"hist_certainty_{i}"
                         reason_score_col = f"reasoning_score_{i}"
                         format_score_col = f"format_score_{i}"
-                        citation_score_col = f"citation_score_{i}" # New
-                        inter_option_agreement_score_col = f"inter_option_agreement_score_{i}" # New
+                        citation_score_col = f"citation_score_{i}" 
+                        inter_option_agreement_score_col = f"inter_option_agreement_score_{i}" 
 
                         if hs_col in new_data and new_data.get(hs_col) != "":
                             df.loc[idx_loc, hs_col] = new_data.get(hs_col, '')
@@ -1147,7 +1217,8 @@ def regenerate_single_product(original_index):
                                 product_gender=gender,
                                 reasoning_text=df.loc[idx_loc, reas_col],
                                 legal_basis_text=df.loc[idx_loc, legal_basis_col], # Pass legal basis
-                                all_proposed_hs_codes_for_product=all_current_hs_codes # Pass all codes for this product
+                                all_proposed_hs_codes_for_product=all_current_hs_codes, # Pass all codes for this product
+                                certainty_config=certainty_config # Pass certainty config
                             )
                             df.loc[idx_loc, cert_col] = certainty_breakdown['final_certainty']
                             df.loc[idx_loc, hist_cert_col] = certainty_breakdown['historical_score']
@@ -1185,8 +1256,7 @@ def regenerate_single_product(original_index):
             st.session_state.regenerate_queue = set()
         st.session_state.regenerate_queue.discard(original_index)
 
-
-# Find Relevant Chapters for Footwear (No changes needed here) #
+# Find Relevant Chapters for Footwear (No changes needed here)
 def find_relevant_chapters(product_description, country, country_specific_pdf_data):
     keywords = {
         # Footwear keywords - Chapter 64

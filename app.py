@@ -94,5 +94,5 @@ else:
     elif st.session_state["selected_page"] == "Bulk Classification":
         show_bulk_classification_page()
 
-    elif st.session_state["selected_page"] == "Admin Panel": # <<< NEW PAGE ROUTE
+    elif st.session_state["selected_page"] == "Admin Panel": 
         show_admin_panel_page()

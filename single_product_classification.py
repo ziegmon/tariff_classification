@@ -1,13 +1,12 @@
 import pandas as pd
 import streamlit as st
 from helper_functions import (
-    configure_genai, generate_hs_codes, extract_hs_codes, 
+    configure_genai, generate_hs_codes, extract_hs_codes,
     find_relevant_chapters, load_all_pdf_data,
-    header, load_text_files_for_country
+    header, load_text_files_for_country,
+    calculate_final_certainty,
+    load_certainty_config 
 )
-
-
-
 
 def show_single_product_classification_page():
     header("Single Footwear HS Code Classification")
@@ -17,6 +16,10 @@ def show_single_product_classification_page():
         st.session_state.model = None
     if "pdf_cache" not in st.session_state:
         st.session_state.pdf_cache = {}
+    # Initialize certainty_config in session state
+    if "certainty_config" not in st.session_state:
+        st.session_state.certainty_config = load_certainty_config()
+
 
     # Configure Gemini API
     try:
@@ -34,7 +37,8 @@ def show_single_product_classification_page():
     with col1:
         country = st.selectbox(
             "Country",
-            ["Canada", "USA", "Australia", "Norway", "Switzerland"],
+            ["Canada", "USA", "Australia", "Norway", "Switzerland", "New Zealand", "Europe", "Japan", "Brazil", "South Korea", "United States"],
+            index=["Canada", "USA", "Australia", "Norway", "Switzerland", "New Zealand", "Europe", "Japan", "Brazil", "South Korea", "United States"].index("United States") if "United States" in ["Canada", "USA", "Australia", "Norway", "Switzerland", "New Zealand", "Europe", "Japan", "Brazil", "South Korea", "United States"] else 0,
             help="Select the target country for classification"
         )
         
@@ -109,7 +113,7 @@ def show_single_product_classification_page():
             if special_features:
                 desc_parts.append(f"Features: {special_features}.")
             
-            product_description = " ".join(desc_parts).strip()
+            full_product_description = " ".join(desc_parts).strip()
             
             # Load PDF cache if not already loaded
             if not st.session_state.pdf_cache:
@@ -125,7 +129,7 @@ def show_single_product_classification_page():
                 with st.spinner("🤖 Generating HS code classifications..."):
                     # Get country-specific data
                     processed_pdfs = st.session_state.pdf_cache[country_lower]
-                    relevant_chapters = find_relevant_chapters(product_description, country_lower, processed_pdfs)
+                    relevant_chapters = find_relevant_chapters(full_product_description, country_lower, processed_pdfs)
                     legal_notes = processed_pdfs.get("legal_notes", "")
                     classification_guide = processed_pdfs.get("classification_guide", "")
                     gri = processed_pdfs.get("gri", "")
@@ -138,7 +142,7 @@ def show_single_product_classification_page():
                         # Generate classifications
                         generated_response = generate_hs_codes(
                             st.session_state.model,
-                            product_description,
+                            full_product_description,
                             country_lower,
                             relevant_chapters,
                             legal_notes,
@@ -148,25 +152,76 @@ def show_single_product_classification_page():
                         )
                         
                         # Extract and display results
-                        results_df = extract_hs_codes(generated_response)
-                        
-                        if not results_df.empty:
+                        results_df_temp = extract_hs_codes(generated_response) # Renamed to avoid confusion
+
+                        if not results_df_temp.empty:
                             st.success("✅ Classification complete!")
                             
-                            # Display results
+                            # Recalculate certainty scores here after extraction
+                            extracted_data = results_df_temp.iloc[0].to_dict()
+                            all_current_hs_codes = [
+                                extracted_data.get('hs_code_1', ''),
+                                extracted_data.get('hs_code_2', ''),
+                                extracted_data.get('hs_code_3', '')
+                            ]
+
+                            # Apply certainty calculations with the loaded config
+                            for i in range(1, 4):
+                                hs_code = extracted_data.get(f'hs_code_{i}', '')
+                                reasoning = extracted_data.get(f'reasoning_{i}', '')
+                                legal_basis = extracted_data.get(f'legal_basis_{i}', '')
+
+                                if hs_code and hs_code.strip():
+                                    certainty_breakdown = calculate_final_certainty(
+                                        product_description=full_product_description,
+                                        country=country_lower,
+                                        proposed_hs_code=hs_code,
+                                        product_gender=gender,
+                                        reasoning_text=reasoning,
+                                        legal_basis_text=legal_basis,
+                                        all_proposed_hs_codes_for_product=all_current_hs_codes,
+                                        certainty_config=st.session_state.certainty_config 
+                                    )
+                                    results_df_temp.loc[0, f'certainty_{i}'] = certainty_breakdown['final_certainty']
+                                    results_df_temp.loc[0, f'hist_certainty_{i}'] = certainty_breakdown['historical_score']
+                                    results_df_temp.loc[0, f'reasoning_score_{i}'] = certainty_breakdown['reasoning_score']
+                                    results_df_temp.loc[0, f'format_score_{i}'] = certainty_breakdown['format_score']
+                                    results_df_temp.loc[0, f'citation_score_{i}'] = certainty_breakdown['citation_score']
+                                    results_df_temp.loc[0, f'inter_option_agreement_score_{i}'] = certainty_breakdown['inter_option_agreement_score']
+                                else:
+                                    # Ensure default 0s if HS code is missing
+                                    results_df_temp.loc[0, f'certainty_{i}'] = 0
+                                    results_df_temp.loc[0, f'hist_certainty_{i}'] = 0
+                                    results_df_temp.loc[0, f'reasoning_score_{i}'] = 0
+                                    results_df_temp.loc[0, f'format_score_{i}'] = 0
+                                    results_df_temp.loc[0, f'citation_score_{i}'] = 0
+                                    results_df_temp.loc[0, f'inter_option_agreement_score_{i}'] = 0
+
                             st.subheader("📊 Classification Results")
                             
                             # Show product description
-                            st.write(f"**Product Description:** {results_df['product_description'].iloc[0]}")
+                            st.write(f"**Product Description:** {results_df_temp['product_description'].iloc[0]}")
                             
+                            # Check if certainty calculation is enabled
+                            if st.session_state.certainty_config['calculation_mode'] == "none":
+                                st.info("Certainty calculation is currently disabled in the Admin Panel.")
+
                             # Display each option
                             for i in range(1, 4):
-                                hs_code = results_df.get(f'hs_code_{i}', [''])[0] if f'hs_code_{i}' in results_df.columns else ''
-                                certainty = results_df.get(f'certainty_{i}', [0])[0] if f'certainty_{i}' in results_df.columns else 0
-                                reasoning = results_df.get(f'reasoning_{i}', [''])[0] if f'reasoning_{i}' in results_df.columns else ''
+                                hs_code = results_df_temp.get(f'hs_code_{i}', [''])[0] if f'hs_code_{i}' in results_df_temp.columns else ''
+                                certainty = results_df_temp.get(f'certainty_{i}', [0])[0] if f'certainty_{i}' in results_df_temp.columns else 0
+                                reasoning = results_df_temp.get(f'reasoning_{i}', [''])[0] if f'reasoning_{i}' in results_df_temp.columns else ''
+                                legal_basis = results_df_temp.get(f'legal_basis_{i}', [''])[0] if f'legal_basis_{i}' in results_df_temp.columns else ''
                                 
+                                # breakdown scores
+                                hist_certainty = results_df_temp.get(f'hist_certainty_{i}', [0])[0]
+                                reasoning_score = results_df_temp.get(f'reasoning_score_{i}', [0])[0]
+                                format_score = results_df_temp.get(f'format_score_{i}', [0])[0]
+                                citation_score = results_df_temp.get(f'citation_score_{i}', [0])[0]
+                                inter_option_agreement_score = results_df_temp.get(f'inter_option_agreement_score_{i}', [0])[0]
+
                                 if hs_code and hs_code.strip():
-                                    with st.expander(f"🎯 Option {i}: {hs_code} ({certainty}% certainty)", expanded=(i==1)):
+                                    with st.expander(f"🎯 Option {i}: {hs_code}" + (f" ({certainty}% certainty)" if st.session_state.certainty_config['calculation_mode'] != "none" else ""), expanded=(i==1)):
                                         col1, col2 = st.columns([3, 1])
                                         
                                         with col1:
@@ -175,18 +230,31 @@ def show_single_product_classification_page():
                                             
                                             st.write("**Reasoning:**")
                                             st.write(reasoning)
+                                            
+                                            st.write("**Legal Basis:**")
+                                            st.write(legal_basis)
                                         
                                         with col2:
-                                            st.metric("Certainty", f"{certainty}%")
-                                            
+                                            if st.session_state.certainty_config['calculation_mode'] != "none":
+                                                st.metric("Certainty", f"{certainty}%")
+                                                st.markdown(f"**Breakdown:**")
+                                                st.markdown(f"- Hist. Similarity: **{hist_certainty:.0f}%**")
+                                                st.markdown(f"- Reasoning Detail: **{reasoning_score:.0f}/20**")
+                                                st.markdown(f"- HS Format: **{format_score:.0f}/10**")
+                                                st.markdown(f"- Citation Quality: **{citation_score:.0f}/10**")
+                                                st.markdown(f"- Inter-Option Agree: **{inter_option_agreement_score:.0f}/10**")
+                                            else:
+                                                st.markdown("Certainty calculation disabled.")
+
+
                                             if st.button(f"❌ Mark Incorrect", key=f"reject_single_{i}"):
                                                 from helper_functions import save_rejected_code
-                                                save_rejected_code(product_description, country_lower, hs_code)
+                                                save_rejected_code(full_product_description, country_lower, hs_code)
                                                 st.warning(f"Marked Option {i} as incorrect!")
                             
                             # Export option
                             st.subheader("💾 Export Results")
-                            results_csv = results_df.to_csv(index=False).encode('utf-8')
+                            results_csv = results_df_temp.to_csv(index=False).encode('utf-8')
                             st.download_button(
                                 label="📄 Download Classification Results (CSV)",
                                 data=results_csv,
