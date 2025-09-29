@@ -3,7 +3,7 @@ __pycache__/
 .streamlit/
 config.toml
 secret.toml
-
+all_ftw_plm_with_item_description_and_hscodes.csv
 /images/
 
 /venv
