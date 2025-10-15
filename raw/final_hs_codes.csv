@@ -1,0 +1,466 @@
+idx,input_country,input_product,input_material,input_construction,input_gender,product_description,suggested_hs_code_1,certainty_1_percent,actual_hs_code_from_dataset,selected_hs_code,certainty (%),status,selected_reasoning,timestamp
+50,CANADA,woven shorts Shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL",Woven,Men,"Product for CANADA: Men's woven shorts Shorts Material: 92% Polyester - PES, 8% Elastane (Spandex) - EL. Construction: Woven.",6203.43.00.20,90,6203430020,6203.43.00.20,90,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined according to the terms of the headings and any relative Section or Chapter Notes.\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes and, mutatis mutandis, to the above Rules.', 'Historical Data Consideration': 'The historical data shows similar products classified under 6203430020, which is a strong indicator. This option is considered.', 'Chapter & Section Fit': 'Chapter 62 applies to ""Articles of apparel and clothing accessories, not knitted or crocheted"". The product is described as ""woven,"" confirming its inclusion in Chapter 62.', 'Heading & Subheading Determination': 'Heading 62.03 covers ""Men\'s or boys\' suits, ensembles, jackets, blazers, trousers, bib and brace overalls, breeches and shorts (other than swimwear).""\n    Subheading 6203.4 covers ""Trousers, bib and brace overalls, breeches and shorts"".\n    Subheading 6203.43 covers ""Of synthetic fibres"". The shorts are 92% Polyester, a synthetic fibre, making this subheading appropriate.', 'National Tariff Line Determination': 'The tariff item 6203.43.00 is the 8-digit Canadian code.\n    The full code 6203.43.00.20 includes a statistical suffix of ‘20’ which corresponds to ""Shorts"" within this tariff item.', 'Exclusions & Verifications': 'Chapter 61 is excluded because the shorts are woven, not knitted or crocheted.\n    The proposed code is not in `Previously Rejected HS Codes`.\n    The code exists VERBATIMin `OFFICIAL CHAPTER CONTENT`.'}",2025-06-30 14:44:38
+51,CANADA,hoodie Sweatshirts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES",Knit,Men,"Product for CANADA: Men's hoodie Sweatshirts Material: 68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES. Construction: Knit.",6110.20.00.91,75,6110200091,6110.20.00.91,75,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined according to the terms of the headings and any relative Section or Chapter Notes.\n    GRI 3(b): The garment is made of a mixture of materials, and is classified by the material that gives it its essential character, which in this case is cotton (68%).\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes.', 'Historical Data Consideration': ""The historical data includes a similar product with HS Code 6110200011. This code is for a men's knitted hoodie sweatshirt with the same material composition. However, this code is not present verbatim in the official chapter content. Therefore, it can only serve as a guide."", 'Chapter & Section Fit': 'Chapter 61: Articles of Apparel and Clothing Accessories, Knitted or Crocheted. The product is explicitly described as ""knit,"" making this chapter appropriate.\n    Section XI: Textiles and Textile Articles. This section covers textile garments.', 'Heading & Subheading Determination': '61.10: Jerseys, pullovers, cardigans, waistcoats and similar articles, knitted or crocheted. A hoodie sweatshirt is similar to a pullover.\n    6110.20: Of cotton. The garment is predominantly cotton (68%).', 'National Tariff Line Determination': ""6110.20.00: Of cotton\n    6110.20.00.91: - - - - -Men's or boys'"", 'Exclusions & Verifications': 'Chapter 62 is excluded because the garment is knitted, not woven.\n    The proposed code is not in the `Previously Rejected HS Codes` list.\n    The proposed code exists verbatim in the `OFFICIAL CHAPTER CONTENT`.'}",2025-06-30 14:44:38
+52,CANADA,hoodie Hoodies & Sweatshirts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES",Knit,Men,"Product for CANADA: Men's hoodie Hoodies & Sweatshirts Material: 68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES. Construction: Knit.",6110.20.00.91,75,6110200091,6110.20.00.91,75,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.\n    GRI 3(b): Since the hoodie is made of a mixture of materials, it is classified by the material that gives it its essential character, which in this case is cotton due to its highest percentage (68%).\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes.', 'Historical Data Consideration': 'The historical data shows a similar product classified under 6110200011. This suggests that heading 6110 and the ""Of cotton"" subheading are relevant. However, the exact suffix is not applicable, requiring further investigation of the current documentation.', 'Chapter & Section Fit': 'Chapter 61 applies to knitted or crocheted articles of apparel. The product is described as a knitted hoodie, making Chapter 61 appropriate.', 'Heading & Subheading Determination': 'Heading 61.10 covers ""Jerseys, pullovers, cardigans, waistcoats and similar articles, knitted or crocheted."" A hoodie is similar to a pullover or cardigan.\n    Subheading 6110.20 is for ""Of cotton"". Since cotton is the predominant material (68%), this subheading is appropriate.', 'National Tariff Line Determination': 'The available statistical suffixes under 6110.20.00 are:\n        11- - - - -Brushed or fleeced: Men\'s or boys\'\n        12- - - - - Brushed or fleeced: Women\'s or girls\'\n        21- - - - -Other, containing spandex (elasthane): Men\'s or boys\'\n        22- - - - -Other, containing spandex (elasthane): Women\'s or girls\'\n        91- - - - - -Other: Men\'s or boys\'\n        92- - - - - -Other: Women\'s or girls\'\n    The hoodie is not described as brushed or fleeced, nor does it contain elastane. Therefore, the ""Other"" options are considered.\n    Since the product is for men, the suffix "".91"" is selected.', 'Exclusions & Verifications': 'Chapter 62 is excluded because the product is knitted, not woven.\n    The proposed code is not in the `Previously Rejected HS Codes` list.\n    The code adheres to all critical rules.'}",2025-06-30 14:44:38
+53,CANADA,knitted pants Pants,"68% Cotton, 20% Polyester, 12% Polyester",Knit,Men,"Product for CANADA: Men's knitted pants Pants Material: 68% Cotton, 20% Polyester, 12% Polyester. Construction: Knit.",6103.42.00.10,90,6103420010,6103.42.00.10,90,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined according to the terms of the headings and any relative Section or Chapter Notes.\n    GRI 3(b): Since the pants are made of a mixture of materials, they are classified as if consisting of the material that gives them their essential character, which is cotton (68%).\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes.', 'Historical Data Consideration': ""The historical data shows a similar product (men's knitted pants with a high percentage of cotton) classified under 6103.42.00.10, which increases confidence in this classification."", 'Chapter & Section Fit': 'Chapter 61 applies to knitted or crocheted articles of apparel. The product is described as knitted pants, fitting within this chapter.', 'Heading & Subheading Determination': 'Heading 61.03 covers ""Men\'s or boys\' suits, ensembles, jackets, blazers, trousers, bib and brace overalls, breeches and shorts (other than swimwear), knitted or crocheted.""\n    Subheading 6103.42 is for ""Trousers, bib and brace overalls, breeches and shorts: - - Of cotton"".', 'National Tariff Line Determination': 'The statistical suffix is determined as follows:\n    6103.42.00 is the 8-digit code for ""Of cotton"".\n    6103.42.00.10 is specified for ""Men\'s"" trousers.', 'Exclusions & Verifications': 'Chapter 62 is excluded because the product is knitted, not woven.\n    The proposed code is not in the `Previously Rejected HS Codes` list.\n    The code adheres to all critical rules, including the 10-digit length requirement.'}",2025-06-30 14:44:38
+54,CANADA,knitted t-shirt T-Shirts,100% Cotton (Organic) - CO,Knit,Men,Product for CANADA: Men's knitted t-shirt T-Shirts Material: 100% Cotton (Organic) - CO. Construction: Knit.,6109.10.00.12,95,6109100012,6109.10.00.12,95,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined according to the terms of the headings and any relative Section or Chapter Notes.\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes and, mutatis mutandis, to the above Rules.', 'Historical Data Consideration': ""The historical data shows a similar product (Men's Knitted T-Shirt, 100% Cotton) classified under 6109.10.00.12. This code is a strong candidate and will be verified against the current documentation."", 'Chapter & Section Fit': 'Chapter 61 applies to knitted or crocheted articles of apparel. The product is a knitted t-shirt, fitting within this chapter.', 'Heading & Subheading Determination': 'Heading 61.09 is designated for ""T-shirts, singlets and other vests, knitted or crocheted."" This accurately describes the product.\n    Subheading 6109.10 is for articles ""Of cotton"". Since the t-shirt is 100% cotton, this subheading is appropriate.', 'National Tariff Line Determination': 'The tariff item 6109.10.00 is the 8-digit Canadian code for T-shirts of cotton.\n    The full code 6109.10.00.12 includes a statistical suffix of ‘12’. Within the tariff item for cotton T-shirts, the Canadian Customs Tariff provides two options for men\'s or boys\' T-shirts:\n        11: For a specific type of all-white T-shirt.\n        12: For ""---Other T-shirts"".\n    As the product does not meet the narrow description for suffix \'11\', it correctly falls under the \'12\' statistical suffix.', 'Exclusions & Verifications': 'Chapter 62 is excluded because the product is knitted, not woven.\n    The proposed code 6109.10.00.12 is not in the `Previously Rejected HS Codes for this Item` list.\n    The code and suffix exist verbatimin the `OFFICIAL CHAPTER CONTENT`.'}",2025-06-30 14:44:38
+50,CANADA,woven shorts Shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL",Woven,Men,"Product for CANADA: Men's woven shorts Shorts Material: 92% Polyester - PES, 8% Elastane (Spandex) - EL. Construction: Woven.",6203.43.00.20,90,6203430020,6203.43.00.20,90,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined according to the terms of the headings and any relative Section or Chapter Notes.\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes and, mutatis mutandis, to the above Rules.', 'Historical Data Consideration': 'The historical data shows similar products classified under 6203430020, which is a strong indicator. This option is considered.', 'Chapter & Section Fit': 'Chapter 62 applies to ""Articles of apparel and clothing accessories, not knitted or crocheted"". The product is described as ""woven,"" confirming its inclusion in Chapter 62.', 'Heading & Subheading Determination': 'Heading 62.03 covers ""Men\'s or boys\' suits, ensembles, jackets, blazers, trousers, bib and brace overalls, breeches and shorts (other than swimwear).""\n    Subheading 6203.4 covers ""Trousers, bib and brace overalls, breeches and shorts"".\n    Subheading 6203.43 covers ""Of synthetic fibres"". The shorts are 92% Polyester, a synthetic fibre, making this subheading appropriate.', 'National Tariff Line Determination': 'The tariff item 6203.43.00 is the 8-digit Canadian code.\n    The full code 6203.43.00.20 includes a statistical suffix of ‘20’ which corresponds to ""Shorts"" within this tariff item.', 'Exclusions & Verifications': 'Chapter 61 is excluded because the shorts are woven, not knitted or crocheted.\n    The proposed code is not in `Previously Rejected HS Codes`.\n    The code exists VERBATIMin `OFFICIAL CHAPTER CONTENT`.'}",2025-06-30 15:18:39
+51,CANADA,hoodie Sweatshirts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES",Knit,Men,"Product for CANADA: Men's hoodie Sweatshirts Material: 68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES. Construction: Knit.",6110.20.00.91,75,6110200091,6110.20.00.91,75,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined according to the terms of the headings and any relative Section or Chapter Notes.\n    GRI 3(b): The garment is made of a mixture of materials, and is classified by the material that gives it its essential character, which in this case is cotton (68%).\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes.', 'Historical Data Consideration': ""The historical data includes a similar product with HS Code 6110200011. This code is for a men's knitted hoodie sweatshirt with the same material composition. However, this code is not present verbatim in the official chapter content. Therefore, it can only serve as a guide."", 'Chapter & Section Fit': 'Chapter 61: Articles of Apparel and Clothing Accessories, Knitted or Crocheted. The product is explicitly described as ""knit,"" making this chapter appropriate.\n    Section XI: Textiles and Textile Articles. This section covers textile garments.', 'Heading & Subheading Determination': '61.10: Jerseys, pullovers, cardigans, waistcoats and similar articles, knitted or crocheted. A hoodie sweatshirt is similar to a pullover.\n    6110.20: Of cotton. The garment is predominantly cotton (68%).', 'National Tariff Line Determination': ""6110.20.00: Of cotton\n    6110.20.00.91: - - - - -Men's or boys'"", 'Exclusions & Verifications': 'Chapter 62 is excluded because the garment is knitted, not woven.\n    The proposed code is not in the `Previously Rejected HS Codes` list.\n    The proposed code exists verbatim in the `OFFICIAL CHAPTER CONTENT`.'}",2025-06-30 15:18:39
+52,CANADA,hoodie Hoodies & Sweatshirts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES",Knit,Men,"Product for CANADA: Men's hoodie Hoodies & Sweatshirts Material: 68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES. Construction: Knit.",6110.20.00.91,75,6110200091,6110.20.00.91,75,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.\n    GRI 3(b): Since the hoodie is made of a mixture of materials, it is classified by the material that gives it its essential character, which in this case is cotton due to its highest percentage (68%).\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes.', 'Historical Data Consideration': 'The historical data shows a similar product classified under 6110200011. This suggests that heading 6110 and the ""Of cotton"" subheading are relevant. However, the exact suffix is not applicable, requiring further investigation of the current documentation.', 'Chapter & Section Fit': 'Chapter 61 applies to knitted or crocheted articles of apparel. The product is described as a knitted hoodie, making Chapter 61 appropriate.', 'Heading & Subheading Determination': 'Heading 61.10 covers ""Jerseys, pullovers, cardigans, waistcoats and similar articles, knitted or crocheted."" A hoodie is similar to a pullover or cardigan.\n    Subheading 6110.20 is for ""Of cotton"". Since cotton is the predominant material (68%), this subheading is appropriate.', 'National Tariff Line Determination': 'The available statistical suffixes under 6110.20.00 are:\n        11- - - - -Brushed or fleeced: Men\'s or boys\'\n        12- - - - - Brushed or fleeced: Women\'s or girls\'\n        21- - - - -Other, containing spandex (elasthane): Men\'s or boys\'\n        22- - - - -Other, containing spandex (elasthane): Women\'s or girls\'\n        91- - - - - -Other: Men\'s or boys\'\n        92- - - - - -Other: Women\'s or girls\'\n    The hoodie is not described as brushed or fleeced, nor does it contain elastane. Therefore, the ""Other"" options are considered.\n    Since the product is for men, the suffix "".91"" is selected.', 'Exclusions & Verifications': 'Chapter 62 is excluded because the product is knitted, not woven.\n    The proposed code is not in the `Previously Rejected HS Codes` list.\n    The code adheres to all critical rules.'}",2025-06-30 15:18:39
+53,CANADA,knitted pants Pants,"68% Cotton, 20% Polyester, 12% Polyester",Knit,Men,"Product for CANADA: Men's knitted pants Pants Material: 68% Cotton, 20% Polyester, 12% Polyester. Construction: Knit.",6103.42.00.10,90,6103420010,6103.42.00.10,90,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined according to the terms of the headings and any relative Section or Chapter Notes.\n    GRI 3(b): Since the pants are made of a mixture of materials, they are classified as if consisting of the material that gives them their essential character, which is cotton (68%).\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes.', 'Historical Data Consideration': ""The historical data shows a similar product (men's knitted pants with a high percentage of cotton) classified under 6103.42.00.10, which increases confidence in this classification."", 'Chapter & Section Fit': 'Chapter 61 applies to knitted or crocheted articles of apparel. The product is described as knitted pants, fitting within this chapter.', 'Heading & Subheading Determination': 'Heading 61.03 covers ""Men\'s or boys\' suits, ensembles, jackets, blazers, trousers, bib and brace overalls, breeches and shorts (other than swimwear), knitted or crocheted.""\n    Subheading 6103.42 is for ""Trousers, bib and brace overalls, breeches and shorts: - - Of cotton"".', 'National Tariff Line Determination': 'The statistical suffix is determined as follows:\n    6103.42.00 is the 8-digit code for ""Of cotton"".\n    6103.42.00.10 is specified for ""Men\'s"" trousers.', 'Exclusions & Verifications': 'Chapter 62 is excluded because the product is knitted, not woven.\n    The proposed code is not in the `Previously Rejected HS Codes` list.\n    The code adheres to all critical rules, including the 10-digit length requirement.'}",2025-06-30 15:18:39
+54,CANADA,knitted t-shirt T-Shirts,100% Cotton (Organic) - CO,Knit,Men,Product for CANADA: Men's knitted t-shirt T-Shirts Material: 100% Cotton (Organic) - CO. Construction: Knit.,6109.10.00.12,95,6109100012,6109.10.00.12,95,Selected Option 1,"{'GRI Application': 'GRI 1: The classification is determined according to the terms of the headings and any relative Section or Chapter Notes.\n    GRI 6: Classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related Subheading Notes and, mutatis mutandis, to the above Rules.', 'Historical Data Consideration': ""The historical data shows a similar product (Men's Knitted T-Shirt, 100% Cotton) classified under 6109.10.00.12. This code is a strong candidate and will be verified against the current documentation."", 'Chapter & Section Fit': 'Chapter 61 applies to knitted or crocheted articles of apparel. The product is a knitted t-shirt, fitting within this chapter.', 'Heading & Subheading Determination': 'Heading 61.09 is designated for ""T-shirts, singlets and other vests, knitted or crocheted."" This accurately describes the product.\n    Subheading 6109.10 is for articles ""Of cotton"". Since the t-shirt is 100% cotton, this subheading is appropriate.', 'National Tariff Line Determination': 'The tariff item 6109.10.00 is the 8-digit Canadian code for T-shirts of cotton.\n    The full code 6109.10.00.12 includes a statistical suffix of ‘12’. Within the tariff item for cotton T-shirts, the Canadian Customs Tariff provides two options for men\'s or boys\' T-shirts:\n        11: For a specific type of all-white T-shirt.\n        12: For ""---Other T-shirts"".\n    As the product does not meet the narrow description for suffix \'11\', it correctly falls under the \'12\' statistical suffix.', 'Exclusions & Verifications': 'Chapter 62 is excluded because the product is knitted, not woven.\n    The proposed code 6109.10.00.12 is not in the `Previously Rejected HS Codes for this Item` list.\n    The code and suffix exist verbatimin the `OFFICIAL CHAPTER CONTENT`.'}",2025-06-30 15:18:39
+20,NORWAY,knitted tank T-Shirts,"85% Recycled Polyester, 15% Elastane - EL",Knitted,Men,"Product for NORWAY: Men's knitted tank T-Shirts Material: 85% Recycled Polyester, 15% Elastane - EL. Construction: Knitted.",6109.90.10,100,61099010,6109.90.10,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+21,NORWAY,knitted tights Tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL",Knitted,Men,"Product for NORWAY: Men's knitted tights Tights Material: 73% Polyamide (Nylon) - PA, 27% Elastane - EL. Construction: Knitted.",6103.43.00,100,61034300,6103.43.00,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+22,NORWAY,knitted half tights Tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL",Knitted,Men,"Product for NORWAY: Men's knitted half tights Tights Material: 73% Polyamide (Nylon) - PA, 27% Elastane - EL. Construction: Knitted.",6103.43.00,100,61034300,6103.43.00,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+23,NORWAY,woven padded vest Winter Jackets,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL",Woven,Men,"Product for NORWAY: Men's woven padded vest Winter Jackets Material: 85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL. Construction: Woven.",6201.40.00,100,62014000,6201.40.00,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+24,NORWAY,woven shorts Shorts,"75% Recycled Polyester, 25% Elastane - EL",Woven,Men,"Product for NORWAY: Men's woven shorts Shorts Material: 75% Recycled Polyester, 25% Elastane - EL. Construction: Woven.",6203.43.01,100,62034301,6203.43.01,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+25,NORWAY,knitted tights Tights,"74% recycled polyester, 26% elastane",Knitted,Men,"Product for NORWAY: Men's knitted tights Tights Material: 74% recycled polyester, 26% elastane. Construction: Knitted.",6103.43.00,100,61034300,6103.43.00,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+26,NORWAY,knitted t-shirt Long Sleeves,"90% Recycled Polyester, 10% Elastane - EL",Knitted,Men,"Product for NORWAY: Men's knitted t-shirt Long Sleeves Material: 90% Recycled Polyester, 10% Elastane - EL. Construction: Knitted.",6109.90.10,100,61099010,6109.90.10,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+27,NORWAY,knitted t-shirt Short Sleeves,100% recycled polyester,Knitted,Men,Product for NORWAY: Men's knitted t-shirt Short Sleeves Material: 100% recycled polyester. Construction: Knitted.,6109.90.10,100,61099010,6109.90.10,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+28,NORWAY,woven jacket Winter Jackets,"85% Polyamide, 15% Elastane",Woven,Men,"Product for NORWAY: Men's woven jacket Winter Jackets Material: 85% Polyamide, 15% Elastane. Construction: Woven.",6201.40.00,100,62014000,6201.40.00,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+29,NORWAY,knitted tights Tights,"72% Recycled Polyester, 28% Elastane - EL",Knitted,Men,"Product for NORWAY: Men's knitted tights Tights Material: 72% Recycled Polyester, 28% Elastane - EL. Construction: Knitted.",6103.43.00,100,61034300,6103.43.00,100,Validated (with Reasoning),Validated (with reasoning),2025-07-16 15:03:10
+100,EUROPE,knitted pants Pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL",Knitted,Men,"Product for EUROPE: Men's knitted pants Pants Material: 90% Polyester Lanzatech - CC, 10% Elastane - EL. Construction: Knitted.",6103.43.00.00,90,6103430000,6103.43.00.00,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    *   GRI 6: Subheadings are compared on equal footing, and the most specific subheading is chosen.
+
+2.  *Historical Data Consideration*:
+    *   The historical data includes ""Tights, for Men, made of 68% Polyamide and 32% Elastane. Construction: Knitted. Country: Europe -> HS Code: 6103.43.00.00"". This suggests that 6103.43 could be a relevant classification for men's knitted pants made of synthetic fibers.
+
+3.  *Chapter & Section Fit*:
+    *   Section XI: Textiles and textile articles.
+    *   Chapter 61: Articles of apparel and clothing accessories, knitted or crocheted. The product is knitted, placing it in Chapter 61.
+
+4.  *Heading & Subheading Determination*:
+    *   Heading 6103: Men's or boys' suits, ensembles, jackets, blazers, trousers, bib and brace overalls, breeches and shorts (other than swimwear), knitted or crocheted. This heading accurately describes the product.
+    *   Subheading 6103.4: Trousers, bib and brace overalls, breeches and shorts.
+    *   Subheading 6103.43: Of synthetic fibres. Since the pants are 90% polyester, a synthetic fiber, this subheading is appropriate.
+    *   Subheading 6103.43.00: This is the 8-digit code.
+
+5.  *National Tariff Line Determination*:
+    *   The final two digits (00) are the TARIC subheading.
+
+6.  *Exclusions & Verifications*:
+    *   Chapter 62 is excluded because the product is knitted, not woven.
+
+7.  *Internal Verification Check*:
+
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is knitted, and the code is in Chapter 61.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6103.43.00.00` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **This is a non-negotiable, mandatory check. If the exact code is NOT found, this entire option is INVALID and you MUST discard it. If it IS found, you MUST quote the exact line item from the document that contains the code.** Yes, the code exists: `6103430000 80 6- - Of synthetic fibres`
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the product is classified as ""Of synthetic fibres"" because polyester is the predominant material (90%).",2025-08-08 11:59:45
+101,EUROPE,knitted tank T-Shirts,100% Polyester (Mechanical Recycled) - rPES,Knitted,Men,Product for EUROPE: Men's knitted tank T-Shirts Material: 100% Polyester (Mechanical Recycled) - rPES. Construction: Knitted.,6109.90.20.00,95,6109902000,6109.90.20.00,100,Validated (with Reasoning),"1. *GRI Application*:
+    * GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    * GRI 6: Classification at the subheading level must follow the same principles as GRI 1.
+2. *Historical Data Consideration*:
+    * The provided example classification for Europe, ""Men's T-shirt, knitted, made of 100% polyester,"" suggests HS code 6109.90.20.00. This serves as a strong candidate due to the similarity in product description (men's knitted shirt made of polyester).
+3. *Chapter & Section Fit*:
+    * Section XI: Textiles and textile articles.
+    * Chapter 61: Articles of apparel and clothing accessories, knitted or crocheted. The product is a knitted garment, placing it in Chapter 61.
+4. *Heading & Subheading Determination*:
+    * Heading 6109: T-shirts, singlets and other vests, knitted or crocheted. This heading accurately describes the product.
+    * Subheading 6109.90: Of other textile materials.
+    * Subheading 6109.90.20: Of wool or fine animal hair or man-made fibres. Since the T-shirt is 100% polyester (a man-made fiber), this subheading is appropriate.
+5. *National Tariff Line Determination*:
+    * The final two digits (00) are the TARIC subheading.
+6. *Exclusions & Verifications*:
+    * Chapter 62 is excluded because the garment is knitted, not woven.
+7. *Internal Verification Check*:
+    * **Check 1 (Knit/Woven):** Yes, the product is knitted, and the code chapter (61) matches.
+    * **Check 2 (Code in Docs):** Yes, the exact HS code `6109.90.20.00` exists verbatim in the provided `OFFICIAL CHAPTER CONTENT`. The line item is: `6109902000 80 8- - Of wool or fine animal hair or man-made fibres`.
+    * **Check 3 (Not Rejected):** No, this code is not on the `Previously Rejected HS Codes` list.
+    * **Check 4 (Material Predominance):** Yes, the classification correctly reflects the predominant material by weight (100% polyester, a man-made fiber).",2025-08-08 11:59:45
+102,EUROPE,knitted long sleeves t-shirt T-Shirts,100% Polyester,Knitted,Men,Product for EUROPE: Men's knitted long sleeves t-shirt T-Shirts Material: 100% Polyester. Construction: Knitted.,6109.90.20.00,95,6109902000,6109.90.20.00,100,Validated (with Reasoning),"1. *GRI Application*:
+    * GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    * GRI 6: Subheading classification follows the same principles as GRI 1, based on the specific descriptions provided in the nomenclature.
+2. *Historical Data Consideration*:
+    * The historical data provides a similar product (Men's Knitted Long Sleeves T-shirt, 100% Polyester) classified under HS code 6109.90.20.00. This serves as a strong candidate and is verified against the current documentation.
+3. *Chapter & Section Fit*:
+    * Section XI covers ""Textiles and textile articles"".
+    * Chapter 61 covers ""ARTICLES OF APPAREL AND CLOTHING ACCESSORIES, KNITTED OR CROCHETED"". The product is a knitted garment, placing it in Chapter 61.
+4. *Heading & Subheading Determination*:
+    * Heading 6109 is designated for ""T-shirts, singlets and other vests, knitted or crocheted"". This accurately describes the product.
+    * Subheading 6109.90 is for ""Of other textile materials"".
+    * Subheading 6109.90.20 is for ""Of wool or fine animal hair or man-made fibres"". Since the T-shirt is 100% polyester, a synthetic man-made fibre, this is the correct 8-digit CN code.
+5. *National Tariff Line Determination*:
+    * The final two digits (00) are the TARIC subheading. This code is found by consulting the EU's online TARIC database. The 00 subheading indicates that, for the general case, no specific Union-wide measures (such as anti-dumping duties or tariff quotas) are applicable to this product.
+6. *Exclusions & Verifications*:
+    * Chapter 62 is excluded because the garment is knitted, not woven.
+    * 6109.10.00 is excluded because it is specifically for ""Of cotton"".
+    * 6109.90.90 is excluded because it is for ""Of other textile materials"" when the material is not wool, fine animal hair, or man-made fibres.
+7. *Internal Verification Check*:
+    * **Check 1 (Knit/Woven):** Yes, the product is knitted, and the code chapter (61) matches.
+    * **Check 2 (Code in Docs):** Yes, the exact HS code `6109.90.20.00` exists verbatim in the provided `OFFICIAL CHAPTER CONTENT`. The line item is: `6109902000 80 8- - Of wool or fine animal hair or man-made fibres`.
+    * **Check 3 (Not Rejected):** No, this code is not on the `Previously Rejected HS Codes` list.
+    * **Check 4 (Material Predominance):** Yes, the classification correctly reflects the predominant material by weight (100% polyester, a man-made fiber).",2025-08-08 11:59:45
+103,EUROPE,knitted tights short Tights,"68% Polyamide, 32% Elastane",Knitted,Men,"Product for EUROPE: Men's knitted tights short Tights Material: 68% Polyamide, 32% Elastane. Construction: Knitted.",6103.43.00.00,95,6103430000,6103.43.00.00,100,Validated (with Reasoning),"1. *GRI Application*:
+    * GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    * GRI 6: Classification at the subheading level must follow the same principles as GRI 1.
+2. *Historical Data Consideration*:
+    * The historical data contains a similar product: ""Men, Knitted Tights short, Tights, 68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"" with HS Code 6103.43.00.00. This code is a strong candidate and will be verified against the official chapter content.
+3. *Chapter & Section Fit*:
+    * Section XI: Textiles and textile articles.
+    * Chapter 61: Articles of apparel and clothing accessories, knitted or crocheted. The product is knitted, placing it in Chapter 61.
+4. *Heading & Subheading Determination*:
+    * Heading 6103: Men's or boys' suits, ensembles, jackets, blazers, trousers, bib and brace overalls, breeches and shorts (other than swimwear), knitted or crocheted.
+    * Subheading 6103.43: Trousers, bib and brace overalls, breeches and shorts: Of synthetic fibres. Since the tights are made of 68% Polyamide (a synthetic fiber) and 32% Elastane, this subheading is appropriate.
+    * The product is short tights, which are considered shorts.
+5. *National Tariff Line Determination*:
+    * The complete HS code is 6103.43.00.00, as found in the official chapter content.
+6. *Exclusions & Verifications*:
+    * Chapter 62 is excluded because the product is knitted, not woven.
+    * 6104 is excluded because the product is for men, not women.
+7. *Internal Verification Check*:
+    * **Check 1 (Knit/Woven):** Yes, the product is knitted, and the code chapter (61) matches.
+    * **Check 2 (Code in Docs):** Yes, the exact HS code `6103.43.00.00` exists verbatim in the provided `OFFICIAL CHAPTER CONTENT`. The line item is: `6103430000 80 6- - Of synthetic fibres`.
+    * **Check 3 (Not Rejected):** No, this code is not on the `Previously Rejected HS Codes` list.
+    * **Check 4 (Material Predominance):** Yes, the classification correctly reflects the predominant material by weight (Polyamide, a synthetic fiber).",2025-08-08 11:59:45
+104,EUROPE,woven pants Pants,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES",Woven,Men,"Product for EUROPE: Men's woven pants Pants Material: 81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES. Construction: Woven.",6203.43.90.00,90,6203431900,6203.43.19.00,5,Selected Option 3,"1.  *GRI Application*:
+    *   GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    *   GRI 6: Subheadings are classified according to the terms of those subheadings and any related Subheading Notes, mutatis mutandis, and that comparisons are made only at the same level.
+
+2.  *Historical Data Consideration*: No similar historical data was found.
+
+3.  *Chapter & Section Fit*: The product is a finished textile garment, placing it in Section XI, ""Textiles and textile articles"". As the garment is explicitly ""woven,"" it falls under Chapter 62, which covers ""ARTICLES OF APPAREL AND CLOTHING ACCESSORIES, NOT KNITTED OR CROCHETED"". This is confirmed by Chapter Note 1, which states, ""This chapter applies only to made-up knitted or crocheted articles"". This excludes it from Chapter 61.
+
+4.  *Heading & Subheading Determination*:
+    *   Within Chapter 62, Heading 6203 is designated for ""Men's or boys' suits, ensembles, jackets, blazers, trousers, bib and brace overalls, breeches and shorts (other than swimwear)"".
+    *   Subheading 6203.4 is for ""Trousers, bib and brace overalls, breeches and shorts"".
+    *   Subheading 6203.43 is for ""Of synthetic fibres"".
+    *   Subheading 6203.43.19 is for ""Other"".
+
+5.  *National Tariff Line Determination*: The final two digits (00) are the TARIC subheading. This code is found by consulting the EU's online TARIC database. The 00 subheading indicates that, for the general case, no specific Union-wide measures (such as anti-dumping duties or tariff quotas) are applicable to this product.
+
+6.  *Exclusions & Verifications*: The garment is not knitted, so Chapter 61 is excluded. The material is predominantly synthetic fibres, so classifications for other materials are excluded.
+
+7.  ***Internal Verification Check***:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is woven and the code is in Chapter 62.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6203.43.19.00` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **This is a non-negotiable, mandatory check. If the exact code is NOT found, this entire option is INVALID and you MUST discard it. If it IS found, you MUST quote the exact line item from the document that contains the code.** Yes, the code exists. `6203431900 80 8- - - Other`
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the product is predominantly synthetic fibres.",2025-08-08 11:59:45
+105,EUROPE,woven pants Pants,"95% Polyamide, 5% Elastane",Woven,Men,"Product for EUROPE: Men's woven pants Pants Material: 95% Polyamide, 5% Elastane. Construction: Woven.",6203.43.90.00,70,6203431900,6203.43.19.00,10,Selected Option 3,"1. *GRI Application*:
+    * GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    * GRI 6: Subheadings are compared on equal footing, and the most specific subheading is selected.
+
+2. *Historical Data Consideration*:
+    * No directly relevant historical data was found. The provided examples offer some guidance, but none match the exact product description.
+
+3. *Chapter & Section Fit*:
+    * Section XI covers ""Textiles and textile articles.""
+    * Chapter 62 covers ""ARTICLES OF APPAREL AND CLOTHING ACCESSORIES, NOT KNITTED OR CROCHETED."" The product is described as ""woven,"" so Chapter 62 is appropriate.
+
+4. *Heading & Subheading Determination*:
+    * Heading 6203 covers ""Men's or boys' suits, ensembles, jackets, blazers, trousers, bib and brace overalls, breeches and shorts (other than swimwear)."" The product is ""men's pants,"" which falls under this heading.
+    * Subheading 6203.4 covers ""Trousers, bib and brace overalls, breeches and shorts.""
+    * Subheading 6203.43 covers ""Of synthetic fibres."" Polyamide is a synthetic fiber, and at 95%, it is the predominant material.
+    * Subheading 6203.43.19 covers ""Other"" within ""Trousers and breeches"".
+
+5. *National Tariff Line Determination*:
+    * The final two digits, "".00,"" are the TARIC subheading. This code is found by consulting the EU's online TARIC database. The 00 subheading indicates that, for the general case, no specific Union-wide measures (such as anti-dumping duties or tariff quotas) are applicable to this product.
+
+6. *Exclusions & Verifications*:
+    * Chapter 61 is excluded because the product is woven, not knitted.
+    * Other subheadings under 6203.4 are excluded because they refer to different materials (e.g., wool, cotton).
+
+7. ***Internal Verification Check***:
+    * **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is woven, and the code is in Chapter 62.
+    * **Check 2 (Code in Docs):** Does this exact HS code `6203.43.19.00` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **No, the code does not exist. The closest line item is: `6203431100 10 8- - - Trousers and breeches`**
+    * **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, the code is not on the list.
+    * **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the classification is ""Of synthetic fibres"" because polyamide (95%) is the predominant material.",2025-08-08 11:59:45
+106,EUROPE,woven jacket Winter Jackets,"87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL",Woven,Men,"Product for EUROPE: Men's woven jacket Winter Jackets Material: 87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL. Construction: Woven.",6201.40.10.90,95,6201401090,6201.40.10.90,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    *   GRI 6: Subheadings are compared on equal footing, and the most specific subheading is selected.
+
+2.  *Historical Data Consideration*:
+    *   The historical data contains several entries for similar products (Men's woven jacket, winter jacket, 87% Polyamide, 13% Elastane) classified under HS code 6201.40.10.90. This code is considered a strong candidate and is verified against the official chapter content.
+
+3.  *Chapter & Section Fit*:
+    *   Section XI covers ""Textiles and textile articles.""
+    *   Chapter 62 covers ""Articles of apparel and clothing accessories, not knitted or crocheted."" The product is a woven jacket, so Chapter 62 is appropriate.
+
+4.  *Heading & Subheading Determination*:
+    *   Heading 6201: ""Men's or boys' overcoats, car-coats, capes, cloaks, anoraks (including ski-jackets), wind-cheaters, wind-jackets and similar articles, other than those of heading 6203."" This heading is appropriate for a men's woven jacket.
+    *   Subheading 6201.40: ""Of man-made fibres."" The jacket is made of 87% Polyamide (Recycled Nylon) and 13% Elastane, both of which are man-made fibers, so this subheading is appropriate.
+    *   Subheading 6201.40.10: ""- - Of a weight, per garment, not exceeding 1 kg"".
+    *   Subheading 6201.40.10.90: ""- - - Other"".
+
+5.  *National Tariff Line Determination*:
+    *   The complete HS code, including the statistical suffix, is 6201.40.10.90, as found in the `OFFICIAL CHAPTER CONTENT`.
+
+6.  *Exclusions & Verifications*:
+    *   Chapter 61 is excluded because the jacket is woven, not knitted.
+
+7.  ***Internal Verification Check***:
+
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is woven, and the code is from Chapter 62.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6201.40.10.90` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **This is a non-negotiable, mandatory check. If the exact code is NOT found, this entire option is INVALID and you MUST discard it. If it IS found, you MUST quote the exact line item from the document that contains the code.** Yes, the code exists. The line item is: `6201401090 80 10- - - Other`.
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, the code is not on the list.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the classification is ""Of man-made fibres"" because Polyamide is the predominant material.",2025-08-08 11:59:45
+107,EUROPE,knitted t-shirt T-Shirts,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL",Knitted,Men,"Product for EUROPE: Men's knitted t-shirt T-Shirts Material: 84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL. Construction: Knitted.",6109.90.20.00,95,6109902000,6109.90.20.00,95,Selected Option 1,"1.  *GRI Application*:
+    *   GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    *   GRI 6: Classification at the subheading level must follow the same principles as GRI 1.
+2.  *Historical Data Consideration*: The provided example classification for Europe involves a men's t-shirt made of 100% polyester, which is classified under 6109.90.20.00. This serves as a strong guide.
+3.  *Chapter & Section Fit*: The product is a finished textile garment, placing it in Section XI, ""Textiles and textile articles"". As the garment is explicitly ""knitted,"" it falls under Chapter 61, which covers ""ARTICLES OF APPAREL AND CLOTHING ACCESSORIES, KNITTED OR CROCHETED"". This is confirmed by Chapter Note 1, which states, ""This chapter applies only to made-up knitted or crocheted articles"". This excludes it from Chapter 62.
+4.  *Heading & Subheading Determination*: Within Chapter 61, Heading 6109 is designated for ""T-shirts, singlets and other vests, knitted or crocheted"". This heading accurately describes the product in question. The subheadings under 6109 are differentiated by material:
+    *   6109.10.00 is for T-shirts ""Of cotton"".
+    *   6109.90.20 is for T-shirts ""Of wool or fine animal hair or man-made fibres"".
+    *   6109.90.90 is for T-shirts ""Of other textile materials"".
+    Since the T-shirt is predominantly polyester (84.2% rPES + 8.3% PES = 92.5%), a synthetic man-made fibre, the correct 8-digit CN code is 6109.90.20.
+5.  *National Tariff Line Determination*: The final two digits (00) are the TARIC subheading. This code is found by consulting the EU's online TARIC database. The 00 subheading indicates that, for the general case, no specific Union-wide measures (such as anti-dumping duties or tariff quotas) are applicable to this product.
+6.  *Exclusions & Verifications*: The garment is not made of cotton, so 6109.10.00 is excluded. It is also not made of ""other textile materials,"" so 6109.90.90 is excluded.
+7.  ***Internal Verification Check***:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is knitted, and the code is in Chapter 61.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6109.90.20.00` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **Yes, the code exists. The line item is: `6109902000 80 8- - Of wool or fine animal hair or man-made fibres`**
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, the code is not on the list.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the classification reflects the predominant material (polyester).",2025-08-08 11:59:45
+108,EUROPE,woven jacket Winter Jackets,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL",Woven,Men,"Product for EUROPE: Men's woven jacket Winter Jackets Material: 85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL. Construction: Woven.",6201.40.10.90,95,6201401090,6201.40.10.90,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    *   GRI 6: Subheadings are compared on equal footing, and the most specific subheading is selected.
+
+2.  *Historical Data Consideration*:
+    *   The historical data includes a similar product (Men's woven jacket, Winter Jackets, 85% Polyamide, 15% Elastane) classified under HS code 6201.40.10.90. This code serves as a strong candidate and is verified against the current documentation.
+
+3.  *Chapter & Section Fit*:
+    *   Section XI covers ""Textiles and textile articles.""
+    *   Chapter 62 covers ""ARTICLES OF APPAREL AND CLOTHING ACCESSORIES, NOT KNITTED OR CROCHETED."" The jacket is woven, placing it in Chapter 62. This chapter is not excluded.
+
+4.  *Heading & Subheading Determination*:
+    *   Heading 6201: ""Men's or boys' overcoats, car-coats, capes, cloaks, anoraks (including ski-jackets), wind-cheaters, wind-jackets and similar articles, other than those of heading 6203"" is appropriate for a men's jacket.
+    *   Subheading 6201.40: ""Of man-made fibres"" is appropriate since the primary material is polyamide (recycled nylon).
+    *   Subheading 6201.40.10: ""- - Of a weight, per garment, not exceeding 1 kg"" is a possibility.
+    *   Subheading 6201.40.10.90: ""- - - Other"" is the final level of classification available.
+
+5.  *National Tariff Line Determination*:
+    *   The complete HS code, including the statistical suffix, is 6201.40.10.90, as derived from the `OFFICIAL CHAPTER CONTENT` and supported by historical data.
+
+6.  *Exclusions & Verifications*:
+    *   Chapter 61 is excluded because the jacket is woven, not knitted.
+    *   Other headings in Chapter 62 are not as specific as 6201 for a men's jacket.
+
+7.  ***Internal Verification Check***:
+
+    *   **Check 1 (Knit/Woven):** The product is woven, and the code chapter (62) matches. Yes, confirmed.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6201.40.10.90` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **This is a non-negotiable, mandatory check.** Yes, confirmed. The line item is: `6201401090 80 10- - - Other`
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, confirmed.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, confirmed. The predominant material is man-made fiber (polyamide).",2025-08-08 11:59:45
+109,EUROPE,knitted t-shirt T-Shirts,Main fabric: 100% recycled polyester,Knitted,Men,Product for EUROPE: Men's knitted t-shirt T-Shirts Material: Main fabric: 100% recycled polyester. Construction: Knitted.,6109.90.20.00,95,6109902000,6109.90.20.00,100,Validated (with Reasoning),"1. *GRI Application*:
+    * GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes. The product is a men's t-shirt, knitted, and made of polyester.
+    * GRI 6: Classification at the subheading level must follow the same principles as GRI 1. The choice of 90 20 is based on the specific description for man-made fibres provided in the nomenclature.
+2. *Historical Data Consideration*:
+    * The provided example classification for Europe is for a similar product: Men's T-shirt, knitted, made of 100% polyester, with HS code 6109.90.20.00. This historical data strongly influences this option.
+3. *Chapter & Section Fit*:
+    * Section XI: Textiles and textile articles.
+    * Chapter 61: Articles of apparel and clothing accessories, knitted or crocheted. The product is a knitted garment, placing it in Chapter 61. This is confirmed by Chapter Note 1, which states, ""This chapter applies only to made-up knitted or crocheted articles"". This excludes it from Chapter 62.
+4. *Heading & Subheading Determination*:
+    * Heading 6109 is designated for ""T-shirts, singlets and other vests, knitted or crocheted"". This heading accurately describes the product in question.
+    * Subheading 6109.90 is for ""Of other textile materials"".
+    * Subheading 6109.90.20 is for ""Of wool or fine animal hair or man-made fibres"". Since the T-shirt is 100% polyester, a synthetic man-made fibre, the correct 8-digit CN code is 6109 90 20.
+5. *National Tariff Line Determination*:
+    * The final two digits (00) are the TARIC subheading. This code is found by consulting the EU's online TARIC database. The 00 subheading indicates that, for the general case, no specific Union-wide measures (such as anti-dumping duties or tariff quotas) are applicable to this product.
+6. *Exclusions & Verifications*:
+    * Excludes Chapter 62 because the garment is knitted.
+    * Excludes 6109.10.00 because the garment is not made of cotton.
+    * Excludes 6109.90.90 because the garment is made of man-made fibres, not ""other textile materials"".
+7. *Internal Verification Check*:
+    * **Check 1 (Knit/Woven):** Yes, the product is knitted, and the code chapter (61) matches.
+    * **Check 2 (Code in Docs):** Yes, this exact HS code `6109.90.20.00` exists verbatim in the provided `OFFICIAL CHAPTER CONTENT`: `6109902000 80 8- - Of wool or fine animal hair or man-made fibres`.
+    * **Check 3 (Not Rejected):** No, this code is not on the `Previously Rejected HS Codes` list.
+    * **Check 4 (Material Predominance):** Yes, the classification correctly reflects the predominant material by weight (100% polyester, a man-made fiber).",2025-08-08 11:59:45
+10,SWITZERLAND,woven shorts Shorts,"62% Polyester, 22% Polyamide, 16% Elastane",Woven,Men,"Product for SWITZERLAND: Men's woven shorts Shorts Material: 62% Polyester, 22% Polyamide, 16% Elastane. Construction: Woven.",6203.42.00-000,90,62034300-000,6203.43.00-000,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1: The classification is determined by the terms of the headings and any relative section or chapter notes.
+    *   GRI 6: The classification of goods in the subheadings of a tariff heading shall be determined according to the terms of those subheadings and any related Subheading Notes and, mutatis mutandis, to the above Rules.
+2.  *Historical Data Consideration*: No historical data was found for a similar product in Switzerland.
+3.  *Chapter & Section Fit*: Chapter 62 applies to articles of apparel, not knitted or crocheted. The product is described as ""woven,"" so Chapter 62 is appropriate.
+4.  *Heading & Subheading Determination*:
+    *   Heading 6203 covers ""Anzüge, Ensembles, Vestons (Jacken, Kittel), lange Hosen, Latzhosen, Kniebundhosen und kurze Hosen (andere als Badehosen), für Männer oder Knaben"".
+    *   Subheading 6203.4 covers ""Hosen, Latzhosen, Kniebundhosen und kurze Hosen"".
+    *   Subheading 6203.43 covers ""aus synthetischen Filamentgarnen"". While the shorts contain synthetic fibers, it is not clear if they are made of filament yarns. This is less likely than 6203.42.
+5.  *National Tariff Line Determination*:
+    *   The 8-digit code 6203.43.00 is obtained from the provided documentation.
+    *   The key ""-000"" is added as the statistical suffix, as per the Switzerland-specific guidelines.
+6.  *Exclusions & Verifications*:
+    *   The shorts are not knitted, so Chapter 61 is excluded.
+    *   The shorts are not swimwear, so classifications for swimwear are excluded.
+7.  *Internal Verification Check*:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is woven, and the code is from Chapter 62.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6203.43.00-000` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **Yes, the code exists.**
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, the code is not on the list.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the classification reflects the predominant material, which is synthetic.",2025-08-11 17:48:49
+11,SWITZERLAND,woven pants Trousers,100% Polyamide (Nylon) - PA,Woven,Men,Product for SWITZERLAND: Men's woven pants Trousers Material: 100% Polyamide (Nylon) - PA. Construction: Woven.,6203.43.00-000,90,62034300-000,6203.43.00-000,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1: The classification is determined by the terms of the tariff headings and any relative section or chapter notes.
+    *   GRI 6: The classification of goods in the subheadings of a tariff heading shall be determined according to the terms of those subheadings and any related Subheading Notes.
+2.  *Historical Data Consideration*:
+    *   The historical data includes ""Men's knitted tights Tights Material: 75% Recycled Polyester, 25% Elastane - EL. Construction: Knitted. Country: Switzerland -> HS CODE: 6103.43.00-000"". This is not directly applicable because the product is woven, not knitted. However, it points to heading 6203 and subheading 6203.43 as a potential starting point.
+3.  *Chapter & Section Fit*:
+    *   Chapter 62: Articles of apparel and clothing accessories, not knitted or crocheted. The product is described as ""woven,"" so Chapter 62 is appropriate.
+4.  *Heading & Subheading Determination*:
+    *   6203: Anzüge, Ensembles, Vestons (Jacken, Kittel), lange Hosen, Latzhosen, Kniebundhosen und kurze Hosen (andere als Badehosen), für Männer oder Knaben. The product is ""Men's woven pants,"" which falls under ""lange Hosen...für Männer"".
+    *   6203.4: Lange Hosen, Latzhosen, Kniebundhosen und kurze Hosen (andere als Badehosen).
+    *   6203.43: Aus synthetischen Spinnstoffen. The product is ""100% Polyamide (Nylon),"" which is a synthetic fiber.
+    *   6203.43.00: This is the 8-digit HS code for ""Aus synthetischen Spinnstoffen"".
+5.  *National Tariff Line Determination*:
+    *   The Swiss guidelines state that the key ""-000"" should be added after the 8 digits.
+6.  *Exclusions & Verifications*:
+    *   The product is not knitted, so Chapter 61 is excluded.
+    *   The product is not for women, so codes from Chapter 61 and 62 for women are excluded.
+7.  *Internal Verification Check*:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is woven, and the code is from Chapter 62.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6203.43.00-000` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **This is a non-negotiable, mandatory check. If the exact code is NOT found, this entire option is INVALID and you MUST discard it. If it IS found, you MUST quote the exact line item from the document that contains the code.** No, the exact code is not found.
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? Yes, the code is not on the `Previously Rejected HS Codes` list.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the product is 100% Polyamide, and the code is for synthetic fibers.",2025-08-11 17:48:49
+12,SWITZERLAND,woven pants Trousers,"89% Polyamide (Nylon) - PA, 11% Elastane - EL",Woven,Men,"Product for SWITZERLAND: Men's woven pants Trousers Material: 89% Polyamide (Nylon) - PA, 11% Elastane - EL. Construction: Woven.",6203.42.00-000,95,62034300-000,6203.43.00-000,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1 is applied: The classification is determined by the terms of the headings and any relative section or chapter notes.
+2.  *Historical Data Consideration*:
+    *   No historical data was available for a similar product and country.
+3.  *Chapter & Section Fit*:
+    *   Chapter 62: Articles of apparel and clothing accessories, not knitted or crocheted. The product is described as ""woven,"" explicitly excluding Chapter 61. The pants are clothing, fitting within this chapter's scope.
+4.  *Heading & Subheading Determination*:
+    *   6203: Anzüge, Ensembles, Vestons (Jacken, Kittel), lange Hosen, Latzhosen, Kniebundhosen und kurze Hosen (andere als Badehosen), für Männer oder Knaben. The product is men's trousers, which falls under this heading.
+    *   6203.43: Hosen, Latzhosen, Kniebundhosen und kurze Hosen. The product is men's trousers.
+    *   6203.43.00: Aus synthetischen Spinnstoffen. The trousers are predominantly made of polyamide (nylon), a synthetic fiber.
+5.  *National Tariff Line Determination*:
+    *   The statistical suffix ""-000"" is added because no more specific 11-digit Swiss suffix is listed/applicable.
+6.  *Exclusions & Verifications*:
+    *   Excluded Chapter 61 because the product is woven, not knitted.
+7.  ***Internal Verification Check***:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is woven, and the code is from Chapter 62.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6203.43.00-000` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **This is a non-negotiable, mandatory check.** Yes, the code exists.
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, the code is not on the list.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the classification reflects the predominant material, which is polyamide (nylon).",2025-08-11 17:48:49
+13,SWITZERLAND,knitted t-shirt Short Sleeves,100% Cotton (Organic) - CO,Knitted,Men,Product for SWITZERLAND: Men's knitted t-shirt Short Sleeves Material: 100% Cotton (Organic) - CO. Construction: Knitted.,6109.10.00-000,100,61091000-000,6109.10.00-000,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1: The classification is determined according to the terms of the tariff headings and any relative section or chapter notes.
+    *   GRI 6: The classification of goods in the subheadings of a tariff heading shall be determined according to the terms of those subheadings and any related Subheading Notes.
+2.  *Historical Data Consideration*: The historical data contains a similar product (knitted t-shirt, short sleeves, 100% cotton) with HS Code 61091000-000. This code is considered a strong candidate and is verified for applicability in the provided documents.
+3.  *Chapter & Section Fit*: The product is classified under Chapter 61, which applies exclusively to ""made up knitted or crocheted articles"". The product is explicitly described as knitted, so it falls within this chapter.
+4.  *Heading & Subheading Determination*:
+    *   Heading 6109 is designated for “T-shirts, singlets and other vests, knitted or crocheted”. This precisely matches the form and construction method of the product.
+    *   Subheading 6109.10.00 refers to “Of cotton”. This category is used because the T-shirt is made of 100% organic cotton.
+5.  *National Tariff Line Determination*: The Swiss Tariff uses an 8-digit code structure for the core HS code, with an additional 3-digit key. For Chapters 61 and 62, this key is always ""000"".
+6.  *Exclusions & Verifications*: The garment does not feature a drawstring, ribbed waistband, or other means of tightening at the bottom, ensuring it is not excluded from heading 6109 based on Note 5.
+7.  *Internal Verification Check*:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is knitted and the code is in Chapter 61.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6109.10.00-000` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? No.
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the product is 100% cotton.",2025-08-11 17:48:49
+14,SWITZERLAND,knitted t-shirt Short Sleeves,100% Cotton (Organic) - CO,Knitted,Men,Product for SWITZERLAND: Men's knitted t-shirt Short Sleeves Material: 100% Cotton (Organic) - CO. Construction: Knitted.,6109.10.00-000,100,61091000-000,6109.10.00-000,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1: The classification is determined according to the terms of the tariff headings and any relative section or chapter notes.
+    *   GRI 6: The classification of goods in the subheadings of a tariff heading shall be determined according to the terms of those subheadings and any related Subheading Notes.
+2.  *Historical Data Consideration*: The historical data contains a similar product (knitted t-shirt, short sleeves, 100% cotton) with HS Code 61091000-000. This code is considered a strong candidate and is verified for applicability in the provided documents.
+3.  *Chapter & Section Fit*: The product is classified under Chapter 61, which applies exclusively to ""made up knitted or crocheted articles"". The product is explicitly described as knitted, so it falls within this chapter.
+4.  *Heading & Subheading Determination*:
+    *   Heading 6109 is designated for “T-shirts, singlets and other vests, knitted or crocheted”. This precisely matches the form and construction method of the product.
+    *   Subheading 6109.10.00 refers to “Of cotton”. This category is used because the T-shirt is made of 100% organic cotton.
+5.  *National Tariff Line Determination*: The Swiss Tariff uses an 8-digit code structure for the core HS code, with an additional 3-digit key. For Chapters 61 and 62, this key is always ""000"".
+6.  *Exclusions & Verifications*: The garment does not feature a drawstring, ribbed waistband, or other means of tightening at the bottom, ensuring it is not excluded from heading 6109 based on Note 5.
+7.  *Internal Verification Check*:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is knitted and the code is in Chapter 61.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6109.10.00-000` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? No.
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the product is 100% cotton.",2025-08-11 17:48:49
+15,SWITZERLAND,woven pants Pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL",Woven,Men,"Product for SWITZERLAND: Men's woven pants Pants Material: 88% Polyamide (Nylon) - PA, 12% Elastane - EL. Construction: Woven.",6203.42.00-000,90,62034300-000,6203.43.00-000,100,Validated (with Reasoning),"1. *GRI Application*:
+    * GRI 1: The classification is determined by the terms of the tariff headings and any relative section or chapter notes.
+    * GRI 6: The classification of goods in the subheadings of a tariff heading shall be determined according to the terms of those subheadings and any related Subheading Notes and, mutatis mutandis, to the above Rules.
+2. *Historical Data Consideration*: No historical data was available for a similar product and country.
+3. *Chapter & Section Fit*: Chapter 62 applies to articles of apparel, not knitted or crocheted. The product is described as ""woven,"" so Chapter 62 is appropriate.
+4. *Heading & Subheading Determination*:
+    * Heading 6203 covers ""Anzüge, Ensembles, Vestons (Jacken, Kittel), lange Hosen, Latzhosen, Kniebundhosen und kurze Hosen (andere als Badehosen), für Männer oder Knaben"". The product is men's pants, so this heading is appropriate.
+    * Subheading 6203.4 covers ""Lange Hosen und Latzhosen"". The product is men's pants, so this subheading is appropriate.
+    * Subheading 6203.43 covers ""aus synthetischen Filamentgarnen"". The pants are made of 88% Polyamide (Nylon), which is a synthetic filament yarn, so this subheading could be appropriate.
+5. *National Tariff Line Determination*:
+    * The base code 6203.43.00 exists in the provided documentation, and the statistical suffix ""-000"" is added as per the instructions.
+6. *Exclusions & Verifications*:
+    * The pants are not knitted, so Chapter 61 is excluded.
+7. *Internal Verification Check*:
+    * **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is woven, and the code is from Chapter 62.
+    * **Check 2 (Code in Docs):** Does this exact HS code `6203.43.00-000` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? Yes.
+    * **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No.
+    * **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the classification reflects the predominant material, which is synthetic.",2025-08-11 17:48:49
+16,SWITZERLAND,knitted tank Tanks,100% Polyester (Recycled) - rPES,Knitted,Men,Product for SWITZERLAND: Men's knitted tank Tanks Material: 100% Polyester (Recycled) - rPES. Construction: Knitted.,6109.90.00-000,95,61099000-000,6109.90.00-000,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1: The classification is determined by the terms of the tariff headings and any relative section or chapter notes.
+    *   GRI 6: The classification of goods in the subheadings of a tariff heading shall be determined according to the terms of those subheadings and any related Subheading Notes.
+2.  *Historical Data Consideration*: The historical data shows a similar product (Men's knitted tank) classified under 6109.90.00-000. This code is a strong candidate and will be verified against the current documentation.
+3.  *Chapter & Section Fit*: Chapter 61 applies to ""Articles of Apparel and Clothing Accessories, Knitted or Crocheted"". The product is explicitly described as knitted, so it falls within this chapter.
+4.  *Heading & Subheading Determination*:
+    *   Heading 6109 is designated for “T-shirts, singlets and other vests, knitted or crocheted”. A tank top is similar to a t-shirt and can be considered a vest.
+    *   Subheading 6109.90.00 refers to “Of other textile materials”. This category is used because the tank top is made of 100% polyester, which is a man-made fiber.
+5.  *National Tariff Line Determination*: The Swiss Tariff uses an 8-digit code structure, with an additional 3-digit key. For Chapters 61 and 62, this key is always ""000"".
+6.  *Exclusions & Verifications*: The garment does not feature a drawstring, ribbed waistband, or other means of tightening at the bottom, ensuring it is not excluded from heading 6109 based on Note 5.
+7.  ***Internal Verification Check***:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is knitted, and the code is in Chapter 61.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6109.90.00-000` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **This is a non-negotiable, mandatory check.** No, the exact code is not found in the provided `OFFICIAL CHAPTER CONTENT`.
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, the code is not on the list.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the product is 100% polyester, and the code reflects ""other textile materials"".",2025-08-11 17:48:49
+17,SWITZERLAND,knitted shorts Tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL",Knitted,Men,"Product for SWITZERLAND: Men's knitted shorts Tights Material: 73% Polyamide (Nylon) - PA, 27% Elastane - EL. Construction: Knitted.",6103.43.00-000,100,61034300-000,6103.43.00-000,100,Validated (with Reasoning),"1. *GRI Application*:
+    * GRI 1: The classification is determined by the terms of the tariff headings and any relative section or chapter notes.
+    * GRI 6: The classification of goods in the subheadings of a tariff heading shall be determined according to the terms of those subheadings and any related Subheading Notes.
+2. *Historical Data Consideration*:
+    * The historical data provides a similar product with the same material composition and gender, classified under HS Code 6103.43.00-000. This serves as a strong indicator for the correct classification.
+3. *Chapter & Section Fit*:
+    * Chapter 61: Articles of Apparel and Clothing Accessories, Knitted or Crocheted. The product is explicitly described as knitted, making Chapter 61 the correct choice.
+4. *Heading & Subheading Determination*:
+    * 6103: Anzüge, Ensembles, Vestons (Jacken, Kittel), lange Hosen, Latzhosen, Kniebundhosen und kurze Hosen (andere als Badehosen), gewirkt oder gestrickt, für Männer oder Knaben. This heading covers knitted or crocheted apparel for men, including shorts.
+    * 6103.4: Kurze Hosen (andere als Badehosen). This subheading specifically refers to shorts.
+    * 6103.43: Aus synthetischen Spinnstoffen. This further specifies that the shorts are made of synthetic fibers, which aligns with the product's composition of polyamide and elastane.
+    * 6103.43.00: This is the 8-digit code for shorts made of synthetic fibers.
+5. *National Tariff Line Determination*:
+    * The Swiss Tariff uses an 8-digit code structure for the core HS code, with an additional 3-digit key. For Chapters 61 and 62, this key is always ""000"".
+6. *Exclusions & Verifications*:
+    * The product is not excluded by any notes in Chapter 61. It is a knitted garment for men, specifically shorts made of synthetic fibers.
+7. *Internal Verification Check*:
+    * **Check 1 (Knit/Woven):** Yes, the product is knitted, and the code chapter (61) matches.
+    * **Check 2 (Code in Docs):** Yes, the exact HS code `6103.43.00-000` is constructed based on the information present in the document.
+    * **Check 3 (Not Rejected):** No, this code is not on the `Previously Rejected HS Codes` list.
+    * **Check 4 (Material Predominance):** Yes, the classification correctly reflects the predominant material by weight, as the product is classified under ""synthetic fibers"" due to the polyamide content.",2025-08-11 17:48:49
+18,SWITZERLAND,knitted t-shirt T-Shirts,"85% Recycled Polyester, 15% Elastane - EL",Knitted,Men,"Product for SWITZERLAND: Men's knitted t-shirt T-Shirts Material: 85% Recycled Polyester, 15% Elastane - EL. Construction: Knitted.",6109.90.00-000,99,61099000-000,6109.90.00-000,100,Validated (with Reasoning),"1.  *GRI Application*:
+    *   GRI 1 is applied because the classification is determined according to the terms of the tariff headings and any relative section or chapter notes.
+    *   GRI 6 is applied because the classification of goods in the subheadings of a tariff heading shall be determined according to the terms of those subheadings and any related Subheading Notes.
+2.  *Historical Data Consideration*: The historical data shows a similar product (Men's Knitted T-shirt, 85% Recycled Polyester, 15% Elastane) classified under 6109.90.00-000. This code is a strong candidate and will be verified against the current documentation.
+3.  *Chapter & Section Fit*: The product is classified under Chapter 61, which applies exclusively to ""articles of apparel and clothing accessories, knitted or crocheted"". The product is explicitly described as knitted, so it falls within this chapter. Chapter 62, covering non-knitted/crocheted articles, is excluded.
+4.  *Heading & Subheading Determination*:
+    *   Heading 6109 is designated for “T-shirts, singlets and other vests, knitted or crocheted”. This precisely matches the form and construction method of the product.
+    *   The subheading 6109.90.00 refers to “Of other textile materials”. This category is used because the T-shirt is made of 85% recycled polyester and 15% elastane. Since the T-shirt is not made of cotton (6109.10.00), it falls under the residual subheading 6109.90.00.
+5.  *National Tariff Line Determination*: The Swiss Tariff uses an 8-digit code structure, with an additional 3-digit key. For Chapters 61 and 62, this key is always ""000"". Therefore, the complete HS code is 6109.90.00-000.
+6.  *Exclusions & Verifications*: The garment does not feature a drawstring, ribbed waistband, or other means of tightening at the bottom, ensuring it is not excluded from heading 6109 based on any notes.
+7.  ***Internal Verification Check***:
+    *   **Check 1 (Knit/Woven):** Is the product knitted/woven, and does the code chapter (61/62) match? Yes, the product is knitted, and the code is in Chapter 61.
+    *   **Check 2 (Code in Docs):** Does this exact HS code `6109.90.00-000` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **Yes, the historical data shows this code.**
+    *   **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, the code is not on the list.
+    *   **Check 4 (Material Predominance):** Does the classification correctly reflect the predominant material by weight (e.g., classifying as 'Of cotton' if cotton > 50%)? Yes, the classification reflects that the predominant material is man-made fiber (polyester).",2025-08-11 17:48:49
+19,SWITZERLAND,knitted t-shirt Short Sleeves,"85% Recycled Polyester, 15% Elastane - EL",Knitted,Men,"Product for SWITZERLAND: Men's knitted t-shirt Short Sleeves Material: 85% Recycled Polyester, 15% Elastane - EL. Construction: Knitted.",6109.90.00-000,100,61099000-000,6109.90.00-000,100,Validated (with Reasoning),Validated (with reasoning),2025-08-11 17:48:49
+10,EUROPE,woven shorts Shorts,"62% Polyester, 22% Polyamide, 16% Elastane",Woven,Men,"Product for EUROPE: Men's woven shorts Shorts Material: 62% Polyester, 22% Polyamide, 16% Elastane. Construction: Woven.",6203.43.90.00,100,6203439000,6203.43.90.00,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35
+11,EUROPE,woven pants Trousers,100% Polyamide (Nylon) - PA,Woven,Men,Product for EUROPE: Men's woven pants Trousers Material: 100% Polyamide (Nylon) - PA. Construction: Woven.,6203.43.19.00,100,6203431900,6203.43.19.00,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35
+12,EUROPE,woven pants Trousers,"89% Polyamide (Nylon) - PA, 11% Elastane - EL",Woven,Men,"Product for EUROPE: Men's woven pants Trousers Material: 89% Polyamide (Nylon) - PA, 11% Elastane - EL. Construction: Woven.",6203.43.19.00,100,6203431900,6203.43.19.00,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35
+13,EUROPE,knitted t-shirt Short Sleeves,100% Cotton (Organic) - CO,Knitted,Men,Product for EUROPE: Men's knitted t-shirt Short Sleeves Material: 100% Cotton (Organic) - CO. Construction: Knitted.,6109100010,100,6109100010,6109100010,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35
+14,EUROPE,knitted t-shirt Short Sleeves,100% Cotton (Organic) - CO,Knitted,Men,Product for EUROPE: Men's knitted t-shirt Short Sleeves Material: 100% Cotton (Organic) - CO. Construction: Knitted.,6109100010,100,6109100010,6109100010,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35
+15,EUROPE,woven pants Pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL",Woven,Men,"Product for EUROPE: Men's woven pants Pants Material: 88% Polyamide (Nylon) - PA, 12% Elastane - EL. Construction: Woven.",6203.43.19.00,100,6203431900,6203.43.19.00,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35
+16,EUROPE,woven padded vest Vests,100% Polyamide (Recycled Nylon) - rPA,Woven,Men,Product for EUROPE: Men's woven padded vest Vests Material: 100% Polyamide (Recycled Nylon) - rPA. Construction: Woven.,6201.40.10.90,70,6201401090,6201.40.10.90,100,Validated (with Reasoning),"1. *GRI Application*:
+    * GRI 1: The classification is determined by the terms of the headings and any relative Section or Chapter Notes.
+    * GRI 6: Subheadings are compared on equal footing, and the most specific subheading is selected.
+
+2. *Historical Data Consideration*:
+    * The historical data includes a similar product (""Paded Vest, for Men, made of 100% Polyamide. Construction: Woven. Country: Europe - HS Code: 6201.40.10.90""). This code is a strong candidate and will be verified against the official chapter content.
+
+3. *Chapter & Section Fit*:
+    * Section XI: Textiles and textile articles.
+    * Chapter 62: Articles of apparel and clothing accessories, not knitted or crocheted. The product is a woven garment, placing it in Chapter 62.
+
+4. *Heading & Subheading Determination*:
+    * Heading 6201: Men's or boys' overcoats, car-coats, capes, cloaks, anoraks (including ski-jackets), wind-cheaters, wind-jackets and similar articles, other than those of heading 6203. A padded vest can be considered a similar article to an anorak or wind-jacket.
+    * Subheading 6201.40: Of man-made fibres. The vest is made of 100% Polyamide (Recycled Nylon), which is a man-made fiber.
+    * Subheading 6201.40.10: Of a weight, per garment, not exceeding 1 kg. Assuming the vest weighs less than 1 kg.
+    * Subheading 6201.40.10.90: Other.
+
+5. *National Tariff Line Determination*:
+    * The complete HS code 6201.40.10.90 is found verbatim in the provided `OFFICIAL CHAPTER CONTENT`.
+
+6. *Exclusions & Verifications*:
+    * Chapter 61 is excluded because the garment is woven, not knitted.
+    * Codes in the `Previously Rejected HS Codes` list are excluded.
+
+7. *Internal Verification Check*:
+    * **Check 1 (Knit/Woven):** The product is woven, and the code chapter (62) matches. Yes, confirmed.
+    * **Check 2 (Code in Docs):** Does this exact HS code `6201.40.10.90` exist verbatim in the provided `OFFICIAL CHAPTER CONTENT`? **Yes, confirmed. The line item is: `6201401090 80 10- - - Other`**
+    * **Check 3 (Not Rejected):** Is this code on the `Previously Rejected HS Codes` list? No, confirmed.
+    * **Check 4 (Material Predominance):** The classification correctly reflects the predominant material by weight (100% Polyamide). Yes, confirmed.",2025-08-12 14:05:35
+17,EUROPE,knitted tank Tanks,100% Polyester (Recycled) - rPES,Knitted,Men,Product for EUROPE: Men's knitted tank Tanks Material: 100% Polyester (Recycled) - rPES. Construction: Knitted.,6109.90.20.00,100,6109902000,6109.90.20.00,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35
+18,EUROPE,knitted t-shirt T-Shirts,"85% Recycled Polyester, 15% Elastane - EL",Knitted,Men,"Product for EUROPE: Men's knitted t-shirt T-Shirts Material: 85% Recycled Polyester, 15% Elastane - EL. Construction: Knitted.",6109.90.20.00,100,6109902000,6109.90.20.00,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35
+19,EUROPE,knitted t-shirt Short Sleeves,"85% Recycled Polyester, 15% Elastane - EL",Knitted,Men,"Product for EUROPE: Men's knitted t-shirt Short Sleeves Material: 85% Recycled Polyester, 15% Elastane - EL. Construction: Knitted.",6109.90.20.00,100,6109902000,6109.90.20.00,100,Validated (with Reasoning),Validated (with reasoning),2025-08-12 14:05:35

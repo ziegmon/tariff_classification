@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<h1>Welcome to the HS Code Classification Tool!</h1>
+
+<div class="home-intro">
+    <p>This advanced system helps you classify products using AI-powered analysis of official tariff documentation.</p>
+</div>
+
+<div class="feature-grid">
+    <div class="feature-card">
+        <h2>🎽 Apparel Classification</h2>
+        <p>Classify clothing and textile products including:</p>
+        <ul>
+            <li>Knitted and woven garments</li>
+            <li>T-shirts, jackets, pants</li>
+            <li>Sportswear and casual wear</li>
+            <li>Accessories (hats, bags, etc.)</li>
+        </ul>
+        <p><strong>Chapters:</strong> 61, 62, 42, 65</p>
+    </div>
+    
+    <div class="feature-card">
+        <h2>👟 Footwear Classification</h2>
+        <p>Classify all types of footwear including:</p>
+        <ul>
+            <li>Athletic and sports shoes</li>
+            <li>Dress and casual footwear</li>
+            <li>Boots and work shoes</li>
+            <li>Sandals and slippers</li>
+        </ul>
+        <p><strong>Chapter:</strong> 64</p>
+    </div>
+</div>
+
+<div class="capabilities-section">
+    <h2>System Capabilities</h2>
+    <div class="capabilities-grid">
+        <div class="capability-item">
+            <h3>🔍 Single Product Classification</h3>
+            <p>Get instant HS code suggestions for individual products with detailed reasoning</p>
+            <a href="{{ url_for('single_classification') }}" class="btn-primary">Classify Single Product</a>
+        </div>
+        
+        <div class="capability-item">
+            <h3>📊 Bulk Classification</h3>
+            <p>Upload CSV files to classify multiple products simultaneously</p>
+            <a href="{{ url_for('bulk_classification') }}" class="btn-primary">Bulk Classification</a>
+        </div>
+        
+        <div class="capability-item">
+            <h3>📈 Performance Metrics</h3>
+            <p>Track classification accuracy and system performance over time</p>
+            <a href="{{ url_for('display_metrics') }}" class="btn-primary">View Dashboard</a>
+        </div>
+    </div>
+</div>
+
+<div class="info-section">
+    <h2>Key Features</h2>
+    <ul>
+        <li>✅ <strong>AI-Powered Analysis:</strong> Uses Google Gemini 2.0 Flash for intelligent classification</li>
+        <li>✅ <strong>Multiple Countries:</strong> Supports USA, Canada, Europe, Switzerland, Australia, Norway, and more</li>
+        <li>✅ <strong>Historical Data Integration:</strong> Learns from previous classifications</li>
+        <li>✅ <strong>Code Validation:</strong> Save and reuse validated HS codes</li>
+        <li>✅ <strong>Rejection Tracking:</strong> System learns from incorrect classifications</li>
+        <li>✅ <strong>Detailed Reasoning:</strong> Understand why each code was suggested</li>
+        <li>✅ <strong>Comprehensive Metrics:</strong> Track accuracy, costs, and performance</li>
+    </ul>
+</div>
+
+<div class="getting-started">
+    <h2>Getting Started</h2>
+    <ol>
+        <li><strong>Choose your product category:</strong> Apparel or Footwear</li>
+        <li><strong>Select classification mode:</strong> Single product or bulk upload</li>
+        <li><strong>Review suggestions:</strong> Get 3 HS code options with certainty scores</li>
+        <li><strong>Validate or reject:</strong> Mark codes as correct or incorrect to improve the system</li>
+        <li><strong>Export results:</strong> Download your classifications for import into other systems</li>
+    </ol>
+</div>
+
+{% if session.logged_in %}
+    <p style="text-align: center; margin-top: 30px; color: #28a745;">
+        ✓ Authentication successful! Use the navigation above to get started.
+    </p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}Suggested HS Codes{% endblock %}
+
+{% block content %}
+<h2>Suggested HS Codes</h2>
+<p><strong>Product Category:</strong> {{ product_category.title() }}</p>
+<p><strong>Product:</strong> {{ product_description }}</p>
+<p><strong>Country:</strong> {{ country.upper() }}</p>
+
+<div class="options-container">
+    {% for option in options_data %}
+        <div class="option-card">
+            <h3>{{ option.title_line }}</h3>
+            
+            {% if option.is_validated %}
+                <span class="badge-validated">✓ Previously Validated</span>
+            {% endif %}
+            
+            <div class="option-details">
+                <p><strong>HS Code:</strong> <code>{{ option.hs_code }}</code></p>
+                <p><strong>Certainty:</strong> {{ option.certainty }}%</p>
+            </div>
+            
+            <details>
+                <summary>View Reasoning</summary>
+                <div class="reasoning-content">
+                    {{ option.details | safe }}
+                </div>
+            </details>
+            
+            {% if option.option_num not in rejected_options_for_current_product %}
+                <form method="POST" style="margin-top: 15px;">
+                    <input type="hidden" name="action" value="mark_incorrect">
+                    <input type="hidden" name="option_num" value="{{ option.option_num }}">
+                    <button type="submit" class="btn-reject">Mark as Incorrect</button>
+                </form>
+            {% else %}
+                <p class="rejected-notice">⚠️ This option has been marked as incorrect</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+<div style="margin-top: 30px; text-align: center;">
+    <a href="{{ url_for('single_classification') }}" class="btn-secondary">Classify Another Product</a>
+</div>
+
+{% endblock %}

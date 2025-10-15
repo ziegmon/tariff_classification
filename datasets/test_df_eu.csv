@@ -1,0 +1,249 @@
+,division,product_type,material_type,tariff_country_code,tariff_country_description,tariff_code,customs_description,material_composition
+11,Men,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"54% Pima Cotton, 40% Polyester (Mechanical Recycled) - rPES, 6% Elastane - EL"
+21,Men,Short Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+82,Men,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+87,Men,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+103,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+231,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,100% Recycled Polyester
+296,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+338,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+357,Men,Trousers,Woven,EU,Europe,6203431900,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+413,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+459,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+475,Men,Trousers,Woven,EU,Europe,6203431900,woven pants,100% Polyamide (Nylon) - PA
+501,Men,Trousers,Woven,EU,Europe,6203431900,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+542,Men,Short Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,100% Cotton (Organic) - CO
+567,Men,Short Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,100% Cotton (Organic) - CO
+674,Men,Pants,Woven,EU,Europe,6203431900,woven pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL"
+698,Men,Vests,Woven,EU,Europe,6201401090,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+828,Men,Tanks,Knitted,EU,Europe,6109902000,knitted tank,100% Polyester (Recycled) - rPES
+887,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+934,Men,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+951,Men,Tanks,Knitted,EU,Europe,6109902000,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+964,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+1088,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1105,Men,Tights,Knitted,EU,Europe,6103430000,knitted half tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1226,Men,Winter Jackets,Woven,EU,Europe,6201401090,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+1249,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"75% Recycled Polyester, 25% Elastane - EL"
+1266,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights,"74% recycled polyester, 26% elastane"
+1288,Men,Long Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+1304,Men,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,100% recycled polyester
+1356,Men,Winter Jackets,Woven,EU,Europe,6201401090,woven jacket,"85% Polyamide, 15% Elastane"
+1357,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+1402,Men,Long Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1422,Men,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1522,Men,T-Shirts,Knitted,EU,Europe,6109100090,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1543,Men,Tanks,Knitted,EU,Europe,6109100090,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1641,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"81% Polyester, 19% Polyester"
+1685,Men,Trousers,Knitted,EU,Europe,6103430000,knitted pants,"86% Polyester, 14% Elastane"
+1704,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"86% recycled polyamide, 14% elastane"
+1729,Men,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester (Recycled) - rPES
+1737,Men,Short Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1798,Men,Short Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1836,Men,Hoodies & Sweatshirts,Knitted,EU,Europe,6110209100,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+1940,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+1974,Men,Sweatshirts,Knitted,EU,Europe,6110209100,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2095,Men,Pants,Knitted,EU,Europe,6103420000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2125,Men,Trousers,Knitted,EU,Europe,6103420000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2183,Men,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,100% Cotton (Organic) - CO
+2290,Men,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+2343,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+2497,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester Lanzatech - CC
+2641,Men,T-Shirts,Knitted,EU,Europe,6109902000,t-shirt,100% Polyester Lanzatech - CC
+2647,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"86% Polyester- PES, 14% Elastane"
+2699,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+2748,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,"90% recycled polyester, 10% elastane"
+2756,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2900,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"Front: 90% recycled polyester, 10% elastane 
+Back: 80% recycled polyester, 20% elastane"
+2912,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester
+2974,Men,Sweatshirts,Knitted,EU,Europe,6110309100,knitted hoodie,100% Polyester
+2994,Men,Sweatshirts,Knitted,EU,Europe,6110309100,hoodie,100% Polyester (Mechanical Recycled) - rPES
+3039,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+3066,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights half,"73% polyamide, 27% elastane"
+3084,Men,Pants,Knitted,EU,Europe,6103430000,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+3123,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"50% Polyester (Chemical Monofilament Recycled) - rPES, 50% Polyester - PES"
+3174,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,100% polyester
+3361,Men,Sweatshirts,Knitted,EU,Europe,6110209100,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3383,Men,Hoodies & Sweatshirts,Knitted,EU,Europe,6110209100,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3413,Men,Sweatshirts,Knitted,EU,Europe,6110209100,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Recycled) - rPES"
+3422,Men,Tights,Knitted,EU,Europe,6103430000,tights,"75% Recycled Polyester, 25% Elastane - EL"
+3456,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3602,Men,Sweatshirts,Knitted,EU,Europe,6110309100,long sleeves top,100% Polyester (Recycled) - rPES
+3769,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+4007,Men,Sweatshirts,Knitted,EU,Europe,6110309100,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4025,Men,Sweatshirts,Knitted,EU,Europe,6110309100,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+4158,Men,Sweatshirts,Knitted,EU,Europe,6110309100,hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4170,Men,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+4320,Men,Pants,Knitted,EU,Europe,6103430000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4435,Men,Pants,Woven,EU,Europe,6203431900,woven pants,100% Recycled Polyester
+4483,Men,Pants,Woven,EU,Europe,6203431900,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+4513,Men,Pants,Laminated (WP Membrane),EU,Europe,6203431900,woven pants,100% Polyamide (Nylon) - PA
+4540,Men,Pants,Woven,EU,Europe,6203431900,woven pants,100% Polyamide (Nylon) - PA
+4633,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"Front: 86% Polyamide, 14% Elastane / back: 100% Polyester"
+4659,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"47% Polyamide, 37% Polyester, 16% Elastane"
+4734,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights,75% Polyester 25% Elastane
+4823,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+4992,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+5078,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,100% Polyester
+5174,Men,Pants,Woven,EU,Europe,6203431900,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+5183,Men,Sweatshirts,Knitted,EU,Europe,6114200000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5206,Men,Shorts,Knitted,EU,Europe,6103420000,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5275,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+5306,Men,Pants,Knitted,EU,Europe,6103430000,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+5327,Men,Pants,Knitted,EU,Europe,6103430000,knitted joggers,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+5348,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights,"68% Polyamide, 32% Elastane"
+5376,Men,Shorts,Woven,EU,Europe,6203439000,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+5402,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5566,Men,Sweatshirts,Knitted,EU,Europe,6110309100,knitted sweatshirt,"48% Polyester, 45% Elastane, 7% Cotton"
+5608,Men,Sweatshirts,Knitted,EU,Europe,6110309100,knitted hoodie,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (BCI), 7% Elastane - EL"
+5709,Men,Sweatshirts,Woven,EU,Europe,6211339000,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+5745,Men,Pants,Woven,EU,Europe,6203431900,woven pants,"90% Polyamide, 10% Elastane"
+5834,Men,Pants,Knitted,EU,Europe,6103430000,knitted pants,"40% Polyamide, 60% Polyester"
+5889,Men,Pants,Knitted,EU,Europe,6103430000,knitted pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL"
+5926,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,100% Polyester (Mechanical Recycled) - rPES
+5945,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted long sleeves t-shirt,100% Polyester
+6061,Men,Tights,Knitted,EU,Europe,6103430000,knitted tights short,"68% Polyamide, 32% Elastane"
+6080,Men,Pants,Woven,EU,Europe,6203431900,woven pants,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+6197,Men,Pants,Woven,EU,Europe,6203431900,woven pants,"95% Polyamide, 5% Elastane"
+6270,Men,Winter Jackets,Woven,EU,Europe,6201401090,woven jacket,"87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL"
+6326,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL"
+6343,Men,Winter Jackets,Woven,EU,Europe,6201401090,woven jacket,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+6569,Men,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,Main fabric: 100% recycled polyester
+6593,Men,Sweatshirts,Knitted,EU,Europe,6110201000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester"
+6626,Men,Pants,Knitted,EU,Europe,6103420000,knitted pants,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6649,Men,Sweatshirts,Knitted,EU,Europe,6110209100,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6679,Men,Pants,Woven,EU,Europe,6203431900,woven pants,100% recycled polyester
+6746,Unisex,Sweatshirts,Woven,EU,Europe,6211439000,woven pullover,"98% Recycled Polyester, 2% Elastane - EL"
+6764,Unisex,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester (Recycled) - rPES
+6780,Unisex,Tanks,Knitted,EU,Europe,6109902000,knitted singlet,100% Polyester (Recycled) - rPES
+6875,Unisex,Pants,Woven,EU,Europe,6204631890,woven pants,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+6926,Unisex,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+7003,Unisex,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7024,Unisex,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Polyester- rPES, 15% Elastane - EL"
+7128,Unisex,Pants,Woven,EU,Europe,6204631890,woven pants,100% Polyamide (Recycled Nylon) - rPA
+7158,Unisex,Tights,Knitted,EU,Europe,6104630000,knitted tights,"80% Polyamide (Nylon) - PA, 20% Elastane - EL"
+7189,Unisex,Pants,Woven,EU,Europe,6204631890,woven pants,"92% Polyamide, 8% Elastane"
+7225,Unisex,Winter Jackets,Woven,EU,Europe,6202409019,woven jacket,"90% Polyamide (Nylon) - PA, 10% Elastane - EL"
+7236,Women,Crop Tops,Knitted,EU,Europe,6114300000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7252,Women,Crop Tops,Knitted,EU,Europe,6114300000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7257,Women,Short Sleeves,Knitted,EU,Europe,6109100090,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+7341,Women,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,"75% recycled polyamide, 25% elastane"
+7483,Women,Tanks,Knitted,EU,Europe,6109902000,knitted tank,100% Polyester
+7545,Women,Crop Tops,Knitted,EU,Europe,6114300000,knitted crop top,"75% recycled polyamide, 25% elastane"
+7614,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7624,Women,T-Shirts,Knitted,EU,Europe,6109909000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7639,Women,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7756,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7765,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,100% Recycled Polyester
+7822,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7991,Women,Trousers,Woven,EU,Europe,6204631890,woven pants,100% Recycled Polyester
+8152,Women,Tights,Knitted,EU,Europe,6104630000,knitted shorts,"75% recycled polyamide, 25% elastane"
+8247,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+8256,Women,Trousers,Woven,EU,Europe,6204631890,woven pants,100% Polyamide (Nylon) - PA
+8287,Women,Trousers,Woven,EU,Europe,6204631890,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+8323,Women,Short Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8396,Women,Short Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,100% Cotton (Organic) - CO
+8404,Women,Short Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,100% Cotton (Organic) - CO
+8535,Women,Vests,Woven,EU,Europe,6202401091,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+8621,Women,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,100% Cotton (Organic) - CO
+8684,Women,Crop Tops,Knitted,EU,Europe,6109902000,crop top,"73% Polyamide (Recycled Nylon) - rPA, 27% Elastane - EL"
+8719,Women,Bras,Woven,EU,Europe,6212109000,bra,"82% Polyamide (Nylon) - PA, 18% Elastane"
+8736,Women,Bras,Knitted,EU,Europe,6212109000,bra,"75% Recycled Polyester, 25% Elastane - EL"
+8746,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8814,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8847,Women,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8876,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,100% Polyester
+8889,Women,Skirts,Woven,EU,Europe,6204530090,woven skirt,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+9000,Women,Short Sleeves,Knitted,EU,Europe,6109902000,knitted tank,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9053,Women,T-Shirts,Knitted,EU,Europe,6109909000,t-shirt,100% Polyamide (Recycled Nylon) - rPA
+9066,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9186,Women,Winter Jackets,Woven,EU,Europe,6202401091,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+9193,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,"86% recycled polyamide, 14% elastane"
+9212,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,"74% recycled polyester, 26% elastane"
+9227,Women,Long Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+9238,Women,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,100% recycled polyester
+9286,Women,Winter Jackets,Woven,EU,Europe,6202401091,woven jacket,"85% Polyamide, 15% Elastane"
+9301,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9358,Women,Long Sleeves,Knitted,EU,Europe,6109100010,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9367,Women,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9443,Women,Bras,Knitted,EU,Europe,6212109000,bra,"75% Polyamide (Recycled Nylon) - rPA, 25% Elastane - EL"
+9593,Women,Sweatshirts,Knitted,EU,Europe,6110309900,knitted sweatshirt,"48% polyester, 45% cotton, 7% elastane"
+9617,Women,Hoodies & Sweatshirts,Knitted,EU,Europe,6110309900,knitted sweatshirt,"48% recycled polyester, 45% BCI cotton, 7% elastane"
+9626,Women,Hoodies & Sweatshirts,Knitted,EU,Europe,6110309900,knitted sweatshirt,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton - CO, 7% Elastane - E"
+9667,Women,Sweatshirts,Knitted,EU,Europe,6110309900,knitted sweatshirt,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+9706,Women,Trousers,Knitted,EU,Europe,6104630000,knitted pants,"86% Polyester, 14% Elastane"
+9723,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+9744,Women,Short Sleeves,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester (Recycled) - rPES
+9780,Women,Hoodies & Sweatshirts,Knitted,EU,Europe,6110209900,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+9881,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+9921,Women,Sweatshirts,Knitted,EU,Europe,6110209900,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+9936,Women,Hoodies & Sweatshirts,Knitted,EU,Europe,6110209900,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+10026,Women,Pants,Knitted,EU,Europe,6104620000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10038,Women,Sweatpants,Knitted,EU,Europe,6104620000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10224,Women,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"59% Cotton (Organic) - CO, 35% Recycled Polyester, 6% Elastane (Spandex) - EL"
+10233,Women,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+10277,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+10322,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,"59% Polyamide (Recycled Nylon) - rPA, 41% Elastane - EL"
+10428,Women,Bras,Knitted,EU,Europe,6212109000,bra,"83% Polyester (Mechanical Recycled) - rPES, 17% Elastane - EL"
+10574,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester Lanzatech - CC
+10705,Women,T-Shirts,Knitted,EU,Europe,6109902000,t-shirt,100% Polyester Lanzatech - CC
+10712,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,"86% Polyester- PES, 14% Elastane"
+10759,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+10805,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+10951,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester
+11000,Women,Sweatshirts,Knitted,EU,Europe,6110309900,knitted hoodie,100% Polyester
+11006,Women,Sweatshirts,Knitted,EU,Europe,6110309900,hoodie,100% Polyester (Mechanical Recycled) - rPES
+11042,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11050,Women,Tights,Knitted,EU,Europe,6204639090,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11068,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights half,"73% polyamide, 27% elastane"
+11076,Women,Pants,Knitted,EU,Europe,6104630000,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+11215,Women,Bras,Knitted,EU,Europe,6212109000,bra,"Main fabric composition: 75% recycled polyester, 25% elastane"
+11415,Women,Bras,Knitted,EU,Europe,6212109000,bra,"65% Polyamide (Recycled Nylon) - rPA, 35% Elastane - EL"
+11541,Women,Bras,Knitted,EU,Europe,6212109000,bra,"75%  polyester, 25% elastane"
+11549,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+11606,Women,Bras,Knitted,EU,Europe,6212109000,bra,"82% Polyester Lanzatech - CC, 18% Elastane - EL"
+11725,Women,Sweatshirts,Knitted,EU,Europe,6110209900,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11732,Women,Hoodies & Sweatshirts,Knitted,EU,Europe,6110209900,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11791,Women,Tights,Knitted,EU,Europe,6104630000,tights,"75% Recycled Polyester, 25% Elastane - EL"
+11861,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11987,Women,Tights,Knitted,EU,Europe,6104630000,knitted short tights,"75% recycled polyester, 25% elastane"
+11997,Women,Tights,Knitted,EU,Europe,6104630000,knitted shorts,"75% Recycled Polyester, 25% Elastane - EL"
+12035,Women,Sweatshirts,Knitted,EU,Europe,6110309900,long sleeves top,100% Polyester (Recycled) - rPES
+12110,Women,Dresses,Knitted,EU,Europe,6110309900,long sleeves top,100% Polyester (Recycled) - rPES
+12195,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+12495,Women,T-Shirts,Knitted,EU,Europe,6114300000,knitted crop tops,Polyester (recycled) 71% Elastane 29%.
+12517,Women,T-Shirts,Knitted,EU,Europe,6114300000,knitted crop top,Polyester (recycled) 71% Elastane 29%.
+12592,Women,T-Shirts,Knitted,EU,Europe,6109909000,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12620,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12656,Women,Sweatshirts,Knitted,EU,Europe,6110309900,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+12777,Women,Sweatshirts,Knitted,EU,Europe,6110309900,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+12846,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+12958,Women,T-Shirts,Knitted,EU,Europe,6114200000,crop top,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+13043,Women,T-Shirts,Knitted,EU,Europe,6109100010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13102,Women,T-Shirts,Knitted,EU,Europe,6109100090,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13181,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13244,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13349,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights shorts,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13366,Women,Tights,Knitted,EU,Europe,6104630000,knitted shorts,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13466,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,75% rec. Polyester 25% Elastane
+13573,Women,Tights,Knitted,EU,Europe,6104630000,knitted tights,75% Polyester 25% Elastane
+13753,Women,T-Shirts,Knitted,EU,Europe,6114300000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+13796,Women,Pants,Knitted,EU,Europe,6104630000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+13918,Women,Pants,Woven,EU,Europe,6204631890,woven pants,100% Recycled Polyester
+13953,Women,Pants,Woven,EU,Europe,6204631890,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+14037,Women,Pants,Woven,EU,Europe,6204631890,woven pants,100% Polyamide (Nylon) - PA
+14165,Women,Dresses,Woven,EU,Europe,6204430000,woven dress,Polyester 100%
+14190,Women,Skirts,Woven,EU,Europe,6204530090,woven skirt,100% Polyester
+14280,Women,Pants,Woven,EU,Europe,6204631890,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+14291,Women,Sweatshirts,Knitted,EU,Europe,6114200000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14306,Women,Shorts,Knitted,EU,Europe,6104620000,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14379,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14450,Women,Pants,Knitted,EU,Europe,6104630000,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+14487,Women,Tights,Knitted,EU,Europe,6104630000,tights,"68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"
+14544,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+14569,Women,T-Shirts,Knitted,EU,Europe,6109902000,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+14686,Women,Sweatshirts,Knitted,EU,Europe,6110309900,knitted hoodie,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+14794,Women,Sweatshirts,Woven,EU,Europe,6211439000,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+14883,Women,Pants,Knitted,EU,Europe,6104630000,knitted pants,"40% Polyamide, 60% Polyester"
+14900,Women,Shorts,Woven,EU,Europe,6204639090,woven shorts,"85% Recycled Polyamide, 15% Elastane - EL"

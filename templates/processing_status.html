@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}Processing...{% endblock %}
+
+{% block content %}
+    <div class="processing-container">
+        <h2>Processing Bulk Classification</h2>
+        <p>Your file has been uploaded and the HS codes are being generated. Please wait.</p>
+        
+        {# This div will be updated by the script #}
+        <div id="status-indicator-container">
+            {# MODIFIED: Replaced the single loader with a container of multiple icons for the new animation #}
+            <div class="loader-container">
+                <img src="{{ url_for('static', filename='img/load_icon.png') }}" alt="." class="loader-icon">
+                <img src="{{ url_for('static', filename='img/load_icon.png') }}" alt="." class="loader-icon">
+                <img src="{{ url_for('static', filename='img/load_icon.png') }}" alt="." class="loader-icon">
+                <img src="{{ url_for('static', filename='img/load_icon.png') }}" alt="." class="loader-icon">
+            </div>
+            <p id="progress-status" class="progress-status-text">Initializing...</p>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const batchId = "{{ batch_id }}";
+    const statusContainer = document.getElementById('status-indicator-container');
+    const statusElement = document.getElementById('progress-status');
+    const resultsUrl = "{{ url_for('review_bulk_table', batch_id=batch_id) }}";
+
+    function checkProgress() {
+        fetch(`/get_bulk_progress/${batchId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Server returned status ${response.status}. Batch may have expired.`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'error') {
+                    clearInterval(pollingInterval);
+                    statusContainer.innerHTML = `
+                        <p class="error-text">An error occurred during processing.</p>
+                        <p>Please check the server console for details. You may need to start a new classification.</p>
+                        <a href="{{ url_for('start_new_bulk') }}" class="button-start-new" style="margin-top: 20px;">Start New Classification</a>
+                    `;
+                } else if (data.status === 'completed') {
+                    clearInterval(pollingInterval);
+                    statusElement.textContent = 'Processing complete! Redirecting...';
+                    window.location.href = resultsUrl;
+                } else {
+                    const progress = data.total_rows > 0 ? (data.processed_count / data.total_rows * 100).toFixed(0) : 0;
+                    statusElement.textContent = `Processing... ${data.processed_count} of ${data.total_rows} items complete (${progress}%).`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching progress:', error);
+                clearInterval(pollingInterval);
+                statusContainer.innerHTML = `<p class="error-text">Could not retrieve processing status. ${error.message}</p>`;
+            });
+    }
+
+    const pollingInterval = setInterval(checkProgress, 3000);
+    checkProgress(); // Initial check
+});
+</script>
+{% endblock %}

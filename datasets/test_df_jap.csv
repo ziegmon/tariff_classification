@@ -1,0 +1,264 @@
+,division,product_type,material_type,tariff_country_code,tariff_country_description,tariff_code,customs_description,material_composition
+1,Men,T-Shirts,Knitted,JPN,Japan,610910010,knitted t-shirt,"54% Pima Cotton, 40% Polyester (Mechanical Recycled) - rPES, 6% Elastane - EL"
+19,Men,Short Sleeves,Knitted,JPN,Japan,610910010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+51,Men,Short Sleeves,Knitted,JPN,Japan,610910020,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+73,Men,T-Shirts,Knitted,JPN,Japan,610910010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+97,Men,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+108,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+229,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,100% Recycled Polyester
+302,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+311,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+361,Men,Pants,Woven,JPN,Japan,620343200,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+371,Men,Trousers,Woven,JPN,Japan,620343200,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+418,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+461,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+474,Men,Trousers,Woven,JPN,Japan,620343200,woven pants,100% Polyamide (Nylon) - PA
+499,Men,Trousers,Woven,JPN,Japan,620343200,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+541,Men,Short Sleeves,Knitted,JPN,Japan,610910020,knitted t-shirt,100% Cotton (Organic) - CO
+554,Men,Short Sleeves,Knitted,JPN,Japan,610910020,knitted t-shirt,100% Cotton (Organic) - CO
+676,Men,Pants,Woven,JPN,Japan,620343200,woven pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL"
+690,Men,Vests,Woven,JPN,Japan,620140200,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+740,Men,Short Sleeves,Knitted,JPN,Japan,610910010,knitted t-shirt,100% Cotton (Organic) - CO
+832,Men,Tanks,Knitted,JPN,Japan,610990200,knitted tank,100% Polyester (Recycled) - rPES
+889,Men,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+902,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+912,Men,T-Shirts,Knitted,JPN,Japan,610990100,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+945,Men,Tanks,Knitted,JPN,Japan,610990200,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+955,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+978,Men,Tanks,Knitted,JPN,Japan,610990100,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+1010,Men,Short Sleeves,Knitted,JPN,Japan,610910010,knitted t-shirt,100% Cotton (Organic) - CO
+1082,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1096,Men,Tights,Knitted,JPN,Japan,610343000,knitted half tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1149,Men,T-Shirts,Knitted,JPN,Japan,610990100,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+1245,Men,Winter Jackets,Woven,JPN,Japan,620140200,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+1257,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"75% Recycled Polyester, 25% Elastane - EL"
+1263,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights,"74% recycled polyester, 26% elastane"
+1292,Men,Long Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+1309,Men,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,100% recycled polyester
+1354,Men,Winter Jackets,Woven,JPN,Japan,620140200,woven jacket,"85% Polyamide, 15% Elastane"
+1362,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+1406,Men,Long Sleeves,Knitted,JPN,Japan,610910020,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1414,Men,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1521,Men,T-Shirts,Knitted,JPN,Japan,610910020,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1545,Men,Tanks,Knitted,JPN,Japan,610910020,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1645,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"81% Polyester, 19% Polyester"
+1684,Men,Trousers,Knitted,JPN,Japan,610343000,knitted pants,"86% Polyester, 14% Elastane"
+1701,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"86% recycled polyamide, 14% elastane"
+1727,Men,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester (Recycled) - rPES
+1746,Men,Short Sleeves,Knitted,JPN,Japan,610910010,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1784,Men,Short Sleeves,Knitted,JPN,Japan,610910010,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1832,Men,Hoodies & Sweatshirts,Knitted,JPN,Japan,611020030,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+1943,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+1976,Men,Sweatshirts,Knitted,JPN,Japan,611020030,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2096,Men,Pants,Knitted,JPN,Japan,610342000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2187,Men,T-Shirts,Knitted,JPN,Japan,610910010,knitted t-shirt,100% Cotton (Organic) - CO
+2271,Men,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,100% Cotton (Organic) - CO
+2285,Men,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+2341,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+2496,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester Lanzatech - CC
+2630,Men,T-Shirts,Knitted,JPN,Japan,610990200,t-shirt,100% Polyester Lanzatech - CC
+2649,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"86% Polyester- PES, 14% Elastane"
+2686,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+2750,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,"90% recycled polyester, 10% elastane"
+2758,Men,T-Shirts,Knitted,JPN,Japan,610990100,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2804,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2903,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"Front: 90% recycled polyester, 10% elastane 
+Back: 80% recycled polyester, 20% elastane"
+2918,Men,T-Shirts,Knitted,JPN,Japan,610990100,knitted t-shirt,100% Polyester
+2922,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester
+2972,Men,Sweatshirts,Knitted,JPN,Japan,611030030,knitted hoodie,100% Polyester
+2998,Men,Sweatshirts,Knitted,JPN,Japan,611030030,hoodie,100% Polyester (Mechanical Recycled) - rPES
+3059,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights half,"73% polyamide, 27% elastane"
+3075,Men,Pants,Knitted,JPN,Japan,610343000,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+3118,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"50% Polyester (Chemical Monofilament Recycled) - rPES, 50% Polyester - PES"
+3172,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,100% polyester
+3360,Men,Sweatshirts,Knitted,JPN,Japan,611020030,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3420,Men,Sweatshirts,Knitted,JPN,Japan,611020030,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Recycled) - rPES"
+3429,Men,Tights,Knitted,JPN,Japan,610343000,tights,"75% Recycled Polyester, 25% Elastane - EL"
+3454,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3473,Men,T-Shirts,Knitted,JPN,Japan,610990100,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3591,Men,Sweatshirts,Knitted,JPN,Japan,611030099,long sleeves top,100% Polyester (Recycled) - rPES
+3768,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+3998,Men,Sweatshirts,Knitted,JPN,Japan,611030099,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4024,Men,Sweatshirts,Knitted,JPN,Japan,611030099,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+4153,Men,Sweatshirts,Knitted,JPN,Japan,611030099,hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4164,Men,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+4317,Men,Pants,Knitted,JPN,Japan,610343000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4429,Men,Pants,Woven,JPN,Japan,620343200,woven pants,100% Recycled Polyester
+4481,Men,Pants,Woven,JPN,Japan,620343200,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+4522,Men,Pants,Laminated (WP Membrane),JPN,Japan,620343200,woven pants,100% Polyamide (Nylon) - PA
+4537,Men,Pants,Woven,JPN,Japan,620343200,woven pants,100% Polyamide (Nylon) - PA
+4635,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"Front: 86% Polyamide, 14% Elastane / back: 100% Polyester"
+4655,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"47% Polyamide, 37% Polyester, 16% Elastane"
+4740,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights,75% Polyester 25% Elastane
+4822,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+4981,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+5081,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,100% Polyester
+5170,Men,Pants,Woven,JPN,Japan,620343200,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+5184,Men,Sweatshirts,Knitted,JPN,Japan,611420000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5195,Men,Shorts,Knitted,JPN,Japan,610342000,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5266,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+5310,Men,Pants,Knitted,JPN,Japan,610343000,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+5324,Men,Pants,Knitted,JPN,Japan,610343000,knitted joggers,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+5347,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights,"68% Polyamide, 32% Elastane"
+5368,Men,Shorts,Woven,JPN,Japan,620343200,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+5394,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5414,Men,T-Shirts,Knitted,JPN,Japan,610990100,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5562,Men,Sweatshirts,Knitted,JPN,Japan,611030030,knitted sweatshirt,"48% Polyester, 45% Elastane, 7% Cotton"
+5604,Men,Sweatshirts,Knitted,JPN,Japan,611030099,knitted hoodie,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (BCI), 7% Elastane - EL"
+5718,Men,Sweatshirts,Woven,JPN,Japan,621133200,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+5734,Men,Pants,Woven,JPN,Japan,620343200,woven pants,"90% Polyamide, 10% Elastane"
+5837,Men,Pants,Knitted,JPN,Japan,610343000,knitted pants,"40% Polyamide, 60% Polyester"
+5879,Men,Pants,Knitted,JPN,Japan,610343000,knitted pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL"
+5927,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,100% Polyester (Mechanical Recycled) - rPES
+5953,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted long sleeves t-shirt,100% Polyester
+6059,Men,Tights,Knitted,JPN,Japan,610343000,knitted tights short,"68% Polyamide, 32% Elastane"
+6075,Men,Pants,Woven,JPN,Japan,620343200,woven pants,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+6188,Men,Pants,Woven,JPN,Japan,620343200,woven pants,"95% Polyamide, 5% Elastane"
+6277,Men,Winter Jackets,Woven,JPN,Japan,620140200,woven jacket,"87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL"
+6333,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL"
+6344,Men,Winter Jackets,Woven,JPN,Japan,620140200,woven jacket,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+6570,Men,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,Main fabric: 100% recycled polyester
+6604,Men,Sweatshirts,Knitted,JPN,Japan,611020030,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester"
+6624,Men,Pants,Knitted,JPN,Japan,610342000,knitted pants,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6655,Men,Sweatshirts,Knitted,JPN,Japan,611020030,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6683,Men,Pants,Woven,JPN,Japan,620343200,woven pants,100% recycled polyester
+6750,Unisex,Sweatshirts,Woven,JPN,Japan,621143200,woven pullover,"98% Recycled Polyester, 2% Elastane - EL"
+6766,Unisex,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester (Recycled) - rPES
+6770,Unisex,Tanks,Knitted,JPN,Japan,610990200,knitted singlet,100% Polyester (Recycled) - rPES
+6876,Unisex,Pants,Woven,JPN,Japan,620463200,woven pants,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+6935,Unisex,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+7006,Unisex,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7032,Unisex,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Polyester- rPES, 15% Elastane - EL"
+7125,Unisex,Pants,Woven,JPN,Japan,620463200,woven pants,100% Polyamide (Recycled Nylon) - rPA
+7159,Unisex,Tights,Knitted,JPN,Japan,610463000,knitted tights,"80% Polyamide (Nylon) - PA, 20% Elastane - EL"
+7195,Unisex,Pants,Woven,JPN,Japan,620463200,woven pants,"92% Polyamide, 8% Elastane"
+7226,Unisex,Winter Jackets,Woven,JPN,Japan,620240200,woven jacket,"90% Polyamide (Nylon) - PA, 10% Elastane - EL"
+7231,Women,Crop Tops,Knitted,JPN,Japan,611430000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7249,Women,Crop Tops,Knitted,JPN,Japan,611430000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7266,Women,Short Sleeves,Knitted,JPN,Japan,610910020,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+7353,Women,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,"75% recycled polyamide, 25% elastane"
+7481,Women,Tanks,Knitted,JPN,Japan,610990200,knitted tank,100% Polyester
+7541,Women,Crop Tops,Knitted,JPN,Japan,611430000,knitted crop top,"75% recycled polyamide, 25% elastane"
+7616,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7642,Women,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7750,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7770,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,100% Recycled Polyester
+7816,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7985,Women,Trousers,Woven,JPN,Japan,620463200,woven pants,100% Recycled Polyester
+8156,Women,Tights,Knitted,JPN,Japan,610463000,knitted shorts,"75% recycled polyamide, 25% elastane"
+8246,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+8254,Women,Trousers,Woven,JPN,Japan,620463200,woven pants,100% Polyamide (Nylon) - PA
+8288,Women,Trousers,Woven,JPN,Japan,620463200,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+8325,Women,Short Sleeves,Knitted,JPN,Japan,610910010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8385,Women,Short Sleeves,Knitted,JPN,Japan,610910020,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8395,Women,Short Sleeves,Knitted,JPN,Japan,610910020,knitted t-shirt,100% Cotton (Organic) - CO
+8416,Women,Short Sleeves,Knitted,JPN,Japan,610910020,knitted t-shirt,100% Cotton (Organic) - CO
+8538,Women,Vests,Woven,JPN,Japan,620240200,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+8592,Women,Short Sleeves,Knitted,JPN,Japan,610910010,knitted t-shirt,100% Cotton (Organic) - CO
+8617,Women,T-Shirts,Knitted,JPN,Japan,610910010,knitted t-shirt,100% Cotton (Organic) - CO
+8695,Women,Crop Tops,Knitted,JPN,Japan,610990200,crop top,"73% Polyamide (Recycled Nylon) - rPA, 27% Elastane - EL"
+8699,Women,Tights,Knitted,JPN,Japan,610463000,knitted shorts,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+8724,Women,Bras,Woven,JPN,Japan,621210000,bra,"82% Polyamide (Nylon) - PA, 18% Elastane"
+8728,Women,Bras,Knitted,JPN,Japan,621210000,bra,"75% Recycled Polyester, 25% Elastane - EL"
+8743,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8774,Women,T-Shirts,Knitted,JPN,Japan,610990100,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8816,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8842,Women,T-Shirts,Knitted,JPN,Japan,610990100,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8862,Women,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8879,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,100% Polyester
+8884,Women,Skirts,Woven,JPN,Japan,620453200,woven skirt,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+8940,Women,Short Sleeves,Knitted,JPN,Japan,610910010,knitted t-shirt,100% Cotton (Organic) - CO
+8993,Women,Short Sleeves,Knitted,JPN,Japan,610990200,knitted tank,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9061,Women,T-Shirts,Knitted,JPN,Japan,610990100,t-shirt,100% Polyamide (Recycled Nylon) - rPA
+9075,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9182,Women,Winter Jackets,Woven,JPN,Japan,620240200,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+9197,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,"86% recycled polyamide, 14% elastane"
+9207,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,"74% recycled polyester, 26% elastane"
+9216,Women,Long Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+9239,Women,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,100% recycled polyester
+9308,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9354,Women,Long Sleeves,Knitted,JPN,Japan,610910020,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9379,Women,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9440,Women,Bras,Knitted,JPN,Japan,621210000,bra,"75% Polyamide (Recycled Nylon) - rPA, 25% Elastane - EL"
+9600,Women,Sweatshirts,Knitted,JPN,Japan,611030030,knitted sweatshirt,"48% polyester, 45% cotton, 7% elastane"
+9612,Women,Hoodies & Sweatshirts,Knitted,JPN,Japan,611030030,knitted sweatshirt,"48% recycled polyester, 45% BCI cotton, 7% elastane"
+9622,Women,Hoodies & Sweatshirts,Knitted,JPN,Japan,611030030,knitted sweatshirt,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton - CO, 7% Elastane - E"
+9671,Women,Sweatshirts,Knitted,JPN,Japan,611030030,knitted sweatshirt,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+9713,Women,Trousers,Knitted,JPN,Japan,610463000,knitted pants,"86% Polyester, 14% Elastane"
+9722,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+9747,Women,Short Sleeves,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester (Recycled) - rPES
+9776,Women,Hoodies & Sweatshirts,Knitted,JPN,Japan,611020030,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+9879,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+9915,Women,Sweatshirts,Knitted,JPN,Japan,611020030,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+9927,Women,Hoodies & Sweatshirts,Knitted,JPN,Japan,611020030,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+10032,Women,Pants,Knitted,JPN,Japan,610462000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10043,Women,Sweatpants,Knitted,JPN,Japan,610462000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10162,Women,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,100% Cotton (Organic) - CO
+10226,Women,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,"59% Cotton (Organic) - CO, 35% Recycled Polyester, 6% Elastane (Spandex) - EL"
+10242,Women,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+10280,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+10329,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,"59% Polyamide (Recycled Nylon) - rPA, 41% Elastane - EL"
+10427,Women,Bras,Knitted,JPN,Japan,621210000,bra,"83% Polyester (Mechanical Recycled) - rPES, 17% Elastane - EL"
+10573,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester Lanzatech - CC
+10697,Women,T-Shirts,Knitted,JPN,Japan,610990200,t-shirt,100% Polyester Lanzatech - CC
+10719,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,"86% Polyester- PES, 14% Elastane"
+10762,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+10796,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+10957,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester
+10996,Women,Sweatshirts,Knitted,JPN,Japan,611030030,knitted hoodie,100% Polyester
+11005,Women,Sweatshirts,Knitted,JPN,Japan,611030030,hoodie,100% Polyester (Mechanical Recycled) - rPES
+11047,Women,Tights,Knitted,JPN,Japan,620463200,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11069,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights half,"73% polyamide, 27% elastane"
+11083,Women,Pants,Knitted,JPN,Japan,610463000,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+11218,Women,Bras,Knitted,JPN,Japan,621210000,bra,"Main fabric composition: 75% recycled polyester, 25% elastane"
+11413,Women,Bras,Knitted,JPN,Japan,621210000,bra,"65% Polyamide (Recycled Nylon) - rPA, 35% Elastane - EL"
+11534,Women,Bras,Knitted,JPN,Japan,621210000,bra,"75%  polyester, 25% elastane"
+11560,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+11615,Women,Bras,Knitted,JPN,Japan,621210000,bra,"82% Polyester Lanzatech - CC, 18% Elastane - EL"
+11723,Women,Sweatshirts,Knitted,JPN,Japan,611020030,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11730,Women,Hoodies & Sweatshirts,Knitted,JPN,Japan,611020030,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11786,Women,Tights,Knitted,JPN,Japan,610463000,tights,"75% Recycled Polyester, 25% Elastane - EL"
+11865,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11876,Women,T-Shirts,Knitted,JPN,Japan,610990100,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11991,Women,Tights,Knitted,JPN,Japan,610463000,knitted short tights,"75% recycled polyester, 25% elastane"
+12006,Women,Tights,Knitted,JPN,Japan,610463000,knitted shorts,"75% Recycled Polyester, 25% Elastane - EL"
+12047,Women,Sweatshirts,Knitted,JPN,Japan,611030099,long sleeves top,100% Polyester (Recycled) - rPES
+12192,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+12501,Women,T-Shirts,Knitted,JPN,Japan,611430000,knitted crop tops,Polyester (recycled) 71% Elastane 29%.
+12513,Women,T-Shirts,Knitted,JPN,Japan,611430000,knitted crop top,Polyester (recycled) 71% Elastane 29%.
+12588,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12648,Women,Sweatshirts,Knitted,JPN,Japan,611030099,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+12773,Women,Sweatshirts,Knitted,JPN,Japan,611030099,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+12841,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+12947,Women,T-Shirts,Knitted,JPN,Japan,611420000,crop top,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+13032,Women,T-Shirts,Knitted,JPN,Japan,610910020,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13113,Women,T-Shirts,Knitted,JPN,Japan,610910020,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13173,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13241,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13358,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights shorts,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13372,Women,Tights,Knitted,JPN,Japan,610463000,knitted shorts,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13461,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,75% rec. Polyester 25% Elastane
+13574,Women,Tights,Knitted,JPN,Japan,610463000,knitted tights,75% Polyester 25% Elastane
+13750,Women,T-Shirts,Knitted,JPN,Japan,611430000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+13791,Women,Pants,Knitted,JPN,Japan,610463000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+13912,Women,Pants,Woven,JPN,Japan,620463200,woven pants,100% Recycled Polyester
+13958,Women,Pants,Woven,JPN,Japan,620463200,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+14048,Women,Pants,Laminated (WP Membrane),JPN,Japan,620463200,woven pants,100% Polyamide (Nylon) - PA
+14054,Women,Pants,Woven,JPN,Japan,620463200,woven pants,100% Polyamide (Nylon) - PA
+14166,Women,Dresses,Woven,JPN,Japan,620443200,woven dress,Polyester 100%
+14197,Women,Skirts,Woven,JPN,Japan,620453200,woven skirt,100% Polyester
+14282,Women,Skirts,Woven,JPN,Japan,620463200,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+14285,Women,Sweatshirts,Knitted,JPN,Japan,611420000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14312,Women,Shorts,Knitted,JPN,Japan,610462000,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14380,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14414,Women,T-Shirts,Knitted,JPN,Japan,610990100,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14449,Women,Pants,Knitted,JPN,Japan,610463000,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+14489,Women,Tights,Knitted,JPN,Japan,610463000,tights,"68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"
+14549,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+14570,Women,T-Shirts,Knitted,JPN,Japan,610990200,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+14680,Women,Sweatshirts,Knitted,JPN,Japan,611030099,knitted hoodie,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+14752,Women,T-Shirts,Knitted,JPN,Japan,610910001,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+14793,Women,Sweatshirts,Woven,JPN,Japan,621143200,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+14886,Women,Pants,Knitted,JPN,Japan,610463000,knitted pants,"40% Polyamide, 60% Polyester"
+14902,Women,Shorts,Woven,JPN,Japan,620463200,woven shorts,"85% Recycled Polyamide, 15% Elastane - EL"

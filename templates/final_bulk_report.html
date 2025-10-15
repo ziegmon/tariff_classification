@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block title %}Final Bulk Report{% endblock %}
+
+{% block content %}
+<h2>Final Classification Report</h2>
+<p><strong>Product Category:</strong> {{ product_category.title() }}</p>
+<p>Below are the finalized HS codes based on your selections.</p>
+
+{% if final_results %}
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Category</th>
+                <th>Country</th>
+                <th>Product Description</th>
+                <th>Suggested HS Code 1</th>
+                <th>Certainty 1 (%)</th>
+                <th>Actual HS Code (from file)</th>
+                <th>Selected HS Code</th>
+                <th>Selected Certainty (%)</th>
+                <th>Status</th>
+                <th>Reasoning</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in final_results %}
+                <tr>
+                    <td>{{ row.idx }}</td>
+                    <td>{{ row.product_category|default('N/A') }}</td>
+                    <td>{{ row.input_country }}</td>
+                    <td>{{ row.product_description }}</td>
+                    <td>{{ row.suggested_hs_code_1 }}</td>
+                    <td>{{ row.certainty_1_percent }}</td>
+                    <td>{{ row.actual_hs_code_from_dataset }}</td>
+                    <td>
+                        {% if row.selected_hs_code %}
+                            <code>{{ row.selected_hs_code }}</code>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>{{ row['certainty (%)'] | default('N/A') }}</td>
+                    <td><span class="status-indicator status-{{ row.status | lower | replace(' ', '-') }}">{{ row.status }}</span></td>
+                    <td>
+                        {% if row.selected_reasoning %}
+                            <details>
+                                <summary>Show Reasoning</summary>
+                                <p>{{ row.selected_reasoning | default('No reasoning provided.') }}</p>
+                            </details>
+                        {% else %}
+                            No selection reasoning.
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="download-section">
+        <p>Download your finalized results:</p>
+        <a href="{{ url_for('static', filename='data/final_hs_codes.csv') }}" class="btn-primary" download>Download Final Codes as CSV</a>
+    </div>
+{% else %}
+    <p>No products were finalized for the report (they might have been marked 'Review Later' or encountered errors).</p>
+{% endif %}
+
+<div style="text-align: center; margin-top: 30px;">
+    <a href="{{ url_for('start_new_bulk') }}" class="btn-primary">Start New Classification</a>
+    <a href="{{ url_for('display_metrics') }}" class="btn-secondary">View Metrics Dashboard</a>
+</div>
+
+{% endblock %}

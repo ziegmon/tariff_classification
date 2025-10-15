@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}Bulk Classification{% endblock %}
+
+{% block content %}
+<h2>Bulk HS Code Classification</h2>
+
+{% if active_batch_id %}
+    <div class="active-session-notice">
+        <h3>You have an active review session.</h3>
+        <p>An unfinished bulk classification task (Batch ID: {{ active_batch_id }}) was found. You can continue where you left off, or start a new classification which will abandon the previous one.</p>
+        <div class="active-session-actions">
+            <a href="{{ url_for('review_bulk_table', batch_id=active_batch_id) }}" class="button-continue">Continue Review</a>
+            <a href="{{ url_for('start_new_bulk') }}" class="button-start-new">Start a New Classification</a>
+        </div>
+    </div>
+    <hr>
+    <p>Alternatively, uploading a new file below will automatically start a new session.</p>
+{% else %}
+    <p>Upload a CSV file containing product details to classify multiple products at once.</p>
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data">
+    <label for="product_category">Product Category:</label>
+    <select id="product_category" name="product_category">
+        <option value="apparel">Apparel</option>
+        <option value="footwear">Footwear</option>
+    </select>
+    <br><br>
+    
+    <label for="csv_file">Select CSV File:</label>
+    <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
+    <br><br>
+    
+    <button type="submit">Upload & Generate HS Codes</button>
+</form>
+
+<div style="margin-top: 30px;">
+    <h3>📋 Expected CSV Format</h3>
+    <p>Your CSV file should contain the following columns based on product category:</p>
+    
+    <div style="margin-top: 15px;">
+        <h4>For Apparel:</h4>
+        <ul>
+            <li><strong>tariff_country_description</strong> - Target country</li>
+            <li><strong>customs_description</strong> - Product name</li>
+            <li><strong>product_type</strong> - Secondary product description (optional)</li>
+            <li><strong>composition</strong> - Material composition</li>
+            <li><strong>material_type</strong> - Construction method (Knitted/Woven)</li>
+            <li><strong>division</strong> - Gender category</li>
+            <li><strong>tariff_code</strong> - Actual HS code (for accuracy comparison)</li>
+        </ul>
+        
+        <h4>For Footwear:</h4>
+        <ul>
+            <li><strong>tariff_country_description</strong> - Target country</li>
+            <li><strong>customs_description</strong> - Product name</li>
+            <li><strong>product_type</strong> - Secondary product description (optional)</li>
+            <li><strong>material_composition</strong> - Upper material composition</li>
+            <li><strong>outsole_material</strong> - Sole material</li>
+            <li><strong>gender_name</strong> - Gender category</li>
+            <li><strong>size_code</strong> - Size information (optional)</li>
+            <li><strong>tariff_code</strong> - Actual HS code (for accuracy comparison)</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

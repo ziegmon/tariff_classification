@@ -1,0 +1,250 @@
+,division,product_type,material_type,tariff_country_code,tariff_country_description,tariff_code,customs_description,material_composition
+4,Men,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"54% Pima Cotton, 40% Polyester (Mechanical Recycled) - rPES, 6% Elastane - EL"
+23,Men,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+47,Men,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+91,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+123,Men,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+227,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,100% Recycled Polyester
+300,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+319,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+351,Men,Trousers,Woven,CHE,Switzerland,62034300-000,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+417,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+448,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+463,Men,Trousers,Woven,CHE,Switzerland,62034300-000,woven pants,100% Polyamide (Nylon) - PA
+492,Men,Trousers,Woven,CHE,Switzerland,62034300-000,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+538,Men,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,100% Cotton (Organic) - CO
+546,Men,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,100% Cotton (Organic) - CO
+682,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL"
+836,Men,Tanks,Knitted,CHE,Switzerland,61099000-000,knitted tank,100% Polyester (Recycled) - rPES
+846,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted shorts,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+890,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+937,Men,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+944,Men,Tanks,Knitted,CHE,Switzerland,61099000-000,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+961,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+1089,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1099,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted half tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1218,Men,Winter Jackets,Woven,CHE,Switzerland,62014000-000,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+1250,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"75% Recycled Polyester, 25% Elastane - EL"
+1268,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights,"74% recycled polyester, 26% elastane"
+1289,Men,Long Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+1312,Men,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% recycled polyester
+1352,Men,Winter Jackets,Woven,CHE,Switzerland,62014000-000,woven jacket,"85% Polyamide, 15% Elastane"
+1359,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+1409,Men,Long Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1423,Men,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1523,Men,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1544,Men,Tanks,Knitted,CHE,Switzerland,61091000-000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1644,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"81% Polyester, 19% Polyester"
+1689,Men,Trousers,Knitted,CHE,Switzerland,61034300-000,knitted pants,"86% Polyester, 14% Elastane"
+1702,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"86% recycled polyamide, 14% elastane"
+1731,Men,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester (Recycled) - rPES
+1741,Men,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1806,Men,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1839,Men,Hoodies & Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+1937,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+1984,Men,Sweatshirts,Knitted,CHE,Switzerland,61102000-000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2097,Men,Pants,Knitted,CHE,Switzerland,61034200-000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2102,Men,Trousers,Knitted,CHE,Switzerland,61034200-000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2189,Men,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,100% Cotton (Organic) - CO
+2288,Men,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+2346,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+2502,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester Lanzatech - CC
+2639,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,t-shirt,100% Polyester Lanzatech - CC
+2655,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"86% Polyester- PES, 14% Elastane"
+2690,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+2747,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,"90% recycled polyester, 10% elastane"
+2761,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2895,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"Front: 90% recycled polyester, 10% elastane 
+Back: 80% recycled polyester, 20% elastane"
+2913,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester
+2973,Men,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted hoodie,100% Polyester
+3001,Men,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,hoodie,100% Polyester (Mechanical Recycled) - rPES
+3032,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+3069,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights half,"73% polyamide, 27% elastane"
+3082,Men,Pants,Knitted,CHE,Switzerland,61034300-000,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+3126,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"50% Polyester (Chemical Monofilament Recycled) - rPES, 50% Polyester - PES"
+3171,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,100% polyester
+3354,Men,Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3380,Men,Hoodies & Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3407,Men,Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Recycled) - rPES"
+3424,Men,Tights,Knitted,CHE,Switzerland,61034300-000,tights,"75% Recycled Polyester, 25% Elastane - EL"
+3462,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3595,Men,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,long sleeves top,100% Polyester (Recycled) - rPES
+3765,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+4006,Men,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCELTM) - CLY, 5% Elastane - EL"
+4031,Men,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,hoodie,"82% Recycled Polyester, 13% Lyocell (TencelTM), 5% Elastane"
+4151,Men,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4171,Men,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+4328,Men,Pants,Knitted,CHE,Switzerland,61034300-000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCELTM) - CLY, 5% Elastane - EL"
+4419,Men,Pants,Knitted,CHE,Switzerland,61034300-000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4431,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,100% Recycled Polyester
+4471,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+4518,Men,Pants,Laminated (WP Membrane),CHE,Switzerland,62034300-000,woven pants,100% Polyamide (Nylon) - PA
+4528,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,100% Polyamide (Nylon) - PA
+4630,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"Front: 86% Polyamide, 14% Elastane / back: 100% Polyester"
+4650,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"47% Polyamide, 37% Polyester, 16% Elastane"
+4744,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights,75% Polyester 25% Elastane
+4827,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+4986,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+5084,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,100% Polyester
+5178,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+5193,Men,Sweatshirts,Knitted,CHE,Switzerland,61142000-000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5203,Men,Shorts,Knitted,CHE,Switzerland,61034200-000,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5265,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+5307,Men,Pants,Knitted,CHE,Switzerland,61034300-000,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+5325,Men,Pants,Knitted,CHE,Switzerland,61034300-000,knitted joggers,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+5353,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights,"68% Polyamide, 32% Elastane"
+5370,Men,Shorts,Woven,CHE,Switzerland,62034300-000,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+5407,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5561,Men,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted sweatshirt,"48% Polyester, 45% Elastane, 7% Cotton"
+5606,Men,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted hoodie,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (BCI), 7% Elastane - EL"
+5706,Men,Sweatshirts,Woven,CHE,Switzerland,62113300-000,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+5746,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,"90% Polyamide, 10% Elastane"
+5825,Men,Pants,Knitted,CHE,Switzerland,61034300-000,knitted pants,"40% Polyamide, 60% Polyester"
+5885,Men,Pants,Knitted,CHE,Switzerland,61034300-000,knitted pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL"
+5922,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,100% Polyester (Mechanical Recycled) - rPES
+5956,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted long sleeves t-shirt,100% Polyester
+6058,Men,Tights,Knitted,CHE,Switzerland,61034300-000,knitted tights short,"68% Polyamide, 32% Elastane"
+6086,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+6192,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,"95% Polyamide, 5% Elastane"
+6276,Men,Winter Jackets,Woven,CHE,Switzerland,62014000-000,woven jacket,"87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL"
+6334,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL"
+6342,Men,Winter Jackets,Woven,CHE,Switzerland,62014000-000,woven jacket,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+6572,Men,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,Main fabric: 100% recycled polyester
+6599,Men,Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester"
+6620,Men,Pants,Knitted,CHE,Switzerland,61034200-000,knitted pants,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6659,Men,Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6681,Men,Pants,Woven,CHE,Switzerland,62034300-000,woven pants,100% recycled polyester
+6743,Unisex,Sweatshirts,Woven,CHE,Switzerland,62114300-000,woven pullover,"98% Recycled Polyester, 2% Elastane - EL"
+6767,Unisex,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester (Recycled) - rPES
+6776,Unisex,Tanks,Knitted,CHE,Switzerland,61099000-000,knitted singlet,100% Polyester (Recycled) - rPES
+6873,Unisex,Pants,Woven,CHE,Switzerland,62046300-000,woven pants,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+6934,Unisex,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+6993,Unisex,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7033,Unisex,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Polyester- rPES, 15% Elastane - EL"
+7127,Unisex,Pants,Woven,CHE,Switzerland,62046300-000,woven pants,100% Polyamide (Recycled Nylon) - rPA
+7154,Unisex,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,"80% Polyamide (Nylon) - PA, 20% Elastane - EL"
+7192,Unisex,Pants,Woven,CHE,Switzerland,62046300-000,woven pants,"92% Polyamide, 8% Elastane"
+7222,Unisex,Winter Jackets,Woven,CHE,Switzerland,62024000-000,woven jacket,"90% Polyamide (Nylon) - PA, 10% Elastane - EL"
+7234,Women,Crop Tops,Knitted,CHE,Switzerland,61143000-000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7247,Women,Crop Tops,Knitted,CHE,Switzerland,61143000-000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7261,Women,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+7345,Women,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"75% recycled polyamide, 25% elastane"
+7488,Women,Tanks,Knitted,CHE,Switzerland,61099000-000,knitted tank,100% Polyester
+7539,Women,Crop Tops,Knitted,CHE,Switzerland,61143000-000,knitted crop top,"75% recycled polyamide, 25% elastane"
+7606,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7640,Women,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7749,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7772,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,100% Recycled Polyester
+7819,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7988,Women,Trousers,Woven,CHE,Switzerland,62046300-000,woven pants,100% Recycled Polyester
+8165,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted shorts,"75% recycled polyamide, 25% elastane"
+8239,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+8251,Women,Trousers,Woven,CHE,Switzerland,62046300-000,woven pants,100% Polyamide (Nylon) - PA
+8289,Women,Trousers,Woven,CHE,Switzerland,62046300-000,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+8331,Women,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8399,Women,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,100% Cotton (Organic) - CO
+8405,Women,Short Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,100% Cotton (Organic) - CO
+8553,Women,Vests,Woven,CHE,Switzerland,62024000-000,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+8586,Women,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,100% Cotton (Organic) - CO
+8689,Women,Crop Tops,Knitted,CHE,Switzerland,61099000-000,crop top,"73% Polyamide (Recycled Nylon) - rPA, 27% Elastane - EL"
+8717,Women,Bras,Woven,CHE,Switzerland,62121000-000,bra,"82% Polyamide (Nylon) - PA, 18% Elastane"
+8727,Women,Bras,Woven,CHE,Switzerland,62121000-000,bra,"75% Recycled Polyester, 25% Elastane - EL"
+8741,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8823,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8849,Women,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8878,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,100% Polyester
+8883,Women,Skirts,Woven,CHE,Switzerland,62045300-000,woven skirt,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+9004,Women,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted tank,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9060,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,t-shirt,100% Polyamide (Recycled Nylon) - rPA
+9070,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9174,Women,Winter Jackets,Woven,CHE,Switzerland,62024000-000,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+9189,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,"86% recycled polyamide, 14% elastane"
+9211,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,"74% recycled polyester, 26% elastane"
+9224,Women,Long Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+9240,Women,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% recycled polyester
+9292,Women,Winter Jackets,Woven,CHE,Switzerland,62024000-000,woven jacket,"85% Polyamide, 15% Elastane"
+9304,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9360,Women,Long Sleeves,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9373,Women,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9450,Women,Bras,Knitted,CHE,Switzerland,62121000-000,bra,"75% Polyamide (Recycled Nylon) - rPA, 25% Elastane - EL"
+9595,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted sweatshirt,"48% polyester, 45% cotton, 7% elastane"
+9606,Women,Hoodies & Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted sweatshirt,"48% recycled polyester, 45% BCI cotton, 7% elastane"
+9618,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted sweatshirt,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton - CO, 7% Elastane - E"
+9672,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted sweatshirt,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCELTM) - CLY, 5% Elastane - EL"
+9708,Women,Trousers,Knitted,CHE,Switzerland,61046300-000,knitted pants,"86% Polyester, 14% Elastane"
+9726,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+9749,Women,Short Sleeves,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester (Recycled) - rPES
+9773,Women,Hoodies & Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+9870,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+9923,Women,Sweatshirts,Knitted,CHE,Switzerland,61102000-000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+9932,Women,Hoodies & Sweatshirts,Knitted,CHE,Switzerland,61102000-000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+10029,Women,Pants,Knitted,CHE,Switzerland,61046200-000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10053,Women,Sweatpants,Knitted,CHE,Switzerland,61046200-000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10223,Women,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"59% Cotton (Organic) - CO, 35% Recycled Polyester, 6% Elastane (Spandex) - EL"
+10238,Women,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+10287,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+10326,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,"59% Polyamide (Recycled Nylon) - rPA, 41% Elastane - EL"
+10424,Women,Bras,Knitted,CHE,Switzerland,62121000-000,bra,"92% Polyamide, 8% Elastane"
+10432,Women,Bras,Knitted,CHE,Switzerland,62121000-000,bra,"83% Polyester (Mechanical Recycled) - rPES, 17% Elastane - EL"
+10569,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester Lanzatech - CC
+10696,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,t-shirt,100% Polyester Lanzatech - CC
+10713,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,"86% Polyester- PES, 14% Elastane"
+10763,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+10799,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+10947,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester
+10999,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted hoodie,100% Polyester
+11003,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,hoodie,100% Polyester (Mechanical Recycled) - rPES
+11056,Women,Tights,Knitted,CHE,Switzerland,62046300-000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11063,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights half,"73% polyamide, 27% elastane"
+11078,Women,Pants,Knitted,CHE,Switzerland,61046300-000,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+11210,Women,Bras,Knitted,CHE,Switzerland,62121000-000,bra,"75% Recycled Polyester, 25% Elastane - EL"
+11214,Women,Bras,Knitted,CHE,Switzerland,62121000-000,bra,"Main fabric composition: 75% recycled polyester, 25% elastane"
+11416,Women,Bras,Knitted,CHE,Switzerland,62121000-000,bra,"65% Polyamide (Recycled Nylon) - rPA, 35% Elastane - EL"
+11540,Women,Bras,Knitted,CHE,Switzerland,62121000-000,bra,"75%  polyester, 25% elastane"
+11556,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+11611,Women,Bras,Knitted,CHE,Switzerland,62121000-000,bra,"82% Polyester Lanzatech - CC, 18% Elastane - EL"
+11728,Women,Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11745,Women,Hoodies & Sweatshirts,Knitted,CHE,Switzerland,61102000-000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11785,Women,Tights,Knitted,CHE,Switzerland,61046300-000,tights,"75% Recycled Polyester, 25% Elastane - EL"
+11858,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11989,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted short tights,"75% recycled polyester, 25% elastane"
+12002,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted shorts,"75% Recycled Polyester, 25% Elastane - EL"
+12039,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,long sleeves top,100% Polyester (Recycled) - rPES
+12108,Women,Dresses,Knitted,CHE,Switzerland,61103000-000,long sleeves top,100% Polyester (Recycled) - rPES
+12197,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+12504,Women,T-Shirts,Knitted,CHE,Switzerland,61143000-000,knitted crop tops,Polyester (recycled) 71% Elastane 29%.
+12508,Women,T-Shirts,Knitted,CHE,Switzerland,61143000-000,knitted crop top,Polyester (recycled) 71% Elastane 29%.
+12596,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12652,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,hoodie,"82% Recycled Polyester, 13% Lyocell (TencelTM), 5% Elastane"
+12781,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCELTM) - CLY, 5% Elastane - EL"
+12848,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+12957,Women,T-Shirts,Knitted,CHE,Switzerland,61142000-000,crop top,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+13036,Women,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13106,Women,T-Shirts,Knitted,CHE,Switzerland,61091000-000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13184,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13243,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13357,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights shorts,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13373,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted shorts,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13460,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,75% rec. Polyester 25% Elastane
+13565,Women,Tights,Knitted,CHE,Switzerland,61046300-000,knitted tights,75% Polyester 25% Elastane
+13747,Women,T-Shirts,Knitted,CHE,Switzerland,61143000-000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+13793,Women,Pants,Knitted,CHE,Switzerland,61046300-000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCELTM) - CLY, 5% Elastane - EL"
+13915,Women,Pants,Woven,CHE,Switzerland,62046300-000,woven pants,100% Recycled Polyester
+13955,Women,Pants,Woven,CHE,Switzerland,62046300-000,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+14044,Women,Pants,Laminated (WP Membrane),CHE,Switzerland,62046300-000,woven pants,100% Polyamide (Nylon) - PA
+14052,Women,Pants,Woven,CHE,Switzerland,62046300-000,woven pants,100% Polyamide (Nylon) - PA
+14161,Women,Dresses,Woven,CHE,Switzerland,62044300-000,woven dress,Polyester 100%
+14194,Women,Skirts,Woven,CHE,Switzerland,62045300-000,woven skirt,100% Polyester
+14284,Women,Skirts,Woven,CHE,Switzerland,62046300-000,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+14298,Women,Sweatshirts,Knitted,CHE,Switzerland,61142000-000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14302,Women,Shorts,Knitted,CHE,Switzerland,61046200-000,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14373,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14448,Women,Pants,Knitted,CHE,Switzerland,61046300-000,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+14498,Women,Tights,Knitted,CHE,Switzerland,61046300-000,tights,"68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"
+14550,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+14567,Women,T-Shirts,Knitted,CHE,Switzerland,61099000-000,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+14676,Women,Sweatshirts,Knitted,CHE,Switzerland,61103000-000,knitted hoodie,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+14784,Women,Sweatshirts,Woven,CHE,Switzerland,62114300-000,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+14882,Women,Pants,Knitted,CHE,Switzerland,61046300-000,knitted pants,"40% Polyamide, 60% Polyester"
+14898,Women,Shorts,Woven,CHE,Switzerland,62046300-000,woven shorts,"85% Recycled Polyamide, 15% Elastane - EL"

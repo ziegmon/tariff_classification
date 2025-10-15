@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HS Code Classifier{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/ON_logo.jpg') }}">
+</head>
+<body>
+    <header class="navbar-header">
+        <nav class="navbar-nav">
+            <div class="navbar-brand">
+                <img src="{{ url_for('static', filename='img/ON_logo.jpg') }}" alt="On Logo" class="brand-logo">
+                <span>HS Classifier</span>
+            </div>
+            <ul class="navbar-links"> {# Use an unordered list for better semantic structure #}
+                <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('single_classification') }}" class="nav-link">Single Product</a></li>
+                <li><a href="{{ url_for('bulk_classification') }}" class="nav-link">Bulk Classification</a></li>
+                <li><a href="{{ url_for('review_bulk_table', batch_id='latest') }}" class="nav-link">Bulk Review (Table)</a></li>
+                <li><a href="{{ url_for('display_metrics') }}" class="nav-link">Dashboard</a></li> 
+                {% if session.logged_in %}
+                    <li class="nav-logout"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            {# Flash messages display #}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <footer>
+        {# Optional: Add a footer here #}
+    </footer>
+</body>
+</html>

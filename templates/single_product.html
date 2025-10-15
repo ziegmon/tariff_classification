@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block title %}Single Product Classification{% endblock %}
+
+{% block content %}
+<h2>Single Product HS Code Classification</h2>
+
+<form method="POST" id="classificationForm">
+    <!-- Product Category Selection -->
+    <label for="product_category">Product Category:</label>
+    <select id="product_category" name="product_category" onchange="toggleCategoryFields()">
+        <option value="apparel">Apparel</option>
+        <option value="footwear">Footwear</option>
+    </select>
+    
+    <label for="country">Country:</label>
+    <select id="country" name="country">
+        {% for country in country_options %}
+            <option value="{{ country }}">{{ country.upper() }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+        {% for gender in gender_options %}
+            <option value="{{ gender }}">{{ gender }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="product_type">Product Type:</label>
+    <input type="text" id="product_type" name="product_type" required 
+           placeholder="e.g., T-shirt, Jacket (apparel) or Running Shoe, Boot (footwear)">
+
+    <!-- Apparel-specific fields -->
+    <div id="apparel_fields">
+        <label for="construction">Construction:</label>
+        <select id="construction" name="construction">
+            {% for construction in apparel_construction_options %}
+                <option value="{{ construction }}">{{ construction }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="material">Material Composition:</label>
+        <input type="text" id="material" name="material" 
+               placeholder="e.g., 100% Cotton, 60% Polyester 40% Cotton">
+    </div>
+
+    <!-- Footwear-specific fields -->
+    <div id="footwear_fields" style="display: none;">
+        <label for="upper_material">Upper Material:</label>
+        <input type="text" id="upper_material" name="upper_material" 
+               placeholder="e.g., Leather, Textile, Synthetic">
+
+        <label for="sole_material">Sole Material:</label>
+        <input type="text" id="sole_material" name="sole_material" 
+               placeholder="e.g., Rubber, Leather, EVA">
+
+        <label for="construction">Construction Method:</label>
+        <input type="text" id="footwear_construction" name="construction" 
+               placeholder="e.g., Molded, Cemented, Sewn">
+
+        <label for="use_case">Primary Use:</label>
+        <select id="use_case" name="use_case">
+            {% for use_case in footwear_use_cases %}
+                <option value="{{ use_case }}">{{ use_case }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="special_features">Special Features (Optional):</label>
+        <input type="text" id="special_features" name="special_features" 
+               placeholder="e.g., Waterproof, Steel toe, Non-slip">
+    </div>
+
+    <label for="chapter">Chapter (Optional):</label>
+    <select id="chapter" name="chapter">
+        <option value="auto">auto</option>
+        {% for chapter in available_chapters %}
+            <option value="{{ chapter }}">{{ chapter }}</option>
+        {% endfor %}
+    </select>
+
+    <label>
+        <input type="checkbox" name="use_enhanced_search" checked> Use enhanced chapter search
+    </label>
+    <br>
+    <button type="submit">Generate HS Codes</button>
+</form>
+
+<script>
+function toggleCategoryFields() {
+    const category = document.getElementById('product_category').value;
+    const apparelFields = document.getElementById('apparel_fields');
+    const footwearFields = document.getElementById('footwear_fields');
+    
+    if (category === 'apparel') {
+        apparelFields.style.display = 'block';
+        footwearFields.style.display = 'none';
+        
+        // Make apparel fields required
+        document.getElementById('material').required = true;
+        document.getElementById('upper_material').required = false;
+        document.getElementById('sole_material').required = false;
+    } else {
+        apparelFields.style.display = 'none';
+        footwearFields.style.display = 'block';
+        
+        // Make footwear fields required
+        document.getElementById('material').required = false;
+        document.getElementById('upper_material').required = true;
+        document.getElementById('sole_material').required = true;
+    }
+}
+
+// Initialize on page load
+toggleCategoryFields();
+</script>
+
+{% endblock %}

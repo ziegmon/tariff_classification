@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+{% block title %}Review Bulk Results (Table View){% endblock %}
+
+{% block content %}
+    <h2>Review Bulk Results - Table View</h2>
+    <p>Review the suggestions below. Use the icons to accept (✓) or reject (✗) a code. Click the arrow (▾) to view the reasoning. Use the refresh icon (↻) to mark all suggestions for an item as incorrect and regenerate.</p>
+
+    <div class="legend">
+        <strong>Legend:</strong>
+        <span class="legend-item"><span class="icon-legend">✓</span> Accept Code & Reasoning</span>
+        <span class="legend-item"><span class="icon-legend">✗</span> Mark as Incorrect</span>
+        <span class="legend-item"><span class="icon-legend">▾</span> Show/Hide Reasoning</span>
+        <span class="legend-item"><span class="icon-legend regenerate">&#x21bb;</span> Regenerate All</span>
+    </div>
+
+    <p>Click "Process All Selections" at the bottom when finished to see the final report.</p>
+
+    <div class="review-page-actions">
+        <form action="{{ url_for('finalize_bulk_results', batch_id=batch_id) }}" method="POST" style="display: inline;">
+            <button type="submit" class="finalize-button">Process All Selections</button>
+        </form>
+        <a href="{{ url_for('start_new_bulk') }}" class="button-start-new">Start New Classification</a>
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="review-table">
+            <thead>
+                <tr>
+                    {# MODIFIED: Added sortable-header class, data-column attribute, and span for indicator #}
+                    <th class="sortable-header" data-column="idx">Style Number <span class="sort-indicator"></span></th>
+                    <th class="sortable-header" data-column="country">Country <span class="sort-indicator"></span></th>
+                    <th class="sortable-header" data-column="gender">Gender <span class="sort-indicator"></span></th>
+                    <th class="sortable-header" data-column="description">Description <span class="sort-indicator"></span></th>
+                    <th class="sortable-header" data-column="status">Status <span class="sort-indicator"></span></th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in results %}
+                    {% set current_status = selection_status[item.idx].status %}
+                    {% set incorrect_options_set = selection_status[item.idx].data.incorrect_options | default([]) %}
+                    {% set row_actions_disabled = (current_status != 'pending' and current_status != 'regenerating') %}
+                    <tr id="row-{{ item.idx }}">
+                        <td>{{ item.idx }}</td>
+                        <td>{{ item.input_country }}</td>
+                        <td>{{ item.input_gender }}</td>
+                        <td>
+                            <span class="description-tooltip" title="Original HS Code: {{ item.hs_code_from_csv | default('N/A') }}">
+                                {{ item.input_product }} <br> <strong>Material:</strong> {{ item.input_material }} <br> <strong>Construction:</strong> {{ item.input_construction }}
+                            </span>
+                        </td>
+                        <td>
+                             <span id="status-{{ item.idx }}" class="status-indicator
+                                {% if current_status == 'selected' or current_status == 'validated_code_only' or current_status == 'validated_with_reasoning' %}status-success
+                                {% elif current_status == 'review_later' %}status-info
+                                {% elif current_status == 'regenerate_pending' or current_status == 'error' %}status-warning
+                                {% elif incorrect_options_set %}status-warning
+                                {% else %}status-pending{% endif %}">
+                                {% if current_status == 'selected' %}Selected ({{ selection_status[item.idx].data.selected_hs_code }})
+                                {% elif current_status == 'validated_code_only' %}Validated (Code Only)
+                                {% elif current_status == 'validated_with_reasoning' %}Validated (With Reasoning)
+                                {% elif current_status == 'review_later' %}Review Later
+                                {% elif current_status == 'regenerating' %}Regenerating...
+                                {% elif current_status == 'error' %}Error
+                                {% elif incorrect_options_set %}Option(s) Incorrect
+                                {% else %}Pending Review{% endif %}
+                            </span>
+                        </td>
+
+                        {% for i in range(1, 4) %}
+                            {% set hs_code = item['hs_code_' ~ i] %}
+                            {% set certainty = item['certainty_' ~ i] %}
+                            {% set reasoning = item['reasoning_' ~ i] %}
+                            {% set option_disabled = row_actions_disabled or i in incorrect_options_set %}
+
+                            <td class="option-cell">
+                                {% if hs_code and hs_code not in ['N/A', 'ERROR', '', None] %}
+                                    <code>{{ hs_code }}</code>
+                                    <div class="option-controls">
+                                        <form class="action-form-icon" method="POST" data-item-idx="{{ item.idx }}">
+                                            <input type="hidden" name="action_type" value="save_code_with_reasoning">
+                                            <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                                            <input type="hidden" name="option_num" value="{{ i }}">
+                                            <input type="hidden" name="hs_code_{{ i }}" value="{{ hs_code }}">
+                                            <input type="hidden" name="reasoning_{{ i }}" value="{{ item['raw_reasoning_text_' ~ i] | default(reasoning) }}">
+                                            <button type="submit" class="icon-button accept" title="Accept this code and reasoning" {% if option_disabled %}disabled{% endif %}>✓</button>
+                                        </form>
+                                        <form class="action-form-icon" method="POST" data-item-idx="{{ item.idx }}">
+                                            <input type="hidden" name="action_type" value="mark_incorrect">
+                                            <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                                            <input type="hidden" name="option_num" value="{{ i }}">
+                                            <input type="hidden" name="rejected_hs_code" value="{{ hs_code }}">
+                                            <button type="submit" class="icon-button reject" title="Mark as incorrect" {% if option_disabled %}disabled{% endif %}>✗</button>
+                                        </form>
+                                        <details class="reasoning-details">
+                                            <summary title="Show/Hide Reasoning">▾</summary>
+                                            <div class="reasoning-popup">
+                                                <h5>Reasoning for {{ hs_code }}</h5>
+                                                {% if reasoning is mapping %}
+                                                    {% for section_name, section_text in reasoning.items() %}
+                                                        {% if section_text != "Not explicitly addressed in response." or section_name == "General Reason" %}
+                                                            <p><strong>{{ section_name }}:</strong> {{ section_text | safe }}</p>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <p>{{ reasoning | default('No reasoning provided.') }}</p>
+                                                {% endif %}
+                                            </div>
+                                        </details>
+                                    </div>
+                                {% else %}
+                                    {{ hs_code | default('N/A') }}
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                        
+                        <td class="actions-cell">
+                            <form class="action-form-icon" method="POST" data-item-idx="{{ item.idx }}">
+                                <input type="hidden" name="action_type" value="regenerate_all">
+                                <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                                <button type="submit" class="icon-button regenerate" title="Mark all as incorrect and regenerate" {% if row_actions_disabled %}disabled{% endif %}>
+                                    &#x21bb;
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Logic for icon button form submissions
+    document.querySelectorAll('.action-form-icon').forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const formData = new FormData(this);
+            const action = "{{ url_for('review_bulk_results', batch_id=batch_id) }}";
+            fetch(action, { method: 'POST', body: formData })
+            .then(response => {
+                if (response.ok) { window.location.reload(); }
+                else { alert('An error occurred. Please try again.'); }
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    });
+
+    // --- NEW: Table Sorting Logic ---
+    const getCellValue = (tr, colIndex, colIdentifier) => {
+        const td = tr.children[colIndex];
+        if (!td) return '';
+        
+        switch(colIdentifier) {
+            case 'status':
+                const indicator = td.querySelector('.status-indicator');
+                return indicator ? indicator.textContent.trim() : '';
+            case 'description':
+                const tooltip = td.querySelector('.description-tooltip');
+                return tooltip ? tooltip.firstChild.textContent.trim() : '';
+            default:
+                return td.textContent.trim();
+        }
+    };
+
+    const sorter = (colIndex, colIdentifier, type = 'string') => {
+        return (a, b) => {
+            const valA = getCellValue(a, colIndex, colIdentifier);
+            const valB = getCellValue(b, colIndex, colIdentifier);
+
+            if (type === 'number') {
+                return parseFloat(valA) - parseFloat(valB);
+            }
+            return valA.localeCompare(valB, undefined, { numeric: true, sensitivity: 'base' });
+        };
+    };
+
+    document.querySelectorAll('.sortable-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const tableBody = header.closest('table').querySelector('tbody');
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+            const colIndex = Array.from(header.parentNode.children).indexOf(header);
+            const colIdentifier = header.dataset.column;
+            const currentDir = header.dataset.sortDir || 'asc';
+            const newDir = currentDir === 'asc' ? 'desc' : 'asc';
+            const columnType = colIdentifier === 'idx' ? 'number' : 'string';
+
+            rows.sort(sorter(colIndex, colIdentifier, columnType));
+            if (newDir === 'desc') {
+                rows.reverse();
+            }
+
+            // Remove all sort indicators first
+            document.querySelectorAll('.sortable-header').forEach(h => {
+                h.dataset.sortDir = '';
+                h.querySelector('.sort-indicator').textContent = '';
+            });
+
+            // Add indicator to the clicked header
+            header.dataset.sortDir = newDir;
+            header.querySelector('.sort-indicator').textContent = newDir === 'asc' ? ' \u25b2' : ' \u25bc';
+
+            // Re-append rows in sorted order
+            tableBody.innerHTML = '';
+            rows.forEach(row => tableBody.appendChild(row));
+        });
+    });
+});
+</script>
+{% endblock %}

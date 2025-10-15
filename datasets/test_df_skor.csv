@@ -1,0 +1,244 @@
+,division,product_type,material_type,tariff_country_code,tariff_country_description,tariff_code,customs_description,material_composition
+5,Men,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"54% Pima Cotton, 40% Polyester (Mechanical Recycled) - rPES, 6% Elastane - EL"
+24,Men,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+37,Men,Short Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+93,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+112,Men,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+224,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,100% Recycled Polyester
+306,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+310,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+355,Men,Trousers,Woven,KOR,South Korea,6203430000,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+414,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+453,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+464,Men,Trousers,Woven,KOR,South Korea,6203430000,woven pants,100% Polyamide (Nylon) - PA
+503,Men,Trousers,Woven,KOR,South Korea,6203430000,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+539,Men,Short Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,100% Cotton (Organic) - CO
+564,Men,Short Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,100% Cotton (Organic) - CO
+677,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL"
+827,Men,Tanks,Knitted,KOR,South Korea,6109903090,knitted tank,100% Polyester (Recycled) - rPES
+885,Men,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+901,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+947,Men,Tanks,Knitted,KOR,South Korea,6109903090,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+962,Men,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+1080,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1100,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted half tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1222,Men,Winter Jackets,Woven,KOR,South Korea,6201401090,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+1258,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"75% Recycled Polyester, 25% Elastane - EL"
+1271,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights,"74% recycled polyester, 26% elastane"
+1291,Men,Long Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+1303,Men,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% recycled polyester
+1347,Men,Winter Jackets,Woven,KOR,South Korea,6201401090,woven jacket,"85% Polyamide, 15% Elastane"
+1360,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+1405,Men,Long Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1412,Men,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1512,Men,T-Shirts,Knitted,KOR,South Korea,6109109000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1539,Men,Tanks,Knitted,KOR,South Korea,6109109000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1640,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"81% Polyester, 19% Polyester"
+1679,Men,Trousers,Knitted,KOR,South Korea,6103430000,knitted pants,"86% Polyester, 14% Elastane"
+1697,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"86% recycled polyamide, 14% elastane"
+1721,Men,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester (Recycled) - rPES
+1742,Men,Short Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1764,Men,Short Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1843,Men,Hoodies & Sweatshirts,Knitted,KOR,South Korea,6110200000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+1939,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+1982,Men,Sweatshirts,Knitted,KOR,South Korea,6110200000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2024,Men,Hoodies & Sweatshirts,Knitted,KOR,South Korea,6110200000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2092,Men,Pants,Knitted,KOR,South Korea,6103420000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2120,Men,Trousers,Knitted,KOR,South Korea,6103420000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2182,Men,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,100% Cotton (Organic) - CO
+2280,Men,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+2345,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+2501,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester Lanzatech - CC
+2634,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,t-shirt,100% Polyester Lanzatech - CC
+2651,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"86% Polyester- PES, 14% Elastane"
+2694,Men,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+2742,Men,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,"90% recycled polyester, 10% elastane"
+2764,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2906,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"Front: 90% recycled polyester, 10% elastane 
+Back: 80% recycled polyester, 20% elastane"
+2917,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester
+2968,Men,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted hoodie,100% Polyester
+3002,Men,Sweatshirts,Knitted,KOR,South Korea,6110301000,hoodie,100% Polyester (Mechanical Recycled) - rPES
+3065,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights half,"73% polyamide, 27% elastane"
+3076,Men,Pants,Knitted,KOR,South Korea,6103430000,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+3116,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"50% Polyester (Chemical Monofilament Recycled) - rPES, 50% Polyester - PES"
+3177,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,100% polyester
+3351,Men,Sweatshirts,Knitted,KOR,South Korea,6110200000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3414,Men,Sweatshirts,Knitted,KOR,South Korea,6110200000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Recycled) - rPES"
+3433,Men,Tights,Knitted,KOR,South Korea,6103430000,tights,"75% Recycled Polyester, 25% Elastane - EL"
+3449,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3597,Men,Sweatshirts,Knitted,KOR,South Korea,6110301000,long sleeves top,100% Polyester (Recycled) - rPES
+3762,Men,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+4003,Men,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4035,Men,Sweatshirts,Knitted,KOR,South Korea,6110301000,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+4149,Men,Sweatshirts,Knitted,KOR,South Korea,6110301000,hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4166,Men,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+4330,Men,Pants,Knitted,KOR,South Korea,6103430000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4437,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,100% Recycled Polyester
+4480,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+4515,Men,Pants,Laminated (WP Membrane),KOR,South Korea,6203430000,woven pants,100% Polyamide (Nylon) - PA
+4533,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,100% Polyamide (Nylon) - PA
+4629,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"Front: 86% Polyamide, 14% Elastane / back: 100% Polyester"
+4654,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"47% Polyamide, 37% Polyester, 16% Elastane"
+4741,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights,75% Polyester 25% Elastane
+4825,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+4985,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+5082,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,100% Polyester
+5176,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+5187,Men,Sweatshirts,Knitted,KOR,South Korea,6114200000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5204,Men,Shorts,Knitted,KOR,South Korea,6103420000,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5272,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+5311,Men,Pants,Knitted,KOR,South Korea,6103430000,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+5328,Men,Pants,Knitted,KOR,South Korea,6103430000,knitted joggers,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+5354,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights,"68% Polyamide, 32% Elastane"
+5379,Men,Shorts,Woven,KOR,South Korea,6203430000,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+5401,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5563,Men,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted sweatshirt,"48% Polyester, 45% Elastane, 7% Cotton"
+5605,Men,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted hoodie,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (BCI), 7% Elastane - EL"
+5712,Men,Sweatshirts,Woven,KOR,South Korea,6211331000,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+5742,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,"90% Polyamide, 10% Elastane"
+5835,Men,Pants,Knitted,KOR,South Korea,6103430000,knitted pants,"40% Polyamide, 60% Polyester"
+5878,Men,Pants,Knitted,KOR,South Korea,6103430000,knitted pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL"
+5931,Men,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,100% Polyester (Mechanical Recycled) - rPES
+5951,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted long sleeves t-shirt,100% Polyester
+6049,Men,Tights,Knitted,KOR,South Korea,6103430000,knitted tights short,"68% Polyamide, 32% Elastane"
+6083,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+6185,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,"95% Polyamide, 5% Elastane"
+6272,Men,Winter Jackets,Woven,KOR,South Korea,6201401090,woven jacket,"87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL"
+6325,Men,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted t-shirt,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL"
+6345,Men,Winter Jackets,Woven,KOR,South Korea,6201401090,woven jacket,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+6564,Men,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,Main fabric: 100% recycled polyester
+6598,Men,Sweatshirts,Knitted,KOR,South Korea,6110200000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester"
+6629,Men,Pants,Knitted,KOR,South Korea,6103420000,knitted pants,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6653,Men,Sweatshirts,Knitted,KOR,South Korea,6110200000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6676,Men,Pants,Woven,KOR,South Korea,6203430000,woven pants,100% recycled polyester
+6745,Unisex,Sweatshirts,Woven,KOR,South Korea,6211431000,woven pullover,"98% Recycled Polyester, 2% Elastane - EL"
+6756,Unisex,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester (Recycled) - rPES
+6772,Unisex,Tanks,Knitted,KOR,South Korea,6109903090,knitted singlet,100% Polyester (Recycled) - rPES
+6877,Unisex,Pants,Woven,KOR,South Korea,6204630000,woven pants,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+6928,Unisex,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+6996,Unisex,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7021,Unisex,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Polyester- rPES, 15% Elastane - EL"
+7124,Unisex,Pants,Woven,KOR,South Korea,6204630000,woven pants,100% Polyamide (Recycled Nylon) - rPA
+7156,Unisex,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"80% Polyamide (Nylon) - PA, 20% Elastane - EL"
+7193,Unisex,Pants,Woven,KOR,South Korea,6204630000,woven pants,"92% Polyamide, 8% Elastane"
+7227,Unisex,Winter Jackets,Woven,KOR,South Korea,6202401010,woven jacket,"90% Polyamide (Nylon) - PA, 10% Elastane - EL"
+7240,Women,Crop Tops,Knitted,KOR,South Korea,6114301000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7243,Women,Crop Tops,Knitted,KOR,South Korea,6114301000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7260,Women,Short Sleeves,Knitted,KOR,South Korea,6109109000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+7349,Women,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"75% recycled polyamide, 25% elastane"
+7480,Women,Tanks,Knitted,KOR,South Korea,6109909000,knitted tank,100% Polyester
+7537,Women,Crop Tops,Knitted,KOR,South Korea,6114301000,knitted crop top,"75% recycled polyamide, 25% elastane"
+7609,Women,T-Shirts,Knitted,KOR,South Korea,6109909000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7637,Women,Short Sleeves,Knitted,KOR,South Korea,6109909000,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7759,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7766,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,100% Recycled Polyester
+7823,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7992,Women,Trousers,Woven,KOR,South Korea,6204630000,woven pants,100% Recycled Polyester
+8161,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted shorts,"75% recycled polyamide, 25% elastane"
+8237,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+8263,Women,Trousers,Woven,KOR,South Korea,6204630000,woven pants,100% Polyamide (Nylon) - PA
+8285,Women,Trousers,Woven,KOR,South Korea,6204630000,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+8326,Women,Short Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8392,Women,Short Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,100% Cotton (Organic) - CO
+8412,Women,Short Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,100% Cotton (Organic) - CO
+8530,Women,Vests,Woven,KOR,South Korea,6202401090,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+8624,Women,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,100% Cotton (Organic) - CO
+8691,Women,Crop Tops,Knitted,KOR,South Korea,6114301000,crop top,"73% Polyamide (Recycled Nylon) - rPA, 27% Elastane - EL"
+8721,Women,Bras,Woven,KOR,South Korea,6212102000,bra,"82% Polyamide (Nylon) - PA, 18% Elastane"
+8738,Women,Bras,Knitted,KOR,South Korea,6212102000,bra,"75% Recycled Polyester, 25% Elastane - EL"
+8747,Women,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8812,Women,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8835,Women,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8868,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,100% Polyester
+8886,Women,Skirts,Woven,KOR,South Korea,6204530000,woven skirt,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+9002,Women,Short Sleeves,Knitted,KOR,South Korea,6109903090,knitted tank,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9050,Women,T-Shirts,Knitted,KOR,South Korea,6109909000,t-shirt,100% Polyamide (Recycled Nylon) - rPA
+9072,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9181,Women,Winter Jackets,Woven,KOR,South Korea,6202401090,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+9194,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,"86% recycled polyamide, 14% elastane"
+9213,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"74% recycled polyester, 26% elastane"
+9226,Women,Long Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+9231,Women,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% recycled polyester
+9296,Women,Winter Jackets,Woven,KOR,South Korea,6202401010,woven jacket,"85% Polyamide, 15% Elastane"
+9309,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9364,Women,Long Sleeves,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9374,Women,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9448,Women,Bras,Knitted,KOR,South Korea,6212102000,bra,"75% Polyamide (Recycled Nylon) - rPA, 25% Elastane - EL"
+9599,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted sweatshirt,"48% polyester, 45% cotton, 7% elastane"
+9611,Women,Hoodies & Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted sweatshirt,"48% recycled polyester, 45% BCI cotton, 7% elastane"
+9629,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted sweatshirt,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton - CO, 7% Elastane - E"
+9662,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted sweatshirt,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+9711,Women,Trousers,Knitted,KOR,South Korea,6104630000,knitted pants,"86% Polyester, 14% Elastane"
+9721,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+9756,Women,Short Sleeves,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester (Recycled) - rPES
+9784,Women,Hoodies & Sweatshirts,Knitted,KOR,South Korea,6110200000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+9874,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+9913,Women,Sweatshirts,Knitted,KOR,South Korea,6110200000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+9933,Women,Hoodies & Sweatshirts,Knitted,KOR,South Korea,6110200000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+10034,Women,Pants,Knitted,KOR,South Korea,6104620000,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10222,Women,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"59% Cotton (Organic) - CO, 35% Recycled Polyester, 6% Elastane (Spandex) - EL"
+10246,Women,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+10279,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+10327,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"59% Polyamide (Recycled Nylon) - rPA, 41% Elastane - EL"
+10418,Women,Bras,Knitted,KOR,South Korea,6212102000,bra,"83% Polyester (Mechanical Recycled) - rPES, 17% Elastane - EL"
+10571,Women,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester Lanzatech - CC
+10703,Women,T-Shirts,Knitted,KOR,South Korea,6109903010,t-shirt,100% Polyester Lanzatech - CC
+10718,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,"86% Polyester- PES, 14% Elastane"
+10758,Women,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+10795,Women,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+10950,Women,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester
+10995,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted hoodie,100% Polyester
+11007,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,hoodie,100% Polyester (Mechanical Recycled) - rPES
+11034,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11054,Women,Tights,Knitted,KOR,South Korea,6204630000,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11065,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights half,"73% polyamide, 27% elastane"
+11080,Women,Pants,Knitted,KOR,South Korea,6104630000,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+11212,Women,Bras,Knitted,KOR,South Korea,6212102000,bra,"Main fabric composition: 75% recycled polyester, 25% elastane"
+11409,Women,Bras,Knitted,KOR,South Korea,6212102000,bra,"65% Polyamide (Recycled Nylon) - rPA, 35% Elastane - EL"
+11544,Women,Bras,Knitted,KOR,South Korea,6212102000,bra,"75%  polyester, 25% elastane"
+11555,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+11616,Women,Bras,Knitted,KOR,South Korea,6212102000,bra,"82% Polyester Lanzatech - CC, 18% Elastane - EL"
+11720,Women,Sweatshirts,Knitted,KOR,South Korea,6110200000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11755,Women,Hoodies & Sweatshirts,Knitted,KOR,South Korea,6110200000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11798,Women,Tights,Knitted,KOR,South Korea,6104630000,tights,"75% Recycled Polyester, 25% Elastane - EL"
+11862,Women,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11985,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted short tights,"75% recycled polyester, 25% elastane"
+11995,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted shorts,"75% Recycled Polyester, 25% Elastane - EL"
+12038,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,long sleeves top,100% Polyester (Recycled) - rPES
+12199,Women,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+12500,Women,T-Shirts,Knitted,KOR,South Korea,6114301000,knitted crop tops,Polyester (recycled) 71% Elastane 29%.
+12510,Women,T-Shirts,Knitted,KOR,South Korea,6114301000,knitted crop top,Polyester (recycled) 71% Elastane 29%.
+12590,Women,T-Shirts,Knitted,KOR,South Korea,6109909000,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12628,Women,T-Shirts,Knitted,KOR,South Korea,6109903090,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12646,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+12776,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+12843,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+12948,Women,T-Shirts,Knitted,KOR,South Korea,6114200000,crop top,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+13039,Women,T-Shirts,Knitted,KOR,South Korea,6109101000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13107,Women,T-Shirts,Knitted,KOR,South Korea,6109109000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13176,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13240,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13353,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights shorts,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13374,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted shorts,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13462,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,75% rec. Polyester 25% Elastane
+13575,Women,Tights,Knitted,KOR,South Korea,6104630000,knitted tights,75% Polyester 25% Elastane
+13755,Women,T-Shirts,Knitted,KOR,South Korea,6114301000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+13786,Women,Pants,Knitted,KOR,South Korea,6104630000,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+13914,Women,Pants,Woven,KOR,South Korea,6204630000,woven pants,100% Recycled Polyester
+13959,Women,Pants,Woven,KOR,South Korea,6204630000,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+14045,Women,Pants,Woven,KOR,South Korea,6204630000,woven pants,100% Polyamide (Nylon) - PA
+14164,Women,Dresses,Woven,KOR,South Korea,6204430000,woven dress,Polyester 100%
+14207,Women,Skirts,Woven,KOR,South Korea,6204530000,woven skirt,100% Polyester
+14278,Women,Pants,Woven,KOR,South Korea,6204630000,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+14296,Women,Sweatshirts,Knitted,KOR,South Korea,6114200000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14303,Women,Shorts,Knitted,KOR,South Korea,6104620000,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14368,Women,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14454,Women,Pants,Knitted,KOR,South Korea,6104630000,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+14494,Women,Tights,Knitted,KOR,South Korea,6104630000,tights,"68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"
+14552,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+14576,Women,T-Shirts,Knitted,KOR,South Korea,6109903010,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+14684,Women,Sweatshirts,Knitted,KOR,South Korea,6110301000,knitted hoodie,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+14790,Women,Sweatshirts,Woven,KOR,South Korea,6211431000,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+14879,Women,Pants,Knitted,KOR,South Korea,6104630000,knitted pants,"40% Polyamide, 60% Polyester"
+14892,Women,Shorts,Woven,KOR,South Korea,6204630000,woven shorts,"85% Recycled Polyamide, 15% Elastane - EL"

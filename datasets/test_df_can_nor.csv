@@ -1,0 +1,489 @@
+,division,product_type,material_type,tariff_country_code,tariff_country_description,tariff_code,customs_description,material_composition
+2,Men,T-Shirts,Knitted,CAN,Canada,6109100012,knitted t-shirt,"54% Pima Cotton, 40% Polyester (Mechanical Recycled) - rPES, 6% Elastane - EL"
+12,Men,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"54% Pima Cotton, 40% Polyester (Mechanical Recycled) - rPES, 6% Elastane - EL"
+16,Men,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+22,Men,T-Shirts,Knitted,CAN,Canada,6109100012,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+30,Men,Short Sleeves,Knitted,CAN,Canada,6109100012,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+42,Men,Short Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+85,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+96,Men,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+99,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+125,Men,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+233,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,100% Recycled Polyester
+236,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,100% Recycled Polyester
+301,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+304,Men,Tights,Knitted,CAN,Canada,6103430012,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+314,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+336,Men,Tights,Knitted,CAN,Canada,6103430012,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+359,Men,Trousers,Woven,CAN,Canada,6203430010,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+363,Men,Trousers,Woven,NOR,Norway,62034309,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+411,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+412,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+450,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+452,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+466,Men,Trousers,Woven,NOR,Norway,62034309,woven pants,100% Polyamide (Nylon) - PA
+471,Men,Trousers,Woven,CAN,Canada,6203430010,woven pants,100% Polyamide (Nylon) - PA
+493,Men,Trousers,Woven,NOR,Norway,62034309,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+495,Men,Trousers,Woven,CAN,Canada,6203430010,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+534,Men,Short Sleeves,Knitted,CAN,Canada,6109100011,knitted t-shirt,100% Cotton (Organic) - CO
+544,Men,Short Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,100% Cotton (Organic) - CO
+551,Men,Short Sleeves,Knitted,CAN,Canada,6109100012,knitted t-shirt,100% Cotton (Organic) - CO
+553,Men,Short Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,100% Cotton (Organic) - CO
+565,Men,Short Sleeves,Knitted,CAN,Canada,6109100012,knitted t-shirt,100% Cotton (Organic) - CO
+672,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL"
+684,Men,Pants,Woven,NOR,Norway,62034309,woven pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL"
+830,Men,Tanks,Knitted,NOR,Norway,61099010,knitted tank,100% Polyester (Recycled) - rPES
+839,Men,Tanks,Knitted,CAN,Canada,6109900010,knitted tank,100% Polyester (Recycled) - rPES
+882,Men,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+893,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+905,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+921,Men,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+942,Men,Tanks,Knitted,NOR,Norway,61099010,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+948,Men,Tanks,Knitted,CAN,Canada,6109900010,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+953,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+963,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+1079,Men,Tights,Knitted,CAN,Canada,6103430012,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1087,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1102,Men,Tights,Knitted,CAN,Canada,6103430012,knitted half tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1104,Men,Tights,Knitted,NOR,Norway,61034300,knitted half tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1224,Men,Winter Jackets,Woven,NOR,Norway,62014000,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+1233,Men,Winter Jackets,Woven,CAN,Canada,6201409021,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+1252,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"75% Recycled Polyester, 25% Elastane - EL"
+1253,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"75% Recycled Polyester, 25% Elastane - EL"
+1261,Men,Tights,Knitted,CAN,Canada,6103430012,knitted tights,"74% recycled polyester, 26% elastane"
+1272,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights,"74% recycled polyester, 26% elastane"
+1298,Men,Long Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+1300,Men,Long Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+1314,Men,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,100% recycled polyester
+1315,Men,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% recycled polyester
+1349,Men,Winter Jackets,Woven,CAN,Canada,6201409011,woven jacket,"85% Polyamide, 15% Elastane"
+1351,Men,Winter Jackets,Woven,NOR,Norway,62014000,woven jacket,"85% Polyamide, 15% Elastane"
+1358,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+1370,Men,Tights,Knitted,CAN,Canada,6103430012,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+1401,Men,Long Sleeves,Knitted,CAN,Canada,6109100012,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1408,Men,Long Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1418,Men,T-Shirts,Knitted,CAN,Canada,6109100012,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1421,Men,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1511,Men,T-Shirts,Knitted,NOR,Norway,61091000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1518,Men,T-Shirts,Knitted,CAN,Canada,6109100019,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1542,Men,Tanks,Knitted,CAN,Canada,6109100019,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1550,Men,Tanks,Knitted,NOR,Norway,61091000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1643,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"81% Polyester, 19% Polyester"
+1646,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"81% Polyester, 19% Polyester"
+1678,Men,Trousers,Knitted,NOR,Norway,61034300,knitted pants,"86% Polyester, 14% Elastane"
+1681,Men,Trousers,Knitted,CAN,Canada,6103430012,knitted pants,"86% Polyester, 14% Elastane"
+1695,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"86% recycled polyamide, 14% elastane"
+1705,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"86% recycled polyamide, 14% elastane"
+1724,Men,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester (Recycled) - rPES
+1732,Men,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester (Recycled) - rPES
+1744,Men,Short Sleeves,Knitted,CAN,Canada,6109100012,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1747,Men,Short Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1808,Men,Short Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1811,Men,Short Sleeves,Knitted,CAN,Canada,6109100012,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1841,Men,Hoodies & Sweatshirts,Knitted,CAN,Canada,6110200091,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+1845,Men,Hoodies & Sweatshirts,Knitted,NOR,Norway,61102000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+1938,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+1941,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+1978,Men,Sweatshirts,Knitted,NOR,Norway,61102000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+1983,Men,Sweatshirts,Knitted,CAN,Canada,6110200091,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2017,Men,Hoodies & Sweatshirts,Knitted,CAN,Canada,6110200091,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2089,Men,Pants,Knitted,CAN,Canada,6103420010,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2094,Men,Pants,Knitted,NOR,Norway,61034200,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2185,Men,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,100% Cotton (Organic) - CO
+2188,Men,T-Shirts,Knitted,CAN,Canada,6109100012,knitted t-shirt,100% Cotton (Organic) - CO
+2284,Men,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+2293,Men,T-Shirts,Knitted,CAN,Canada,6109100012,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+2347,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+2349,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+2492,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester Lanzatech - CC
+2495,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester Lanzatech - CC
+2642,Men,T-Shirts,Knitted,NOR,Norway,61099010,t-shirt,100% Polyester Lanzatech - CC
+2643,Men,T-Shirts,Knitted,CAN,Canada,6109900010,t-shirt,100% Polyester Lanzatech - CC
+2646,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"86% Polyester- PES, 14% Elastane"
+2648,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"86% Polyester- PES, 14% Elastane"
+2693,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+2697,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+2743,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,"90% recycled polyester, 10% elastane"
+2754,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted tank,"90% recycled polyester, 10% elastane"
+2755,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2768,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2901,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"Front: 90% recycled polyester, 10% elastane 
+Back: 80% recycled polyester, 20% elastane"
+2904,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"Front: 90% recycled polyester, 10% elastane 
+Back: 80% recycled polyester, 20% elastane"
+2910,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester
+2920,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester
+2967,Men,Sweatshirts,Knitted,NOR,Norway,61103000,knitted hoodie,100% Polyester
+2971,Men,Sweatshirts,Knitted,CAN,Canada,6110300091,knitted hoodie,100% Polyester
+2996,Men,Sweatshirts,Knitted,CAN,Canada,6110300091,hoodie,100% Polyester (Mechanical Recycled) - rPES
+3000,Men,Sweatshirts,Knitted,NOR,Norway,61103000,hoodie,100% Polyester (Mechanical Recycled) - rPES
+3034,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+3043,Men,Tights,Knitted,CAN,Canada,6103430015,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+3067,Men,Tights,Knitted,CAN,Canada,6103430015,knitted tights half,"73% polyamide, 27% elastane"
+3070,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights half,"73% polyamide, 27% elastane"
+3077,Men,Pants,Knitted,NOR,Norway,61034300,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+3080,Men,Pants,Knitted,CAN,Canada,6103430012,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+3114,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"50% Polyester (Chemical Monofilament Recycled) - rPES, 50% Polyester - PES"
+3115,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"50% Polyester (Chemical Monofilament Recycled) - rPES, 50% Polyester - PES"
+3170,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,100% polyester
+3175,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,100% polyester
+3359,Men,Sweatshirts,Knitted,CAN,Canada,6110200091,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3362,Men,Sweatshirts,Knitted,NOR,Norway,61102000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3386,Men,Hoodies & Sweatshirts,Knitted,CAN,Canada,6110200091,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3415,Men,Sweatshirts,Knitted,NOR,Norway,61102000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Recycled) - rPES"
+3419,Men,Sweatshirts,Knitted,CAN,Canada,6110200091,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Recycled) - rPES"
+3430,Men,Tights,Knitted,NOR,Norway,61034300,tights,"75% Recycled Polyester, 25% Elastane - EL"
+3431,Men,Tights,Knitted,CAN,Canada,6103430012,tights,"75% Recycled Polyester, 25% Elastane - EL"
+3450,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3459,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3594,Men,Sweatshirts,Knitted,CAN,Canada,6110300091,long sleeves top,100% Polyester (Recycled) - rPES
+3601,Men,Sweatshirts,Knitted,NOR,Norway,61103000,long sleeves top,100% Polyester (Recycled) - rPES
+3761,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+3763,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+4005,Men,Sweatshirts,Knitted,NOR,Norway,61103000,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4008,Men,Sweatshirts,Knitted,CAN,Canada,6110300081,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4026,Men,Sweatshirts,Knitted,NOR,Norway,61103000,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+4034,Men,Sweatshirts,Knitted,CAN,Canada,6110300081,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+4156,Men,Sweatshirts,Knitted,NOR,Norway,61103000,hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4161,Men,Sweatshirts,Knitted,CAN,Canada,6110300081,hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4167,Men,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+4173,Men,T-Shirts,Knitted,CAN,Canada,6109100012,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+4318,Men,Pants,Knitted,CAN,Canada,6103430012,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4325,Men,Pants,Knitted,NOR,Norway,61034300,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4436,Men,Pants,Woven,NOR,Norway,62034309,woven pants,100% Recycled Polyester
+4440,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,100% Recycled Polyester
+4475,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+4482,Men,Pants,Woven,NOR,Norway,62034309,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+4520,Men,Pants,Laminated (WP Membrane),NOR,Norway,62034309,woven pants,100% Polyamide (Nylon) - PA
+4524,Men,Pants,Laminated (WP Membrane),CAN,Canada,6203430010,woven pants,100% Polyamide (Nylon) - PA
+4527,Men,Pants,Woven,NOR,Norway,62034309,woven pants,100% Polyamide (Nylon) - PA
+4535,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,100% Polyamide (Nylon) - PA
+4632,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"Front: 86% Polyamide, 14% Elastane / back: 100% Polyester"
+4634,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"Front: 86% Polyamide, 14% Elastane / back: 100% Polyester"
+4660,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"47% Polyamide, 37% Polyester, 16% Elastane"
+4661,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"47% Polyamide, 37% Polyester, 16% Elastane"
+4735,Men,Tights,Knitted,CAN,Canada,6103430012,knitted tights,75% Polyester 25% Elastane
+4738,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights,75% Polyester 25% Elastane
+4816,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+4817,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+4988,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+4991,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+5076,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,100% Polyester
+5085,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,100% Polyester
+5168,Men,Pants,Woven,NOR,Norway,62034309,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+5173,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+5190,Men,Sweatshirts,Knitted,NOR,Norway,61142000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5191,Men,Sweatshirts,Knitted,CAN,Canada,6114200000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5198,Men,Shorts,Knitted,NOR,Norway,61034200,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5201,Men,Shorts,Knitted,CAN,Canada,6103420010,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5274,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+5276,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+5309,Men,Pants,Knitted,NOR,Norway,61034300,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+5313,Men,Pants,Knitted,CAN,Canada,6103430012,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+5318,Men,Pants,Knitted,CAN,Canada,6103430012,knitted joggers,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+5323,Men,Pants,Knitted,NOR,Norway,61034300,knitted joggers,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+5344,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights,"68% Polyamide, 32% Elastane"
+5352,Men,Tights,Knitted,CAN,Canada,6103430012,knitted tights,"68% Polyamide, 32% Elastane"
+5375,Men,Shorts,Woven,NOR,Norway,62034301,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+5380,Men,Shorts,Woven,CAN,Canada,6203430020,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+5395,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5396,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5558,Men,Sweatshirts,Knitted,CAN,Canada,6110300081,knitted sweatshirt,"48% Polyester, 45% Elastane, 7% Cotton"
+5569,Men,Sweatshirts,Knitted,NOR,Norway,61103000,knitted sweatshirt,"48% Polyester, 45% Elastane, 7% Cotton"
+5601,Men,Sweatshirts,Knitted,CAN,Canada,6110300081,knitted hoodie,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (BCI), 7% Elastane - EL"
+5607,Men,Sweatshirts,Knitted,NOR,Norway,61103000,knitted hoodie,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (BCI), 7% Elastane - EL"
+5717,Men,Sweatshirts,Woven,NOR,Norway,62113300,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+5719,Men,Sweatshirts,Woven,CAN,Canada,6211330090,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+5735,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,"90% Polyamide, 10% Elastane"
+5738,Men,Pants,Woven,NOR,Norway,62034309,woven pants,"90% Polyamide, 10% Elastane"
+5827,Men,Pants,Knitted,CAN,Canada,6103430012,knitted pants,"40% Polyamide, 60% Polyester"
+5833,Men,Pants,Knitted,NOR,Norway,61034300,knitted pants,"40% Polyamide, 60% Polyester"
+5882,Men,Pants,Knitted,NOR,Norway,61034300,knitted pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL"
+5888,Men,Pants,Knitted,CAN,Canada,6103430012,knitted pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL"
+5921,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,100% Polyester (Mechanical Recycled) - rPES
+5928,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted tank,100% Polyester (Mechanical Recycled) - rPES
+5948,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted long sleeves t-shirt,100% Polyester
+5957,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted long sleeves t-shirt,100% Polyester
+6050,Men,Tights,Knitted,NOR,Norway,61034300,knitted tights short,"68% Polyamide, 32% Elastane"
+6054,Men,Tights,Knitted,CAN,Canada,6103430015,knitted tights short,"68% Polyamide, 32% Elastane"
+6077,Men,Pants,Woven,NOR,Norway,62034309,woven pants,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+6084,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+6190,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,"95% Polyamide, 5% Elastane"
+6191,Men,Pants,Woven,NOR,Norway,62034309,woven pants,"95% Polyamide, 5% Elastane"
+6268,Men,Winter Jackets,Woven,NOR,Norway,62014000,woven jacket,"87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL"
+6273,Men,Winter Jackets,Woven,CAN,Canada,6201409011,woven jacket,"87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL"
+6323,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL"
+6327,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL"
+6339,Men,Winter Jackets,Woven,NOR,Norway,62014000,woven jacket,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+6346,Men,Winter Jackets,Woven,CAN,Canada,6201409021,woven jacket,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+6480,Men,T-Shirts,Knitted,CAN,Canada,6109100022,knitted t-shirt,100% Cotton (Organic) - CO
+6568,Men,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,Main fabric: 100% recycled polyester
+6573,Men,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,Main fabric: 100% recycled polyester
+6596,Men,Sweatshirts,Knitted,CAN,Canada,6110200091,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester"
+6600,Men,Sweatshirts,Knitted,NOR,Norway,61102000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester"
+6628,Men,Pants,Knitted,NOR,Norway,61034200,knitted pants,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6631,Men,Pants,Knitted,CAN,Canada,6103420010,knitted pants,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6647,Men,Sweatshirts,Knitted,CAN,Canada,6110200091,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6648,Men,Sweatshirts,Knitted,NOR,Norway,61102000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6677,Men,Pants,Woven,CAN,Canada,6203430010,woven pants,100% recycled polyester
+6678,Men,Pants,Woven,NOR,Norway,62034309,woven pants,100% recycled polyester
+6747,Unisex,Sweatshirts,Woven,NOR,Norway,62114300,woven pullover,"98% Recycled Polyester, 2% Elastane - EL"
+6754,Unisex,Sweatshirts,Woven,CAN,Canada,6211439000,woven pullover,"98% Recycled Polyester, 2% Elastane - EL"
+6763,Unisex,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester (Recycled) - rPES
+6768,Unisex,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester (Recycled) - rPES
+6769,Unisex,Tanks,Knitted,NOR,Norway,61099010,knitted singlet,100% Polyester (Recycled) - rPES
+6777,Unisex,Tanks,Knitted,CAN,Canada,6109900010,knitted singlet,100% Polyester (Recycled) - rPES
+6872,Unisex,Pants,Woven,CAN,Canada,6204630010,woven pants,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+6878,Unisex,Pants,Woven,NOR,Norway,62046309,woven pants,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+6930,Unisex,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+6936,Unisex,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+6997,Unisex,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7002,Unisex,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7027,Unisex,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Polyester- rPES, 15% Elastane - EL"
+7029,Unisex,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Polyester- rPES, 15% Elastane - EL"
+7122,Unisex,Pants,Woven,CAN,Canada,6204630010,woven pants,100% Polyamide (Recycled Nylon) - rPA
+7126,Unisex,Pants,Woven,NOR,Norway,62046309,woven pants,100% Polyamide (Recycled Nylon) - rPA
+7149,Unisex,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"80% Polyamide (Nylon) - PA, 20% Elastane - EL"
+7160,Unisex,Tights,Knitted,NOR,Norway,61046300,knitted tights,"80% Polyamide (Nylon) - PA, 20% Elastane - EL"
+7196,Unisex,Pants,Woven,CAN,Canada,6204630010,woven pants,"92% Polyamide, 8% Elastane"
+7200,Unisex,Pants,Woven,NOR,Norway,62046309,woven pants,"92% Polyamide, 8% Elastane"
+7223,Unisex,Winter Jackets,Woven,CAN,Canada,6202400010,woven jacket,"90% Polyamide (Nylon) - PA, 10% Elastane - EL"
+7224,Unisex,Winter Jackets,Woven,NOR,Norway,62024000,woven jacket,"90% Polyamide (Nylon) - PA, 10% Elastane - EL"
+7228,Women,Crop Tops,Knitted,CAN,Canada,6114300000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7238,Women,Crop Tops,Knitted,NOR,Norway,61143000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7248,Women,Crop Tops,Knitted,NOR,Norway,61143000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7258,Women,Short Sleeves,Knitted,NOR,Norway,61091000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+7264,Women,Short Sleeves,Knitted,CAN,Canada,6109100029,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+7340,Women,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,"75% recycled polyamide, 25% elastane"
+7352,Women,Short Sleeves,Knitted,CAN,Canada,6109900090,knitted t-shirt,"75% recycled polyamide, 25% elastane"
+7486,Women,Tanks,Knitted,NOR,Norway,61099010,knitted tank,100% Polyester
+7493,Women,Tanks,Knitted,CAN,Canada,6109900010,knitted tank,100% Polyester
+7536,Women,Crop Tops,Knitted,NOR,Norway,61143000,knitted crop top,"75% recycled polyamide, 25% elastane"
+7544,Women,Crop Tops,Knitted,CAN,Canada,6114300000,knitted crop top,"75% recycled polyamide, 25% elastane"
+7608,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7617,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7645,Women,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7646,Women,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7753,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7754,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7768,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,100% Recycled Polyester
+7771,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,100% Recycled Polyester
+7824,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7828,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7995,Women,Trousers,Woven,NOR,Norway,62046309,woven pants,100% Recycled Polyester
+7996,Women,Trousers,Woven,CAN,Canada,6204630010,woven pants,100% Recycled Polyester
+8158,Women,Tights,Knitted,NOR,Norway,61046300,knitted shorts,"75% recycled polyamide, 25% elastane"
+8163,Women,Tights,Knitted,CAN,Canada,6104630026,knitted shorts,"75% recycled polyamide, 25% elastane"
+8238,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+8249,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+8250,Women,Trousers,Woven,CAN,Canada,6204630010,woven pants,100% Polyamide (Nylon) - PA
+8261,Women,Trousers,Woven,NOR,Norway,62046309,woven pants,100% Polyamide (Nylon) - PA
+8278,Women,Trousers,Woven,CAN,Canada,6204630010,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+8286,Women,Trousers,Woven,NOR,Norway,62046309,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+8322,Women,Short Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8330,Women,Short Sleeves,Knitted,CAN,Canada,6109100022,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8393,Women,Short Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,100% Cotton (Organic) - CO
+8397,Women,Short Sleeves,Knitted,CAN,Canada,6109100021,knitted t-shirt,100% Cotton (Organic) - CO
+8411,Women,Short Sleeves,Knitted,CAN,Canada,6109100022,knitted t-shirt,100% Cotton (Organic) - CO
+8430,Women,Short Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,100% Cotton (Organic) - CO
+8431,Women,Short Sleeves,Knitted,CAN,Canada,6109100022,knitted t-shirt,100% Cotton (Organic) - CO
+8539,Women,Vests,Woven,CAN,Canada,6202400010,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+8542,Women,Vests,Woven,NOR,Norway,62024000,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+8593,Women,T-Shirts,Knitted,CAN,Canada,6109100022,knitted t-shirt,100% Cotton (Organic) - CO
+8597,Women,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,100% Cotton (Organic) - CO
+8692,Women,Crop Tops,Knitted,CAN,Canada,6109900010,crop top,"73% Polyamide (Recycled Nylon) - rPA, 27% Elastane - EL"
+8697,Women,Crop Tops,Knitted,NOR,Norway,61099010,crop top,"73% Polyamide (Recycled Nylon) - rPA, 27% Elastane - EL"
+8716,Women,Bras,Knitted,CAN,Canada,6212100020,bra,"82% Polyamide (Nylon) - PA, 18% Elastane"
+8718,Women,Bras,Woven,NOR,Norway,62121000,bra,"82% Polyamide (Nylon) - PA, 18% Elastane"
+8732,Women,Bras,Knitted,CAN,Canada,6212100020,bra,"75% Recycled Polyester, 25% Elastane - EL"
+8733,Women,Bras,Knitted,NOR,Norway,62121000,bra,"75% Recycled Polyester, 25% Elastane - EL"
+8748,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8752,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8770,Women,T-Shirts,Knitted,NOR,Norway,61099000,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8815,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8821,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8846,Women,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8855,Women,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8873,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,100% Polyester
+8877,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,100% Polyester
+8880,Women,Skirts,Woven,CAN,Canada,6204530000,woven skirt,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+8888,Women,Skirts,Woven,NOR,Norway,62045300,woven skirt,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+8997,Women,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted tank,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9005,Women,Short Sleeves,Knitted,NOR,Norway,61099010,knitted tank,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9054,Women,T-Shirts,Knitted,CAN,Canada,6109900010,t-shirt,100% Polyamide (Recycled Nylon) - rPA
+9056,Women,T-Shirts,Knitted,NOR,Norway,61099010,t-shirt,100% Polyamide (Recycled Nylon) - rPA
+9069,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9073,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9183,Women,Winter Jackets,Woven,CAN,Canada,6202400010,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+9187,Women,Winter Jackets,Woven,NOR,Norway,62024000,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+9192,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,"86% recycled polyamide, 14% elastane"
+9198,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,"86% recycled polyamide, 14% elastane"
+9206,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,"74% recycled polyester, 26% elastane"
+9210,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"74% recycled polyester, 26% elastane"
+9218,Women,Long Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+9219,Women,Long Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+9230,Women,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,100% recycled polyester
+9237,Women,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% recycled polyester
+9287,Women,Winter Jackets,Woven,NOR,Norway,62024000,woven jacket,"85% Polyamide, 15% Elastane"
+9291,Women,Winter Jackets,Woven,CAN,Canada,6202400010,woven jacket,"85% Polyamide, 15% Elastane"
+9305,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9310,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9363,Women,Long Sleeves,Knitted,CAN,Canada,6109100022,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9365,Women,Long Sleeves,Knitted,NOR,Norway,61091000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9370,Women,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9380,Women,T-Shirts,Knitted,CAN,Canada,6109100022,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9444,Women,Bras,Knitted,CAN,Canada,6212100020,bra,"75% Polyamide (Recycled Nylon) - rPA, 25% Elastane - EL"
+9449,Women,Bras,Knitted,NOR,Norway,62121000,bra,"75% Polyamide (Recycled Nylon) - rPA, 25% Elastane - EL"
+9591,Women,Sweatshirts,Knitted,NOR,Norway,61103000,knitted sweatshirt,"48% polyester, 45% cotton, 7% elastane"
+9597,Women,Sweatshirts,Knitted,CAN,Canada,6110300082,knitted sweatshirt,"48% polyester, 45% cotton, 7% elastane"
+9614,Women,Hoodies & Sweatshirts,Knitted,NOR,Norway,61103000,knitted sweatshirt,"48% recycled polyester, 45% BCI cotton, 7% elastane"
+9615,Women,Hoodies & Sweatshirts,Knitted,CAN,Canada,6110300082,knitted sweatshirt,"48% recycled polyester, 45% BCI cotton, 7% elastane"
+9625,Women,Sweatshirts,Knitted,NOR,Norway,61103000,knitted sweatshirt,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton - CO, 7% Elastane - E"
+9631,Women,Sweatshirts,Knitted,CAN,Canada,6110300082,knitted sweatshirt,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton - CO, 7% Elastane - E"
+9664,Women,Sweatshirts,Knitted,CAN,Canada,6110300082,knitted sweatshirt,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+9670,Women,Sweatshirts,Knitted,NOR,Norway,61103000,knitted sweatshirt,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+9702,Women,Trousers,Knitted,NOR,Norway,61046300,knitted pants,"86% Polyester, 14% Elastane"
+9704,Women,Trousers,Knitted,CAN,Canada,6104630010,knitted pants,"86% Polyester, 14% Elastane"
+9715,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+9725,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+9748,Women,Short Sleeves,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester (Recycled) - rPES
+9755,Women,Short Sleeves,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester (Recycled) - rPES
+9771,Women,Hoodies & Sweatshirts,Knitted,NOR,Norway,61102000,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+9783,Women,Hoodies & Sweatshirts,Knitted,CAN,Canada,6110200092,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+9872,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+9873,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+9919,Women,Sweatshirts,Knitted,CAN,Canada,6110200092,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+9922,Women,Sweatshirts,Knitted,NOR,Norway,61102000,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+10024,Women,Pants,Knitted,NOR,Norway,61046200,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10031,Women,Pants,Knitted,CAN,Canada,6104620021,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10041,Women,Sweatpants,Knitted,CAN,Canada,6104620021,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10050,Women,Sweatpants,Knitted,NOR,Norway,61046200,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10227,Women,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"59% Cotton (Organic) - CO, 35% Recycled Polyester, 6% Elastane (Spandex) - EL"
+10228,Women,T-Shirts,Knitted,CAN,Canada,6109100022,knitted t-shirt,"59% Cotton (Organic) - CO, 35% Recycled Polyester, 6% Elastane (Spandex) - EL"
+10243,Women,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+10244,Women,T-Shirts,Knitted,CAN,Canada,6109100022,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+10276,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+10285,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+10323,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"59% Polyamide (Recycled Nylon) - rPA, 41% Elastane - EL"
+10330,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,"59% Polyamide (Recycled Nylon) - rPA, 41% Elastane - EL"
+10415,Women,Bras,Knitted,NOR,Norway,62121000,bra,"83% Polyester (Mechanical Recycled) - rPES, 17% Elastane - EL"
+10419,Women,Bras,Knitted,CAN,Canada,6212100020,bra,"83% Polyester (Mechanical Recycled) - rPES, 17% Elastane - EL"
+10579,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester Lanzatech - CC
+10581,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester Lanzatech - CC
+10701,Women,T-Shirts,Knitted,CAN,Canada,6109900010,t-shirt,100% Polyester Lanzatech - CC
+10702,Women,T-Shirts,Knitted,NOR,Norway,61099010,t-shirt,100% Polyester Lanzatech - CC
+10710,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,"86% Polyester- PES, 14% Elastane"
+10711,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,"86% Polyester- PES, 14% Elastane"
+10752,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+10756,Women,T-Shirts,Knitted,CAN,Canada,6109900090,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+10802,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+10806,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+10949,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester
+10960,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester
+10991,Women,Sweatshirts,Knitted,CAN,Canada,6110300092,knitted hoodie,100% Polyester
+10992,Women,Sweatshirts,Knitted,NOR,Norway,61103000,knitted hoodie,100% Polyester
+11008,Women,Sweatshirts,Knitted,CAN,Canada,6110300092,hoodie,100% Polyester (Mechanical Recycled) - rPES
+11015,Women,Sweatshirts,Knitted,NOR,Norway,61103000,hoodie,100% Polyester (Mechanical Recycled) - rPES
+11037,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11041,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11055,Women,Tights,Knitted,NOR,Norway,62046301,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11057,Women,Tights,Knitted,CAN,Canada,6204630020,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11058,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights half,"73% polyamide, 27% elastane"
+11059,Women,Tights,Knitted,CAN,Canada,6104630026,knitted tights half,"73% polyamide, 27% elastane"
+11075,Women,Pants,Knitted,NOR,Norway,61046300,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+11077,Women,Pants,Knitted,CAN,Canada,6104630010,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+11219,Women,Bras,Knitted,CAN,Canada,6212100020,bra,"Main fabric composition: 75% recycled polyester, 25% elastane"
+11220,Women,Bras,Knitted,NOR,Norway,62121000,bra,"Main fabric composition: 75% recycled polyester, 25% elastane"
+11411,Women,Bras,Knitted,CAN,Canada,6212100020,bra,"65% Polyamide (Recycled Nylon) - rPA, 35% Elastane - EL"
+11420,Women,Bras,Knitted,NOR,Norway,62121000,bra,"65% Polyamide (Recycled Nylon) - rPA, 35% Elastane - EL"
+11536,Women,Bras,Knitted,CAN,Canada,6212100020,bra,"75%  polyester, 25% elastane"
+11542,Women,Bras,Knitted,NOR,Norway,62121000,bra,"75%  polyester, 25% elastane"
+11551,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+11554,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+11607,Women,Bras,Knitted,NOR,Norway,62121000,bra,"82% Polyester Lanzatech - CC, 18% Elastane - EL"
+11609,Women,Bras,Knitted,CAN,Canada,6212100020,bra,"82% Polyester Lanzatech - CC, 18% Elastane - EL"
+11716,Women,Sweatshirts,Knitted,NOR,Norway,61102000,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11717,Women,Sweatshirts,Knitted,CAN,Canada,6110200092,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11789,Women,Tights,Knitted,CAN,Canada,6104630010,tights,"75% Recycled Polyester, 25% Elastane - EL"
+11796,Women,Tights,Knitted,NOR,Norway,61046300,tights,"75% Recycled Polyester, 25% Elastane - EL"
+11857,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11864,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11981,Women,Tights,Knitted,CAN,Canada,6104630026,knitted short tights,"75% recycled polyester, 25% elastane"
+11986,Women,Tights,Knitted,NOR,Norway,61046300,knitted short tights,"75% recycled polyester, 25% elastane"
+11994,Women,Tights,Knitted,CAN,Canada,6104630026,knitted shorts,"75% Recycled Polyester, 25% Elastane - EL"
+12004,Women,Tights,Knitted,NOR,Norway,61046300,knitted shorts,"75% Recycled Polyester, 25% Elastane - EL"
+12037,Women,Sweatshirts,Knitted,NOR,Norway,61103000,long sleeves top,100% Polyester (Recycled) - rPES
+12045,Women,Sweatshirts,Knitted,CAN,Canada,6110300092,long sleeves top,100% Polyester (Recycled) - rPES
+12189,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+12193,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+12497,Women,T-Shirts,Knitted,CAN,Canada,6114300000,knitted crop tops,Polyester (recycled) 71% Elastane 29%.
+12502,Women,T-Shirts,Knitted,NOR,Norway,61143000,knitted crop tops,Polyester (recycled) 71% Elastane 29%.
+12512,Women,T-Shirts,Knitted,CAN,Canada,6114300000,knitted crop top,Polyester (recycled) 71% Elastane 29%.
+12516,Women,T-Shirts,Knitted,NOR,Norway,61143000,knitted crop top,Polyester (recycled) 71% Elastane 29%.
+12591,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12595,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12627,Women,T-Shirts,Knitted,NOR,Norway,61099000,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12649,Women,Sweatshirts,Knitted,NOR,Norway,61103000,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+12650,Women,Sweatshirts,Knitted,CAN,Canada,6110300082,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+12774,Women,Sweatshirts,Knitted,NOR,Norway,61103000,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+12780,Women,Sweatshirts,Knitted,CAN,Canada,6110300082,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+12842,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+12845,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+12950,Women,T-Shirts,Knitted,NOR,Norway,61142000,crop top,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+12953,Women,T-Shirts,Knitted,CAN,Canada,6114200000,crop top,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+13034,Women,T-Shirts,Knitted,NOR,Norway,61091000,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13037,Women,T-Shirts,Knitted,CAN,Canada,6109100022,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13104,Women,T-Shirts,Knitted,CAN,Canada,6109100029,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13114,Women,T-Shirts,Knitted,NOR,Norway,61091000,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13175,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13183,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13251,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13252,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13355,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights shorts,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13359,Women,Tights,Knitted,CAN,Canada,6104630026,knitted tights shorts,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13364,Women,Tights,Knitted,CAN,Canada,6104630026,knitted shorts,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13365,Women,Tights,Knitted,NOR,Norway,61046300,knitted shorts,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13455,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,75% rec. Polyester 25% Elastane
+13458,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,75% rec. Polyester 25% Elastane
+13563,Women,Tights,Knitted,NOR,Norway,61046300,knitted tights,75% Polyester 25% Elastane
+13568,Women,Tights,Knitted,CAN,Canada,6104630010,knitted tights,75% Polyester 25% Elastane
+13745,Women,T-Shirts,Knitted,CAN,Canada,6114300000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+13749,Women,T-Shirts,Knitted,NOR,Norway,61143000,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+13794,Women,Pants,Knitted,CAN,Canada,6104630025,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+13797,Women,Pants,Knitted,NOR,Norway,61046300,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+13917,Women,Pants,Woven,CAN,Canada,6204630010,woven pants,100% Recycled Polyester
+13924,Women,Pants,Woven,NOR,Norway,62046309,woven pants,100% Recycled Polyester
+13964,Women,Pants,Woven,CAN,Canada,6204630010,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+13965,Women,Pants,Woven,NOR,Norway,62046309,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+14039,Women,Pants,Laminated (WP Membrane),CAN,Canada,6204630010,woven pants,100% Polyamide (Nylon) - PA
+14050,Women,Pants,Laminated (WP Membrane),NOR,Norway,62046309,woven pants,100% Polyamide (Nylon) - PA
+14051,Women,Pants,Woven,CAN,Canada,6204630010,woven pants,100% Polyamide (Nylon) - PA
+14063,Women,Pants,Woven,NOR,Norway,62046309,woven pants,100% Polyamide (Nylon) - PA
+14169,Women,Dresses,Woven,NOR,Norway,62044300,woven dress,Polyester 100%
+14171,Women,Dresses,Woven,CAN,Canada,6204430000,woven dress,Polyester 100%
+14189,Women,Skirts,Woven,NOR,Norway,62045300,woven skirt,100% Polyester
+14216,Women,Skirts,Woven,CAN,Canada,6204530000,woven skirt,100% Polyester
+14277,Women,Skirts,Woven,CAN,Canada,6204630010,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+14283,Women,Skirts,Woven,NOR,Norway,62046309,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+14292,Women,Sweatshirts,Knitted,CAN,Canada,6114200000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14293,Women,Sweatshirts,Knitted,NOR,Norway,61142000,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14304,Women,Shorts,Knitted,NOR,Norway,61046200,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14308,Women,Shorts,Knitted,CAN,Canada,6104620025,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14369,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14378,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14456,Women,Pants,Knitted,CAN,Canada,6104630010,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+14458,Women,Pants,Knitted,NOR,Norway,61046300,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+14485,Women,Tights,Knitted,CAN,Canada,6104630010,tights,"68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"
+14497,Women,Tights,Knitted,NOR,Norway,61046300,tights,"68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"
+14547,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+14548,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+14573,Women,T-Shirts,Knitted,CAN,Canada,6109900010,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+14575,Women,T-Shirts,Knitted,NOR,Norway,61099010,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+14681,Women,Sweatshirts,Knitted,NOR,Norway,61103000,knitted hoodie,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+14687,Women,Sweatshirts,Knitted,CAN,Canada,6110300082,knitted hoodie,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+14788,Women,Sweatshirts,Woven,CAN,Canada,6211439000,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+14791,Women,Sweatshirts,Woven,NOR,Norway,62114300,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+14878,Women,Pants,Knitted,CAN,Canada,6104630010,knitted pants,"40% Polyamide, 60% Polyester"
+14880,Women,Pants,Knitted,NOR,Norway,61046300,knitted pants,"40% Polyamide, 60% Polyester"
+14891,Women,Shorts,Woven,NOR,Norway,62046301,woven shorts,"85% Recycled Polyamide, 15% Elastane - EL"
+14896,Women,Shorts,Woven,CAN,Canada,6204630020,woven shorts,"85% Recycled Polyamide, 15% Elastane - EL"

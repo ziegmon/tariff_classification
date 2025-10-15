@@ -1,0 +1,245 @@
+,division,product_type,material_type,tariff_country_code,tariff_country_description,tariff_code,customs_description,material_composition
+8,Men,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"54% Pima Cotton, 40% Polyester (Mechanical Recycled) - rPES, 6% Elastane - EL"
+17,Men,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+48,Men,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+94,Men,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+104,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+119,Men,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+226,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,100% Recycled Polyester
+297,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+317,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+352,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+375,Men,Trousers,Woven,HKG,Hong Kong,62034319,woven pants,"80% Polyamide (Recycled Nylon) - rPA, 20% Elastane - EL"
+416,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+455,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+462,Men,Trousers,Woven,HKG,Hong Kong,62034319,woven pants,100% Polyamide (Nylon) - PA
+497,Men,Trousers,Woven,HKG,Hong Kong,62034319,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+536,Men,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,100% Cotton (Organic) - CO
+550,Men,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,100% Cotton (Organic) - CO
+681,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,"88% Polyamide (Nylon) - PA, 12% Elastane - EL"
+831,Men,Tanks,Knitted,HKG,Hong Kong,61099020,knitted tank,100% Polyester (Recycled) - rPES
+886,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+931,Men,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+946,Men,Tanks,Knitted,HKG,Hong Kong,61099020,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+957,Men,T-Shirts,Knitted,HKG,Hong Kong,61099020,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+1006,Men,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+1086,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1092,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted half tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1220,Men,Winter Jackets,Woven,HKG,Hong Kong,62014090,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+1255,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"75% Recycled Polyester, 25% Elastane - EL"
+1264,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights,"74% recycled polyester, 26% elastane"
+1290,Men,Long Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+1302,Men,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% recycled polyester
+1348,Men,Winter Jackets,Woven,HKG,Hong Kong,62014090,woven jacket,"85% Polyamide, 15% Elastane"
+1363,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+1411,Men,Long Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1413,Men,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1514,Men,T-Shirts,Knitted,HKG,Hong Kong,61091030,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1540,Men,Tanks,Knitted,HKG,Hong Kong,61091030,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+1649,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"81% Polyester, 19% Polyester"
+1687,Men,Trousers,Knitted,HKG,Hong Kong,61034310,knitted pants,"86% Polyester, 14% Elastane"
+1700,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"86% recycled polyamide, 14% elastane"
+1722,Men,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester (Recycled) - rPES
+1745,Men,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1793,Men,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1840,Men,Hoodies & Sweatshirts,Knitted,HKG,Hong Kong,61102010,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+1933,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+1975,Men,Sweatshirts,Knitted,HKG,Hong Kong,61102010,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2019,Men,Hoodies & Sweatshirts,Knitted,HKG,Hong Kong,61102010,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+2084,Men,Pants,Knitted,HKG,Hong Kong,61034210,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2193,Men,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,100% Cotton (Organic) - CO
+2281,Men,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+2342,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+2498,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester Lanzatech - CC
+2638,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,t-shirt,100% Polyester Lanzatech - CC
+2652,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"86% Polyester- PES, 14% Elastane"
+2687,Men,T-Shirts,Knitted,HKG,Hong Kong,61099020,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+2745,Men,T-Shirts,Knitted,HKG,Hong Kong,61099020,knitted tank,"90% recycled polyester, 10% elastane"
+2766,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2899,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"Front: 90% recycled polyester, 10% elastane 
+Back: 80% recycled polyester, 20% elastane"
+2916,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester
+2970,Men,Sweatshirts,Knitted,HKG,Hong Kong,61103010,knitted hoodie,100% Polyester
+2995,Men,Sweatshirts,Knitted,HKG,Hong Kong,61103010,hoodie,100% Polyester (Mechanical Recycled) - rPES
+3031,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+3063,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights half,"73% polyamide, 27% elastane"
+3073,Men,Pants,Knitted,HKG,Hong Kong,61034310,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+3119,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"50% Polyester (Chemical Monofilament Recycled) - rPES, 50% Polyester - PES"
+3181,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,100% polyester
+3357,Men,Sweatshirts,Knitted,HKG,Hong Kong,61102010,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3392,Men,Hoodies & Sweatshirts,Knitted,HKG,Hong Kong,61102010,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+3418,Men,Sweatshirts,Knitted,HKG,Hong Kong,61102010,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Recycled) - rPES"
+3425,Men,Tights,Knitted,HKG,Hong Kong,61034310,tights,"75% Recycled Polyester, 25% Elastane - EL"
+3455,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3589,Men,Sweatshirts,Knitted,HKG,Hong Kong,61103010,long sleeves top,100% Polyester (Recycled) - rPES
+3758,Men,T-Shirts,Knitted,HKG,Hong Kong,61099020,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+4004,Men,Sweatshirts,Knitted,HKG,Hong Kong,61103010,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4023,Men,Sweatshirts,Knitted,HKG,Hong Kong,61103010,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+4155,Men,Sweatshirts,Knitted,HKG,Hong Kong,61103010,hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4175,Men,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+4324,Men,Pants,Knitted,HKG,Hong Kong,61034310,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4441,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,100% Recycled Polyester
+4479,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+4525,Men,Pants,Laminated (WP Membrane),HKG,Hong Kong,62034319,woven pants,100% Polyamide (Nylon) - PA
+4530,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,100% Polyamide (Nylon) - PA
+4626,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"Front: 86% Polyamide, 14% Elastane / back: 100% Polyester"
+4656,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"47% Polyamide, 37% Polyester, 16% Elastane"
+4733,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights,75% Polyester 25% Elastane
+4820,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+4987,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+5077,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,100% Polyester
+5177,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+5194,Men,Sweatshirts,Knitted,HKG,Hong Kong,61142010,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5205,Men,Shorts,Knitted,HKG,Hong Kong,61034210,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5268,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+5312,Men,Pants,Knitted,HKG,Hong Kong,61034310,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+5322,Men,Pants,Knitted,HKG,Hong Kong,61034310,knitted joggers,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+5350,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights,"68% Polyamide, 32% Elastane"
+5372,Men,Shorts,Woven,HKG,Hong Kong,62034319,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+5397,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5570,Men,Sweatshirts,Knitted,HKG,Hong Kong,61103020,knitted sweatshirt,"48% Polyester, 45% Elastane, 7% Cotton"
+5603,Men,Sweatshirts,Knitted,HKG,Hong Kong,61103010,knitted hoodie,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (BCI), 7% Elastane - EL"
+5715,Men,Sweatshirts,Woven,HKG,Hong Kong,62113390,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+5739,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,"90% Polyamide, 10% Elastane"
+5828,Men,Pants,Knitted,HKG,Hong Kong,61034310,knitted pants,"40% Polyamide, 60% Polyester"
+5880,Men,Pants,Knitted,HKG,Hong Kong,61034310,knitted pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL"
+5923,Men,T-Shirts,Knitted,HKG,Hong Kong,61099020,knitted tank,100% Polyester (Mechanical Recycled) - rPES
+5950,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted long sleeves t-shirt,100% Polyester
+6056,Men,Tights,Knitted,HKG,Hong Kong,61034310,knitted tights short,"68% Polyamide, 32% Elastane"
+6087,Men,Pants,Woven,HKG,Hong Kong,62034942,woven pants,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+6186,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,"95% Polyamide, 5% Elastane"
+6274,Men,Winter Jackets,Woven,HKG,Hong Kong,62014090,woven jacket,"87% Polyamide (Recycled Nylon) - rPA, 13% Elastane - EL"
+6335,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL"
+6337,Men,Winter Jackets,Woven,HKG,Hong Kong,62014090,woven jacket,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+6576,Men,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,Main fabric: 100% recycled polyester
+6602,Men,Sweatshirts,Knitted,HKG,Hong Kong,61102010,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester"
+6625,Men,Pants,Knitted,HKG,Hong Kong,61034210,knitted pants,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6657,Men,Sweatshirts,Knitted,HKG,Hong Kong,61102010,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6682,Men,Pants,Woven,HKG,Hong Kong,62034319,woven pants,100% recycled polyester
+6765,Unisex,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester (Recycled) - rPES
+6774,Unisex,Tanks,Knitted,HKG,Hong Kong,61099030,knitted singlet,100% Polyester (Recycled) - rPES
+6879,Unisex,Pants,Woven,HKG,Hong Kong,62046310,woven pants,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+6932,Unisex,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+6999,Unisex,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7023,Unisex,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Polyester- rPES, 15% Elastane - EL"
+7119,Unisex,Pants,Woven,HKG,Hong Kong,62046310,woven pants,100% Polyamide (Recycled Nylon) - rPA
+7152,Unisex,Tights,Knitted,HKG,Hong Kong,62046310,knitted tights,"80% Polyamide (Nylon) - PA, 20% Elastane - EL"
+7190,Unisex,Pants,Woven,HKG,Hong Kong,62046310,woven pants,"92% Polyamide, 8% Elastane"
+7233,Women,Crop Tops,Knitted,HKG,Hong Kong,61143020,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7251,Women,Crop Tops,Knitted,HKG,Hong Kong,61143020,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+7256,Women,Short Sleeves,Knitted,HKG,Hong Kong,61091030,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+7348,Women,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"75% recycled polyamide, 25% elastane"
+7484,Women,Tanks,Knitted,HKG,Hong Kong,61099030,knitted tank,100% Polyester
+7540,Women,Crop Tops,Knitted,HKG,Hong Kong,61143020,knitted crop top,"75% recycled polyamide, 25% elastane"
+7615,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7641,Women,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7752,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7763,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,100% Recycled Polyester
+7820,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7994,Women,Trousers,Woven,HKG,Hong Kong,62046310,woven pants,100% Recycled Polyester
+8155,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted shorts,"75% recycled polyamide, 25% elastane"
+8245,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,"62% Polyester, 22% Polyamide, 16% Elastane"
+8252,Women,Trousers,Woven,HKG,Hong Kong,62046310,woven pants,100% Polyamide (Nylon) - PA
+8282,Women,Trousers,Woven,HKG,Hong Kong,62046310,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+8332,Women,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8403,Women,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,100% Cotton (Organic) - CO
+8407,Women,Short Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,100% Cotton (Organic) - CO
+8546,Women,Vests,Woven,HKG,Hong Kong,62024090,woven padded vest,100% Polyamide (Recycled Nylon) - rPA
+8596,Women,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,100% Cotton (Organic) - CO
+8687,Women,Crop Tops,Knitted,HKG,Hong Kong,61099030,crop top,"73% Polyamide (Recycled Nylon) - rPA, 27% Elastane - EL"
+8722,Women,Bras,Woven,HKG,Hong Kong,62121020,bra,"82% Polyamide (Nylon) - PA, 18% Elastane"
+8729,Women,Bras,Knitted,HKG,Hong Kong,62121020,bra,"75% Recycled Polyester, 25% Elastane - EL"
+8753,Women,T-Shirts,Knitted,HKG,Hong Kong,61099030,knitted tank,"85% Recycled Polyester, 15% Elastane - EL"
+8820,Women,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8837,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8871,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,100% Polyester
+8890,Women,Skirts,Woven,HKG,Hong Kong,62045300,woven skirt,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+8999,Women,Short Sleeves,Knitted,HKG,Hong Kong,61099030,knitted tank,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9052,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,t-shirt,100% Polyamide (Recycled Nylon) - rPA
+9071,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9179,Women,Winter Jackets,Woven,HKG,Hong Kong,62024090,woven padded vest,"85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL"
+9190,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,"86% recycled polyamide, 14% elastane"
+9203,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights,"74% recycled polyester, 26% elastane"
+9228,Women,Long Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+9232,Women,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% recycled polyester
+9297,Women,Winter Jackets,Woven,HKG,Hong Kong,62024090,woven jacket,"85% Polyamide, 15% Elastane"
+9299,Women,Tights,Knitted,HKG,Hong Kong,62046310,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9323,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9355,Women,Long Sleeves,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9375,Women,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9442,Women,Bras,Knitted,HKG,Hong Kong,62121020,bra,"75% Polyamide (Recycled Nylon) - rPA, 25% Elastane - EL"
+9598,Women,Sweatshirts,Knitted,HKG,Hong Kong,61103020,knitted sweatshirt,"48% polyester, 45% cotton, 7% elastane"
+9610,Women,Hoodies & Sweatshirts,Knitted,HKG,Hong Kong,61103020,knitted sweatshirt,"48% recycled polyester, 45% BCI cotton, 7% elastane"
+9628,Women,Hoodies & Sweatshirts,Knitted,HKG,Hong Kong,61103020,knitted sweatshirt,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton - CO, 7% Elastane - E"
+9660,Women,Sweatshirts,Knitted,HKG,Hong Kong,61103020,knitted sweatshirt,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+9710,Women,Trousers,Knitted,HKG,Hong Kong,61046310,knitted pants,"86% Polyester, 14% Elastane"
+9727,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+9754,Women,Short Sleeves,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester (Recycled) - rPES
+9777,Women,Hoodies & Sweatshirts,Knitted,HKG,Hong Kong,61102020,knitted hoodie,"68% Cotton (Organic) - CO, 20% Polyester (Mechanical Recycled) - rPES, 12% Polyester (Virgin) - PES"
+9880,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,"92% Polyester - PES, 8% Elastane (Spandex) - EL"
+9912,Women,Sweatshirts,Knitted,HKG,Hong Kong,61102020,hoodie,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+10030,Women,Pants,Knitted,HKG,Hong Kong,61046210,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10045,Women,Sweatpants,Knitted,HKG,Hong Kong,61046210,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10219,Women,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"59% Cotton (Organic) - CO, 35% Recycled Polyester, 6% Elastane (Spandex) - EL"
+10245,Women,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+10284,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,"89% Polyamide (Recycled Nylon) - rPA, 11% Elastane - EL"
+10318,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights,"59% Polyamide (Recycled Nylon) - rPA, 41% Elastane - EL"
+10422,Women,Bras,Knitted,HKG,Hong Kong,62121020,bra,"83% Polyester (Mechanical Recycled) - rPES, 17% Elastane - EL"
+10577,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester Lanzatech - CC
+10695,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,t-shirt,100% Polyester Lanzatech - CC
+10714,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,"86% Polyester- PES, 14% Elastane"
+10764,Women,T-Shirts,Knitted,HKG,Hong Kong,61099030,knitted tank,"90% Recycled Polyester, 10% Elastane - EL"
+10801,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+10954,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester
+10990,Women,Sweatshirts,Knitted,HKG,Hong Kong,61103020,knitted hoodie,100% Polyester
+11012,Women,Sweatshirts,Knitted,HKG,Hong Kong,61103020,hoodie,100% Polyester (Mechanical Recycled) - rPES
+11053,Women,Tights,Knitted,HKG,Hong Kong,62046310,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11066,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights half,"73% polyamide, 27% elastane"
+11073,Women,Pants,Knitted,HKG,Hong Kong,61046310,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+11216,Women,Bras,Knitted,HKG,Hong Kong,62121020,bra,"Main fabric composition: 75% recycled polyester, 25% elastane"
+11414,Women,Bras,Knitted,HKG,Hong Kong,62121020,bra,"65% Polyamide (Recycled Nylon) - rPA, 35% Elastane - EL"
+11538,Women,Bras,Knitted,HKG,Hong Kong,62121020,bra,"75%  polyester, 25% elastane"
+11559,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,"81% Polyester (Mechanical Recycled) - rPES, 19% Polyester - PES"
+11613,Women,Bras,Knitted,HKG,Hong Kong,62121020,bra,"82% Polyester Lanzatech - CC, 18% Elastane - EL"
+11722,Women,Sweatshirts,Knitted,HKG,Hong Kong,61102020,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11729,Women,Hoodies & Sweatshirts,Knitted,HKG,Hong Kong,61102020,knitted sweatshirt,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+11792,Women,Tights,Knitted,HKG,Hong Kong,61046310,tights,"75% Recycled Polyester, 25% Elastane - EL"
+11860,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11988,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted short tights,"75% recycled polyester, 25% elastane"
+12000,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted shorts,"75% Recycled Polyester, 25% Elastane - EL"
+12046,Women,Sweatshirts,Knitted,HKG,Hong Kong,61103020,long sleeves top,100% Polyester (Recycled) - rPES
+12191,Women,T-Shirts,Knitted,HKG,Hong Kong,61099030,knitted tank,"92% Recycled Polyester, 8% Elastane - EL"
+12496,Women,T-Shirts,Knitted,HKG,Hong Kong,61143020,knitted crop tops,Polyester (recycled) 71% Elastane 29%.
+12515,Women,T-Shirts,Knitted,HKG,Hong Kong,61143020,knitted crop top,Polyester (recycled) 71% Elastane 29%.
+12593,Women,T-Shirts,Knitted,HKG,Hong Kong,61099030,knitted tank,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+12651,Women,Sweatshirts,Knitted,HKG,Hong Kong,61103020,hoodie,"82% Recycled Polyester, 13% Lyocell (Tencel™), 5% Elastane"
+12769,Women,Sweatshirts,Knitted,HKG,Hong Kong,61103020,knitted hoodie,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+12850,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,Front: 86% Polyamide/ 14% Elastane Back: 100% Polyester
+12954,Women,T-Shirts,Knitted,HKG,Hong Kong,61142020,crop top,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+13035,Women,T-Shirts,Knitted,HKG,Hong Kong,61091010,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13105,Women,T-Shirts,Knitted,HKG,Hong Kong,61091030,knitted tank,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13177,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13242,Women,Tights,Knitted,HKG,Hong Kong,62046310,knitted tights,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13352,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted tights shorts,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13362,Women,Tights,Knitted,HKG,Hong Kong,61046310,knitted shorts,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13464,Women,Tights,Knitted,HKG,Hong Kong,62046310,knitted tights,75% rec. Polyester 25% Elastane
+13570,Women,Tights,Knitted,HKG,Hong Kong,62046310,knitted tights,75% Polyester 25% Elastane
+13756,Women,T-Shirts,Knitted,HKG,Hong Kong,61143020,knitted crop top,"75% Recycled Polyester, 25% Elastane - EL"
+13785,Women,Pants,Knitted,HKG,Hong Kong,61046310,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+13921,Women,Pants,Woven,HKG,Hong Kong,62046310,woven pants,100% Recycled Polyester
+13962,Women,Pants,Woven,HKG,Hong Kong,62046310,woven pants,"89% Polyamide (Nylon) - PA, 11% Elastane - EL"
+14042,Women,Pants,Woven,HKG,Hong Kong,62046310,woven pants,100% Polyamide (Nylon) - PA
+14168,Women,Dresses,Woven,HKG,Hong Kong,62044300,woven dress,Polyester 100%
+14203,Women,Skirts,Woven,HKG,Hong Kong,62045300,woven skirt,100% Polyester
+14281,Women,Skirts,Woven,HKG,Hong Kong,62046310,woven pants,"91% Polyamide (Recycled Nylon) - rPA, 9% Elastane (Spandex) - EL"
+14290,Women,Sweatshirts,Knitted,HKG,Hong Kong,61142020,knitted crop top,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14299,Women,Shorts,Knitted,HKG,Hong Kong,61046210,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14375,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14452,Women,Pants,Knitted,HKG,Hong Kong,62046310,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+14495,Women,Tights,Knitted,HKG,Hong Kong,61046310,tights,"68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"
+14546,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,100% Polyester (Mechanical Recycled) - rPES
+14577,Women,T-Shirts,Knitted,HKG,Hong Kong,61099010,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+14678,Women,Sweatshirts,Knitted,HKG,Hong Kong,61103020,knitted hoodie,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+14785,Women,Sweatshirts,Woven,HKG,Hong Kong,62114390,woven sweatshirt,"86% Polyamide (Recycled Nylon) - rPA, 14% Elastane - EL"
+14885,Women,Pants,Knitted,HKG,Hong Kong,62046310,knitted pants,"40% Polyamide, 60% Polyester"
+14894,Women,Shorts,Woven,HKG,Hong Kong,62046310,woven shorts,"85% Recycled Polyamide, 15% Elastane - EL"

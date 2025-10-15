@@ -1,0 +1,175 @@
+{% extends "layout.html" %}
+
+{% block title %}Review Bulk Results{% endblock %}
+
+{% block content %}
+    <h2>Review and Select HS Codes</h2>
+    <p><strong>Product Category:</strong> {{ product_category.title() }}</p>
+    <p>Review suggestions below. Choose one option, mark as incorrect (the code will be regenerated for that product), or review later (product and classification is skipped from final export).</p>
+    <p>Click "Process All Selections" at the bottom when finished to see the final table.</p>
+
+    <div id="bulk-results-container">
+        {% for item in results %}
+            {# Each 'item' is a dictionary representing a row from your processed_results_df #}
+            {# 'item.idx' is the unique identifier for the product #}
+            {# 'selection_status[item.idx]' contains the current status (selected, pending, etc.) #}
+
+            {% set current_status = selection_status[item.idx].status %}
+            {% set incorrect_options_set = selection_status[item.idx].data.incorrect_options | default([]) %}
+
+            <div class="product-card" id="product-card-{{ item.idx }}">
+                <h3>Product ID: {{ item.idx }} - {{ item.product_description }}</h3>
+                <p><strong>HS Code from file uploaded:</strong> {{ item.hs_code_from_csv | default('N/A') }}</p>
+
+                <p><strong>Status:</strong>
+                    <span id="status-{{ item.idx }}" class="status-indicator
+                        {% if current_status == 'selected' or current_status == 'validated_code_only' or current_status == 'validated_with_reasoning' %}status-success
+                        {% elif current_status == 'review_later' %}status-info
+                        {% elif current_status == 'regenerate_pending' or current_status == 'error' %}status-warning
+                        {% elif incorrect_options_set %}status-warning
+                        {% else %}status-pending{% endif %}">
+                        {% if current_status == 'selected' %}Selected ({{ selection_status[item.idx].data.selected_hs_code }})
+                        {% elif current_status == 'validated_code_only' %}Validated (Code Only - {{ selection_status[item.idx].data.selected_hs_code }})
+                        {% elif current_status == 'validated_with_reasoning' %}Validated (With Reasoning - {{ selection_status[item.idx].data.selected_hs_code }})
+                        {% elif current_status == 'review_later' %}Marked for Review Later
+                        {% elif current_status == 'regenerate_pending' %}Regeneration Pending...
+                        {% elif current_status == 'error' %}Error: {{ selection_status[item.idx].data.reason | default('Unknown') }}
+                        {% elif incorrect_options_set %}Option(s) {{ incorrect_options_set | join(', ') }} marked Incorrect
+                        {% else %}Pending Review{% endif %}
+                    </span>
+                </p>
+
+                <div class="options-grid">
+                    {% for i in range(1, 4) %}
+                        {% set hs_code = item['hs_code_' ~ i] %}
+                        {% set certainty = item['certainty_' ~ i] %}
+                        {% set reasoning = item['reasoning_' ~ i] %} {# This is now the structured dict #}
+
+                        {# Disable logic for buttons: if already selected, review_later, regenerating, error, or current option is incorrect #}
+                        {% set option_disabled = (current_status == 'selected' or current_status == 'review_later' or current_status == 'regenerate_pending' or current_status == 'error' or current_status == 'validated_code_only' or current_status == 'validated_with_reasoning' or i in incorrect_options_set) %}
+
+                        <div class="option-box {% if option_disabled %}disabled-option{% endif %}">
+                            <h4>Option {{ i }}: <code>{{ hs_code }}</code> ({{ certainty }}%)</h4>
+                            <details>
+                                <summary>Reasoning</summary>
+                                <div class="reasoning-content">
+                                    {# Check if 'reasoning' is a dictionary (structured reasoning) or plain text #}
+                                    {% if reasoning is mapping %} {# Jinja2's 'mapping' test checks if it's a dict #}
+                                        {% for section_name, section_text in reasoning.items() %}
+                                            {# Only display sections that have content, or if it's the General Reason for NO-CODE-FOUND #}
+                                            {% if section_text != "Not explicitly addressed in response." or section_name == "General Reason" %}
+                                                <p><strong>{{ section_name }}:</strong> {{ section_text | safe }}</p>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        {# Fallback for unstructured or empty reasoning #}
+                                        <p>{{ reasoning | default('No reasoning provided.') }}</p>
+                                    {% endif %}
+                                </div>
+                            </details>
+
+                            <div class="option-buttons"> {# ADDED WRAPPER DIV #}
+                                {# Form for selecting an option #}
+                                <form class="action-form" method="POST" data-item-idx="{{ item.idx }}">
+                                    <input type="hidden" name="action_type" value="select_code">
+                                    <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                                    <input type="hidden" name="option_num" value="{{ i }}">
+                                    <input type="hidden" name="hs_code_{{ i }}" value="{{ hs_code }}">
+                                    <input type="hidden" name="certainty_{{ i }}" value="{{ certainty }}">
+                                    <input type="hidden" name="reasoning_{{ i }}" value="{{ item['raw_reasoning_text_' ~ i] | default(reasoning) }}">
+                                    <button type="submit" {% if option_disabled %}disabled{% endif %}>Select this Code</button>
+                                </form>
+
+                                {# Form for marking an option as incorrect #}
+                                {% if hs_code and hs_code not in ['N/A', 'ERROR', '', None] %}
+                                    <form class="action-form" method="POST" data-item-idx="{{ item.idx }}">
+                                        <input type="hidden" name="action_type" value="mark_incorrect">
+                                        <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                                        <input type="hidden" name="option_num" value="{{ i }}">
+                                        <input type="hidden" name="rejected_hs_code" value="{{ hs_code }}">
+                                        <button type="submit" {% if option_disabled %}disabled{% endif %}>Mark Incorrect</button>
+                                    </form>
+
+                                    {# NEW: Form for saving code only #}
+                                    <form class="action-form" method="POST" data-item-idx="{{ item.idx }}">
+                                        <input type="hidden" name="action_type" value="save_code_only">
+                                        <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                                        <input type="hidden" name="option_num" value="{{ i }}">
+                                        <input type="hidden" name="hs_code_{{ i }}" value="{{ hs_code }}">
+                                        <button type="submit" {% if option_disabled %}disabled{% endif %}>Save Code</button>
+                                    </form>
+
+                                    {# NEW: Form for saving code with reasoning #}
+                                    <form class="action-form" method="POST" data-item-idx="{{ item.idx }}">
+                                        <input type="hidden" name="action_type" value="save_code_with_reasoning">
+                                        <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                                        <input type="hidden" name="option_num" value="{{ i }}">
+                                        <input type="hidden" name="hs_code_{{ i }}" value="{{ hs_code }}">
+                                        <input type="hidden" name="reasoning_{{ i }}" value="{{ item['raw_reasoning_text_' ~ i] | default(reasoning) }}">
+                                        <button type="submit" {% if option_disabled %}disabled{% endif %}>Save Code + Reasoning</button>
+                                    </form>
+                                {% endif %}
+                            </div> {# END option-buttons WRAPPER DIV #}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="product-actions">
+                    {# Form for Regenerate All #}
+                    <form class="action-form" method="POST" data-item-idx="{{ item.idx }}">
+                        <input type="hidden" name="action_type" value="regenerate_all">
+                        <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                        <button type="submit" {% if option_disabled %}disabled{% endif %}>None are Correct (Regenerate)</button>
+                    </form>
+
+                    {# Form for Review Later #}
+                    <form class="action-form" method="POST" data-item-idx="{{ item.idx }}">
+                        <input type="hidden" name="action_type" value="review_later">
+                        <input type="hidden" name="item_idx" value="{{ item.idx }}">
+                        <button type="submit" {% if option_disabled %}disabled{% endif %}>Review Later (Skip Export)</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+
+    {# Finalize Selections Button #}
+    <form action="{{ url_for('finalize_bulk_results', batch_id=batch_id) }}" method="POST">
+        <button type="submit" class="finalize-button">Process All Selections</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Re-enable this if you want AJAX submissions
+            
+            document.querySelectorAll('.action-form').forEach(form => {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    const itemIdx = this.dataset.itemIdx;
+                    const formData = new FormData(this);
+
+                    fetch(this.action || window.location.href, { // Submit to current URL, or specific form action
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json()) // Assuming Flask responds with JSON for status updates
+                    .then(data => {
+                        // This is where you would update the UI dynamically
+                        // For a simple reload for now:
+                        window.location.reload();
+                        // In a more advanced setup:
+                        // updateProductCardUI(itemIdx, data.new_status, data.new_options_html);
+                    })
+                    .catch(error => {
+                        console.error('Error submitting form:', error);
+                        alert('An error occurred. Please try again.');
+                        window.location.reload(); // Fallback reload on error
+                    });
+                });
+            });
+            
+        });
+    </script>
+{% endblock %}

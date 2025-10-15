@@ -1,0 +1,592 @@
+{% extends "layout.html" %}
+
+{% block title %}Classification Metrics{% endblock %}
+
+{% block content %}
+    <h2>HS Code Classification Performance Metrics</h2>
+
+    <div class="summary-cards-container">
+        <div class="summary-card">
+            <h3>Overall Performance (Top 1)</h3>
+            <dl class="metrics-list">
+                <dt>Accuracy:</dt>
+                <dd>{{ metrics.Accuracy }}</dd>
+                <dt>Balanced Accuracy:</dt>
+                <dd>{{ metrics['Balanced Accuracy'] }}</dd>
+                <dt>Macro Precision:</dt>
+                <dd>{{ metrics['Macro Precision'] }}</dd>
+                <dt>Macro Recall:</dt>
+                <dd>{{ metrics['Macro Recall'] }}</dd>
+                <dt>Macro F1-Score:</dt>
+                <dd>{{ metrics['Macro F1'] }}</dd>
+                <dt>Cohen's Kappa:</dt>
+                <dd>{{ metrics["Cohen's Kappa"] }}</dd>
+                <dt>Matthews Corrcoef:</dt>
+                <dd>{{ metrics["Matthews Corrcoef"] }}</dd>
+                <dt>Accuracy (Top 3):</dt>
+                <dd>{{ metrics['Overall Accuracy (Top 3)'] }}</dd>
+            </dl>
+             <p class="message">{{ metrics.Message }}</p>
+        </div>
+        <div class="summary-card">
+            <h3>Key Quality Indicators</h3>
+            <dl class="metrics-list">
+                <dt>Regeneration Rate:</dt>
+                <dd>{{ quality_data.regeneration_rate | default(0) | round(2) }}%</dd>
+                <dt>"No-Code-Found" Rate:</dt>
+                <dd>{{ quality_data.no_code_found_rate | default(0) | round(2) }}%</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3>Overall Performance Metrics</h3>
+        <div class="chart-container">
+            <canvas id="overallMetricsChart"></canvas>
+        </div>
+    </div>
+
+    {# NEW: Chart for Overall Performance Evolution #}
+    <div class="chart-section">
+        <h3>Overall Performance Evolution</h3>
+        <div class="chart-container">
+            <canvas id="overallEvolutionChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3>Accuracy by HS Code Level</h3>
+        <div class="chart-container">
+            <canvas id="accuracyByLevelChart"></canvas>
+        </div>
+    </div>
+
+    <h3>Performance Per Country</h3>
+    {% if metrics.Metrics_Per_Country %}
+    <div class="chart-section">
+        <h3>Accuracy Per Country</h3>
+        <div class="chart-container">
+            <canvas id="accuracyPerCountryChart"></canvas>
+        </div>
+    </div>
+
+    <h3>Accuracy Evolution Per Country</h3>
+    <div class="chart-section">
+        <div class="chart-container">
+            <canvas id="accuracyEvolutionChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3>Macro F1-Score Per Country</h3>
+        <div class="chart-container">
+            <canvas id="f1PerCountryChart"></canvas>
+        </div>
+    </div>
+
+    <div class="country-metrics-full-grid">
+        {% for country_data in metrics.Metrics_Per_Country %}
+        <div class="country-card">
+            <h4>{{ country_data.country | upper }} ({{ country_data.n_samples }} Samples)</h4>
+            <dl class="country-metrics-list">
+                <dt>Accuracy:</dt>
+                <dd>{{ country_data.accuracy | float | round(2) if country_data.accuracy is not none else 'N/A' }}</dd>
+                <dt>Balanced Accuracy:</dt>
+                <dd>{{ country_data.balanced_accuracy | float | round(2) if country_data.balanced_accuracy is not none else 'N/A' }}</dd>
+                <dt>Macro Precision:</dt>
+                <dd>{{ country_data.macro_precision | float | round(2) if country_data.macro_precision is not none else 'N/A' }}</dd>
+                <dt>Macro Recall:</dt>
+                <dd>{{ country_data.macro_recall | float | round(2) if country_data.macro_recall is not none else 'N/A' }}</dd>
+                <dt>Macro F1:</dt>
+                <dd>{{ country_data.macro_f1 | float | round(2) if country_data.macro_f1 is not none else 'N/A' }}</dd>
+            </dl>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No country-specific metrics available.</p>
+    {% endif %}
+
+    <h3>Accuracy Per Product Type</h3>
+    {% if metrics.Metrics_Per_Product_Type %}
+    <div class="chart-section">
+        <div class="chart-container">
+            <canvas id="accuracyPerProductTypeChart"></canvas>
+        </div>
+    </div>
+    {% else %}
+    <p>No product type-specific metrics available.</p>
+    {% endif %}
+
+    <hr>
+
+    <h3>Processing Times & Usage</h3>
+    {% if processing_times %}
+        <p><strong>Overall Average Time per Row:</strong> {{ overall_avg_time_per_row | round(2) }} seconds</p>
+    {% endif %}
+    <div class="chart-section">
+        <h3>Average Time Per Row Over Time</h3>
+        <div class="chart-container">
+            <canvas id="avgTimeOverTimeChart"></canvas>
+        </div>
+    </div>
+
+    <hr>
+    
+    <h3>Cost & Token Analysis</h3>
+    {% if cost_data and cost_data.cost_per_1000 %}
+    <p><strong>Estimated Cost per 1,000 Classifications:</strong> ${{ cost_data.cost_per_1000 | default(0) | round(4) }}</p>
+    {% endif %}
+
+    <div class="chart-section">
+        <h3>Requests and Tokens Per Day</h3>
+        <div class="chart-container">
+            <canvas id="tokensPerDayChart"></canvas>
+        </div>
+    </div>
+    
+    <div class="chart-section">
+        <h3>Estimated Cost Per Day</h3>
+        <div class="chart-container">
+            <canvas id="costPerDayChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3>Estimated Cost Per Country</h3>
+        <div class="chart-container">
+            <canvas id="costByCountryChart"></canvas>
+        </div>
+    </div>
+    
+    <hr>
+
+    <h3>User Interaction & Feedback</h3>
+    <div class="chart-section">
+        <h3>Suggestion Selection Distribution</h3>
+        <div class="chart-container">
+            <canvas id="selectionDistributionChart"></canvas>
+        </div>
+    </div>
+
+    {% if interaction_data.top_rejected_codes %}
+    <div class="table-section">
+        <h3>Top 10 Most Frequently Rejected HS Codes</h3>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>HS Code</th>
+                    <th>Rejection Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in interaction_data.top_rejected_codes %}
+                <tr>
+                    <td><code>{{ item.hs_code }}</code></td>
+                    <td>{{ item.count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <hr>
+
+    <h3>Deeper Analysis</h3>
+
+    <div class="table-section">
+        <h3>Certainty Analysis (Top 1 Prediction)</h3>
+        <dl class="metrics-list" style="max-width: 500px; margin: auto;">
+             {% if completeness_data.avg_certainty %}
+                <dt>Average Certainty (When Correct):</dt>
+                <dd>{{ completeness_data.avg_certainty.correct | round(2) }}%</dd>
+                <dt>Average Certainty (When Incorrect):</dt>
+                <dd>{{ completeness_data.avg_certainty.incorrect | round(2) }}%</dd>
+            {% endif %}
+        </dl>
+    </div>
+
+
+    <div class="chart-section">
+        <h3>Certainty Score Distribution</h3>
+        <div class="chart-container">
+            <canvas id="certaintyDistributionChart"></canvas>
+        </div>
+    </div>
+
+    <div class="table-section">
+        <h3>Top 10 Misclassified Pairs</h3>
+        {% if completeness_data.top_misclassified_pairs %}
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Actual HS Code</th>
+                    <th>Predicted HS Code</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in completeness_data.top_misclassified_pairs %}
+                <tr>
+                    <td><code>{{ item.hs_code_from_csv }}</code></td>
+                    <td><code>{{ item.hs_code_1 }}</code></td>
+                    <td>{{ item.count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No misclassification data to display.</p>
+        {% endif %}
+    </div>
+
+    <div class="table-section">
+        <h3>Top 10 Input Materials</h3>
+        {% if completeness_data.top_materials %}
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Material Composition</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in completeness_data.top_materials %}
+                <tr>
+                    <td>{{ item.material }}</td>
+                    <td>{{ item.count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Pass data objects from Flask to JavaScript
+            const allMetricsData = {{ metrics | tojson }};
+            const allProcessingTimes = {{ processing_times | tojson }};
+            const allTokenData = {{ token_data | tojson }};
+            const allCostData = {{ cost_data | tojson }};
+            const allQualityData = {{ quality_data | tojson }};
+            const allUsageData = {{ usage_data | tojson }};
+            const allInteractionData = {{ interaction_data | tojson }};
+            const allCompletenessData = {{ completeness_data | tojson }};
+            const allEvolutionData = {{ evolution_data | tojson }};
+
+            // Helper functions for conditional chart colors
+            function getMetricColor(value) {
+                if (typeof value !== 'number' || isNaN(value)) return 'rgba(199, 199, 199, 0.6)'; // Grey
+                if (value < 0.60) return 'rgba(255, 99, 132, 0.6)'; // Red
+                if (value < 0.75) return 'rgba(221, 143, 60, 0.6)'; // Orange
+                if (value < 0.85) return 'rgba(255, 206, 86, 0.6)'; // Yellow
+                if (value > 0.92) return 'rgba(76, 175, 80, 0.6)';  // Green
+                return 'rgba(54, 162, 235, 0.6)'; // Blue
+            }
+
+            function getMetricBorderColor(value) {
+                if (typeof value !== 'number' || isNaN(value)) return 'rgba(199, 199, 199, 1)'; // Grey
+                if (value < 0.60) return 'rgba(255, 99, 132, 0.6)'; // Red
+                if (value < 0.75) return 'rgba(221, 143, 60, 0.6)'; // Orange
+                if (value < 0.85) return 'rgba(255, 206, 86, 0.6)'; // Yellow
+                if (value > 0.92) return 'rgba(76, 175, 80, 0.6)';  // Green
+                return 'rgba(54, 162, 235, 1)'; // Blue
+            }
+
+            // --- Accuracy & Performance Charts ---
+            if (allMetricsData && allMetricsData.Accuracy !== 'N/A') {
+                const overallMetricsLabels = ['Accuracy', 'Balanced Accuracy', 'Macro Precision', 'Macro Recall', 'Macro F1-Score'];
+                const overallChartDataValues = [
+                    parseFloat(allMetricsData.Accuracy), parseFloat(allMetricsData['Balanced Accuracy']),
+                    parseFloat(allMetricsData['Macro Precision']), parseFloat(allMetricsData['Macro Recall']),
+                    parseFloat(allMetricsData['Macro F1'])
+                ];
+                const overallMetricsCtx = document.getElementById('overallMetricsChart').getContext('2d');
+                new Chart(overallMetricsCtx, {
+                    type: 'bar', data: { labels: overallMetricsLabels, datasets: [{
+                        label: 'Metric Value', data: overallChartDataValues,
+                        backgroundColor: overallChartDataValues.map(getMetricColor),
+                        borderColor: overallChartDataValues.map(getMetricBorderColor), borderWidth: 1
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Overall Performance Metrics', font: { size: 18 }}, legend: { display: false }},
+                               scales: { y: { beginAtZero: true, max: 1, title: { display: true, text: 'Score' }}}}
+                });
+            }
+
+            // --- NEW: Overall Performance Evolution Chart ---
+            if (allEvolutionData && allEvolutionData.overall && allEvolutionData.overall.timestamp.length > 0) {
+                const overallEvolutionData = allEvolutionData.overall;
+                const labels = overallEvolutionData.timestamp;
+
+                const datasets = [
+                    {
+                        label: 'Accuracy',
+                        data: overallEvolutionData.overall_accuracy_top1,
+                        borderColor: '#4BC0C0', // Teal
+                        fill: false, tension: 0.1
+                    },
+                    {
+                        label: 'Balanced Accuracy',
+                        data: overallEvolutionData.balanced_accuracy_top1,
+                        borderColor: '#FFCE56', // Yellow
+                        fill: false, tension: 0.1
+                    },
+                    {
+                        label: 'Macro F1-Score',
+                        data: overallEvolutionData.macro_f1_top1,
+                        borderColor: '#FF6384', // Red
+                        fill: false, tension: 0.1
+                    },
+                    {
+                        label: 'Macro Precision',
+                        data: overallEvolutionData.macro_precision_top1,
+                        borderColor: '#36A2EB', // Blue
+                        fill: false, tension: 0.1
+                    },
+                    {
+                        label: 'Macro Recall',
+                        data: overallEvolutionData.macro_recall_top1,
+                        borderColor: '#9966FF', // Purple
+                        fill: false, tension: 0.1
+                    }
+                ];
+
+                const overallEvolutionCtx = document.getElementById('overallEvolutionChart').getContext('2d');
+                new Chart(overallEvolutionCtx, {
+                    type: 'line',
+                    data: { labels: labels, datasets: datasets },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: { display: true, text: 'Daily Evolution of Overall Performance Metrics', font: { size: 18 } },
+                            legend: { position: 'top' }
+                        },
+                        scales: {
+                            x: { title: { display: true, text: 'Date' } },
+                            y: { 
+                                beginAtZero: true, max: 1.0, 
+                                title: { display: true, text: 'Score' }, 
+                                ticks: { callback: value => (value * 100).toFixed(0) + '%' } 
+                            }
+                        }
+                    }
+                });
+            }
+
+            // --- Accuracy by HS Code Level Chart ---
+            if (allMetricsData && allMetricsData.Accuracy_by_Level && Object.keys(allMetricsData.Accuracy_by_Level).length > 0) {
+                const accuracyByLevelLabels = Object.keys(allMetricsData.Accuracy_by_Level).map(level => `${level} Digits`);
+                const accuracyByLevelValues = Object.values(allMetricsData.Accuracy_by_Level);
+                const accuracyByLevelCtx = document.getElementById('accuracyByLevelChart').getContext('2d');
+                new Chart(accuracyByLevelCtx, {
+                    type: 'line', data: { labels: accuracyByLevelLabels, datasets: [{
+                        label: 'Accuracy', data: accuracyByLevelValues,
+                        borderColor: '#4CAF50', backgroundColor: 'rgba(76, 175, 80, 0.2)', fill: false, tension: 0.1
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Accuracy by HS Code Level', font: { size: 18 }}},
+                               scales: { y: { beginAtZero: true, max: 1, title: { display: true, text: 'Accuracy' }, ticks: { callback: (value) => (value * 100).toFixed(0) + '%' }},
+                                         x: { title: { display: true, text: 'HS Code Digits' }}}}
+                });
+            }
+
+            // --- Performance Per Country Charts ---
+            if (allMetricsData && allMetricsData.Metrics_Per_Country && allMetricsData.Metrics_Per_Country.length > 0) {
+                const countryMetrics = allMetricsData.Metrics_Per_Country.filter(c => c.accuracy !== null).sort((a, b) => b.accuracy - a.accuracy);
+                const countryLabels = countryMetrics.map(c => c.country.toUpperCase());
+                const accuracyPerCountryCtx = document.getElementById('accuracyPerCountryChart').getContext('2d');
+                new Chart(accuracyPerCountryCtx, {
+                    type: 'bar', data: { labels: countryLabels, datasets: [{
+                        label: 'Accuracy', data: countryMetrics.map(c => c.accuracy),
+                        backgroundColor: countryMetrics.map(c => getMetricColor(c.accuracy)),
+                        borderColor: countryMetrics.map(c => getMetricBorderColor(c.accuracy)), borderWidth: 1
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Accuracy Per Country', font: { size: 18 }}, legend: { display: false }},
+                               scales: { y: { beginAtZero: true, max: 1, title: { display: true, text: 'Accuracy' }, ticks: { callback: (value) => (value * 100).toFixed(0) + '%' }}}}
+                });
+
+                const f1PerCountryCtx = document.getElementById('f1PerCountryChart').getContext('2d');
+                new Chart(f1PerCountryCtx, {
+                    type: 'bar', data: { labels: countryLabels, datasets: [{
+                        label: 'Macro F1-Score', data: countryMetrics.map(c => c.macro_f1),
+                        backgroundColor: 'rgba(90, 120, 130, 0.6)', borderColor: 'rgba(90, 120, 130, 0.6)', borderWidth: 1
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Macro F1-Score Per Country', font: { size: 18 }}},
+                               scales: { y: { beginAtZero: true, max: 1, title: { display: true, text: 'Macro F1-Score' }}}}
+                });
+            }
+
+            // --- Accuracy Evolution Chart per Country ---
+            if (allEvolutionData && allEvolutionData.by_country && allEvolutionData.by_country.timestamp.length > 0) {
+                const evolutionData = allEvolutionData.by_country;
+                const labels = evolutionData.timestamp;
+                const countries = Object.keys(evolutionData).filter(k => k !== 'timestamp');
+                
+                const datasets = countries.map((country, index) => {
+                    const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#c834eb'];
+                    const color = colors[index % colors.length];
+                    return {
+                        label: country.toUpperCase(),
+                        data: evolutionData[country],
+                        borderColor: color,
+                        fill: false,
+                        tension: 0.1
+                    };
+                });
+
+                const accuracyEvolutionCtx = document.getElementById('accuracyEvolutionChart').getContext('2d');
+                new Chart(accuracyEvolutionCtx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: datasets
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: { display: true, text: 'Daily Accuracy Evolution per Country', font: { size: 18 } },
+                            legend: { position: 'top' }
+                        },
+                        scales: {
+                            x: { title: { display: true, text: 'Date' } },
+                            y: { 
+                                beginAtZero: false,
+                                min: 0.5, // Start y-axis at 50% to better see changes
+                                max: 1.0, 
+                                title: { display: true, text: 'Accuracy' }, 
+                                ticks: { callback: value => (value * 100).toFixed(0) + '%' } 
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (allMetricsData && allMetricsData.Metrics_Per_Product_Type && allMetricsData.Metrics_Per_Product_Type.length > 0) {
+                const productTypeMetrics = allMetricsData.Metrics_Per_Product_Type;
+                const productTypeLabels = productTypeMetrics.map(p => `${p.product_type} (${p.n_samples})`);
+                const productTypeValues = productTypeMetrics.map(p => p.accuracy);
+                
+                const accuracyPerProductTypeCtx = document.getElementById('accuracyPerProductTypeChart').getContext('2d');
+                new Chart(accuracyPerProductTypeCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: productTypeLabels,
+                        datasets: [{
+                            label: 'Accuracy',
+                            data: productTypeValues,
+                            backgroundColor: productTypeValues.map(getMetricColor),
+                            borderColor: productTypeValues.map(getMetricBorderColor),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        indexAxis: 'y', // Makes the bar chart horizontal for readability
+                        plugins: {
+                            title: { display: true, text: 'Accuracy Per Product Type (Groups > 5 Samples)', font: { size: 18 }},
+                            legend: { display: false }
+                        },
+                        scales: {
+                            x: { 
+                                beginAtZero: true, 
+                                max: 1,
+                                title: { display: true, text: 'Accuracy' },
+                                ticks: { callback: (value) => (value * 100).toFixed(0) + '%' }
+                            }
+                        }
+                    }
+                });
+
+            }
+            
+            // --- Processing Times & Token Charts ---
+            if (allProcessingTimes && allProcessingTimes.length > 0) {
+                const avgTimeOverTimeLabels = allProcessingTimes.map((_, index) => (index + 1).toString());
+                const avgTimeOverTimeData = allProcessingTimes.map(item => item.average);
+                const avgTimeOverTimeCtx = document.getElementById('avgTimeOverTimeChart').getContext('2d');
+                new Chart(avgTimeOverTimeCtx, {
+                    type: 'line', data: { labels: avgTimeOverTimeLabels, datasets: [{
+                        label: 'Average Time Per Row (s)', data: avgTimeOverTimeData,
+                        borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)', fill: false, tension: 0.1
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Average Time Per Row (by Classification Order)', font: { size: 18 }}},
+                               scales: { x: { title: { display: true, text: 'Classification Run Number' }}, y: { beginAtZero: true, title: { display: true, text: 'Average Time (s)' }}}}
+                });
+            }
+
+            if (allTokenData && allTokenData.daily && allTokenData.daily.length > 0) {
+                const dailyLabels = allTokenData.daily.map(d => new Date(d.timestamp).toLocaleDateString());
+                const dailyTokenData = allTokenData.daily.map(d => d.total_tokens);
+                const dailyRequestData = allTokenData.daily.map(d => d.request_count);
+
+                const tokensPerDayCtx = document.getElementById('tokensPerDayChart').getContext('2d');
+                new Chart(tokensPerDayCtx, {
+                    type: 'bar', data: { labels: dailyLabels, datasets: [
+                        { label: 'Total Tokens', data: dailyTokenData, backgroundColor: 'rgba(54, 162, 235, 0.6)', borderColor: 'rgba(54, 162, 235, 1)', yAxisID: 'y' },
+                        { label: 'Request Count', data: dailyRequestData, type: 'line', fill: false, borderColor: 'rgba(255, 99, 132, 1)', tension: 0.1, yAxisID: 'y1' }
+                    ]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Daily Tokens & Requests', font: { size: 18 }}},
+                               scales: { y: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Total Tokens' }},
+                                         y1: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Request Count' }, grid: { drawOnChartArea: false }}
+                               }}
+                });
+            }
+
+            // --- Cost & Interaction Charts ---
+            if (allCostData && allCostData.daily && allCostData.daily.length > 0) {
+                const costPerDayCtx = document.getElementById('costPerDayChart').getContext('2d');
+                new Chart(costPerDayCtx, {
+                    type: 'line', data: { labels: allCostData.daily.map(d => new Date(d.timestamp).toLocaleDateString()), datasets: [{
+                        label: 'Estimated Cost ($)', data: allCostData.daily.map(d => d.estimated_cost),
+                        borderColor: 'rgba(76, 175, 80, 1)', backgroundColor: 'rgba(76, 175, 80, 0.2)', fill: true, tension: 0.1
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Estimated Cost Per Day', font: { size: 18 }}},
+                               scales: { y: { beginAtZero: true, ticks: { callback: value => '$' + value.toFixed(2) }}}}
+                });
+
+                const costByCountryCtx = document.getElementById('costByCountryChart').getContext('2d');
+                new Chart(costByCountryCtx, {
+                    type: 'doughnut', data: { labels: allCostData.by_country.map(c => c.country), datasets: [{
+                        label: 'Estimated Cost', data: allCostData.by_country.map(c => c.estimated_cost),
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40']
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Cost Distribution by Country', font: { size: 18 }}}}
+                });
+            }
+            
+            if (allInteractionData && allInteractionData.selection_distribution && allInteractionData.selection_distribution.length > 0) {
+                const selectionLabels = allInteractionData.selection_distribution.map(s => s.option.replace('_', ' ').toUpperCase());
+                const selectionValues = allInteractionData.selection_distribution.map(s => s.count);
+                const selectionDistCtx = document.getElementById('selectionDistributionChart').getContext('2d');
+                new Chart(selectionDistCtx, {
+                    type: 'pie', data: { labels: selectionLabels, datasets: [{
+                        label: 'Selections', data: selectionValues,
+                        backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384']
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Which Suggestion is Selected Most Often?', font: { size: 18 }}}}
+                });
+            }
+            
+            // --- Certainty Distribution Chart ---
+            if (allCompletenessData.certainty_distribution && allCompletenessData.certainty_distribution.length > 0) {
+                const certaintyLabels = allCompletenessData.certainty_distribution.map(d => d.bucket);
+                const certaintyValues = allCompletenessData.certainty_distribution.map(d => d.count);
+                const certaintyDistCtx = document.getElementById('certaintyDistributionChart').getContext('2d');
+                new Chart(certaintyDistCtx, {
+                    type: 'bar',
+                    data: { labels: certaintyLabels, datasets: [{
+                        label: 'Number of Predictions', data: certaintyValues,
+                        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(76, 175, 80, 0.6)'],
+                        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(255, 206, 86, 1)', 'rgba(54, 162, 235, 1)', 'rgba(76, 175, 80, 1)'], borderWidth: 1
+                    }]},
+                    options: { responsive: true, plugins: { title: { display: true, text: 'Distribution of Top-1 Prediction Certainty Scores', font: { size: 18 }}, legend: { display: false }},
+                               scales: { y: { title: { display: true, text: 'Count' }}}}
+                });
+            }
+        });
+    </script>
+{% endblock %}

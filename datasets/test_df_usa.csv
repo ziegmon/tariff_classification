@@ -1,0 +1,127 @@
+,division,product_type,material_type,tariff_country_code,tariff_country_description,tariff_code,customs_description,material_composition
+13,Men,T-Shirts,Knitted,USA,United States,6109100012,knitted t-shirt,"54% Pima Cotton, 40% Polyester (Mechanical Recycled) - rPES, 6% Elastane - EL"
+27,Men,T-Shirts,Knitted,USA,United States,6109100012,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+34,Men,Short Sleeves,Knitted,USA,United States,6109100012,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+107,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+298,Men,Tights,Knitted,USA,United States,6103431520,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+316,Men,Tights,Knitted,USA,United States,6103431520,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+537,Men,Short Sleeves,Knitted,USA,United States,6109100004,knitted t-shirt,100% Cotton (Organic) - CO
+557,Men,Short Sleeves,Knitted,USA,United States,6109100012,knitted t-shirt,100% Cotton (Organic) - CO
+569,Men,Short Sleeves,Knitted,USA,United States,6109100012,knitted t-shirt,100% Cotton (Organic) - CO
+892,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+935,Men,Short Sleeves,Knitted,USA,United States,6109901007,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+996,Men,Short Sleeves,Knitted,USA,United States,6109901007,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+1090,Men,Tights,Knitted,USA,United States,6103431520,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1103,Men,Tights,Knitted,USA,United States,6103431520,knitted half tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+1262,Men,Tights,Knitted,USA,United States,6103431520,knitted tights,"74% recycled polyester, 26% elastane"
+1293,Men,Long Sleeves,Knitted,USA,United States,6109901007,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+1307,Men,Short Sleeves,Knitted,USA,United States,6109901007,knitted t-shirt,100% recycled polyester
+1369,Men,Tights,Knitted,USA,United States,6103431520,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+1400,Men,Long Sleeves,Knitted,USA,United States,6109100012,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1425,Men,T-Shirts,Knitted,USA,United States,6109100012,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+1690,Men,Trousers,Knitted,USA,United States,6103431520,knitted pants,"86% Polyester, 14% Elastane"
+1720,Men,Short Sleeves,Knitted,USA,United States,6109901007,knitted t-shirt,100% Polyester (Recycled) - rPES
+1736,Men,Short Sleeves,Knitted,USA,United States,6109100012,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+1803,Men,Short Sleeves,Knitted,USA,United States,6109100012,knitted t-shirt,"98% Cotton (Organic) - CO, 2% Elastane - EL"
+2085,Men,Pants,Knitted,USA,United States,6103421020,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+2186,Men,T-Shirts,Knitted,USA,United States,6109100012,knitted t-shirt,100% Cotton (Organic) - CO
+2282,Men,T-Shirts,Knitted,USA,United States,6109100012,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+2500,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,100% Polyester Lanzatech - CC
+2632,Men,T-Shirts,Knitted,USA,United States,6109901007,t-shirt,100% Polyester Lanzatech - CC
+2765,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+2896,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,"Front: 90% recycled polyester, 10% elastane 
+Back: 80% recycled polyester, 20% elastane"
+2911,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,100% Polyester
+3044,Men,Tights,Knitted,USA,United States,6103431550,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+3068,Men,Tights,Knitted,USA,United States,6103431550,knitted tights half,"73% polyamide, 27% elastane"
+3081,Men,Pants,Knitted,USA,United States,6103431520,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+3432,Men,Tights,Knitted,USA,United States,6103431520,tights,"75% Recycled Polyester, 25% Elastane - EL"
+3453,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+3593,Men,Sweatshirts,Knitted,USA,United States,6110303010,long sleeves top,100% Polyester (Recycled) - rPES
+4172,Men,T-Shirts,Knitted,USA,United States,6109100012,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+4326,Men,Pants,Knitted,USA,United States,6103431520,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+4745,Men,Tights,Knitted,USA,United States,6103431520,knitted tights,75% Polyester 25% Elastane
+5207,Men,Shorts,Knitted,USA,United States,6103421050,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+5273,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+5304,Men,Pants,Knitted,USA,United States,6103431520,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+5326,Men,Pants,Knitted,USA,United States,6103431520,knitted joggers,"48% Polyester - PES, 45% Elastane - EL, 7% Cotton (BCI)"
+5346,Men,Tights,Knitted,USA,United States,6103431520,knitted tights,"68% Polyamide, 32% Elastane"
+5406,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+5664,Men,T-Shirts,Knitted,USA,United States,6109100004,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+5830,Men,Pants,Knitted,USA,United States,6103431520,knitted pants,"40% Polyamide, 60% Polyester"
+5884,Men,Pants,Knitted,USA,United States,6103431520,knitted pants,"90% Polyester Lanzatech - CC, 10% Elastane - EL"
+5947,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted long sleeves t-shirt,100% Polyester
+6053,Men,Tights,Knitted,USA,United States,6103431550,knitted tights short,"68% Polyamide, 32% Elastane"
+6328,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,"84.2% Polyester rPES, 8.3% Polyester - PES, 7.5% Elastane - EL"
+6479,Men,T-Shirts,Knitted,USA,United States,6109100012,knitted t-shirt,100% Cotton (Organic) - CO
+6565,Men,T-Shirts,Knitted,USA,United States,6109901007,knitted t-shirt,Main fabric: 100% recycled polyester
+6622,Men,Pants,Knitted,USA,United States,6103421020,knitted pants,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+6758,Unisex,Short Sleeves,Knitted,USA,United States,6109901050,knitted t-shirt,100% Polyester (Recycled) - rPES
+6782,Unisex,Tanks,Knitted,USA,United States,6109901065,knitted singlet,100% Polyester (Recycled) - rPES
+6925,Unisex,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+7004,Unisex,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7022,Unisex,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,"85% Polyester- rPES, 15% Elastane - EL"
+7150,Unisex,Tights,Knitted,USA,United States,6104632011,knitted tights,"80% Polyamide (Nylon) - PA, 20% Elastane - EL"
+7350,Women,Short Sleeves,Knitted,USA,United States,6109901050,knitted t-shirt,"75% recycled polyamide, 25% elastane"
+7619,Women,Short Sleeves,Knitted,USA,United States,6109901090,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7627,Women,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7635,Women,Short Sleeves,Knitted,USA,United States,6109901090,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+7758,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+7829,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,"75% Recycled Polyester, 25% Elastane - EL"
+8157,Women,Tights,Knitted,USA,United States,6104632030,knitted shorts,"75% recycled polyamide, 25% elastane"
+8320,Women,Short Sleeves,Knitted,USA,United States,6109100040,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+8402,Women,Short Sleeves,Knitted,USA,United States,6109100040,knitted t-shirt,100% Cotton (Organic) - CO
+8429,Women,Short Sleeves,Knitted,USA,United States,6109100040,knitted t-shirt,100% Cotton (Organic) - CO
+8588,Women,T-Shirts,Knitted,USA,United States,6109100040,knitted t-shirt,100% Cotton (Organic) - CO
+8720,Women,Bras,Knitted,USA,United States,6212109020,bra,"82% Polyamide (Nylon) - PA, 18% Elastane"
+8737,Women,Bras,Knitted,USA,United States,6212109020,bra,"75% Recycled Polyester, 25% Elastane - EL"
+8813,Women,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8865,Women,Short Sleeves,Knitted,USA,United States,6109901050,knitted t-shirt,"85% Recycled Polyester, 15% Elastane - EL"
+8925,Women,Short Sleeves,Knitted,USA,United States,6109901050,knitted t-shirt,"85% Polyester (Mechanical Recycled) - rPES, 15% Elastane - EL"
+9048,Women,T-Shirts,Knitted,USA,United States,6109901050,t-shirt,100% Polyamide (Recycled Nylon) - rPA
+9064,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+9209,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,"74% recycled polyester, 26% elastane"
+9223,Women,Long Sleeves,Knitted,USA,United States,6109901050,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+9242,Women,Short Sleeves,Knitted,USA,United States,6109901050,knitted t-shirt,100% recycled polyester
+9311,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,"72% Recycled Polyester, 28% Elastane - EL"
+9353,Women,Long Sleeves,Knitted,USA,United States,6109100040,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9378,Women,T-Shirts,Knitted,USA,United States,6109100040,knitted t-shirt,"56% Pima Cotton, 38% Polyester, 6% Elastane"
+9439,Women,Bras,Knitted,USA,United States,6212109020,bra,"75% Polyamide (Recycled Nylon) - rPA, 25% Elastane - EL"
+9714,Women,Trousers,Knitted,USA,United States,6104632011,knitted pants,"86% Polyester, 14% Elastane"
+9750,Women,Short Sleeves,Knitted,USA,United States,6109901050,knitted t-shirt,100% Polyester (Recycled) - rPES
+10033,Women,Pants,Knitted,USA,United States,6104622011,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10040,Women,Sweatpants,Knitted,USA,United States,6104622011,knitted pants,"68% Cotton, 20% Polyester, 12% Polyester"
+10232,Women,T-Shirts,Knitted,USA,United States,6109100040,knitted t-shirt,"59% Cotton (Organic) - CO, 35% Recycled Polyester, 6% Elastane (Spandex) - EL"
+10241,Women,T-Shirts,Knitted,USA,United States,6109100040,knitted t-shirt,"80% Cotton - CO, 16% Recycled Polyester, 4% Elastane (Spandex) - EL"
+10317,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,"59% Polyamide (Recycled Nylon) - rPA, 41% Elastane - EL"
+10423,Women,Bras,Knitted,USA,United States,6212109020,bra,"83% Polyester (Mechanical Recycled) - rPES, 17% Elastane - EL"
+10582,Women,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,100% Polyester Lanzatech - CC
+10698,Women,T-Shirts,Knitted,USA,United States,6109901050,t-shirt,100% Polyester Lanzatech - CC
+10803,Women,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,"90% Recycled Polyester, 10% Elastane - EL"
+10952,Women,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,100% Polyester
+11031,Women,Tights,Knitted,USA,United States,6104632030,knitted tights,"73% Polyamide (Nylon) - PA, 27% Elastane - EL"
+11064,Women,Tights,Knitted,USA,United States,6104632030,knitted tights half,"73% polyamide, 27% elastane"
+11071,Women,Pants,Knitted,USA,United States,6104632011,knitted pants,"40% Polyamide , 30% Recycled Polyester, 30% Cationic Dyeable Polyester"
+11223,Women,Bras,Knitted,USA,United States,6212109020,bra,"Main fabric composition: 75% recycled polyester, 25% elastane"
+11407,Women,Bras,Knitted,USA,United States,6212109020,bra,"65% Polyamide (Recycled Nylon) - rPA, 35% Elastane - EL"
+11545,Women,Bras,Knitted,USA,United States,6212109020,bra,"75%  polyester, 25% elastane"
+11612,Women,Bras,Knitted,USA,United States,6212109020,bra,"82% Polyester Lanzatech - CC, 18% Elastane - EL"
+11795,Women,Tights,Knitted,USA,United States,6104632011,tights,"75% Recycled Polyester, 25% Elastane - EL"
+11867,Women,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,"92% Recycled Polyester, 8% Elastane - EL"
+11993,Women,Tights,Knitted,USA,United States,6104632030,knitted short tights,"75% recycled polyester, 25% elastane"
+12005,Women,Tights,Knitted,USA,United States,6104632030,knitted shorts,"75% Recycled Polyester, 25% Elastane - EL"
+12043,Women,Sweatshirts,Knitted,USA,United States,6110303020,long sleeves top,100% Polyester (Recycled) - rPES
+13040,Women,T-Shirts,Knitted,USA,United States,6109100040,knitted t-shirt,"54% Pima Cotton, 40% Polyester, 6% Elastane"
+13179,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13247,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13354,Women,Tights,Knitted,USA,United States,6104632030,knitted tights shorts,Main Fabric Composition:75% rec. Polyamide 25% Elastane
+13370,Women,Tights,Knitted,USA,United States,6104632030,knitted shorts,"71% Polyester (Mechanical Recycled) - rPES, 29% Elastane - EL"
+13456,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,75% rec. Polyester 25% Elastane
+13564,Women,Tights,Knitted,USA,United States,6104632011,knitted tights,75% Polyester 25% Elastane
+13789,Women,Pants,Knitted,USA,United States,6104632011,knitted pants,"53% Polyester (Mechanical Recycled) - rPES, 29% Polyester - PES, 13% Lyocell (TENCEL™) - CLY, 5% Elastane - EL"
+14310,Women,Shorts,Knitted,USA,United States,6104622030,knitted shorts,"68% Cotton (Organic) - CO, 20% Polyester - PES, 12% Polyester (Mechanical Recycled) - rPES"
+14376,Women,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,"91% Polyester (Mechanical Recycled) - rPES, 9% Elastane - EL"
+14451,Women,Pants,Knitted,USA,United States,6104632011,knitted joggers,"48% Polyester (Mechanical Recycled) - rPES, 45% Cotton (Organic) - CO, 7% Elastane - EL"
+14491,Women,Tights,Knitted,USA,United States,6104632011,tights,"68% Polyamide (Recycled Nylon) - rPA, 32% Elastane - EL"
+14572,Women,T-Shirts,Knitted,USA,United States,6109901050,knitted t-shirt,100% Polyester (Mechanical Recycled) - rPES
+14888,Women,Pants,Knitted,USA,United States,6104632011,knitted pants,"40% Polyamide, 60% Polyester"
