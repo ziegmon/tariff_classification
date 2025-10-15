@@ -1,0 +1,6 @@
+- LENGTH OF HS CODE:
+-- !ALWAYS! 10 digits long (not counting "." separating the levels of the HS Code). NO EXCEPTIONS!
+
+
+- Commonly found Classifications !! Important Consideration!!:
+-- Men's Tights made of 72% Recycled Polyester and 28% Elastane - EL. Construction: Knitted. Country: United Kingdom -> HS CODE: 6103430000

@@ -1,0 +1,49 @@
+- LENGTH OF HS CODE:
+-- !ALWAYS! 8 digits long (not counting "." separating the levels of the HS Code). NO EXCEPTIONS!
+
+- Commonly found Classifications:
+-- Men's woven pants Pants Material: main material is Polyamide. Construction: Woven. Country: Norway -> HS Code: 6203.43.09
+-- Men's woven padded vest Winter Jackets Material: main material Polyamide. Construction: Woven. Country: Norway -> HS Code: 6201.40.00
+-- Men's woven shorts Shorts Material: main material Polyester. Construction: Woven. Country: Norway -> HS Code: 6203.43.01
+-- Men's knitted tights Tights Material: main material Polyester. Construction: Knitted. Country: Norway -> HS Code: 6103.43.00
+-- Men's knitted t-shirt Long Sleeves Material: main material Polyester. Construction: Knitted. Country: Norway -> HS Code: 6109.90.10
+-- Men's knitted hoodie Hoodies & Sweatshirts Material: main material Cotton. Construction: Knitted. Country: Norway -> HS Code: 6110.20.00
+-- Men's Tank (tanks), knitted, made of 100% polyester. Country: Norway  -> HS CODE: 6109.90.10
+-- Men's knitted hoodie Sweatshirts Material: 100% Polyester. Construction: Knitted. Country: Norway  -> HS CODE: 6110.30.00
+
+
+
+
+- EXAMPLE CLASSIFICATIONS: 
+
+-- 1: EXAMPLE CLASSIFICATION FOR NORWAY:
+
+        Product: Men's T-shirt, knitted, made of 100% polyester. Country: Norway
+
+        ### OPTION 1: 6109.90.10 - 90% certainty
+        #### PRODUCT DESCRIPTION:
+        A man's T-shirt, constructed from 100% polyester knitted fabric. It is designed as an upper-body garment.
+
+        #### REASONING:
+        The classification of this garment is determined by its characteristics: it is a men's T-shirt, it is knitted, and it is made of polyester.
+
+        Section and Chapter Determination: The product is a finished textile garment, which places it in Section XI, "Textiles and textile articles". Because the garment is explicitly "knitted", it falls under Chapter 61, which covers "Articles of apparel and clothing accessories, knitted or crocheted". This excludes Chapter 62, which is for apparel that is not knitted or crocheted.
+
+        Heading Determination: Within Chapter 61, Heading 61.09 is designated for "T-shirts, singlets and other vests, knitted or crocheted". This heading accurately describes the product in question.
+
+        Commodity ID Determination: The subheadings under 61.09 are differentiated by material.
+
+        6109.10.00 is for T-shirts "Of cotton".
+        6109.90.10 is for T-shirts "Of man-made fibres".
+        6109.90.90 is for T-shirts of "Other" textile materials.
+        Since the T-shirt is made of 100% Polyester, which is a synthetic, man-made fibre, the correct classification is 6109.90.10.
+
+        #### LEGAL BASIS:
+
+        General Interpretative Rule 1 (GRI 1): Classification is determined by the terms of the headings and any relative Section or Chapter Notes. The heading 61.09 and the notes for Section XI and Chapter 61 are primary for this decision.
+        General Interpretative Rule 6 (GRI 6): This rule dictates that classification at the subheading level must follow the same principles as GRI 1, ensuring the most specific description is chosen. The choice of 90.10 is based on the specific material (man-made fibres).
+        Hierarchical Structure: The classification correctly follows the structure provided in the document:
+        Section XI: Textiles and textile articles.
+        Chapter 61: Articles of apparel and clothing accessories, knitted or crocheted.
+        Heading 61.09: T-shirts, singlets and other vests, knitted or crocheted.
+        Commodity ID 6109.90.10: T-shirts, singlets and other vests, knitted or crocheted/Of man-made fibres.

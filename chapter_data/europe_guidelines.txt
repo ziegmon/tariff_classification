@@ -1,0 +1,54 @@
+- LENGTH OF HS CODE:
+-- !ALWAYS! 10 digits long (not counting "." separating the levels of the HS Code). NO EXCEPTIONS!
+-- For the last 2 digits (TARIC Code for the product), rely on historical data to obtain them.
+
+- Commonly found Classifications:
+-- Winter Jackets, for Men, made of 85% Polyamide (Recycled Nylon) - rPA and 15% Elastane - EL, Construction: Woven. Country: Europe -> HS Code: 6201.40.10.90
+-- Tights, for Men, made of 68% Polyamide and 32% Elastane. Construction: Knitted. Country: Europe -> HS Code: 6103.43.00.00
+-- Sweatshirts, for Men, made of 86% Polyamide (Recycled Nylon) - rPA and 14% Elastane - EL. Construction: Woven. Country: Europe -> HS Code: 6211.33.90.00
+-- Tights, for Women, made of 74% recycled polyester and 26% elastane. Construction: Knitted. Country: Europe -> HS Code: 6104.63.00.00
+-- Paded Vest, for Men, made of 100% Polyamide. Construction: Woven. Country: Europe - HS Code: 6201.40.10.90
+-- Paded Vest, for Women, 85% Polyamide (Recycled Nylon) - rPA, 15% Elastane - EL. Construction: Woven. Country: Europe - HS Code: 6202.40.10.91
+-- Woven Vest (not padded), made of 83% Polyamide (Recycled Nylon) - rPA, 17% Elastane - EL. Country: Europe -> HS Code: 6211.43.90.00
+-- Tank T-Shirts made of 54% Pima Cotton, 40% Polyester, 6% Elastane. Construction: Knitted. Country: Europe -> HS Code: 6109.10.00.90
+-- T-shirt Long Sleeves made of 56% Pima Cotton, 38% Polyester, 6% Elastane. Construction: Knitted Country: Europe -> HS Code: 6109.10.00.10
+
+- EXAMPLE CLASSIFICATIONS: 
+
+-- 1: EXAMPLE CLASSIFICATION FOR EUROPE:
+
+        Product: Men's T-shirt, knitted, made of 100% polyester. Country: EU
+
+        #### OPTION 1: 6109.90.20.00 - 95% certainty
+        PRODUCT DESCRIPTION:
+        A man's T-shirt constructed from 100% polyester knitted fabric, designed as an upper-body garment.
+
+        REASONING:
+        The classification of this garment is determined by its characteristics: it is a men's T-shirt, it is knitted, and it is made of polyester.
+
+        * Section and Chapter Determination: The product is a finished textile garment, placing it in Section XI, "Textiles and textile articles". As the garment is explicitly "knitted," it falls under Chapter 61, which covers "ARTICLES OF APPAREL AND CLOTHING ACCESSORIES, KNITTED OR CROCHETED". This is confirmed by Chapter Note 1, which states, "This chapter applies only to made-up knitted or crocheted articles". This excludes it from Chapter 62.
+
+        * Heading Determination: Within Chapter 61, Heading 6109 is designated for "T-shirts, singlets and other vests, knitted or crocheted". This heading accurately describes the product in question.
+
+              * CN Code (8-digit) Determination: The subheadings under 6109 are differentiated by material:
+
+
+        * 6109 10 00 is for T-shirts "Of cotton".
+        * 6109 90 20 is for T-shirts "Of wool or fine animal hair or man-made fibres".
+        * 6109 90 90 is for T-shirts "Of other textile materials".
+
+        Since the T-shirt is 100% polyester, a synthetic man-made fibre, the correct 8-digit CN code is 6109 90 20.
+
+        * TARIC Code (10-digit) Determination: The final two digits (00) are the TARIC subheading. This code is found by consulting the EU's online TARIC database. The 00 subheading indicates that, for the general case, no specific Union-wide measures (such as anti-dumping duties or tariff quotas) are applicable to this product.
+
+
+        LEGAL BASIS:
+
+              * General Interpretative Rule 1 (GRI 1): Classification is determined by the terms of the headings and any relative Section or Chapter Notes. The heading 6109 and the notes for Section XI and Chapter 61 are primary for this decision
+              * General Interpretative Rule 6 (GRI 6): This rule dictates that classification at the subheading level must follow the same principles as GRI 1. The choice of 90 20 is based on the specific description for man-made fibres provided in the nomenclature.
+              * Hierarchical Structure: The classification correctly follows the structure provided in the document and the EU's TARIC system:
+                * Section XI: Textiles and textile articles.
+                * Chapter 61: Articles of apparel and clothing accessories, knitted or crocheted.
+                * Heading 6109: T-shirts, singlets and other vests, knitted or crocheted.
+                * CN Subheading 6109 90 20: Of other textile materials: Of wool or fine animal hair or man-made fibres.
+                * TARIC Subheading 6109 90 20 00: No specific Union measures applicable.

@@ -1,0 +1,46 @@
+- LENGTH OF HS CODE:
+-- Obtain 8 digits from the Tariff Schedules (chapters) (not counting "." separating the levels of the HS Code)
+-- The key "-000" should be added after the 8 digits.
+-- Total length should be of 11 digits.
+
+!! pay special attention to the gender of the product, to correspond to the correct code!!
+
+- Commonly found Classifications:
+-- Men's knitted tights Tights Material: 75% Recycled Polyester, 25% Elastane - EL. Construction: Knitted. Country: Switzerland  -> HS CODE: 6103.43.00-000
+-- Women's knitted tights Tights Material: 75% Recycled Polyester, 25% Elastane - EL. Construction: Knitted. Country: Switzerland  -> HS CODE: 6104.63.00-000
+
+- EXAMPLE CLASSIFICATIONS: 
+
+-- 1: EXAMPLE CLASSIFICATION FOR SWITZERLAND:
+
+
+Product: Men's T-shirt, knitted, made of 100% polyester. Country: Switzerland
+
+        OPTION 1: *6109.90.00-000* – 85% certainty
+        PRODUCT DESCRIPTION:
+        A men's T-shirt, knitted from 100% polyester synthetic fibres, designed to cover the upper part of the body. The garment is short-sleeved and constructed using knitting techniques.
+
+        REASONING:
+        This garment is classified under Chapter 61, which applies exclusively to "made up knitted or crocheted articles". As the product is explicitly described as knitted, it falls within this chapter. Chapter 62, covering non-knitted/crocheted articles, is excluded.   
+
+        Heading 6109 is designated for “T-shirts, singlets and other vests, knitted or crocheted”. This precisely matches the form and construction method of the product.   
+
+        The subheading 6109.9000 refers to “Of other textile materials”. This category is used because the T-shirt is made of 100% polyester, which is a man-made fibre. Heading 6109 provides a specific subheading for cotton (6109.1000), and all other materials, including man-made fibres like polyester, fall under the residual subheading 6109.9000. The garment does not feature a drawstring, ribbed waistband, or other means of tightening at the bottom, ensuring it is not excluded from heading 6109 based on Note 5.   
+
+        The Swiss Tariff uses an 8-digit code structure:
+
+        6109 → Heading (T-shirts, singlets, and other vests, knitted or crocheted)    
+        .9000 → Tariff Number (Of other textile materials)    
+        This classification aligns with the product's construction (knitted), material (100% polyester), and form (T-shirt).
+
+        The Swiss Tariff uses an 8-digit code structure for the core HS code, with an additional 3-digit key. For Chapters 61 and 62, this key is always "000".
+
+        LEGAL BASIS (based on the provided Swiss Chapter 61 document):
+        Chapter 61, Note 1: Confirms the scope of the chapter is knitted/crocheted garments only.   
+        Heading 6109: Defines the scope to include “T-shirts, singlets and other vests, knitted or crocheted”.   
+        Subheading 6109.9000: Specifies the classification for T-shirts made "of other textile materials", which includes polyester in this context as it is not cotton (6109.1000).   
+        Chapter 61, Note 5: Helps confirm applicability by stating exclusions (garments with drawstrings, etc., at the bottom) not relevant to this T-shirt.   
+        General Rules for the Interpretation (GRI) of the Harmonized System (Implicit): Classification follows GRI 1 (terms of the headings and legal notes) and GRI 6 (classification in subheadings).
+
+
+

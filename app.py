@@ -1,0 +1,1008 @@
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
+import os
+import pandas as pd
+from datetime import datetime
+import time
+import re
+import pathlib
+import asyncio
+import collections
+import threading
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, balanced_accuracy_score, cohen_kappa_score, matthews_corrcoef
+from config import Config
+
+from persistence_helper_functions import (load_validated_codes,
+    load_rejected_codes,
+    save_rejected_code,
+    save_validated_code,
+    save_bulk_classification_results,
+    save_processing_time,
+    save_final_selected_results)
+from document_handling_helper_functions import (load_all_documents,
+    load_text_files_for_country)
+from gemini_helper_functions import configure_genai, generate_hs_codes
+from data_processing_functions import log_interaction_event, extract_hs_codes
+from metrics_handlings_functions import log_detailed_accuracy
+from metrics_service import get_dashboard_data
+from product_specific_functions import (
+    find_relevant_chapters_apparel,
+    find_relevant_chapters_footwear,
+    build_product_description
+)
+
+def run_async_task(task, *args):
+    """Runs an async function in a new event loop on a separate thread."""
+    asyncio.run(task(*args))
+
+# File paths
+ALL_BULK_RESULTS_FILE = str(pathlib.Path(__file__).parent / "data/logs/all_bulk_results.csv")
+PROCESSING_TIMES_FILE = str(pathlib.Path(__file__).parent / "data/logs/processing_times.csv")
+TOKEN_LOG_FILE = str(pathlib.Path(__file__).parent / "data/logs/token_usage_log.csv")
+INTERACTION_LOG_FILE = str(pathlib.Path(__file__).parent / "data/logs/interaction_log.csv")
+ACCURACY_LOG_FILE = str(pathlib.Path(__file__).parent / "data/logs/accuracy_log_combined.csv")
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+# Initialize model and doc_cache once
+with app.app_context():
+    app.doc_cache, _ = load_all_documents(app.config['PDF_DIRECTORY'])
+    if not app.doc_cache:
+        print("ERROR: Failed to load any PDF documentation!")
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username == app.config['AUTH_USERNAME'] and password == app.config['AUTH_PASSWORD']:
+            session['logged_in'] = True
+            flash('Login successful!', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Incorrect username or password.', 'danger')
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    flash('You have been logged out.', 'info')
+    return redirect(url_for('login'))
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+class AsyncRateLimiter:
+    """Asynchronous rate limiter using token bucket algorithm."""
+    def __init__(self, rate_limit: int, period_seconds: int = 60):
+        self.rate_limit = rate_limit
+        self.period_seconds = period_seconds
+        self._timestamps = collections.deque()
+
+    async def acquire(self):
+        """Waits if necessary to ensure the rate limit is not exceeded."""
+        while True:
+            now = time.monotonic()
+            # Remove timestamps older than the current period
+            while self._timestamps and self._timestamps[0] <= now - self.period_seconds:
+                self._timestamps.popleft()
+
+            if len(self._timestamps) < self.rate_limit:
+                self._timestamps.append(now)
+                break
+            
+            # Calculate wait time until the oldest request expires
+            wait_time = self._timestamps[0] - (now - self.period_seconds)
+            await asyncio.sleep(wait_time)
+
+# --- Single Product Classification ---
+@app.route('/single_classification', methods=['GET', 'POST'])
+async def single_classification():
+    if request.method == 'POST':        # Get product category
+        product_category = request.form.get('product_category', 'apparel')
+        country = request.form['country'].lower()
+        gender = request.form['gender']
+        use_enhanced_search = 'use_enhanced_search' in request.form
+        chapter_input = request.form.get('chapter', 'auto')
+
+        # Product-specific fields
+        if product_category == 'apparel':
+            product_type = request.form['product_type']
+            construction = request.form['construction']
+            material = request.form['material']
+            product_description = f"Product for {country.upper()}: {gender}'s {product_type}. Material: {material}. {construction}"
+        else:  # footwear
+            product_type = request.form['product_type']
+            upper_material = request.form['upper_material']
+            sole_material = request.form['sole_material']
+            construction = request.form.get('construction', '')
+            use_case = request.form.get('use_case', '')
+            special_features = request.form.get('special_features', '')
+            
+            desc_parts = [f"Product for {country.upper()}:"]
+            if gender:
+                desc_parts.append(f"{gender}'s")
+            if product_type:
+                desc_parts.append(product_type)
+            if upper_material:
+                desc_parts.append(f"Upper Material: {upper_material}.")
+            if sole_material:
+                desc_parts.append(f"Sole Material: {sole_material}.")
+            if construction:
+                desc_parts.append(f"Construction: {construction}.")
+            if use_case and use_case != "Other":
+                desc_parts.append(f"Use: {use_case}.")
+            if special_features:
+                desc_parts.append(f"Features: {special_features}.")
+            product_description = " ".join(desc_parts).strip()
+        
+        # Check for validated codes first
+        validated_codes = load_validated_codes(product_description, country)
+        if validated_codes:
+            first_validated_code = validated_codes[0].get('hs_code')
+            first_validated_reasoning = validated_codes[0].get('reasoning', 'Previously validated by a specialist.')
+
+            mock_generated_response = f"""
+                ### OPTION 1: {first_validated_code} - 100% certainty (Validated)
+                #### PRODUCT DESCRIPTION:
+                {product_description}
+                #### REASONING STRUCTURE:
+                {first_validated_reasoning}
+                #### LEGAL BASIS:
+                Previously validated.
+            """
+            if len(validated_codes) > 1:
+                mock_generated_response += f"\n### OPTION 2: {validated_codes[1].get('hs_code', 'N/A')} - 100% certainty (Validated)\n#### PRODUCT DESCRIPTION:\n{product_description}\n#### REASONING STRUCTURE:\n{validated_codes[1].get('reasoning', 'Previously validated.')}\n#### LEGAL BASIS:\nPreviously validated."
+            if len(validated_codes) > 2:
+                mock_generated_response += f"\n### OPTION 3: {validated_codes[2].get('hs_code', 'N/A')} - 100% certainty (Validated)\n#### PRODUCT DESCRIPTION:\n{product_description}\n#### REASONING STRUCTURE:\n{validated_codes[2].get('reasoning', 'Previously validated.')}\n#### LEGAL BASIS:\nPreviously validated."
+
+            session['last_generated_response'] = mock_generated_response
+            session['last_product_description'] = product_description
+            session['last_country'] = country
+            session['last_product_category'] = product_category
+            flash("Found a previously validated HS code for this product!", 'success')
+            return redirect(url_for('suggested_options'))
+
+        # Load country-specific docs
+        processed_docs = app.doc_cache.get(country)
+        if not processed_docs:
+            flash(f"No tariff data available for {country.title()}. Please ensure PDF files are in the correct directory.", 'danger')
+            return redirect(url_for('single_classification'))
+
+        chapter_content = ""
+        if chapter_input != "auto":
+            chapter_key = f"chapter_{chapter_input}"
+            chapter_content = processed_docs.get(chapter_key, "")
+
+        if not chapter_content and use_enhanced_search:
+            # Use product-specific chapter finding
+            if product_category == 'apparel':
+                relevant_chapter_data = find_relevant_chapters_apparel(
+                    product_description, country, processed_docs
+                )
+            else:  # footwear
+                relevant_chapter_data = find_relevant_chapters_footwear(
+                    product_description, country, processed_docs
+                )
+            
+            if relevant_chapter_data:
+                chapter_content = "\n\n".join([content for _, content in relevant_chapter_data][:3])
+
+        legal_notes = processed_docs.get("legal_notes", "")
+        classification_guide = processed_docs.get("classification_guide", "")
+        gri = processed_docs.get("gri", "")
+        guidelines = load_text_files_for_country(app.config['PDF_DIRECTORY'], country).get(f"{country}_guidelines", "")
+
+        rejected_codes_snapshot = load_rejected_codes(product_description, country)
+
+        model = configure_genai(app.config['API_KEY'])
+        generated_response = await generate_hs_codes(
+            model,
+            product_description,
+            country,
+            relevant_chapter_data if use_enhanced_search else chapter_content, 
+            legal_notes,
+            classification_guide,
+            gri=gri,
+            guidelines=guidelines,
+            rejected_codes_snapshot=rejected_codes_snapshot,
+            product_category=product_category,
+            app_config=app.config  #  Pass the config 
+        )
+
+        session['last_generated_response'] = generated_response
+        session['last_product_description'] = product_description
+        session['last_country'] = country
+        session['last_product_category'] = product_category
+
+        return redirect(url_for('suggested_options'))
+    
+    # GET request: render the input form
+    country_options = sorted(list(app.doc_cache.keys()))
+    gender_options = ["Men", "Women", "Kids", "Boys", "Girls", "Unisex", "N/A"]
+    
+    # Apparel-specific options
+    apparel_construction_options = ["Knitted", "Woven"]
+    
+    # Footwear-specific options
+    footwear_use_cases = ["Athletic/Sports", "Casual", "Dress/Formal", "Work/Safety", "Fashion", "Other"]
+    
+    available_chapters = []
+    if country_options:
+        default_country_docs = app.doc_cache.get(country_options[0])
+        if default_country_docs:
+            available_chapters = sorted([ch.split("_chapter_")[1] for ch in default_country_docs.keys() if "_chapter_" in ch])
+
+    return render_template('single_product.html',
+                         country_options=country_options,
+                         gender_options=gender_options,
+                         apparel_construction_options=apparel_construction_options,
+                         footwear_use_cases=footwear_use_cases,
+                         available_chapters=available_chapters)
+
+@app.route('/suggested_options', methods=['GET', 'POST'])
+async def suggested_options():
+    generated_response = session.get('last_generated_response')
+    product_description = session.get('last_product_description')
+    country = session.get('last_country')
+    product_category = session.get('last_product_category', 'apparel')
+
+    if not generated_response:
+        flash("No HS codes generated. Please perform a classification first.", 'warning')
+        return redirect(url_for('single_classification'))
+
+    options_data = []
+
+    # Parse options from response
+    raw_options = re.split(r'### OPTION \d+:', generated_response)[1:]
+    for i, option_text in enumerate(raw_options):
+        lines = option_text.strip().split('\n', 1)
+        title_line = lines[0].strip()
+        hs_code_match = re.search(r'([0-9.\s]+(?:-[0-9]+)?) - (\d+)% certainty', title_line)
+
+        hs_code = hs_code_match.group(1).strip() if hs_code_match else "N/A"
+        certainty = int(hs_code_match.group(2)) if hs_code_match else 0
+        is_validated = "(Validated)" in title_line
+        details = lines[1].strip() if len(lines) > 1 else "No explanation provided."
+
+        options_data.append({
+            'option_num': i + 1,
+            'title_line': title_line,
+            'hs_code': hs_code,
+            'certainty': certainty,
+            'details': details,
+            'is_validated': is_validated
+        })
+    
+    # Handle 'Mark as Incorrect' submission
+    if request.method == 'POST' and request.form.get('action') == 'mark_incorrect':
+        action = request.form.get('action')
+        option_num_str = request.form.get('option_num')
+
+        if action == 'mark_incorrect' and option_num_str:
+            option_num = int(option_num_str)
+            rejected_hs_code = next((opt['hs_code'] for opt in options_data if opt['option_num'] == option_num), None)
+            
+            if rejected_hs_code:
+                save_rejected_code(product_description, country, rejected_hs_code)
+                if 'rejected_options_for_current_product' not in session:
+                    session['rejected_options_for_current_product'] = []
+                session['rejected_options_for_current_product'].append(option_num)
+                
+                # Check if all options are rejected
+                if len(session['rejected_options_for_current_product']) >= len(options_data):
+                    flash("All options marked as incorrect. Regenerating suggestions...", 'info')
+                    rejected_snapshot = [opt['hs_code'] for opt in options_data if opt['option_num'] in session['rejected_options_for_current_product']]
+                    
+                    session.pop('rejected_options_for_current_product', None)
+
+                    # Re-generate HS codes
+                    processed_docs = app.doc_cache.get(country, {})
+                    
+                    # Use product-specific chapter finding
+                    if product_category == 'apparel':
+                        relevant_chapter_data = find_relevant_chapters_apparel(product_description, country, processed_docs)
+                    else:  # footwear
+                        relevant_chapter_data = find_relevant_chapters_footwear(product_description, country, processed_docs)
+                    
+                    legal_notes = processed_docs.get("legal_notes", "")
+                    classification_guide = processed_docs.get("classification_guide", "")
+                    gri = processed_docs.get("gri", "")
+                    guidelines = load_text_files_for_country(app.config['PDF_DIRECTORY'], country).get(f"{country}_guidelines", "")
+
+                    model = configure_genai(app.config['API_KEY'])
+                    regenerated_response = await generate_hs_codes(
+                        model,
+                        product_description,
+                        country,
+                        relevant_chapter_data,
+                        legal_notes,
+                        classification_guide,
+                        gri=gri,
+                        guidelines=guidelines,
+                        rejected_codes_snapshot=rejected_snapshot,
+                        product_category=product_category,
+                        app_config=app.config  #  Pass the config
+                    )
+                    session['last_generated_response'] = regenerated_response
+                    return redirect(url_for('suggested_options'))
+                
+                flash(f'Option {option_num} marked as incorrect.', 'success')
+                return redirect(url_for('suggested_options'))
+            
+    rejected_options_for_current_product = session.get('rejected_options_for_current_product', [])
+    return render_template('suggested_options.html',
+                         product_description=product_description,
+                         country=country,
+                         product_category=product_category,
+                         options_data=options_data,
+                         rejected_options_for_current_product=rejected_options_for_current_product)
+
+# --- Bulk Classification ---
+app.bulk_processing_state = {}
+
+@app.route('/bulk_classification', methods=['GET', 'POST'])
+async def bulk_classification():
+    if request.method == 'POST':
+        if 'csv_file' not in request.files:
+            flash('No file part', 'danger')
+            return redirect(request.url)
+
+        file = request.files['csv_file']
+        if file.filename == '':
+            flash('No selected file', 'danger')
+            return redirect(request.url)
+
+        if file and file.filename.endswith('.csv'):
+            try:
+                df_input = pd.read_csv(file)
+                df_input = df_input.reset_index(drop=True).reset_index().rename(columns={"index": "idx"})
+                
+                # Get product category from form
+                product_category = request.form.get('product_category', 'apparel')
+
+                batch_id = f"bulk_{datetime.now().strftime('%Y%m%d%H%M%S')}_{os.urandom(4).hex()}"
+                app.bulk_processing_state[batch_id] = {
+                    'input_df': df_input,
+                    'processed_results': [],
+                    'selection_status': {row['idx']: {"status": "pending", "data": {}} for _, row in df_input.iterrows()},
+                    'regenerate_queue': set(),
+                    'total_rows': len(df_input),
+                    'processed_count': 0,
+                    'status': 'processing',
+                    'error_message': None,
+                    'product_category': product_category  # Store category
+                }
+                
+                session['current_batch_id'] = batch_id
+
+                # Start processing in background thread
+                thread = threading.Thread(
+                    target=run_async_task,
+                    args=(process_bulk_data_flask, batch_id, app.config['API_KEY'])
+                )
+                thread.start()
+
+                return redirect(url_for('processing_status_page', batch_id=batch_id))
+
+            except Exception as e:
+                flash(f'Error processing file: {e}', 'danger')
+                print(f"ERROR: Bulk classification failed: {str(e)}")
+                import traceback
+                traceback.print_exc()
+                return redirect(request.url)
+        else:
+            flash('Invalid file type. Please upload a CSV.', 'danger')
+            return redirect(request.url)
+    
+    active_batch_id = session.get('current_batch_id')
+    if active_batch_id and active_batch_id in app.bulk_processing_state:
+        return render_template('bulk_classification.html', active_batch_id=active_batch_id)
+
+    return render_template('bulk_classification.html', active_batch_id=None)
+
+@app.route('/start_new_bulk')
+def start_new_bulk():
+    """Clears the current batch ID from the session to allow a new upload."""
+    if 'current_batch_id' in session:
+        session.pop('current_batch_id', None)
+    flash('Previous review session cleared. You can now start a new bulk classification.', 'info')
+    return redirect(url_for('bulk_classification'))
+
+rate_limiter = AsyncRateLimiter(10, 60)
+
+async def process_bulk_data_flask(batch_id, api_key):
+    print(f"!!!!!!!!!!!!!! BACKGROUND TASK STARTED FOR BATCH {batch_id} !!!!!!!!!!!!!!")
+    state = app.bulk_processing_state.get(batch_id)
+    if not state:
+        print(f"ERROR: process_bulk_data_flask called for a non-existent batch_id: {batch_id}")
+        return
+
+    # IMPORTANT: Get config outside the app context for use in async tasks
+    app_config = app.config.copy()  # Make a copy of the config
+    doc_cache = app.doc_cache  # Get reference to doc_cache
+
+    try:
+        df_input = state['input_df']
+        product_category = state['product_category']
+        model = configure_genai(api_key)
+        all_results_list = []
+        items_for_api_call = []
+        classification_cache_for_batch = {}
+        start_time = time.time()
+
+        # Get appropriate column mapping
+        if product_category == 'apparel':
+            col_mapping = app_config['APPAREL_COLUMNS']
+        else:  # footwear
+            col_mapping = app_config['FOOTWEAR_COLUMNS']
+
+        for df_idx, row in df_input.iterrows():
+            idx = row["idx"]
+            
+            # Build product description using product-specific function
+            product_description, country, product_type, material, construction, gender = build_product_description(
+                row, product_category, col_mapping
+            )
+            
+            hs_code_from_csv = str(row.get(col_mapping['hs_code_col'], 'N/A')) if pd.notna(row.get(col_mapping['hs_code_col'])) else 'N/A'
+
+            base_result_row = {
+                "idx": idx, "input_country": country.upper(), "input_product": product_type,
+                "input_material": material, "input_construction": construction, "input_gender": gender,
+                "product_description": product_description, "product_category": product_category,
+                "hs_code_1": "N/A", "certainty_1": 0, "reasoning_1": "Skipped", "raw_reasoning_text_1": "",
+                "hs_code_2": "", "certainty_2": 0, "reasoning_2": "", "raw_reasoning_text_2": "",
+                "hs_code_3": "", "certainty_3": 0, "reasoning_3": "", "raw_reasoning_text_3": "",
+                "hs_code_from_csv": hs_code_from_csv
+            }
+
+            if not product_type or not material or country == "unknown" or country not in doc_cache:
+                reason = "Skipped due to missing essential data" if (not product_type or not material or country == "unknown") else f"Skipped: No PDF data for {country}"
+                base_result_row["reasoning_1"] = reason
+                all_results_list.append(base_result_row)
+                state['processed_count'] += 1
+                continue
+
+            # Check for validated codes
+            all_validated_entries = load_validated_codes(product_description, country)
+            validated_entries_with_code = [e for e in all_validated_entries if e.get("hs_code")]
+            if validated_entries_with_code:
+                for i, entry in enumerate(validated_entries_with_code[:3]):
+                    reasoning = entry.get("reasoning") or "Previously validated by user (code only)."
+                    base_result_row[f"hs_code_{i+1}"] = entry.get("hs_code", "N/A")
+                    base_result_row[f"certainty_{i+1}"] = 100
+                    base_result_row[f"reasoning_{i+1}"] = reasoning
+                state['selection_status'][idx] = {"status": "validated_with_reasoning", "data": {"selected_hs_code": base_result_row["hs_code_1"]}}
+                all_results_list.append(base_result_row)
+                state['processed_count'] += 1
+                continue
+            
+            # Create product key for caching
+            product_key = (country, gender.lower(), product_type.lower(), material.lower(), construction.lower())
+            
+            # Check cache
+            if product_key in classification_cache_for_batch:
+                cached_result = classification_cache_for_batch[product_key]
+                for i in range(1, 4):
+                    base_result_row[f"hs_code_{i}"] = cached_result.get(f"hs_code_{i}", "")
+                    base_result_row[f"certainty_{i}"] = cached_result.get(f"certainty_{i}", 0)
+                    base_result_row[f"reasoning_{i}"] = cached_result.get(f"reasoning_{i}", "")
+                    base_result_row[f"raw_reasoning_text_{i}"] = cached_result.get(f"raw_reasoning_text_{i}", "")
+                all_results_list.append(base_result_row)
+                state['processed_count'] += 1
+                continue
+            
+            # Add to API call queue
+            items_for_api_call.append({
+                "base_row": base_result_row, 
+                "product_key": product_key,
+                "args": {
+                    "product_description": product_description, 
+                    "country": country,
+                    "relevant_chapters": find_relevant_chapters_apparel(product_description, country, doc_cache[country]) if product_category == 'apparel' else find_relevant_chapters_footwear(product_description, country, doc_cache[country]),
+                    "legal_notes": doc_cache[country].get("legal_notes", ""),
+                    "classification_guide": doc_cache[country].get("classification_guide", ""),
+                    "gri": doc_cache[country].get("gri", ""),
+                    "guidelines": load_text_files_for_country(app_config['PDF_DIRECTORY'], country).get(f"{country}_guidelines", ""),
+                    "rejected_codes_snapshot": load_rejected_codes(product_description, country),
+                    "product_type": product_type,
+                    "product_category": product_category,
+                    "app_config": app_config  #  Pass the config
+                }
+            })
+
+        # Process API calls
+        if items_for_api_call:
+            semaphore = asyncio.Semaphore(10)
+            
+            async def run_classification_with_semaphore(item):
+                async with semaphore:
+                    await rate_limiter.acquire()
+                    response = await generate_hs_codes(model, **item['args'])
+                    result_row = item['base_row'].copy()
+                    product_key = item['product_key']
+                    
+                    if response and isinstance(response, str):
+                        product_df_row = extract_hs_codes(response)
+                        if not product_df_row.empty:
+                            extracted_data = product_df_row.iloc[0].to_dict()
+                            for i in range(1, 4):
+                                result_row[f"hs_code_{i}"] = extracted_data.get(f"hs_code_{i}", "")
+                                result_row[f"certainty_{i}"] = extracted_data.get(f"certainty_{i}", 0)
+                                result_row[f"reasoning_{i}"] = extracted_data.get(f"reasoning_{i}", "")
+                                result_row[f"raw_reasoning_text_{i}"] = extracted_data.get(f"raw_reasoning_text_{i}", "")
+                            classification_cache_for_batch[product_key] = extracted_data
+                        else: 
+                            result_row["reasoning_1"] = "Error: Failed to parse API response"
+                    else: 
+                        result_row["reasoning_1"] = "Error: Model returned invalid or empty response"
+                    return result_row
+
+            tasks = [run_classification_with_semaphore(item) for item in items_for_api_call]
+            api_results = await asyncio.gather(*tasks, return_exceptions=True)
+
+            for result in api_results:
+                if isinstance(result, Exception):
+                    raise result
+                else:
+                    all_results_list.append(result)
+                state['processed_count'] += 1
+                print(f"DEBUG: Processed {state['processed_count']}/{state['total_rows']}.")
+
+        # Sort and save results
+        all_results_list.sort(key=lambda x: x['idx'])
+        processed_df = pd.DataFrame(all_results_list) if all_results_list else pd.DataFrame()
+
+        state['processed_results'] = processed_df.to_dict('records')
+        save_bulk_classification_results(processed_df, filename=ALL_BULK_RESULTS_FILE)
+        log_detailed_accuracy(processed_df)
+
+        total_processing_time = time.time() - start_time
+        save_processing_time(total_processing_time, len(df_input))
+
+        state['status'] = 'completed'
+        print(f"DEBUG: Background processing for batch {batch_id} completed in {total_processing_time:.2f}s.")
+        
+    except Exception as e:
+        import traceback
+        print(f"!!!!!!!!!!!!!! ERROR IN BACKGROUND TASK FOR BATCH {batch_id} !!!!!!!!!!!!!!")
+        traceback.print_exc()
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        state['status'] = 'error'
+        state['error_message'] = str(e)
+
+@app.route('/processing_status/<batch_id>', methods=['GET'])
+def processing_status_page(batch_id):
+    state = app.bulk_processing_state.get(batch_id)
+    if not state:
+        flash('Processing batch not found or already completed. Please start a new bulk classification.', 'danger')
+        return redirect(url_for('bulk_classification'))
+    
+    return render_template('processing_status.html', batch_id=batch_id, state=state)
+
+@app.route('/get_bulk_progress/<batch_id>', methods=['GET'])
+def get_bulk_progress(batch_id):
+    state = app.bulk_processing_state.get(batch_id)
+    if not state:
+        return jsonify({'status': 'error', 'message': 'Batch not found or completed'}), 404
+    
+    return jsonify({
+        'status': state.get('status', 'processing'),
+        'processed_count': state.get('processed_count', 0),
+        'total_rows': state.get('total_rows', 0),
+        'error_message': state.get('error_message', None)
+    })
+
+@app.route('/review_bulk_table/<batch_id>', methods=['GET'])
+def review_bulk_table(batch_id):
+    state = app.bulk_processing_state.get(batch_id)
+    if not state:
+        flash('Bulk processing batch not found or completed. Please start a new one.', 'danger')
+        return redirect(url_for('bulk_classification'))
+    
+    if state.get('status', 'processing') == 'processing':
+        return redirect(url_for('processing_status_page', batch_id=batch_id))
+
+    processed_results_df = pd.DataFrame(state['processed_results'])
+    selection_status = state['selection_status']
+    product_category = state.get('product_category', 'apparel')
+
+    return render_template('review_bulk_table.html',
+                         batch_id=batch_id,
+                         results=processed_results_df.to_dict('records'),
+                         selection_status=selection_status,
+                         total_rows=state['total_rows'],
+                         product_category=product_category)
+
+@app.route('/review_bulk_results/<batch_id>', methods=['GET', 'POST'])
+async def review_bulk_results(batch_id):
+    state = app.bulk_processing_state.get(batch_id)
+    if not state:
+        flash('Bulk processing batch not found or completed. Please start a new one.', 'danger')
+        return redirect(url_for('bulk_classification'))
+    
+    if state['status'] == 'processing':
+        flash("Processing is still underway. Please wait...", 'info')
+        return redirect(url_for('processing_status_page', batch_id=batch_id))
+
+    processed_results_df = pd.DataFrame(state['processed_results'])
+    selection_status = state['selection_status']
+    product_category = state.get('product_category', 'apparel')
+
+    if request.method == 'POST':
+        action_type = request.form.get('action_type')
+        item_idx = int(request.form.get('item_idx'))
+        option_num = request.form.get('option_num')
+
+        current_item_state = selection_status.get(item_idx, {"status": "pending", "data": {}})
+
+        current_processed_df_for_lookup = pd.DataFrame(app.bulk_processing_state[batch_id]['processed_results'])
+        original_row_for_product_info = current_processed_df_for_lookup[current_processed_df_for_lookup['idx'] == item_idx].iloc[0]
+        product_description_for_action = original_row_for_product_info['product_description']
+        country_for_action = original_row_for_product_info['input_country'].lower()
+        product_type_for_action = original_row_for_product_info['input_product']
+
+        response_message = ""
+        success_status = True
+
+        if action_type == 'regenerate_all':
+            for i in range(1, 4):
+                hs_code_to_reject = original_row_for_product_info.get(f'hs_code_{i}')
+                if hs_code_to_reject and hs_code_to_reject not in ["N/A", "ERROR", "", None]:
+                    save_rejected_code(product_description_for_action, country_for_action, hs_code_to_reject)
+
+            current_item_state['status'] = 'regenerate_pending'
+            selection_status[item_idx] = current_item_state
+            log_interaction_event(country_for_action, product_type_for_action, 'regeneration')
+            
+            await process_single_regeneration_in_background(batch_id, item_idx)
+            
+            return jsonify({
+                'status': 'success',
+                'message': f"Product {item_idx} regeneration complete.",
+                'item_idx': item_idx,
+                'reload_page': True
+            })
+
+        elif action_type == 'select_code':
+            selected_hs_code = request.form.get(f'hs_code_{option_num}')
+            selected_certainty = request.form.get(f'certainty_{option_num}', type=int)
+            selected_reasoning = request.form.get(f'reasoning_{option_num}')
+            current_item_state['status'] = 'selected'
+            current_item_state['data'] = {
+                'selected_hs_code': selected_hs_code,
+                'selected_certainty': selected_certainty,
+                'selected_reasoning': selected_reasoning,
+                'selected_option': int(option_num)
+            }
+            log_interaction_event(country_for_action, product_type_for_action, 'selection', selected_hs_code, details=f'option_{option_num}')
+            response_message = f"Product {item_idx} selected successfully!"
+
+        elif action_type == 'mark_incorrect':
+            rejected_hs_code = request.form.get('rejected_hs_code')
+            if rejected_hs_code:
+                save_rejected_code(product_description_for_action, country_for_action, rejected_hs_code)
+                if 'incorrect_options' not in current_item_state['data']:
+                    current_item_state['data']['incorrect_options'] = set()
+                current_item_state['data']['incorrect_options'].add(int(option_num))
+                log_interaction_event(country_for_action, product_type_for_action, 'rejection', rejected_hs_code, details=f'option_{option_num}')
+                response_message = f"Option {option_num} for Product {item_idx} marked incorrect."
+
+        elif action_type == 'review_later':
+            current_item_state['status'] = 'review_later'
+            current_item_state['data'] = {}
+            response_message = f"Product {item_idx} marked for review later."
+
+        elif action_type == 'save_code_only':
+            hs_code_to_save = request.form.get(f'hs_code_{option_num}')
+            if hs_code_to_save:
+                save_validated_code(product_description_for_action, country_for_action, hs_code_to_save, reasoning=None)
+                current_item_state['status'] = 'validated_code_only'
+                current_item_state['data'] = {'selected_hs_code': hs_code_to_save, 'selected_option': int(option_num)}
+                response_message = f"Product {item_idx} HS Code {hs_code_to_save} saved successfully (code only)!"
+            else:
+                success_status = False
+                response_message = "Error: HS Code to save not provided."
+
+        elif action_type == 'save_code_with_reasoning':
+            hs_code_to_save = request.form.get(f'hs_code_{option_num}')
+            reasoning_to_save = request.form.get(f'reasoning_{option_num}')
+            if hs_code_to_save and reasoning_to_save:
+                save_validated_code(product_description_for_action, country_for_action, hs_code_to_save, reasoning=reasoning_to_save)
+                current_item_state['status'] = 'validated_with_reasoning'
+                current_item_state['data'] = {
+                    'selected_hs_code': hs_code_to_save,
+                    'selected_reasoning': reasoning_to_save,
+                    'selected_option': int(option_num)
+                }
+                response_message = f"Product {item_idx} HS Code and reasoning saved successfully!"
+            else:
+                success_status = False
+                response_message = "Error: HS Code or reasoning to save not provided."
+
+        else:
+            success_status = False
+            response_message = "Unknown action type."
+
+        selection_status[item_idx] = current_item_state
+        app.bulk_processing_state[batch_id]['selection_status'] = selection_status
+
+        return jsonify({
+            'status': 'success' if success_status else 'error',
+            'message': response_message,
+            'item_idx': item_idx,
+            'new_status': current_item_state['status'],
+            'reload_page': True
+        })
+    
+    return render_template('review_bulk_results.html',
+                         batch_id=batch_id,
+                         results=processed_results_df.to_dict('records'),
+                         selection_status=selection_status,
+                         total_rows=state['total_rows'],
+                         product_category=product_category)
+
+async def process_single_regeneration_in_background(batch_id, item_idx):
+    state = app.bulk_processing_state[batch_id]
+    selection_status = state['selection_status']
+    results_list = state['processed_results']
+    product_category = state.get('product_category', 'apparel')
+    
+    # Get config for use outside app context
+    app_config = app.config.copy()
+    doc_cache = app.doc_cache
+    
+    item_to_update = next((item for item in results_list if item['idx'] == item_idx), None)
+
+    if item_to_update is None:
+        print(f"ERROR: Could not find item with idx {item_idx} in state for regeneration.")
+        selection_status[item_idx] = {"status": "error", "data": {"reason": "Internal error: Item not found."}}
+        return
+
+    selection_status[item_idx]['status'] = 'regenerating'
+
+    product_description_regen = item_to_update['product_description']
+    country_lower = item_to_update['input_country'].lower()
+    product_type_regen = item_to_update['input_product']
+
+    rejected_codes_snapshot = load_rejected_codes(product_description_regen, country_lower)
+    print(f"DEBUG: Found {len(rejected_codes_snapshot)} rejected codes for '{product_description_regen}' in {country_lower}.")
+
+    processed_pdfs_for_current_country = doc_cache.get(country_lower, {})
+    
+    # Use product-specific chapter finding
+    if product_category == 'apparel':
+        relevant_chapters = find_relevant_chapters_apparel(product_description_regen, country_lower, processed_pdfs_for_current_country)
+    else:  # footwear
+        relevant_chapters = find_relevant_chapters_footwear(product_description_regen, country_lower, processed_pdfs_for_current_country)
+    
+    legal_notes = processed_pdfs_for_current_country.get("legal_notes", "")
+    classification_guide = processed_pdfs_for_current_country.get("classification_guide", "")
+    gri = processed_pdfs_for_current_country.get("gri", "")
+    guidelines = load_text_files_for_country(app_config['PDF_DIRECTORY'], country_lower).get(f"{country_lower}_guidelines", "")
+
+    try:
+        model = configure_genai(app_config['API_KEY'])
+        new_response = await generate_hs_codes(
+            model, product_description_regen, country_lower, relevant_chapters,
+            legal_notes, classification_guide, gri=gri, guidelines=guidelines,
+            rejected_codes_snapshot=rejected_codes_snapshot,
+            product_type=product_type_regen,
+            product_category=product_category,
+            app_config=app_config  #  Pass the config
+        )
+        new_options_df = extract_hs_codes(new_response)
+
+        if not new_options_df.empty:
+            new_data_dict = new_options_df.iloc[0].to_dict()
+            for i in range(1, 4):
+                item_to_update[f'hs_code_{i}'] = new_data_dict.get(f'hs_code_{i}', '')
+                item_to_update[f'certainty_{i}'] = new_data_dict.get(f'certainty_{i}', 0)
+                item_to_update[f'reasoning_{i}'] = new_data_dict.get(f'reasoning_{i}', {})
+                item_to_update[f'raw_reasoning_text_{i}'] = new_data_dict.get(f'raw_reasoning_text_{i}', '')
+            selection_status[item_idx] = {"status": "pending", "data": {}}
+            state['regenerate_queue'].discard(item_idx)
+            print(f"DEBUG: Product {item_idx} regenerated successfully.")
+        else:
+            selection_status[item_idx] = {"status": "error", "data": {"reason": "Regen failed: No codes extracted from response."}}
+            print(f"DEBUG: Failed to extract codes for Product {item_idx} during regeneration.")
+            
+    except Exception as regen_e:
+        import traceback
+        print(f"ERROR: Exception during regeneration for Product {item_idx}: {regen_e}")
+        traceback.print_exc()
+        selection_status[item_idx] = {"status": "error", "data": {"reason": str(regen_e)}}
+
+    state['selection_status'] = selection_status
+
+@app.route('/finalize_bulk_results/<batch_id>', methods=['POST'])
+def finalize_bulk_results(batch_id):
+    if batch_id not in app.bulk_processing_state:
+        flash('Bulk processing batch not found.', 'danger')
+        return redirect(url_for('bulk_classification'))
+
+    state = app.bulk_processing_state[batch_id]
+    processed_results_df = pd.DataFrame(state['processed_results'])
+    selection_status = state['selection_status']
+    original_input_df = state['input_df']
+    product_category = state.get('product_category', 'apparel')
+
+    processed_data = []
+    pending_count = 0
+    error_count = 0
+    review_later_count = 0
+    validated_count = 0
+
+    for original_idx_in_batch, current_row_processed in processed_results_df.iterrows():
+        item_specific_idx = current_row_processed['idx']
+        item_status = selection_status.get(item_specific_idx, {"status": "pending", "data": {}})
+
+        if item_status["status"] == "review_later":
+            review_later_count += 1
+            continue
+
+        original_source_row_filtered = original_input_df[original_input_df['idx'] == item_specific_idx]
+        actual_hs_code = "N/A - Not in original file"
+        
+        # Get appropriate column mapping
+        if product_category == 'apparel':
+            col_mapping = app.config['APPAREL_COLUMNS']
+        else:
+            col_mapping = app.config['FOOTWEAR_COLUMNS']
+        
+        if not original_source_row_filtered.empty:
+            if col_mapping['hs_code_col'] in original_source_row_filtered.columns:
+                actual_hs_code = str(original_source_row_filtered.iloc[0][col_mapping['hs_code_col']])
+
+        output_row = {
+            "idx": item_specific_idx, 
+            "product_category": product_category,
+            "product_description": current_row_processed.get("product_description", ""),
+            "input_product": current_row_processed.get("input_product", ""), 
+            "input_material": current_row_processed.get("input_material", ""),
+            "input_construction": current_row_processed.get("input_construction", ""), 
+            "input_gender": current_row_processed.get("input_gender", ""),
+            "input_country": current_row_processed.get("input_country", ""), 
+            "suggested_hs_code_1": current_row_processed.get("hs_code_1", "N/A"),
+            "certainty_1_percent": current_row_processed.get("certainty_1", 0), 
+            "actual_hs_code_from_dataset": actual_hs_code,
+            "selected_hs_code": "N/A", 
+            "selected_reasoning": "N/A", 
+            "certainty (%)": None, 
+            "status": item_status["status"]
+        }
+
+        if item_status["status"] == "selected":
+            output_row["selected_hs_code"] = item_status["data"].get("selected_hs_code", "Error")
+            output_row["selected_reasoning"] = item_status["data"].get("selected_reasoning", "Error")
+            output_row["certainty (%)"] = item_status["data"].get("selected_certainty")
+            output_row["status"] = f"Selected Option {item_status['data'].get('selected_option', '?')}"
+        elif item_status["status"] == "incorrect":
+            output_row["selected_hs_code"] = "Marked Incorrect"
+            output_row["selected_reasoning"] = "User marked as incorrect."
+            output_row["status"] = "Marked Incorrect"
+        elif item_status["status"] == "validated_code_only":
+            output_row["selected_hs_code"] = item_status["data"].get("selected_hs_code", "Error")
+            output_row["selected_reasoning"] = "Validated (Code Only)"
+            output_row["certainty (%)"] = 100
+            output_row["status"] = "Validated (Code Only)"
+            validated_count += 1
+        elif item_status["status"] == "validated_with_reasoning":
+            output_row["selected_hs_code"] = item_status["data"].get("selected_hs_code", "Error")
+            output_row["selected_reasoning"] = item_status["data"].get("selected_reasoning", "Validated (with reasoning)")
+            output_row["certainty (%)"] = 100
+            output_row["status"] = "Validated (with Reasoning)"
+            validated_count += 1
+        elif item_status["status"] == "pending" or item_status["status"] == "regenerate_pending":
+            if current_row_processed.get("hs_code_1") in ["N/A", "ERROR"]:
+                output_row["selected_hs_code"] = current_row_processed.get("hs_code_1")
+                output_row["selected_reasoning"] = current_row_processed.get("reasoning_1")
+                output_row["status"] = "Skipped/Error"
+                error_count += 1
+            else:
+                output_row["selected_hs_code"] = "Pending Review"
+                output_row["selected_reasoning"] = "User review needed."
+                output_row["status"] = "Pending Review"
+                pending_count += 1
+        elif item_status["status"] == "error":
+            output_row["selected_hs_code"] = "Error During Regeneration"
+            output_row["selected_reasoning"] = item_status["data"].get("reason", "Unknown error")
+            output_row["status"] = "Error"
+            error_count += 1
+
+        processed_data.append(output_row)
+    
+    if pending_count > 0:
+        flash(f"{pending_count} products are still pending review. Please address them before finalizing.", 'warning')
+        return redirect(url_for('review_bulk_table', batch_id=batch_id))
+
+    final_df = pd.DataFrame(processed_data) if processed_data else pd.DataFrame()
+    final_cols_order = [
+        "idx", "product_category", "input_country", "input_product", "input_material", 
+        "input_construction", "input_gender", "product_description",
+        "suggested_hs_code_1", "certainty_1_percent", "actual_hs_code_from_dataset", 
+        "selected_hs_code", "certainty (%)", "status", "selected_reasoning"
+    ]
+    final_df = final_df.reindex(columns=[col for col in final_cols_order if col in final_df.columns])
+    save_final_selected_results(final_df, filename='final_hs_codes.csv')
+
+    flash_message = "Selections processed successfully!"
+    if review_later_count > 0:
+        flash_message += f" ({review_later_count} items marked 'Review Later' were excluded)."
+    if error_count > 0:
+        flash_message += f" ({error_count} items had original errors/were skipped)."
+    if validated_count > 0:
+        flash_message += f" ({validated_count} items were previously validated)."
+    flash(flash_message, 'success')
+
+    if batch_id in app.bulk_processing_state:
+        del app.bulk_processing_state[batch_id]
+    if 'current_batch_id' in session:
+        session.pop('current_batch_id', None)
+
+    return render_template('final_bulk_report.html', 
+                         final_results=final_df.to_dict('records'),
+                         product_category=product_category)
+
+def simplify_product_type(description):
+    """Simplifies a detailed product description to a general category."""
+    if not isinstance(description, str):
+        return "Unknown"
+    desc_lower = description.lower()
+    
+    # Footwear categories
+    if any(term in desc_lower for term in ["shoe", "boot", "sneaker", "sandal", "slipper"]):
+        if "running" in desc_lower or "athletic" in desc_lower:
+            return "Athletic Footwear"
+        elif "boot" in desc_lower:
+            return "Boots"
+        elif "sandal" in desc_lower:
+            return "Sandals"
+        else:
+            return "General Footwear"
+    
+    # Apparel categories
+    if "t-shirt" in desc_lower or "t shirt" in desc_lower:
+        return "T-Shirt"
+    if "tank" in desc_lower:
+        return "Tank Top"
+    if "short sleeves" in desc_lower:
+        return "T-Shirt"
+    if "short" in desc_lower:
+        return "Shorts"
+    if "pant" in desc_lower or "trouser" in desc_lower:
+        return "Pants"
+    if "tight" in desc_lower:
+        return "Tights"
+    if "jacket" in desc_lower:
+        return "Jacket"
+    if "hoodie" in desc_lower or "sweatshirt" in desc_lower:
+        return "Hoodie/Sweatshirt"
+    if "bra" in desc_lower:
+        return "Bra"
+    if "cap" in desc_lower or "beanie" in desc_lower:
+        return "Headwear"
+    if "singlet" in desc_lower:
+        return "Singlet"
+    return "Other"
+
+@app.route("/metrics")
+def display_metrics():
+    """Renders the metrics dashboard page."""
+    dashboard_data = get_dashboard_data()
+
+    if "error" in dashboard_data:
+        flash(dashboard_data["error"], "danger")
+        return render_template("metrics.html",
+                             metrics={}, processing_times=[], overall_avg_time_per_row=0,
+                             token_data={}, cost_data={}, quality_data={},
+                             usage_data={}, interaction_data={},
+                             completeness_data={}, evolution_data={})
+
+    return render_template("metrics.html", **dashboard_data)
+
+# --- Run the Flask App ---
+if __name__ == '__main__':
+    app.run(debug=True)

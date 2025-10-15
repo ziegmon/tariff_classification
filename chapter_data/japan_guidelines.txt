@@ -1,0 +1,3 @@
+- LENGTH OF HS CODE:
+-- !ALWAYS! 9 digits long (not counting "." separating the levels of the HS Code). NO EXCEPTIONS!
+

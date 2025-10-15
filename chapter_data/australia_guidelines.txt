@@ -1,0 +1,79 @@
+- LENGTH OF HS CODE:
+-- !ALWAYS! 10 digits long (not counting "." separating the levels of the HS Code). NO EXCEPTIONS!
+
+
+- Commonly found Classifications:
+-- Women's knitted Crop Tops made of 75% Recycled Polyester, 25% Elastane. Country: Australia -> HS CODE: 6114.30.00.06
+-- Women's knitted tank tops made of 54% Pima Cotton, 40% Polyester, 6% Elastane. Country: Australia -> HS CODE: 6109.10.00.37
+-- Men's knitted tights made of 75% Recycled Polyester, 25% Elastane - EL. Construction: Knitted. Country: Australia -> HS CODE: 6103.43.00.32
+
+
+- EXAMPLE CLASSIFICATIONS: 
+
+-- 1: EXAMPLE CLASSIFICATION FOR AUSTRALIA:
+            Product: Men's knitted t-shirt made of 85% Polyester (Mechanical Recycled) and 15% Elastane. Country: Australia
+
+            ### OPTION 1: 6109.90.00 05 - 95% certainty
+            #### PRODUCT DESCRIPTION:
+            A man's T-shirt constructed from 100% polyester knitted fabric. It is designed as a garment to cover the upper part of the body.
+
+            #### REASONING:
+            The classification of this garment is determined by its primary characteristics: it is a men's T-shirt, it is a knitted garment, and it is made of polyester.
+
+            Section and Chapter Determination: The product is a finished textile garment, which places it in Section XI, "TEXTILES AND TEXTILE ARTICLES". As the T-shirt is explicitly "knitted," it falls under Chapter 61, which covers "Articles of apparel and clothing accessories, knitted or crocheted". This excludes it from Chapter 62, which is for apparel that is not knitted or crocheted.
+
+            Heading Determination: Within Chapter 61, Heading 6109 is designated for "T-SHIRTS, SINGLETS AND OTHER VESTS, KNITTED OR CROCHETED". This heading accurately describes the product.
+            Tariff Item and Statistical Suffix Determination: The subheadings under 6109 are differentiated by the textile material.
+
+            The Tariff Item 6109.10.00 is for T-shirts "Of cotton". Since the product is 100% polyester, this classification is incorrect.
+
+            The Tariff Item  6109.90.00 is for T-shirts "Of other textile materials". As polyester is a man-made fiber and not cotton, it falls under this residual category.
+
+            Within the 6109.90.00 classification, the Australian tariff schedule provides a further breakdown using a Statistical Suffix (SS). The SS code 05 corresponds to T-shirts for ".Men's or boys'".
+
+            Therefore, the complete 10-digit classification code is 6109.90.00 05.
+
+                #### LEGAL BASIS:
+            General Rule for the Interpretation 1 (GRI 1): Classification is primarily determined by the terms of the headings and any relative Section or Chapter Notes. The terms of Heading 6109 ("T-shirts... knitted or crocheted") provide the most direct classification for the product.
+            General Rule for the Interpretation 6 (GRI 6): This rule governs classification at the subheading level, ensuring the most specific description is chosen by comparing only subheadings at the same level. The selection of 
+
+            6109.90.00 over 6109.10.00 is based on the specific material (polyester vs. cotton), adhering to this principle.
+
+            Hierarchical Structure: The classification correctly follows the structure provided in the tariff documents:
+            Section XI: Textiles and textile articles.
+            Chapter 61: Articles of apparel and clothing accessories, knitted or crocheted.
+            Heading 6109: T-shirts, singlets and other vests, knitted or crocheted.
+            Tariff Item 6109.90.00: Of other textile materials.
+            Statistical Suffix 05: Men's or boys'.
+
+
+-- 2: CLASSIFICATION FOR AUSTRALIA:
+
+            Product: Men's tank top, knitted, made of 100% Polyester. Country: Australia
+
+            ### OPTION 1: 6109.90.00 28 - 95% certainty
+            #### PRODUCT DESCRIPTION:
+            A man's tank top, also known as a singlet or vest, constructed from 100% polyester knitted fabric and designed as a garment to cover the upper part of the body.
+
+            #### REASONING:
+            The classification of this garment is based on its key features: it is a men's tank top (a type of singlet), it is a knitted garment, and its material is polyester.
+            Section and Chapter Determination: The product is a textile garment, which places it in Section XI, "TEXTILES AND TEXTILE ARTICLES". Because the garment is knitted, it falls under Chapter 61, which covers "Articles of apparel and clothing accessories, knitted or crocheted".
+            Heading Determination: Within Chapter 61, Heading 6109 is for "T-SHIRTS, SINGLETS AND OTHER VESTS, KNITTED OR CROCHETED". A tank top is considered a type of singlet or vest, making this the appropriate heading.
+            Tariff Item and Statistical Suffix Determination: The subheadings under 6109 are categorized by textile material and then by specific garment type.
+
+            Tariff Item 6109.10.00 is for garments "Of cotton". As the tank top is 100% polyester, this is not the correct classification.
+            Tariff Item 6109.90.00 is for garments "Of other textile materials". Polyester is a man-made fiber, which is not cotton, and therefore falls into this category.
+            Within 6109.90.00, the tariff schedule distinguishes between "T-shirts" and "Other" garments (singlets and vests). A tank top is not a T-shirt and is classified under "Other".
+            For "Other" garments, the Statistical Suffix (SS) code 28 is designated for ".Men's or boys'" items.
+            The combination of the Tariff Item and the Statistical Suffix gives the full 10-digit classification code 6109.90.00 28.
+
+            #### LEGAL BASIS:
+            General Rule for the Interpretation 1 (GRI 1): Classification is determined according to the terms of the headings and any relative Section or Chapter Notes. The terms of Heading 61.09, which explicitly include "singlets and other vests," provide the legal basis for the initial classification.
+            General Rule for the Interpretation 6 (GRI 6): This rule mandates that for legal purposes, classification in subheadings is determined by the terms of those subheadings, comparing only at the same level. This rule is applied to first select the subheading for the material (.90.00 for other textile materials) and then to select the correct statistical code based on the garment type and gender (28 for a men's singlet/vest).
+
+            Hierarchical Structure: The classification correctly follows the tariff's structure:
+            Section XI: Textiles and textile articles.
+            Chapter 61: Articles of apparel and clothing accessories, knitted or crocheted.
+            Heading 6109: T-shirts, singlets and other vests, knitted or crocheted.
+            Tariff Item 6109.90.00: Of other textile materials.
+            Statistical Suffix 28: Other: Men's or boys'.
