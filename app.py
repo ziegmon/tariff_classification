@@ -1147,6 +1147,19 @@ def display_metrics():
     return render_template("metrics.html", **dashboard_data)    # the ** operator unpacks the dictionary, passing its keys and values as keyword arguments to the render_template function.
 
 
+from flask import send_file
+
+@app.route("/download_final_report")
+def download_final_report():
+    """
+    Endpoint to download the final HS code report as a CSV file.
+    """
+    file_path = os.path.join(os.path.dirname(__file__), "final_hs_codes.csv")
+    if not os.path.exists(file_path):
+        flash("Please finalize the bulk results to generate and download the final report.", "warning")
+        return redirect(url_for('bulk_classification'))
+    return send_file(file_path, as_attachment=True, download_name="final_hs_codes.csv")
+
 # --- Run the Flask App --- 
 if __name__ == '__main__':
     app.run(debug=True)

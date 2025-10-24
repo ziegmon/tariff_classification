@@ -249,6 +249,8 @@ def save_bulk_classification_results(df_to_save: pd.DataFrame, filename=METRICS_
         else:
             df_to_write.to_csv(file_path, mode='w', header=True, index=False)
             print(f"DEBUG: Successfully created and saved results to {filename}.")
+
+        download_final_report()
     except Exception as e:
         print(f"ERROR: Could not save/append results to {filename}. Reason: {e}")
         import traceback

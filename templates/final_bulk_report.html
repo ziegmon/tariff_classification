@@ -59,7 +59,11 @@
             <p>Download your finalized results:</p>
             {# You'll need a Flask route to handle this download, for example '/download_final_report' #}
             {# For now, this button is illustrative, actual download logic needs to be added in app.py #}
-            <button type="button" onclick="alert('Download functionality not yet implemented!')">Download Final Codes as CSV</button>
+            <button
+                type="button"
+                onclick="window.location.href='{{ url_for('download_final_report') }}'"
+                class="download-button"
+                >Download Final Codes as CSV</button>
         </div>
 
     {% else %}
