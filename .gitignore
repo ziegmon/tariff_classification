@@ -2,3 +2,4 @@ config.py
 /data
 /__pycache__
 .venv/
+/static
