@@ -1,3 +1,10 @@
+"""
+Document Handling Helper Functions Module.
+
+Helper functions for handling document reading and processing.
+Supports PDF, CSV, JSON, and plain text formats.
+Includes functions to load documents by country and extract relevant chapters."""
+
 import os
 import json
 
@@ -18,19 +25,16 @@ hs_code_col = "tariff_code"
 
 
 def read_file_content(file_path: str) -> str:
-    """
-    Reads content from a file and returns it as a string.
+    """Reads content from a file and returns it as a string.
     Supports PDF, CSV, JSON, and plain text formats.
-
     Args:
-        file_path: The full path to the file.
-
+        file_path (str): The path to the file.
     Returns:
-        The content of the file as a single string.
+        str: The content of the file as a string.
     """
+    # Determine file extension
     try:
         extension = Path(file_path).suffix.lower()
-
         if extension == '.pdf':
             with open(file_path, 'rb') as file:
                 pdf_reader = PyPDF2.PdfReader(file)
@@ -63,6 +67,15 @@ def read_file_content(file_path: str) -> str:
         return ""
 
 def load_all_documents(directory: str) -> tuple[dict, list]:
+    """Loads and caches all documents from the specified directory.
+    The documents are expected to follow the naming convention 'country_doctype.ext'.
+    Args:
+        directory (str): The path to the directory containing the documents.
+    Returns:
+        tuple: A tuple containing:
+            - dict: A nested dictionary with structure {country: {doc_type: content, ...
+            - list: A sorted list of all countries found.
+"""
     doc_cache = {}
     country_set = set()
 
@@ -94,6 +107,14 @@ def load_all_documents(directory: str) -> tuple[dict, list]:
     return doc_cache, sorted(list(country_set))
 
 def load_documents_for_country(directory: str, country: str) -> dict:
+    """Loads and caches documents for a specific country from the specified directory.
+    The documents are expected to follow the naming convention 'country_doctype.ext'.
+    Args:
+        directory (str): The path to the directory containing the documents.
+        country (str): The country name to filter documents.
+    Returns:
+        dict: A dictionary with structure {doc_type: content, ...} for the specified country
+    """
     processed_docs = {}
     country_lower = country.lower()
 
@@ -114,6 +135,9 @@ def load_documents_for_country(directory: str, country: str) -> dict:
 
 
 def extract_text_from_pdf(pdf_path):
+    """Extracts text from a PDF file located at pdf_path.
+    Returns the extracted text as a single string.
+    """
     try:
         with open(pdf_path, 'rb') as file:
             pdf_reader = PyPDF2.PdfReader(file)
@@ -185,6 +209,15 @@ def load_all_pdf_data(pdf_directory):
 #___Load .txt Files___#
 # files with classification examples and other country specific guidelines
 def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
+    """Loads and caches text files for a specific country from the specified directory.
+    The text files are expected to start with the country name and end with the specified suffix.
+    Args:
+        text_directory (str): The path to the directory containing the text files.
+        country (str): The country name to filter text files.
+        file_suffix (str): The suffix that text files should end with (default is ".txt").
+    Returns:
+        dict: A dictionary with structure {filename: content, ...} for the specified country
+    """
     processed_texts = {}
 
     if not os.path.exists(text_directory):
@@ -212,6 +245,15 @@ def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
 
 
 def find_relevant_chapters(product_description, country, country_specific_pdf_data):
+    """
+    Identifies relevant chapters based on keywords in the product description.
+    Args:
+        product_description (str): The product description to analyze.
+        country (str): The country for which to find relevant chapters.
+        country_specific_pdf_data (dict): The cached PDF data for the specified country.
+    Returns:
+        list: A list of tuples containing chapter numbers and their corresponding content.
+    """
     keywords = {
         "shirt": ["61", "62"],
         "t-shirt": ["61", "62"],

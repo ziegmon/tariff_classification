@@ -1,4 +1,5 @@
-"""Metrics Service Module.
+"""
+Metrics Service Module.
 
 This module contains all the business logic for calculating and aggregating
 metrics for the dashboard. It is responsible for reading data from various
@@ -25,7 +26,7 @@ TOKEN_LOG_FILE = str(BASE_DIR / "data/logs/token_usage_log.csv")
 INTERACTION_LOG_FILE = str(BASE_DIR / "data/logs/interaction_log.csv")
 ACCURACY_LOG_FILE = str(BASE_DIR / "data/logs/accuracy_log_combined.csv")
 
-
+# Flask app setup (if needed for context)
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -46,7 +47,6 @@ GEMINI_FLASH_PRICE_PER_1M_OUTPUT = 0.40
 def get_dashboard_data() -> Dict[str, Any]:
     """
     The main orchestrator function that gathers all data for the metrics dashboard.
-
     Returns:
         A dictionary containing all aggregated data needed by the metrics template.
     """
@@ -86,12 +86,18 @@ def get_dashboard_data() -> Dict[str, Any]:
 
 
 def _get_accuracy_metrics(df: pd.DataFrame) -> Dict[str, Any]:
-    """Calculates the core classification accuracy metrics."""
+    """Calculates the core classification accuracy metrics.
+    Args:
+        df: DataFrame containing bulk classification results.
+    Returns:
+        A dictionary with accuracy metrics."""
     return calculate_metrics(df)
 
 
 def _get_evolution_data() -> Dict[str, Any]:
-    """Processes the accuracy log to show performance evolution over time."""
+    """Processes the accuracy log to show performance evolution over time.
+    Returns:
+        A dictionary with evolution data for overall and country-specific accuracy."""
     evolution_data = {}
     if not os.path.exists(ACCURACY_LOG_FILE):
         return evolution_data
@@ -141,7 +147,10 @@ def _get_evolution_data() -> Dict[str, Any]:
 
 
 def _get_processing_time_data() -> (list, float):
-    """Reads and calculates processing time statistics."""
+    """Reads and calculates processing time statistics.
+    Returns:
+        A tuple containing a list of processing time records and the overall average time per row.
+    """
     if not os.path.exists(PROCESSING_TIMES_FILE):
         return [], 0
         
@@ -157,7 +166,10 @@ def _get_processing_time_data() -> (list, float):
 
 
 def _get_token_and_cost_data() -> (Dict[str, Any], Dict[str, Any], Dict[str, Any]):
-    """Reads the token log and calculates usage and estimated cost metrics."""
+    """Reads the token log and calculates usage and estimated cost metrics.
+    Returns:
+        A tuple containing token usage data, cost estimation data, and usage patterns.
+    """
     token_data, cost_data, usage_data = {}, {}, {}
     if not os.path.exists(TOKEN_LOG_FILE):
         return token_data, cost_data, usage_data
@@ -193,7 +205,9 @@ def _get_token_and_cost_data() -> (Dict[str, Any], Dict[str, Any], Dict[str, Any
 
 
 def _get_interaction_and_quality_data(total_requests: int) -> (Dict[str, Any], Dict[str, Any]):
-    """Analyzes user interactions to derive quality metrics."""
+    """Analyzes user interactions to derive quality metrics.
+    Returns:
+        A tuple containing quality metrics and interaction analysis data."""
     quality_data, interaction_data = {}, {}
     if not os.path.exists(INTERACTION_LOG_FILE):
         return quality_data, interaction_data
@@ -222,7 +236,9 @@ def _get_interaction_and_quality_data(total_requests: int) -> (Dict[str, Any], D
 
 
 def _get_completeness_data(df: pd.DataFrame) -> Dict[str, Any]:
-    """Analyzes the results data for content and certainty patterns."""
+    """Analyzes the results data for content and certainty patterns.
+    Returns:
+        A dictionary containing completeness analysis data."""
     completeness_data = {}
     
     df["hs_code_from_csv"] = df["hs_code_from_csv"].astype(str).str.replace('.', '', regex=False)

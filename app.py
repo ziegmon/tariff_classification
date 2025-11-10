@@ -1,3 +1,11 @@
+"""
+Main Flask Application for HS Code Classification.
+
+This application provides endpoints for single and bulk product classification
+using HS codes. It integrates with a GenAI model for generating HS code suggestions
+based on product descriptions and relevant tariff documentation.
+"""
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 import os
 import pandas as pd
@@ -37,14 +45,14 @@ def run_async_task(task, *args):
     """
     asyncio.run(task(*args))
 
-
+# File paths for logs
 ALL_BULK_RESULTS_FILE = str(pathlib.Path(__file__).parent / "data/logs/all_bulk_results.csv")
 PROCESSING_TIMES_FILE = str(pathlib.Path(__file__).parent / "data/logs/processing_times.csv")
 TOKEN_LOG_FILE = str(pathlib.Path(__file__).parent / "data/logs/token_usage_log.csv")
 INTERACTION_LOG_FILE = str(pathlib.Path(__file__).parent / "data/logs/interaction_log.csv")
 ACCURACY_LOG_FILE = str(pathlib.Path(__file__).parent / "data/logs/accuracy_log_combined.csv")
 
-
+# --- Flask App Setup ---
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -60,6 +68,9 @@ with app.app_context():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """Simple login page to restrict access.
+     In a production app, use secure authentication methods.
+     """
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -73,6 +84,9 @@ def login():
 
 @app.route('/logout')
 def logout():
+    """Logs out the user by clearing the session.
+     In a production app, ensure proper session management.
+     """
     session.pop('logged_in', None)
     flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
@@ -81,12 +95,18 @@ def logout():
 # --- Home Page ---
 @app.route('/')
 def home():
+    """Renders the home page."""
     return render_template('home.html')
 
 
 class AsyncRateLimiter:
     """
     An asynchronous rate limiter that enforces a rate limit using a token bucket algorithm.
+    Attributes:
+        rate_limit (int): Maximum number of requests allowed in the specified period.
+        period_seconds (int): Time period in seconds for the rate limit.
+    Methods:
+        acquire(): Waits if necessary to ensure the rate limit is not exceeded.
     """
     def __init__(self, rate_limit: int, period_seconds: int = 60):
         self.rate_limit = rate_limit
@@ -114,6 +134,9 @@ class AsyncRateLimiter:
 # --- Single Product Classification ---
 @app.route('/single_classification', methods=['GET', 'POST'])
 async def single_classification():
+    """Handles single product classification requests.
+     On GET: renders the input form.
+     On POST: processes the form data, generates HS code suggestions, and redirects to results."""
     if request.method == 'POST':
         country = request.form['country'].lower()
         gender = request.form['gender']
@@ -183,9 +206,9 @@ async def single_classification():
         gri = processed_docs.get("gri", "")
         guidelines = load_text_files_for_country(app.config['PDF_DIRECTORY'], country).get(f"{country}_guidelines", "")
 
-        rejected_codes_snapshot = load_rejected_codes(product_description, country)
+        rejected_codes_snapshot = load_rejected_codes(product_description, country) # To inform generation of previously rejected codes
 
-        model = configure_genai(app.config['API_KEY'])
+        model = configure_genai(app.config['API_KEY']) # Configure model for single classification
         generated_response = await generate_hs_codes(
             model,
             product_description,
@@ -198,11 +221,11 @@ async def single_classification():
             rejected_codes_snapshot=rejected_codes_snapshot
         )
 
-        session['last_generated_response'] = generated_response
-        session['last_product_description'] = product_description
-        session['last_country'] = country
+        session['last_generated_response'] = generated_response # Store for retrieval in results page
+        session['last_product_description'] = product_description # Store for context
+        session['last_country'] = country # Store for context
 
-        return redirect(url_for('suggested_options'))
+        return redirect(url_for('suggested_options')) # Redirect to results page
 
     # GET request: render the input form
     country_options = sorted(list(app.doc_cache.keys()))
@@ -223,6 +246,10 @@ async def single_classification():
 
 @app.route('/footwear_bulk_classification', methods=['GET', 'POST'])
 async def footwear_bulk_classification():
+    """Handles bulk footwear classification requests.
+     On GET: renders the upload form or active batch status.
+     On POST: processes the uploaded CSV file and starts background processing.
+     """
     if request.method == 'POST':
         if 'csv_file' not in request.files:
             flash('No file part', 'danger')
@@ -282,6 +309,10 @@ async def footwear_bulk_classification():
 
 @app.route('/suggested_options', methods=['GET', 'POST'])
 async def suggested_options():
+    """Displays suggested HS code options and handles user feedback.
+     On GET: renders the suggested options.
+     On POST: processes user feedback (marking options as incorrect) and regenerates suggestions if needed.
+     """
     generated_response = session.get('last_generated_response')
     product_description = session.get('last_product_description')
     country = session.get('last_country')
@@ -379,8 +410,10 @@ async def suggested_options():
 # Example of an AJAX endpoint for regeneration in bulk (more complex)
 @app.route('/regenerate_bulk_item/<int:idx>', methods=['POST'])
 def regenerate_bulk_item(idx):
-    # This would involve loading product info, rejected codes, calling generate_hs_codes
-    # and then returning JSON with new options for the specific item to update the frontend via JS
+    """AJAX endpoint to regenerate HS code suggestions for a specific bulk item.
+    This would involve loading product info, rejected codes, calling generate_hs_codes
+    and then returning JSON with new options for the specific item to update the frontend via JS
+    """
     return jsonify({'status': 'success', 'new_options': []}) # Placeholder
 
 
@@ -388,6 +421,9 @@ app.bulk_processing_state = {} # Stores results keyed by a unique batch ID
 
 @app.route('/bulk_classification', methods=['GET', 'POST'])
 async def bulk_classification():
+    """Handles bulk classification requests.
+     On GET: renders the upload form or active batch status.
+     On POST: processes the uploaded CSV file and starts background processing."""
     if request.method == 'POST':
         if 'csv_file' not in request.files:
             flash('No file part', 'danger')
@@ -455,6 +491,13 @@ def start_new_bulk():
 rate_limiter = AsyncRateLimiter(10, 60)
 
 async def process_bulk_footwear_flask(batch_id, api_key, pdf_directory='data/chapter_data'):
+    """Processes bulk footwear classification in the background.
+     Updates the app.bulk_processing_state with results.
+     Args:
+        batch_id (str): Unique identifier for the bulk processing batch.
+        api_key (str): API key for configuring the GenAI model.
+        pdf_directory (str): Directory containing PDF chapter data.
+     """
     print(f"!!!!!!!!!!!!!! BACKGROUND TASK STARTED FOR FOOTWEAR BATCH {batch_id} !!!!!!!!!!!!!!")
     state = app.bulk_processing_state.get(batch_id)
     if not state:
@@ -472,6 +515,7 @@ async def process_bulk_footwear_flask(batch_id, api_key, pdf_directory='data/cha
         pdf_data_cache = load_all_pdf_data(pdf_directory)
 
         def process_row(row):
+            """Processes a single row for footwear classification."""
             original_index = row["idx"]
             country_col = "tariff_country_description"
             name_col = "customs_description"
@@ -571,7 +615,7 @@ async def process_bulk_footwear_flask(batch_id, api_key, pdf_directory='data/cha
 
                 return base_result_row
 
-            except Exception as gen_e:
+            except Exception as gen_e: # Catch generation/extraction errors
                 base_result_row["hs_code_1"] = "ERROR"
                 base_result_row["reasoning_1"] = str(gen_e)
                 return base_result_row
@@ -603,13 +647,19 @@ async def process_bulk_footwear_flask(batch_id, api_key, pdf_directory='data/cha
         traceback.print_exc()
 
 async def process_bulk_data_flask(batch_id, api_key):
+    """Processes bulk classification in the background.
+     Updates the app.bulk_processing_state with results.
+     Args:
+        batch_id (str): Unique identifier for the bulk processing batch.
+        api_key (str): API key for configuring the GenAI model.
+     """
     print(f"!!!!!!!!!!!!!! BACKGROUND TASK STARTED FOR BATCH {batch_id} !!!!!!!!!!!!!!")
     state = app.bulk_processing_state.get(batch_id)
     if not state:
         print(f"ERROR: process_bulk_data_flask called for a non-existent batch_id: {batch_id}")
         return
 
-    try:
+    try: # Main processing logic with error handling
         df_input = state['input_df']
         model = configure_genai(api_key)
         all_results_list = []
@@ -658,8 +708,8 @@ async def process_bulk_data_flask(batch_id, api_key):
                 state['processed_count'] += 1
                 continue
 
-            all_validated_entries = load_validated_codes(product_description, country)
-            validated_entries_with_code = [e for e in all_validated_entries if e.get("hs_code")]
+            all_validated_entries = load_validated_codes(product_description, country) # Check for validated codes first
+            validated_entries_with_code = [e for e in all_validated_entries if e.get("hs_code")] # Filter for entries with HS code
             if validated_entries_with_code:
                 for i, entry in enumerate(validated_entries_with_code[:3]):
                     reasoning = entry.get("reasoning") or "Previously validated by user (code only)."
@@ -699,6 +749,12 @@ async def process_bulk_data_flask(batch_id, api_key):
         if items_for_api_call:
             semaphore = asyncio.Semaphore(10)
             async def run_classification_with_semaphore(item):
+                """Runs classification with semaphore to limit concurrency.
+                    Args:
+                        item (dict): Dictionary containing base_row, product_key, and args for classification.
+                    Returns:
+                        dict: Result row with classification results.
+                     """
                 async with semaphore:
                     await rate_limiter.acquire()
                     response = await generate_hs_codes(model, **item['args'])
@@ -731,7 +787,7 @@ async def process_bulk_data_flask(batch_id, api_key):
                 state['processed_count'] += 1
                 print(f"DEBUG: Processed {state['processed_count']}/{state['total_rows']}.")
 
-        all_results_list.sort(key=lambda x: x['idx'])
+        all_results_list.sort(key=lambda x: x['idx']) # Ensure original order is maintained
         processed_df = pd.DataFrame(all_results_list) if all_results_list else pd.DataFrame()
         
         state['processed_results'] = processed_df.to_dict('records')
@@ -755,6 +811,7 @@ async def process_bulk_data_flask(batch_id, api_key):
 
 @app.route('/processing_status/<batch_id>', methods=['GET'])
 def processing_status_page(batch_id):
+    """Renders the processing status page for a given bulk classification batch."""
     state = app.bulk_processing_state.get(batch_id)
     if not state:
         flash('Processing batch not found or already completed. Please start a new bulk classification.', 'danger')
@@ -765,6 +822,7 @@ def processing_status_page(batch_id):
 
 @app.route('/get_bulk_progress/<batch_id>', methods=['GET'])
 def get_bulk_progress(batch_id):
+    """AJAX endpoint to get the current progress of bulk classification."""
     state = app.bulk_processing_state.get(batch_id)
     if not state:
         return jsonify({'status': 'error', 'message': 'Batch not found or completed'}), 404
@@ -780,6 +838,7 @@ def get_bulk_progress(batch_id):
 
 @app.route('/review_bulk_table/<batch_id>', methods=['GET'])
 def review_bulk_table(batch_id):
+    """Renders the review table for bulk classification results."""
     state = app.bulk_processing_state.get(batch_id)
     if not state:
         flash('Bulk processing batch not found or completed. Please start a new one.', 'danger')
@@ -801,6 +860,7 @@ def review_bulk_table(batch_id):
 
 @app.route('/review_bulk_results/<batch_id>', methods=['GET', 'POST'])
 async def review_bulk_results(batch_id):
+    """Displays the review page for bulk classification results and handles user actions."""
     state = app.bulk_processing_state.get(batch_id)
     if not state:
         flash('Bulk processing batch not found or completed. Please start a new one.', 'danger')
@@ -928,6 +988,12 @@ async def review_bulk_results(batch_id):
 
 
 async def process_single_regeneration_in_background(batch_id, item_idx):
+    """Processes regeneration for a single item in the bulk classification batch.
+     Updates the app.bulk_processing_state with the new results.
+     Args:
+        batch_id (str): Unique identifier for the bulk processing batch.
+        item_idx (int): Index of the item to regenerate.
+     """
     state = app.bulk_processing_state[batch_id]
     selection_status = state['selection_status']
     results_list = state['processed_results']
@@ -989,6 +1055,9 @@ async def process_single_regeneration_in_background(batch_id, item_idx):
 
 @app.route('/finalize_bulk_results/<batch_id>', methods=['POST'])
 def finalize_bulk_results(batch_id):
+    """Finalizes the bulk classification results and prepares the final output.
+     Args:
+        batch_id (str): Unique identifier for the bulk processing batch."""
     if batch_id not in app.bulk_processing_state:
         flash('Bulk processing batch not found.', 'danger')
         return redirect(url_for('bulk_classification'))
@@ -1097,7 +1166,9 @@ def finalize_bulk_results(batch_id):
 
 
 def simplify_product_type(description):
-    """Simplifies a detailed product description to a general category."""
+    """Simplifies a detailed product description to a general category.
+    Args:
+        description (str): Detailed product description."""
     if not isinstance(description, str): 
         return "Unknown"
     desc_lower = description.lower()
@@ -1153,6 +1224,8 @@ from flask import send_file
 def download_final_report():
     """
     Endpoint to download the final HS code report as a CSV file.
+    Returns:
+        Response: Flask response to send the file for download.
     """
     file_path = os.path.join(os.path.dirname(__file__), "final_hs_codes.csv")
     if not os.path.exists(file_path):

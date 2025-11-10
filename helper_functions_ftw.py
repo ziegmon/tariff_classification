@@ -1,3 +1,9 @@
+"""
+Helper Functions Module (Footwear).
+This module contains helper functions for file reading, document loading,
+Gemini API configuration, and HS code generation specifically for footwear products.
+"""
+
 import os
 import json
 import google.generativeai as genai
@@ -28,6 +34,9 @@ hs_code_col = "tariff_code"
 
 #___Read PDF___#    
 def extract_text_from_pdf(pdf_path):
+    """Extracts text from a PDF file located at pdf_path.
+    Returns the extracted text as a single string.
+    """
     try:
         with open(pdf_path, 'rb') as file:
             pdf_reader = PyPDF2.PdfReader(file, strict=False)
@@ -41,7 +50,12 @@ def extract_text_from_pdf(pdf_path):
 
 #___Load All PDF Data___#
 def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
-    """Loads and caches all PDF data for all countries"""
+    """Loads and caches all PDF data for all countries from the specified directory.
+    The PDFs are expected to follow the naming convention 'country_doctype.pdf'.
+    Args:
+        pdf_directory (str): The path to the directory containing the PDF files.
+    Returns:
+        dict: A nested dictionary with structure {country: {doc_type: content, ...}, ...}"""
     pdf_cache = {}
     country_set = set()
 
@@ -75,6 +89,15 @@ def load_all_pdf_data(pdf_directory=PDF_DIRECTORY):
 
 #___Load Text Files___#
 def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
+    """Loads and caches text files for a specific country from the specified directory.
+    The text files are expected to start with the country name and end with the specified suffix.
+    Args:
+        text_directory (str): The path to the directory containing the text files.
+        country (str): The country name to filter text files.
+        file_suffix (str): The suffix that text files should end with (default is ".txt").
+    Returns:
+        dict: A dictionary with structure {filename: content, ...} for the specified country
+    """
     processed_texts = {}
 
     if not os.path.exists(text_directory):
@@ -99,6 +122,11 @@ def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
 
 #___Gemini API Config___#
 def configure_genai(api_key):
+    """Configures the Google Generative AI (Gemini) API with the provided API key.
+    Args:
+        api_key (str): The API key for authenticating with the Gemini API.
+    Returns:
+        generative_model: An instance of the configured GenerativeModel."""
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(model_name='models/gemini-2.5-flash')
     return model
@@ -121,6 +149,26 @@ def format_historical_data_from_csv(
     top_n=5,
     return_df=False
 ):
+    """Formats historical footwear data from a CSV file for similarity matching.
+    Args:
+        csv_file_path (str): Path to the CSV file containing historical data.
+        target_country (str): The target country for filtering historical data.
+        target_full_product_description (str): The full product description to match against.
+        target_gender (str, optional): The target gender for filtering historical data.
+        country_col_hist (str): Column name for country in historical data.
+        name_col_hist (str): Column name for product name in historical data.
+        name_col2_hist (str): Column name for secondary product name in historical data.
+        material_col_hist (str): Column name for material in historical data.
+        construction_col_hist (str): Column name for construction in historical data.
+        gender_col_hist (str): Column name for gender in historical data.
+        size_col_hist (str): Column name for size in historical data.
+        hs_code_col_hist (str): Column name for HS code in historical data.
+        similarity_threshold (float): Cosine similarity threshold for matching.
+        top_n (int): Number of top similar matches to return.
+        return_df (bool): If True, returns the filtered DataFrame instead of formatted string.
+    Returns:
+        str or pd.DataFrame: Formatted historical data string or DataFrame if return_df is True.
+    """
     try:
         historical_df = pd.read_csv(csv_file_path)
     except FileNotFoundError:
@@ -154,6 +202,7 @@ def format_historical_data_from_csv(
             return f"No historical footwear data found for {target_country.upper()} with gender '{target_gender}'."
 
     def build_description(row):
+        """Builds a full product description from relevant columns."""
         parts = []
         if gender_col_hist in row and pd.notna(row[gender_col_hist]):
             parts.append(str(row[gender_col_hist]))
@@ -229,6 +278,16 @@ def generate_hs_codes_ftw(
     relevant_chapters,
     gri=""
 ):
+    """Generates HS code suggestions for footwear products using the Gemini API.
+    Args:
+        model: The configured Gemini generative model.
+        product_description (str): The full product description for classification.
+        country (str): The target country for classification.
+        relevant_chapters (list): List of tuples containing relevant chapter numbers and their content.
+        gri (str, optional): Country-specific General Rules of Interpretation. Defaults to "".
+    Returns:
+        str: The generated HS code suggestions and reasoning.
+    """
     max_retries = 1
     retry_delay = 5  # seconds
     print(f"[DEBUG] Product Description: {product_description}")
@@ -348,6 +407,13 @@ def generate_hs_codes_ftw(
 
 #___Find Relevant Chapters for Footwear___#
 def find_relevant_chapters(product_description, country, country_specific_pdf_data):
+    """Finds relevant chapters for footwear products based on keywords in the product description.
+    Args:
+        product_description (str): The full product description for classification.
+        country (str): The target country for classification.
+        country_specific_pdf_data (dict): Cached PDF data for the specific country.
+    Returns:
+        list: List of tuples containing relevant chapter numbers and their content."""
     keywords = {
         # Footwear keywords - Chapter 64
         "shoe": ["64"], "boot": ["64"], "sneaker": ["64"], "sandal": ["64"],
@@ -386,6 +452,11 @@ def find_relevant_chapters(product_description, country, country_specific_pdf_da
 
 #___Extract HS Codes from Response___#
 def extract_hs_codes(text):
+    """Extracts HS codes, certainty percentages, product description, and reasoning from the model's response text.
+    Args:
+        text (str): The model's response text containing HS code suggestions.
+    Returns:
+        pd.DataFrame: A DataFrame with columns for product description, HS codes, certainty, and reasoning."""
     # Extract product description
     product_desc_match = re.search(r'#### PRODUCT DESCRIPTION:\s*(.*?)(?=####|$)', text, re.DOTALL)
     product_description = product_desc_match.group(1).strip() if product_desc_match else "Not found"
@@ -420,14 +491,39 @@ def process_bulk_data(
     gender_col,
     size_col
 ):
+    """Processes bulk footwear data to generate HS code suggestions using the Gemini API.
+    Args:
+        df_input (pd.DataFrame): DataFrame containing footwear data to process.
+        model: The configured Gemini generative model.
+        pdf_data_cache (dict): Cached PDF data for countries.
+        country_col (str): Column name for country in input data.
+        name_col (str): Column name for product name in input data.
+        name_col2 (str): Column name for secondary product name in input data.
+        material_col (str): Column name for material in input data.
+        construction_col (str): Column name for construction in input data.
+        gender_col (str): Column name for gender in input data.
+        size_col (str): Column name for size in input data.
+    Returns:
+        pd.DataFrame: DataFrame containing original data with added HS code suggestions and reasoning.
+    """
     all_results_list = []
     total_rows = len(df_input)
     class DummyProgress:
+        """A dummy progress bar class for demonstration purposes."""
         def progress(self, value):
+            """Updates the progress bar to the specified value.
+            Args:
+                value (float): A float between 0 and 1 indicating progress.
+            """
             print(f"Progress: {value*100:.2f}%")
 
     class DummyText:
+        """A dummy text display class for demonstration purposes."""
         def text(self, msg):
+            """Displays a text message.
+            Args:
+                msg (str): The message to display.
+            """
             print(msg)
 
     progress_bar = DummyProgress()
@@ -436,9 +532,17 @@ def process_bulk_data(
     lock = threading.Lock()
 
     def process_row(row):
+        """Processes a single row of footwear data to generate HS code suggestions.
+        Args:
+            row (pd.Series): A row from the input DataFrame.
+        Returns:
+            dict: A dictionary containing the original data with added HS code suggestions and reasoning.""" 
+        
         original_index = row["original_index"]
         country = str(row[country_col]).strip().lower() if pd.notna(row[country_col]) else "unknown"
         product_type = str(row[name_col]).strip() if pd.notna(row[name_col]) else ""
+        
+        # Append secondary name if available
         if name_col2 and name_col2 in row and pd.notna(row[name_col2]):
             product_type += " " + str(row[name_col2]).strip()
         material = str(row[material_col]).strip() if pd.notna(row[material_col]) else ""
@@ -446,6 +550,7 @@ def process_bulk_data(
         gender = str(row[gender_col]).strip() if gender_col and gender_col in row and pd.notna(row[gender_col]) else ""
         size = str(row[size_col]).strip() if size_col and size_col in row and pd.notna(row[size_col]) else ""
 
+        # Build product description
         desc_parts = [f"Product for {country.upper()}:"]
         if gender:
             desc_parts.append(f"{gender}'s")
@@ -459,6 +564,7 @@ def process_bulk_data(
             desc_parts.append(f"Size: {size}.")
         product_description = " ".join(desc_parts).strip()
 
+        # Prepare base result row
         base_result_row = {
             "original_index": original_index,
             "input_country": country.upper(),
@@ -472,6 +578,7 @@ def process_bulk_data(
             "hs_code_3": "", "certainty_3": 0, "reasoning_3": ""
         }
 
+        # Validate essential data
         if not product_type or not material or country == "unknown":
             base_result_row["reasoning_1"] = "Skipped due to missing essential data"
             return base_result_row
@@ -484,10 +591,12 @@ def process_bulk_data(
                 base_result_row["reasoning_1"] = f"Skipped: No PDF data for {country}"
                 return base_result_row
 
+        # Get processed PDF data for the country
         processed_pdfs_for_current_country = pdf_data_cache[country]
         relevant_chapters = find_relevant_chapters(product_description, country, processed_pdfs_for_current_country)
         gri = processed_pdfs_for_current_country.get("gri", "")
 
+        # Generate HS codes using the Gemini API
         try:
             generated_response = generate_hs_codes_ftw(
                 model,
@@ -509,9 +618,10 @@ def process_bulk_data(
             print(extracted_data)
             print("==========================")
 
+            # Warning for missing HS codes
             if all(not extracted_data.get(f"hs_code_{i}", "").strip() for i in range(1, 4)):
                 print(f"⚠️ All HS codes missing for row (Original Index: {original_index})")
-
+            # Populate result row with extracted data
             if not product_df_row.empty:
                 extracted_data = product_df_row.iloc[0].to_dict()
                 for i in range(1, 4):
@@ -535,7 +645,7 @@ def process_bulk_data(
             base_result_row["hs_code_1"] = "ERROR"
             base_result_row["reasoning_1"] = str(gen_e)
             return base_result_row
-
+    # Process rows in parallel
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = [executor.submit(process_row, row) for _, row in df_input.iterrows()]
         for df_idx, future in enumerate(futures):

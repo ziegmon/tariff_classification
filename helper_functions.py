@@ -1,3 +1,11 @@
+"""
+Helper Functions Module.
+
+This module contains helper functions for file reading, document loading,
+Gemini API configuration, and HS code generation.
+"""
+
+
 import csv
 from datetime import datetime
 import os
@@ -49,10 +57,8 @@ def read_file_content(file_path: str) -> str:
     """
     Reads content from a file and returns it as a string.
     Supports PDF, CSV, JSON, and plain text formats.
-
     Args:
         file_path: The full path to the file.
-
     Returns:
         The content of the file as a single string.
     """
@@ -92,13 +98,24 @@ def read_file_content(file_path: str) -> str:
 
 
 def load_all_documents(directory: str) -> tuple[dict, list]:
+    """Loads all documents from the specified directory into a nested dictionary.
+    Also returns a sorted list of unique countries found in the filenames.
+    Args:
+        directory: The directory containing the document files.
+    Returns:
+        A tuple containing:
+        - A nested dictionary structured as {country: {doc_type: content, ...}, ...}
+        - A sorted list of unique countries.
+    """
     doc_cache = {}
     country_set = set()
 
+    # Check if directory exists
     if not os.path.exists(directory):
         print(f"Error: Directory '{directory}' does not exist!")
         return {}, []
 
+    # Iterate over files in the directory
     for filename in os.listdir(directory):
         if filename == '.DS_Store': # <--- ADD THIS LINE
             continue
@@ -124,6 +141,13 @@ def load_all_documents(directory: str) -> tuple[dict, list]:
 
 
 def load_documents_for_country(directory: str, country: str) -> dict:
+    """Loads documents for a specific country from the specified directory.
+    Args:
+        directory: The directory containing the document files.
+        country: The target country to load documents for.
+    Returns:
+        A dictionary structured as {doc_type: content, ...} for the specified country.
+        """
     processed_docs = {}
     country_lower = country.lower()
 
@@ -144,6 +168,12 @@ def load_documents_for_country(directory: str, country: str) -> dict:
 
 
 def extract_text_from_pdf(pdf_path):
+    """Extracts text from a PDF file.
+    Args:
+        pdf_path: The full path to the PDF file.
+    Returns:
+        The extracted text as a single string.
+    """
     try:
         with open(pdf_path, 'rb') as file:
             pdf_reader = PyPDF2.PdfReader(file)
@@ -161,7 +191,10 @@ def extract_text_from_pdf(pdf_path):
 def load_all_pdf_data(pdf_directory):
     """
     Loads and caches all PDF data for all countries found in the PDF_DIRECTORY.
-    The structure will be {country: {doc_type: text_content, ...}, ...}
+    Args:
+        pdf_directory: The directory containing the PDF files.
+    Returns:
+        A nested dictionary structured as {country: {doc_type: text_content, ...}, ...}
     """
     pdf_cache = {}
     country_set = set() # To keep track of all found countries
@@ -215,6 +248,15 @@ def load_all_pdf_data(pdf_directory):
 #___Load .txt Files___#
 # files with classification examples and other country specific guidelines
 def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
+    """Loads text files for a specific country from the specified directory.
+    Args:
+        text_directory: The directory containing the text files.
+        country: The target country to load text files for.
+        file_suffix: The suffix of the text files to load (default is ".txt").
+    Returns:
+        A dictionary structured as {filename: content, ...} for the specified country.
+    """
+
     processed_texts = {}
 
     if not os.path.exists(text_directory):
@@ -243,13 +285,18 @@ def load_text_files_for_country(text_directory, country, file_suffix=".txt"):
 
 #___Gemini API Config___# with API key
 def configure_genai(api_key):
+    """Configures the Google Generative AI (Gemini) API with the provided API key.
+    Args:
+        api_key: The API key for Google Generative AI.
+    Returns:
+        A configured GenerativeModel instance."""
     genai.configure(api_key=api_key)
     # using gemini-1.5-flash seems to be enough, does not exceed quota and seems to performa better from 2.0
     # 1.5 can be fine tuned, 2.0 can't
     model = genai.GenerativeModel(model_name='models/gemini-2.0-flash')
     return model
 
-
+#___HS Code Length Rules___#
 HS_CODE_LENGTH_RULES = {
     'canada': 10,
     'usa': 10,
@@ -261,7 +308,14 @@ HS_CODE_LENGTH_RULES = {
 
 
 def log_token_usage(country, product_type, input_tokens, output_tokens):
-    """Logs the token usage for a single API call to a CSV file."""
+    """Logs the token usage for a single API call to a CSV file.
+    Args:
+        country: The target country for the classification.
+        product_type: The type of product being classified.
+        input_tokens: The number of input tokens used.
+        output_tokens: The number of output tokens generated.
+    """
+    
     file_exists = os.path.exists(TOKEN_LOG_FILE)
     try:
         with open(TOKEN_LOG_FILE, 'a', newline='', encoding='utf-8') as csvfile:
@@ -297,7 +351,22 @@ async def generate_hs_codes(
     guidelines=None,
     product_type=""
 ):
-
+    """Generates HS codes using the Gemini API based on the provided product description and country-specific documents.
+    Args:
+        model: The configured Gemini model instance.
+        product_description: The description of the product to classify.
+        country: The target country for the classification.
+        relevant_chapters: List of tuples containing relevant chapter numbers and their text content.
+        legal_notes: The legal notes document content for the country.
+        classification_guide: The classification guide document content for the country.
+        gri: The General Rules of Interpretation document content for the country (optional).
+        rejected_codes_snapshot: A snapshot list of previously rejected codes for the product (optional).
+        historical_data: Historical classification data (optional).
+        guidelines: Additional country-specific guidelines (optional).
+        product_type: The type of product being classified (optional).
+    Returns:
+        A formatted string containing the generated HS code options and their reasoning.
+    """
     print(f"[DEBUG] Product Description: {product_description}")
 
     # This logic checks for previously validated codes first to avoid unnecessary API calls
@@ -311,6 +380,7 @@ async def generate_hs_codes(
             hs_code = entry.get("hs_code", "N/A")
             reasoning = entry.get("reasoning") or "Previously validated by user (code only)."
 
+            # Format reasoning structure
             if isinstance(reasoning, str) and not re.search(r'#### REASONING(?: STRUCTURE)?:', reasoning):
                  reasoning_text_for_option = f"""
                  #### REASONING STRUCTURE:
@@ -356,6 +426,7 @@ async def generate_hs_codes(
     rejected_hs_codes_for_prompt = list(set(filter(None, temp_rejected_hs_codes)))
     print(f"[DEBUG] Rejected HS Codes for Prompt: {rejected_hs_codes_for_prompt}")
 
+    # Prepare rejected chapters/sections for the prompt
     rejected_section_for_prompt = ""
     if rejected_hs_codes_for_prompt:
         rejected_section_for_prompt += "\n\nIMPORTANT: DO NOT SUGGEST ANY OF THE FOLLOWING HS CODES (these were previously rejected for this item by a specialist):\n"
@@ -364,12 +435,13 @@ async def generate_hs_codes(
     else:
         print("DEBUG: Condition 'if rejected_hs_codes_for_prompt:' is FALSE. No rejected codes section to add to prompt.")
 
+    # Prepare historical data string for the prompt
     historical_data_string = format_historical_data_from_csv(
         csv_file_path=CSV_PATH,
         target_country=country,
         target_full_product_description=product_description,
     )
-
+    # Prepare chapter content for the prompt
     chapter_content_for_prompt = ""
     if relevant_chapters:
         for chapter_num, chapter_text in relevant_chapters:
@@ -400,7 +472,7 @@ async def generate_hs_codes(
     {length_rule_text}
     """
 
-
+    # Construct the full prompt
     prompt = f"""
         **CONTEXT & RESOURCES:**
         - **Product Description:** {product_description}
@@ -554,8 +626,6 @@ async def generate_hs_codes(
         """
 
     try:
-        
-
         # Define safety settings to be less restrictive for this low-risk task
         safety_settings = {
             HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_ONLY_HIGH,
@@ -563,7 +633,7 @@ async def generate_hs_codes(
             HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_ONLY_HIGH,
             HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_ONLY_HIGH,
         }
-
+        # Define generation configuration
         generation_config = {
             "temperature": 0.0,
             "top_p": 0.5,
@@ -636,6 +706,14 @@ async def generate_hs_codes(
 
 # finding relevant chapters based on product description
 def find_relevant_chapters(product_description, country, country_specific_pdf_data):
+    """Finds relevant chapters based on keywords in the product description.
+    Args:
+        product_description: The description of the product to classify.
+        country: The target country for the classification.
+        country_specific_pdf_data: The country-specific PDF data containing chapter texts.
+    Returns:
+        A list of tuples containing relevant chapter numbers and their text content.
+    """
     keywords = {
         "shirt": ["61", "62"],
         "t-shirt": ["61", "62"],
@@ -687,7 +765,14 @@ def find_relevant_chapters(product_description, country, country_specific_pdf_da
     return relevant_chapters_content
 
 
-def save_rejected_code(product, country, code): # Accepts 3 arguments
+def save_rejected_code(product, country, code):
+    """Saves a rejected HS code to a JSON file.
+    Args:
+        product: The product description.
+        country: The target country for the classification.
+        code: The rejected HS code.
+    """
+    
     entry = {
         "product_description": product,
         "country": country,
@@ -724,6 +809,14 @@ def save_rejected_code(product, country, code): # Accepts 3 arguments
 
 
 def load_rejected_codes(product_description, country):
+    """Loads rejected HS codes for a given product description and country.
+    Returns a list of matching entries.
+    Args:
+        product_description: The product description.
+        country: The target country for the classification.
+    Returns:
+        A list of rejected code entries matching the product description and country.
+    """
     # print(f"Loading REJECTED_CODES_FILE: {REJECTED_CODES_FILE}")
     if not os.path.exists(REJECTED_CODES_FILE):
         return []
@@ -744,6 +837,11 @@ def load_rejected_codes(product_description, country):
 def save_validated_code(product_description, country, hs_code, reasoning=None):
     """
     Saves a validated HS code and its reasoning (optional) to a JSON file.
+    Args:
+        product_description: The product description.
+        country: The target country for the classification.
+        hs_code: The validated HS code.
+        reasoning: The reasoning behind the validation (optional).
     """
     entry = {
         "product_description": product_description,
@@ -798,6 +896,9 @@ def load_validated_codes(product_description, country):
     """
     Loads validated HS codes for a given product description and country.
     Returns a list of matching entries.
+    Args:
+        product_description: The product description.
+        country: The target country for the classification.
     """
     if not os.path.exists(VALIDATED_CODES_FILE):
         return []
@@ -816,6 +917,12 @@ def load_validated_codes(product_description, country):
 
 
 def parse_reasoning_text(raw_reasoning_text):
+    """Parses the raw reasoning text into a structured dictionary format.
+    Args:
+        raw_reasoning_text: The raw reasoning text to parse.
+    Returns:
+        A dictionary with structured reasoning sections.
+    """
     structured_reasoning = {}
 
     # Define the sections and their regex patterns
@@ -849,6 +956,13 @@ def parse_reasoning_text(raw_reasoning_text):
 
 
 def extract_hs_codes(text):
+    """Extracts HS codes, certainty levels, and reasoning from the model's response text.
+    1. Extracts the product description.
+    2. Extracts each option's HS code, certainty, and reasoning.
+    Args:
+        text: The model's response text.
+    Returns:
+        A pandas DataFrame with the extracted information."""
     # extracting the product description from JSON format
     product_desc_match = re.search(r'"Product Description":"(.*?)"', text)
 
@@ -902,6 +1016,19 @@ def process_bulk_data(
     construction_col,
     gender_col
 ):
+    """Processes bulk data for HS code classification.
+    Args:
+        df_input: DataFrame containing input data.
+        model: The language model to use for classification.
+        pdf_data_cache: Cached PDF data for countries.
+        country_col: Column name for country.
+        name_col: Column name for product name.
+        name_col2: Optional second column name for product name.
+        material_col: Column name for material.
+        construction_col: Column name for construction.
+        gender_col: Column name for gender.
+    Returns:
+        DataFrame with classification results."""
     # This function seems to be for a Streamlit app and is not used in the Flask app.
     # I will keep it as is, assuming it's for a separate Streamlit component or future use.
     all_results_list = []
@@ -1011,6 +1138,12 @@ def process_bulk_data(
 
 
 def save_processing_time(processing_time, num_rows, filename="processing_times.csv"):
+    """Saves processing time and number of rows processed to a CSV file.
+    Args:
+        processing_time: Total processing time in seconds.
+        num_rows: Number of rows processed.
+        filename: Name of the CSV file to save the data.
+    """
     file_exists = os.path.exists(filename)
 
     with open(filename, 'a', newline='') as csvfile:
@@ -1043,7 +1176,25 @@ def format_historical_data_from_csv(
     top_n=5,
     return_df=False
 ):
-
+    """Formats historical data from a CSV file and finds similar products.
+    Args:
+        csv_file_path: Path to the CSV file containing historical data.
+        target_country: The target country to filter historical data.
+        target_full_product_description: The full product description to compare against.
+        target_gender: The target gender to filter historical data (optional).
+        country_col_hist: Column name for country in historical data.
+        name_col_hist: Column name for product name in historical data.
+        name_col2_hist: Optional second column name for product name in historical data.
+        material_col_hist: Column name for material in historical data.
+        construction_col_hist: Column name for construction in historical data.
+        gender_col_hist: Column name for gender in historical data.
+        hs_code_col_hist: Column name for HS code in historical data.
+        similarity_threshold: Cosine similarity threshold to consider a product as similar.
+        top_n: Number of top similar products to return.
+        return_df: If True, returns the filtered DataFrame instead of formatted string.
+    Returns:
+        A formatted string of similar historical products or a DataFrame if return_df is True.
+    """
     try:
         print(f"Attempting to read CSV from: {csv_file_path}")
         historical_df = pd.read_csv(csv_file_path)
@@ -1085,6 +1236,8 @@ def format_historical_data_from_csv(
             )
 
     def build_description(row):
+        """Builds a full product description from relevant columns.
+        """
         parts = []
 
         if gender_col_hist in row and pd.notna(row[gender_col_hist]):
@@ -1152,6 +1305,11 @@ def format_historical_data_from_csv(
 
 
 def extract_simplified_hs_codes(text):
+    """Extracts simplified HS codes and certainty levels from the model's response text.
+    Args:
+        text: The model's response text.
+    Returns:
+        A pandas DataFrame with the extracted HS codes and certainty levels."""
     options_data = []
     # pattern to capture HS code and certainty from "### OPTION X: [HS code] - YY% certainty"
     options = re.findall(r'### OPTION \d+: ([0-9]+(?:\.[0-9]+)*(?:\s+[0-9]+)?) - (\d+)% certainty', text)
@@ -1168,6 +1326,9 @@ def save_bulk_classification_results(df_to_save: pd.DataFrame, filename=METRICS_
     """
     Saves or appends the raw bulk classification results (model's suggestions)
     DataFrame to a CSV file.
+    Args:
+        df_to_save: DataFrame containing the classification results to save.
+        filename: Name of the CSV file to save the data.
     """
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     df_with_time = df_to_save.copy()
@@ -1222,6 +1383,9 @@ def save_bulk_classification_results(df_to_save: pd.DataFrame, filename=METRICS_
 def save_final_selected_results(df_to_save: pd.DataFrame, filename=FINAL_SELECTED_FILE):
     """
     Saves or appends the user's final selected classification results DataFrame to a CSV file.
+    Args:
+        df_to_save: DataFrame containing the final selected classification results to save.
+        filename: Name of the CSV file to save the data.
     """
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     df_with_time = df_to_save.copy()
@@ -1249,7 +1413,14 @@ def save_final_selected_results(df_to_save: pd.DataFrame, filename=FINAL_SELECTE
         
         
 def log_interaction_event(country, product_type, event_type, hs_code=None, details=""):
-    """Logs user interactions, regenerations, and other key events to a CSV file."""
+    """Logs user interactions, regenerations, and other key events to a CSV file.
+    Args:
+        country: The target country for the classification.
+        product_type: The product type or description.
+        event_type: The type of event (e.g., 'selection', 'rejection', 'regeneration', 'no_code_found').
+        hs_code: The HS code involved in the event (if applicable).
+        details: Additional details about the event (e.g., which option was selected).
+    """
     file_exists = os.path.exists(INTERACTION_LOG_FILE)
     try:
         with open(INTERACTION_LOG_FILE, 'a', newline='', encoding='utf-8') as csvfile:
@@ -1274,6 +1445,10 @@ def log_interaction_event(country, product_type, event_type, hs_code=None, detai
 def save_processing_time(processing_time, num_rows, filename=PROCESSING_TIMES_FILE): #
     """
     Saves the processing time for a bulk classification run to a CSV file.
+    Args:
+        processing_time: Total processing time in seconds.
+        num_rows: Number of rows processed.
+        filename: Name of the CSV file to save the data.
     """
     file_exists = os.path.exists(filename) #
     

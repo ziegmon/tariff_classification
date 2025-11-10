@@ -1,3 +1,10 @@
+"""
+Data Processing Functions Module.
+
+This module contains functions for processing and extracting information
+from text data related to HS codes, as well as formatting historical data
+from CSV files."""
+
 import re
 import pandas as pd
 from persistence_helper_functions import log_interaction_event
@@ -16,6 +23,11 @@ hs_code_col = "tariff_code"
 
 
 def parse_reasoning_text(raw_reasoning_text):
+    """Parses the raw reasoning text into structured sections.
+    Args:
+        raw_reasoning_text (str): The raw reasoning text from the model output.
+    Returns:
+        dict: A dictionary with structured reasoning sections."""
     structured_reasoning = {}
 
     # defining the sections and their regex patterns
@@ -48,6 +60,12 @@ def parse_reasoning_text(raw_reasoning_text):
 
 
 def extract_hs_codes(text):
+    """Extracts HS codes, certainty levels, and reasoning from the provided text.
+    Args:
+        text (str): The text containing HS code options and reasoning.
+    Returns:
+        pd.DataFrame: A DataFrame with extracted HS codes, certainty levels, and reasoning.
+    """
     # extracting the product description from JSON format
     product_desc_match = re.search(r'"Product Description":"(.*?)"', text)
 
@@ -91,6 +109,12 @@ def extract_hs_codes(text):
 
 
 def extract_simplified_hs_codes(text):
+    """Extracts simplified HS codes and certainty levels from the provided text.
+    Args:
+        text (str): The text containing HS code options and certainty.
+    Returns:
+        pd.DataFrame: A DataFrame with extracted simplified HS codes and certainty levels.
+        """
     options_data = []
     # pattern to capture HS code and certainty from "### OPTION X: [HS code] - YY% certainty"
     options = re.findall(r'### OPTION \d+: ([0-9]+(?:\.[0-9]+)*(?:\s+[0-9]+)?) - (\d+)% certainty', text)
@@ -119,6 +143,25 @@ def format_historical_data_from_csv(
     top_n=5,
     return_df=False
 ):
+    """Formats and retrieves historical data from a CSV file based on similarity to a target product description.
+    Args:
+        csv_file_path (str): Path to the historical data CSV file.
+        target_country (str): The country to filter historical data by.
+        target_full_product_description (str): The full product description to compare against.
+        target_gender (str, optional): Gender to filter historical data by. Defaults to None.
+        country_col_hist (str): Column name for country in historical data.
+        name_col_hist (str): Column name for product name in historical data.
+        name_col2_hist (str): Column name for secondary product name in historical data.
+        material_col_hist (str): Column name for material in historical data.
+        construction_col_hist (str): Column name for construction in historical data.
+        gender_col_hist (str): Column name for gender in historical data.
+        hs_code_col_hist (str): Column name for HS code in historical data.
+        similarity_threshold (float): Minimum cosine similarity threshold to consider a match.
+        top_n (int): Number of top similar matches to return.
+        return_df (bool): If True, returns the filtered DataFrame instead of formatted string.
+    Returns:
+        str or pd.DataFrame: Formatted string of similar historical data or the DataFrame if return_df is True.
+        """
 
     try:
         print(f"Attempting to read CSV from: {csv_file_path}")
@@ -160,6 +203,7 @@ def format_historical_data_from_csv(
             )
 
     def build_description(row):
+        """Builds a full product description from relevant columns in a DataFrame row."""
         parts = []
 
         if gender_col_hist in row and pd.notna(row[gender_col_hist]):
@@ -181,6 +225,7 @@ def format_historical_data_from_csv(
     if return_df:
         return historical_df
 
+    # Computing cosine similarity
     vectorizer = TfidfVectorizer()
     tfidf_matrix = vectorizer.fit_transform(historical_df['full_description'])
     target_vector = vectorizer.transform([target_full_product_description])
@@ -201,7 +246,8 @@ def format_historical_data_from_csv(
             f"No similar historical data found for '{target_full_product_description}' "
             f"in {target_country.upper()} (Similarity Threshold: {similarity_threshold}).\n"
         )
-
+    
+    # Formatting each top match
     for index, row in top_matches.iterrows():
         display_parts = []
         if pd.notna(row.get(gender_col_hist)):
@@ -214,7 +260,8 @@ def format_historical_data_from_csv(
             display_parts.append(f"Material: {row[material_col_hist]}")
         if pd.notna(row.get(construction_col_hist)):
             display_parts.append(f"Construction: {row[construction_col_hist]}")
-
+        
+        # Combining all parts into a single string
         full_product_details_output = ", ".join(display_parts)
         hs_code = str(row[hs_code_col_hist]) if hs_code_col_hist in row and pd.notna(row[hs_code_col_hist]) else "N/A" # Corrected typo: hs_code_col instead of hs_code_col_hist
         similarity = row['similarity']
